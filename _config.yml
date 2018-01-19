@@ -6,13 +6,13 @@
 title: Javascript-React-Redux
 subtitle: javscript-react-redux
 description: base on javascript 
-author: phpsmarter
+author: React-Apollo
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://React-Apollo.github.io
+url: https://React-Apollo.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
