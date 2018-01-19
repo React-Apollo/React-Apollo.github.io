@@ -1,0 +1,1465 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Redux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/react.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="redux-logic “One place for all your business logic and action side effects”  Redux middleware that can:  intercept (validate/transform/augment) actions AND perform async processing (fetching, I/O, sid">
+<meta name="keywords" content="Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redux-logic">
+<meta property="og:url" content="http://phpsmarter.github.io/2017/03/08/redux-logic/index.html">
+<meta property="og:site_name" content="Javascript-React-Redux">
+<meta property="og:description" content="redux-logic “One place for all your business logic and action side effects”  Redux middleware that can:  intercept (validate/transform/augment) actions AND perform async processing (fetching, I/O, sid">
+<meta property="og:image" content="https://secure.travis-ci.org/jeffbski/redux-logic.png?branch=master">
+<meta property="og:image" content="https://img.shields.io/codacy/grade/3687e7267e6d466b9d226c22b24f0061.svg">
+<meta property="og:image" content="https://img.shields.io/codacy/coverage/3687e7267e6d466b9d226c22b24f0061.svg">
+<meta property="og:image" content="https://snyk.io/test/github/jeffbski/redux-logic/badge.svg">
+<meta property="og:image" content="https://img.shields.io/npm/v/redux-logic.svg">
+<meta property="og:updated_time" content="2017-03-23T13:01:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redux-logic">
+<meta name="twitter:description" content="redux-logic “One place for all your business logic and action side effects”  Redux middleware that can:  intercept (validate/transform/augment) actions AND perform async processing (fetching, I/O, sid">
+<meta name="twitter:image" content="https://secure.travis-ci.org/jeffbski/redux-logic.png?branch=master">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":true,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://phpsmarter.github.io/2017/03/08/redux-logic/"/>
+
+
+
+
+
+  <title>redux-logic | Javascript-React-Redux</title>
+   
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Redux</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">javscript-react-redux</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://phpsmarter.github.io/2017/03/08/redux-logic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="phpsmarter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Redux">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">redux-logic</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-08T00:04:10+08:00">
+                2017-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redux/" itemprop="url" rel="index">
+                    <span itemprop="name">Redux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/03/08/redux-logic/" class="leancloud_visitors" data-flag-title="redux-logic">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,770
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="redux-logic"><a href="#redux-logic" class="headerlink" title="redux-logic"></a>redux-logic</h1><blockquote>
+<p>“One place for all your business logic and action side effects”</p>
+</blockquote>
+<p>Redux middleware that can:</p>
+<ul>
+<li><strong>intercept</strong> (validate/transform/augment) actions AND</li>
+<li><strong>perform async processing</strong> (fetching, I/O, side effects)</li>
+</ul>
+<p><a href="http://travis-ci.org/jeffbski/redux-logic" target="_blank" rel="external"><img src="https://secure.travis-ci.org/jeffbski/redux-logic.png?branch=master" alt="Build Status"></a> <a href="https://www.codacy.com/app/jeff-barczewski/redux-logic" target="_blank" rel="external"><img src="https://img.shields.io/codacy/grade/3687e7267e6d466b9d226c22b24f0061.svg" alt="Codacy Grade Badge"></a> <a href="https://www.codacy.com/app/jeff-barczewski/redux-logic" target="_blank" rel="external"><img src="https://img.shields.io/codacy/coverage/3687e7267e6d466b9d226c22b24f0061.svg" alt="Codacy Coverage Badge"></a> <a href="https://snyk.io/test/github/jeffbski/redux-logic" target="_blank" rel="external"><img src="https://snyk.io/test/github/jeffbski/redux-logic/badge.svg" alt="Known Vulnerabilities"></a> <a href="https://www.npmjs.com/package/redux-logic" target="_blank" rel="external"><img src="https://img.shields.io/npm/v/redux-logic.svg" alt="NPM Version Badge"></a></p>
+<h2 id="tl-dr"><a href="#tl-dr" class="headerlink" title="tl;dr"></a>tl;dr</h2><p>With redux-logic, you have the <strong>freedom</strong> to write your logic in <strong>your favorite JS style</strong>:</p>
+<ul>
+<li>plain <strong>callback</strong> code - <code>dispatch(resultAction)</code></li>
+<li><strong>promises</strong> - <code>return axios.get(url).then(...)</code></li>
+<li><strong>async/await</strong> - <code>result = await fetch(url)</code></li>
+<li><strong>observables</strong> - <code>ob$.next(action1)</code></li>
+</ul>
+<blockquote>
+<p>Use the type of code you and your team are comfortable and experienced with.</p>
+</blockquote>
+<p>Leverage powerful <strong>declarative</strong> features by simply setting properties:</p>
+<ul>
+<li><strong>filtering</strong> for action type(s) or with regular expression(s)</li>
+<li><strong>cancellation</strong> on receiving action type(s)</li>
+<li>use only response for the <strong>latest</strong> request</li>
+<li><strong>debouncing</strong></li>
+<li><strong>throttling</strong></li>
+<li>dispatch actions - auto <strong>decoration</strong> of payloads</li>
+</ul>
+<p>Testing your logic is straight forward and simple.</p>
+<p>With simple code your logic can:</p>
+<ul>
+<li><strong>intercept</strong> actions before they hit the reducer<ul>
+<li><strong>validate</strong>, verify, auth check actions and allow/reject or modify actions</li>
+<li><strong>transform</strong> - augment/enhance/modify actions</li>
+</ul>
+</li>
+<li><strong>process</strong> - <strong>async processing</strong> and dispatching, orchestration, I/O (ajax, REST, subscriptions, GraphQL, web sockets, …)</li>
+</ul>
+<p>Redux-logic makes it easy to use code that is split into bundles, so you can dynamically load logic right along with your split UI.</p>
+<p>Server rendering is simplified with redux-logic since it lets you know when all your async fetching is complete without manual tracking.</p>
+<p>Inspired by redux-observable epics, redux-saga, and custom redux middleware, redux-logic combines ideas of each into a simple easy to use API.</p>
+<h2 id="Quick-Example"><a href="#Quick-Example" class="headerlink" title="Quick Example"></a>Quick Example</h2><p>This is an example of logic which will listen for actions of type FETCH_POLLS and it will perform ajax request to fetch data for which it dispatches the results (or error) on completion. It supports cancellation by allowing anything to send an action of type CANCEL_FETCH_POLLS. It also uses <code>take latest</code> feature that if additional FETCH_POLLS actions come in before this completes, it will ignore the outdated requests.</p>
+<p>The developer can just declare the type filtering, cancellation, and take latest behavior, no code needs to be written for that. That leaves the developer to focus on the real business requirements which are invoked in the process hook.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetchPollsLogic = createLogic(&#123;</div><div class="line"></div><div class="line">  <span class="comment">// declarative built-in functionality wraps your code</span></div><div class="line">  type: FETCH_POLLS, <span class="comment">// only apply this logic to this type</span></div><div class="line">  cancelType: CANCEL_FETCH_POLLS, <span class="comment">// cancel on this type</span></div><div class="line">  latest: <span class="literal">true</span>, <span class="comment">// only take latest</span></div><div class="line"></div><div class="line">  <span class="comment">// your code here, hook into one or more of these execution</span></div><div class="line">  <span class="comment">// phases: validate, transform, and/or process</span></div><div class="line">  process(&#123; getState, action &#125;, dispatch, done) &#123;</div><div class="line">    axios.get(<span class="string">'https://survey.codewinds.com/polls'</span>)</div><div class="line">      .then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.data.polls)</div><div class="line">      .then(<span class="function"><span class="params">polls</span> =&gt;</span> dispatch(&#123; <span class="attr">type</span>: FETCH_POLLS_SUCCESS,</div><div class="line">                                <span class="attr">payload</span>: polls &#125;))</div><div class="line">      .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">             <span class="built_in">console</span>.error(err); <span class="comment">// log since could be render err</span></div><div class="line">             dispatch(&#123; <span class="attr">type</span>: FETCH_POLLS_FAILED, <span class="attr">payload</span>: err,</div><div class="line">                        <span class="attr">error</span>: <span class="literal">true</span> &#125;)</div><div class="line">      &#125;)</div><div class="line">      .then(<span class="function"><span class="params">()</span> =&gt;</span> done()); <span class="comment">// call done when finished dispatching</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Since redux-logic gives you the freedom to use your favorite style of JS code (callbacks, promises, async/await, observables), it supports many features to make that easier, <a href="/jeffbski/redux-logic/blob/master/docs/api.md#dispatch---multi-dispatching-and-process-variable-signature">explained in more detail</a>.</p>
+<h2 id="Table-of-contents"><a href="#Table-of-contents" class="headerlink" title="Table of contents"></a>Table of contents</h2><ul>
+<li><a href="#goals">Goals</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="./docs/api.md">Full API</a></li>
+<li><a href="#examples">Examples</a> - <a href="#jsfiddle-live-examples">JSFiddle</a> and <a href="#full-examples">full examples</a></li>
+<li><a href="#comparison-summaries">Comparison summaries</a> to <a href="#compared-to-fat-action-creators">fat action creators</a>, <a href="#compared-to-redux-thunk">thunks</a>, <a href="#compared-to-redux-observable">redux-observable</a>, <a href="#compared-to-redux-saga">redux-saga</a>, <a href="#compared-to-custom-redux-middleware">custom middleware</a></li>
+<li><a href="#implementing-sampal-pattern">SAM/PAL pattern</a></li>
+<li><a href="#other">Other</a> - todo, inspiration, license</li>
+</ul>
+<h2 id="Goals"><a href="#Goals" class="headerlink" title="Goals"></a>Goals</h2><ul>
+<li>organize business logic keeping action creators and reducers clean<ul>
+<li>action creators are light and just post action objects</li>
+<li>reducers just focus on updating state</li>
+<li>intercept and perform validations, verifications, authentication</li>
+<li>intercept and transform actions</li>
+<li>perform async processing, orchestration, dispatch actions</li>
+</ul>
+</li>
+<li>wrap your core business logic code with declarative behavior<ul>
+<li>filtered - apply to one or many action types or even all actions</li>
+<li>cancellable - async work can be cancelled</li>
+<li>limiting (like taking only the latest, throttling, and debouncing)</li>
+</ul>
+</li>
+<li>features to support business logic and large apps<ul>
+<li>have access to full state to make decisions</li>
+<li>easily composable to support large applications</li>
+<li>inject dependencies into your logic, so you have everything needed in your logic code</li>
+<li>dynamic loading of logic for splitting bundles in your app</li>
+<li>your core logic code stays focussed and simple, don’t use generators or observables unless you want to.</li>
+<li>create subscriptions - streaming updates</li>
+<li>easy testing - since your code is just a function it’s easy to isolate and test</li>
+</ul>
+</li>
+</ul>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install rxjs --save</div><div class="line">npm install redux-logic --save</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in configureStore.js</span></div><div class="line"><span class="keyword">import</span> &#123; createLogic, createLogicMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux-logic'</span>;</div><div class="line"><span class="keyword">import</span> rootReducer <span class="keyword">from</span> <span class="string">'./rootReducer'</span>;</div><div class="line"><span class="keyword">import</span> arrLogic <span class="keyword">from</span> <span class="string">'./logic'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> deps = &#123; <span class="comment">// optional injected dependencies for logic</span></div><div class="line">  <span class="comment">// anything you need to have available in your logic</span></div><div class="line">  A_SECRET_KEY: <span class="string">'dsfjsdkfjsdlfjls'</span>,</div><div class="line">  <span class="attr">firebase</span>: firebaseInstance</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> logicMiddleware = createLogicMiddleware(arrLogic, deps);</div><div class="line"></div><div class="line"><span class="keyword">const</span> middleware = applyMiddleware(</div><div class="line">  logicMiddleware</div><div class="line">);</div><div class="line"></div><div class="line"><span class="keyword">const</span> enhancer = middleware; <span class="comment">// could compose in dev tools too</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">configureStore</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> store = createStore(rootReducer, enhancer);</div><div class="line">  <span class="keyword">return</span> store;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// in logic.js - combines logic from across many files, just</span></div><div class="line"><span class="comment">// a simple array of logic to be used for this app</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> [</div><div class="line"> ...todoLogic,</div><div class="line"> ...pollsLogic</div><div class="line">];</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// in polls/logic.js</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> validationLogic = createLogic(&#123;</div><div class="line">  <span class="attr">type</span>: ADD_USER,</div><div class="line">  validate(&#123; getState, action &#125;, allow, reject) &#123;</div><div class="line">    <span class="keyword">const</span> user = action.payload;</div><div class="line">    <span class="keyword">if</span> (!getState().users[user.id]) &#123; <span class="comment">// can also hit server to check</span></div><div class="line">      allow(action);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      reject(&#123; <span class="attr">type</span>: USER_EXISTS_ERROR, <span class="attr">payload</span>: user, <span class="attr">error</span>: <span class="literal">true</span> &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">const</span> addUniqueId = createLogic(&#123;</div><div class="line">  <span class="attr">type</span>: <span class="string">'*'</span>,</div><div class="line">  transform(&#123; getState, action &#125;, next) &#123;</div><div class="line">    <span class="comment">// add unique tid to action.meta of every action</span></div><div class="line">    <span class="keyword">const</span> existingMeta = action.meta || &#123;&#125;;</div><div class="line">    <span class="keyword">const</span> meta = &#123;</div><div class="line">      ...existingMeta,</div><div class="line">      <span class="attr">tid</span>: shortid.generate()</div><div class="line">    &#125;,</div><div class="line">    next(&#123;</div><div class="line">      ...action,</div><div class="line">      meta</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">const</span> fetchPollsLogic = createLogic(&#123;</div><div class="line">  <span class="attr">type</span>: FETCH_POLLS, <span class="comment">// only apply this logic to this type</span></div><div class="line">  cancelType: CANCEL_FETCH_POLLS, <span class="comment">// cancel on this type</span></div><div class="line">  latest: <span class="literal">true</span>, <span class="comment">// only take latest</span></div><div class="line">  process(&#123; getState, action &#125;, dispatch, done) &#123;</div><div class="line">    axios.get(<span class="string">'https://survey.codewinds.com/polls'</span>)</div><div class="line">      .then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.data.polls)</div><div class="line">      .then(<span class="function"><span class="params">polls</span> =&gt;</span> dispatch(&#123; <span class="attr">type</span>: FETCH_POLLS_SUCCESS,</div><div class="line">                                <span class="attr">payload</span>: polls &#125;))</div><div class="line">      .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">             <span class="built_in">console</span>.error(err); <span class="comment">// log since could be render err</span></div><div class="line">             dispatch(&#123; <span class="attr">type</span>: FETCH_POLLS_FAILED, <span class="attr">payload</span>: err,</div><div class="line">                        <span class="attr">error</span>: <span class="literal">true</span> &#125;)</div><div class="line">      &#125;)</div><div class="line">      .then(<span class="function"><span class="params">()</span> =&gt;</span> done());</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// pollsLogic</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> [</div><div class="line">  validationLogic,</div><div class="line">  addUniqueId,</div><div class="line">  fetchPollsLogic</div><div class="line">];</div></pre></td></tr></table></figure>
+<h3 id="processOptions-introduced-for-redux-logic-0-8-2-allowing-for-even-more-streamlined-code"><a href="#processOptions-introduced-for-redux-logic-0-8-2-allowing-for-even-more-streamlined-code" class="headerlink" title="processOptions introduced for redux-logic@0.8.2 allowing for even more streamlined code"></a>processOptions introduced for redux-logic@0.8.2 allowing for even more streamlined code</h3><p><code>processOptions</code> has these new properties which affect the process hook behavior:</p>
+<ul>
+<li><p><code>dispatchReturn</code> - the returned value of the process function will be dispatched or if it is a promise or observable then the resolve, reject, or observable values will be dispatched applying any successType or failType logic if defined. Default is determined by arity of process fn, <code>true</code> if dispatch not provided, <code>false</code> otherwise. <a href="https://github.com/jeffbski/redux-logic/blob/master/docs/api.md#dispatch---multi-dispatching-and-process-variable-signature" target="_blank" rel="external">Details</a></p>
+</li>
+<li><p><code>successType</code> - dispatch this action type using contents of dispatch as the payload (also would work with with promise or observable). You may alternatively provide an action creator function to use instead and it will receive the value as only parameter. Default: <code>undefined</code>.</p>
+<ul>
+<li><p>if successType is a string action type</p>
+<ul>
+<li>create action using successType and provide value as payload. ex: with <code>successType:&#39;FOO&#39;</code>, result would be <code>{ type: &#39;FOO&#39;, payload: value }</code></li>
+</ul>
+</li>
+<li><p>if successType is an action creator fn receiving the value as only parameter</p>
+<ul>
+<li>use the return value from the action creator fn for dispatching ex: <code>successType: x =&gt; ({ type: &#39;FOO&#39;, payload: x })</code></li>
+<li>if the action creator fn returns a falsey value like <code>undefined</code> then nothing will be dispatched. This allows your action creator to control whether something is actually dispatched based on the value provided to it.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>failType</code> - dispatch this action type using contents of error as the payload, sets error: true (would also work for rejects of promises or error from observable). You may alternatively provide an action creator function to use instead which will receive the error as the only parameter. Default: <code>undefined</code>.</p>
+<ul>
+<li><p>if failType is a string action type</p>
+<ul>
+<li>create action using failType, provide value as the payload, and set error to true. ex: with <code>failType:&#39;BAR&#39;</code>, result would be <code>{ type: &#39;BAR&#39;, payload: errorValue, error: true }</code></li>
+</ul>
+</li>
+<li><p>if failType is an action creator function receiving the error value as its only parameter</p>
+<ul>
+<li>use the return value from the action creator fn for dispatching. ex: <code>failType: x =&gt; ({ type: &#39;BAR&#39;, payload: x, error: true })</code></li>
+<li>if the action creator fn returns a falsey value like <code>undefined</code> then nothing will be dispatched. This allows your action creator to control whether something is actually dispatched based on teh value provided to it.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The successType and failType would enable clean code, where you can simply return a promise or observable that resolves to the payload and rejects on error. The resulting code doesn’t have to deal with dispatch and actions directly.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetchPollsLogic = createLogic(&#123;</div><div class="line"></div><div class="line">  <span class="comment">// declarative built-in functionality wraps your code</span></div><div class="line">  type: FETCH_POLLS, <span class="comment">// only apply this logic to this type</span></div><div class="line">  cancelType: CANCEL_FETCH_POLLS, <span class="comment">// cancel on this type</span></div><div class="line">  latest: <span class="literal">true</span>, <span class="comment">// only take latest</span></div><div class="line"></div><div class="line">  processOptions: &#123;</div><div class="line">    <span class="comment">// optional since the default is true when dispatch is omitted from</span></div><div class="line">    <span class="comment">// the process fn signature</span></div><div class="line">    dispatchReturn: <span class="literal">true</span>, <span class="comment">// use returned/resolved value(s) for dispatching</span></div><div class="line">    <span class="comment">// provide action types or action creator functions to be used</span></div><div class="line">    <span class="comment">// with the resolved/rejected values from promise/observable returned</span></div><div class="line">    successType: FETCH_POLLS_SUCCESS, <span class="comment">// dispatch this success act type</span></div><div class="line">    failType: FETCH_POLLS_FAILED, <span class="comment">// dispatch this failed action type</span></div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="comment">// Omitting dispatch from the signature below makes the default for</span></div><div class="line">  <span class="comment">// dispatchReturn true allowing you to simply return obj, promise, obs</span></div><div class="line">  <span class="comment">// not needing to use dispatch directly</span></div><div class="line">  process(&#123; getState, action &#125;) &#123;</div><div class="line">    <span class="keyword">return</span> axios.get(<span class="string">'https://survey.codewinds.com/polls'</span>)</div><div class="line">      .then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.data.polls);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>This is pretty nice leaving us with mainly our business logic code that could be easily extracted and called from here.</p>
+<h2 id="Full-API"><a href="#Full-API" class="headerlink" title="Full API"></a>Full API</h2><p>See the <a href="./docs/api.md">docs for the full api</a></p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="JSFiddle-live-examples"><a href="#JSFiddle-live-examples" class="headerlink" title="JSFiddle live examples"></a>JSFiddle live examples</h3><ul>
+<li><a href="https://jsfiddle.net/jeffbski/78vpf92k/" target="_blank" rel="external">search async axios fetch</a> - live search using debounce and take latest functionality with axios fetch</li>
+<li><a href="https://jsfiddle.net/jeffbski/uLh2add5/" target="_blank" rel="external">search rxjs ajax fetch</a> - live search using debounce and take latest functionality with rxjs ajax fetch</li>
+<li><a href="https://jsfiddle.net/jeffbski/rLz44jk9/" target="_blank" rel="external">search rxjs ajax fetch - using processOptions</a> - live search using debounce and take latest with rxjs ajax fetch using processOptions to streamline the code</li>
+<li><a href="https://jsfiddle.net/jeffbski/954g5n7h/" target="_blank" rel="external">async axios fetch - single page</a> - displayed using React</li>
+<li><a href="https://jsfiddle.net/jeffbski/0fu407na/" target="_blank" rel="external">async rxjs-ajax fetch</a> - async fetching using RxJS ajax which supports XHR abort for cancels</li>
+<li><a href="https://jsfiddle.net/jeffbski/yzy8w4ve/" target="_blank" rel="external">async axios fetch - single page redux only</a> - just the redux and redux-logic code</li>
+<li><a href="https://jsfiddle.net/jeffbski/oL6jmp52/" target="_blank" rel="external">async axios fetch - using processOptions</a> - using processOptions to streamline your code further with React</li>
+<li><a href="https://jsfiddle.net/jeffbski/d4p6oo0d/" target="_blank" rel="external">async rxjs-ajax fetch - using processOptions</a> - async fetch using RxJS ajax (supporting XHR abort on cancel) and processOptions for clean code.</li>
+<li><a href="https://jsfiddle.net/jeffbski/rfc7oz9p/" target="_blank" rel="external">async await - react</a> - using ES7 async functions (async/await) displaying with React</li>
+<li><a href="https://jsfiddle.net/jeffbski/h485f6h5/" target="_blank" rel="external">async await - redux only</a> - using ES7 async functions (async/await) - just redux and redux-logic code</li>
+<li><a href="https://jsfiddle.net/jeffbski/0rodyekn/" target="_blank" rel="external">async await - react processOptions</a> - using ES7 async functions (async/await) with processOptions, displayed with React</li>
+</ul>
+<h3 id="Full-examples"><a href="#Full-examples" class="headerlink" title="Full examples"></a>Full examples</h3><ul>
+<li><a href="./examples/search-async-fetch">search-async-fetch</a> - search async fetch example using axios uses debouncing and take latest features</li>
+<li><a href="./examples/async-fetch-vanilla">async-fetch-vanilla</a> - async fetch example using axios</li>
+<li><a href="./examples/async-rxjs-ajax-fetch">async-rxjs-ajax-fetch</a> - async fetch example using RxJS ajax (supporting XHR abort on cancel) and redux-actions</li>
+<li><a href="./examples/async-fetch-proc-options">async-fetch-proc-options</a> - async fetch example using axios and the new processOptions feature</li>
+<li><a href="./examples/async-rxjs-ajax-proc-options">async-rxjs-ajax-proc-options</a> - async RxJS ajax (with XHR abort on cancel) fetch example using axios and the new processOptions feature</li>
+<li><a href="./examples/async-await">async-await - ES7 async functions</a> - async fetch example using axios and ES7 async functions (async/await)</li>
+<li><a href="./examples/async-await-proc-options">async-await - ES7 async functions with processOptions</a> - async fetch example using axios and ES7 async functions (async/await) and using the new processOptions feature</li>
+<li><a href="./examples/countdown">countdown</a> - a countdown timer implemented with setInterval</li>
+<li><a href="./examples/countdown-obs">countdown-obs</a> - a countdown timer implemented with Rx.Observable.interval</li>
+<li><a href="./examples/form-validation">form-validation</a> - form validation and async post to server using axios, displays updated user list</li>
+<li><a href="./examples/notification">notification</a> - notification message example showing at most N messages for X amount of time, rotating queued messages in as others expire</li>
+<li><a href="./examples/single-file">search-single-file</a> - search async fetch example with all code in a single file and displayed with React</li>
+<li><a href="./examples/single-file-redux">single-file-redux</a> - async fetch example with all code in a single file and appended to the container div. Only redux and redux-logic code.</li>
+</ul>
+<h2 id="Comparison-summaries"><a href="#Comparison-summaries" class="headerlink" title="Comparison summaries"></a>Comparison summaries</h2><p>Following are just short summaries to compare redux-logic to other approaches.</p>
+<p>For a more detailed comparison with examples, see by article in docs, <a href="./docs/where-business-logic.md">Where do I put my business logic in a React-Redux application?</a>.</p>
+<h3 id="Compared-to-fat-action-creators"><a href="#Compared-to-fat-action-creators" class="headerlink" title="Compared to fat action creators"></a>Compared to fat action creators</h3><ul>
+<li>no easy way to cancel or do limiting like take latest with fat action creators</li>
+<li>action creators would not have access to the full global state so you might have to pass down lots of extra data that isn’t needed for rendering. Every time business logic changes might require new data to be made available</li>
+<li>no global interception using just action creators - applying logic or transformations across all or many actions</li>
+<li>Testing components and fat action creators may require running the code (possibly mocked API calls).</li>
+</ul>
+<h3 id="Compared-to-redux-thunk"><a href="#Compared-to-redux-thunk" class="headerlink" title="Compared to redux-thunk"></a>Compared to redux-thunk</h3><ul>
+<li>With thunks business logic is spread over action creators</li>
+<li>With thunks there is not an easy way to cancel async work nor to perform (take latest) limiting</li>
+<li>no global interception with thunks - applying logic or transformations across all or many actions</li>
+<li>Testing components and thunked action creators may require running the code (possibly mocked API calls). When you have a thunk (function or promise) you don’t know what it does unless you execute it.</li>
+</ul>
+<h3 id="Compared-to-redux-observable"><a href="#Compared-to-redux-observable" class="headerlink" title="Compared to redux-observable"></a>Compared to redux-observable</h3><ul>
+<li>redux-logic doesn’t require the developer to use rxjs observables. It uses observables under the covers to provide cancellation, throttling, etc. You simply configure these parameters to get this functionality. You can still use rxjs in your code if you want, but not a requirement.</li>
+<li>redux-logic hooks in before the reducer stack like middleware allowing validation, verification, auth, tranformations. Allow, reject, tranform actions before they hit your reducers to update your state as well as accessing state after reducers have run. redux-observable hooks in after the reducers have updated state so they have no opportuntity to prevent the updates.</li>
+</ul>
+<h3 id="Compared-to-redux-saga"><a href="#Compared-to-redux-saga" class="headerlink" title="Compared to redux-saga"></a>Compared to redux-saga</h3><ul>
+<li>redux-logic doesn’t require you to code with generators</li>
+<li>redux-saga relies on pulling data (usually in a never ending loop) while redux-logic and logic are reactive, responding to data as it is available</li>
+<li>redux-saga runs after reducers have been run, redux-logic can intercept and allow/reject/modify before reducers run also as well as after</li>
+</ul>
+<h3 id="Compared-to-custom-redux-middleware"><a href="#Compared-to-custom-redux-middleware" class="headerlink" title="Compared to custom redux middleware"></a>Compared to custom redux middleware</h3><ul>
+<li>Both are fully featured to do any type of business logic (validations, tranformations, processing)</li>
+<li>redux-logic already has built-in capabilities for some of the hard stuff like cancellation, limiting, dynamic loading of code. With custom middleware you have to implement all functionality.</li>
+<li>No safety net, if things break it could stop all of your future actions</li>
+<li>Testing requires some mocking or setup</li>
+</ul>
+<h3 id="Implementing-SAM-PAL-Pattern"><a href="#Implementing-SAM-PAL-Pattern" class="headerlink" title="Implementing SAM/PAL Pattern"></a>Implementing SAM/PAL Pattern</h3><p>The <a href="http://sam.js.org" target="_blank" rel="external">SAM (State-Action-Model) pattern</a> is a pattern introduced by Jean-Jacques Dubray. Also known as the PAL (proposer, acceptor, learner) pattern based on Paxos terminology.</p>
+<p>A few of the challenging parts of implementing this with a React-Redux application are:</p>
+<ol>
+<li>where to perform the <code>accept</code> (interception) of the proposed action performing validation, verification, authentication against the current model state. Based on the current state, it might be appropriate to modify the action, dispatch a different action, or simply suppress the action.</li>
+<li>how to trigger actions based on the state after the model has finished updating, referred to as the <code>NAP</code> (next-action-predicate).</li>
+</ol>
+<p>Custom Redux middleware can be introduced to perform this logic, but you’ll be implementing most everything on your own.</p>
+<p>With <code>redux-logic</code> you can implement the SAM / PAL pattern easily in your React/Redux apps.</p>
+<p>Namely you can separate out your business logic from your action creators and reducers keeping them thin. redux-logic provides a nice place to accept, reject, and transform actions before your reducers are run. You have access to the full state to make decisions and you can trigger actions based on the updated state as well.</p>
+<p>Solving those SAM challenges previously identified using redux-logic:</p>
+<ol>
+<li>perform acceptance in redux-logic <code>validate</code> hooks, you have access to the full state (model) of the app to make decisions. You can perform synchronous or asynchronous logic to determine whether to accept the action and you may augment, modify, substitute actions, or suppress as desired.</li>
+<li>Perform NAP processing in redux-logic <code>process</code> hooks. The process hook runs after the actions have been sent down to the reducers so you have access to the full model (state) after the updates where you can make decisions and dispatch additional actions based on the updated state.</li>
+</ol>
+<p><a name="other"></a></p>
+<h2 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h2><p>redux-logic was inspired from these projects:</p>
+<ul>
+<li><a href="https://redux-observable.js.org" target="_blank" rel="external">redux-observable epics</a></li>
+<li><a href="http://yelouafi.github.io/redux-saga/" target="_blank" rel="external">redux-saga</a></li>
+<li><a href="http://redux.js.org/docs/advanced/Middleware.html" target="_blank" rel="external">redux middleware</a></li>
+</ul>
+<h2 id="Minimized-gzipped-size-with-all-deps"><a href="#Minimized-gzipped-size-with-all-deps" class="headerlink" title="Minimized/gzipped size with all deps"></a>Minimized/gzipped size with all deps</h2><p>(redux-logic only includes the modules of RxJS 5 that it uses)<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redux-logic<span class="selector-class">.min</span><span class="selector-class">.js</span><span class="selector-class">.gz</span> <span class="number">11</span>KB</div></pre></td></tr></table></figure></p>
+<p>Note: If you are already including RxJS 5 into your project then the resulting delta will be much smaller.</p>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
+<li>add typescript support</li>
+<li>more docs</li>
+<li>more examples</li>
+<li>evaulate additional features as outlined above</li>
+</ul>
+<h2 id="Get-involved"><a href="#Get-involved" class="headerlink" title="Get involved"></a>Get involved</h2><p>If you have input or ideas or would like to get involved, you may:</p>
+<ul>
+<li>contact me via twitter @jeffbski  - <a href="http://twitter.com/jeffbski" target="_blank" rel="external">http://twitter.com/jeffbski</a></li>
+<li>open an issue on github to begin a discussion - <a href="https://github.com/jeffbski/redux-logic/issues" target="_blank" rel="external">https://github.com/jeffbski/redux-logic/issues</a></li>
+<li>fork the repo and send a pull request (ideally with tests) - <a href="https://github.com/jeffbski/redux-logic" target="_blank" rel="external">https://github.com/jeffbski/redux-logic</a></li>
+<li>See the <a href="http://github.com/jeffbski/redux-logic/raw/master/CONTRIBUTING.md" target="_blank" rel="external">contributing guide</a></li>
+</ul>
+<h2 id="Supporters"><a href="#Supporters" class="headerlink" title="Supporters"></a>Supporters</h2><p>This project is supported by <a href="https://codewinds.com/" target="_blank" rel="external">CodeWinds Training</a></p>
+<p><a name="license"></a></p>
+<h2 id="License-MIT"><a href="#License-MIT" class="headerlink" title="License - MIT"></a>License - MIT</h2><ul>
+<li><a href="http://github.com/jeffbski/redux-logic/raw/master/LICENSE.md" target="_blank" rel="external">MIT license</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/08/Awesome Redux/" rel="prev" title="Redux-awesome">
+                Redux-awesome <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="phpsmarter" />
+          <p class="site-author-name" itemprop="name">phpsmarter</p>
+           
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#redux-logic"><span class="nav-number">1.</span> <span class="nav-text">redux-logic</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tl-dr"><span class="nav-number">1.1.</span> <span class="nav-text">tl;dr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Example"><span class="nav-number">1.2.</span> <span class="nav-text">Quick Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Table-of-contents"><span class="nav-number">1.3.</span> <span class="nav-text">Table of contents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Goals"><span class="nav-number">1.4.</span> <span class="nav-text">Goals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">1.5.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#processOptions-introduced-for-redux-logic-0-8-2-allowing-for-even-more-streamlined-code"><span class="nav-number">1.5.1.</span> <span class="nav-text">processOptions introduced for redux-logic@0.8.2 allowing for even more streamlined code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Full-API"><span class="nav-number">1.6.</span> <span class="nav-text">Full API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples"><span class="nav-number">1.7.</span> <span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSFiddle-live-examples"><span class="nav-number">1.7.1.</span> <span class="nav-text">JSFiddle live examples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Full-examples"><span class="nav-number">1.7.2.</span> <span class="nav-text">Full examples</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-summaries"><span class="nav-number">1.8.</span> <span class="nav-text">Comparison summaries</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Compared-to-fat-action-creators"><span class="nav-number">1.8.1.</span> <span class="nav-text">Compared to fat action creators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compared-to-redux-thunk"><span class="nav-number">1.8.2.</span> <span class="nav-text">Compared to redux-thunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compared-to-redux-observable"><span class="nav-number">1.8.3.</span> <span class="nav-text">Compared to redux-observable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compared-to-redux-saga"><span class="nav-number">1.8.4.</span> <span class="nav-text">Compared to redux-saga</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compared-to-custom-redux-middleware"><span class="nav-number">1.8.5.</span> <span class="nav-text">Compared to custom redux middleware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementing-SAM-PAL-Pattern"><span class="nav-number">1.8.6.</span> <span class="nav-text">Implementing SAM/PAL Pattern</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inspiration"><span class="nav-number">1.9.</span> <span class="nav-text">Inspiration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimized-gzipped-size-with-all-deps"><span class="nav-number">1.10.</span> <span class="nav-text">Minimized/gzipped size with all deps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO"><span class="nav-number">1.11.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Get-involved"><span class="nav-number">1.12.</span> <span class="nav-text">Get involved</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Supporters"><span class="nav-number">1.13.</span> <span class="nav-text">Supporters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#License-MIT"><span class="nav-number">1.14.</span> <span class="nav-text">License - MIT</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">phpsmarter</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
