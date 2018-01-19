@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://phpsmarter.github.io
+url: http://React-Apollo.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -80,5 +80,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/phpsmarter/phpsmarter.github.io.git
+  repo: https://gh_token@github.com/React-Apollo/React-Apollo.github.io.git
   branch: master
