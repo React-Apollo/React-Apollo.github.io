@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Javascript-React-Redux
-subtitle: javscript-react-redux
+title: Javascript-React-Apollo-GraphQL-Ramda
+subtitle: All In One
 description: base on javascript 
 author: React-Apollo
 language: zh-Hans
@@ -70,8 +70,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-##theme: landscape
-theme: next
+theme: landscape
+## theme: next
 # Extensions
 
 

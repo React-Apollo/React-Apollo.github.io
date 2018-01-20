@@ -41,3 +41,4 @@ NexT is built for easily use with elegant appearance. First things first, always
 [jquery-url]: http://jquery.com/
 [velocity-image]: https://img.shields.io/badge/Velocity-1.2-2BAF2B.svg?style=flat-square
 [velocity-url]: http://julian.com/research/velocity/
+r
