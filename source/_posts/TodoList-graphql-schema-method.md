@@ -28,7 +28,10 @@ completed: Boolean
 - clearCompleted: [todo]
 - save(id: String!title: String!): todo
 ```
-<iframe src="https://todo-mongo-graphql-server.herokuapp.com" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin">TodoList Demo</iframe>
-                   `TodoList Demo`
-<iframe src="https://untitled-j7n6hjzk33ty.runkit.sh/graphiql" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"> </iframe>
-             `runkit  graphql  playground`
+
+`TodoList Demo`
+<iframe src="https://todo-mongo-graphql-server.herokuapp.com" style="width:100%; height:500px; border:0; border-radius: 5px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin">TodoList Demo</iframe>
+
+`runkit  graphql  playground`                   
+<iframe src="https://untitled-j7n6hjzk33ty.runkit.sh/graphiql" style="width:100%; height:500px; border:0; border-radius: 5px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"> </iframe>
+             
