@@ -7,7 +7,7 @@ tags: [Github,graphql]
 
 
 
-<iframe  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allrow-popups allow-scripts allow-same-origin">
+
 <script src="https://embed.cacher.io/83033d880b60ac14a1ae429a0d781ea62b0fad44.js?a=965fba6e7a8e57d6388992d7a6040db6&t=agate"></script>
-</iframe>
+
 
