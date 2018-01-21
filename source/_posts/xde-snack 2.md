@@ -13,5 +13,5 @@ tags: [RN,javascript]
 <script async src="https://snack.expo.io/embed.js"></script>
 
 
-<iframe src="https://n1k0.github.io/tinysynth/" style="width:100%; height:500px; border:0; border-radius: 4px; margin-left:100px" sandbox="allow-modals allow-forms allrow-popups allow-scripts allow-same-origin">
+<iframe src="https://n1k0.github.io/tinysynth/" style="width:100%; height:500px; border:0; border-radius: 4px; margin-left:-200px" sandbox="allow-modals allow-forms allrow-popups allow-scripts allow-same-origin">
 </iframe>
