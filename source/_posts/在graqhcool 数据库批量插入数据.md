@@ -13,6 +13,10 @@ tags: [graphql,express,ramda,tranducer]
 
 ##  解决办法
 这里使用函数式编程来处理问题，函数式并不是高深的技术，只是简化了处理问题的流程
+![](https://ws3.sinaimg.cn/large/006tKfTcgy1fnq56t1x6xg30zk0as41k.gif)
+常规的处理流程
+![](https://ws2.sinaimg.cn/large/006tKfTcgy1fnq58bysdhg30x408wt9w.gif)
+transducer的处理流程
 
 ### 数据结构：
 ```
