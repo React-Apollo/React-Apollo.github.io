@@ -17,7 +17,7 @@ tags: [MongoDB,graphql]
 
 还有几个类似的服务器也在文件夹中，需要修改index.js的文件名
 
-![查询结果](https://ws3.sinaimg.cn/large/006tKfTcgy1fnp7rp2nhcj30zf0glgmk.jpg)
+
 
 ```javascript
 import {MongoClient, ObjectId} from 'mongodb'
