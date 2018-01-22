@@ -37,7 +37,7 @@ import cors from 'cors'
 
 const URL = 'http://localhost'
 const PORT = 3001
-const MONGO_URL = 'mongodb://php-smarter:phpsmarter@ds239097.mlab.com:39097/recompose'
+const MONGO_URL = 'mongodb://php-smarter:<password>@ds239097.mlab.com:39097/recompose'
 
 const prepare = (o) => {
   o._id = o._id.toString()
