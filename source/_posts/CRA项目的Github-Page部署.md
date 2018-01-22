@@ -1,9 +1,10 @@
 ---
 title: CRA项目部署到ghpage的方法
+subtitle: 测试
 date: 2017-04-04 13:18:28
 categories: 翻译
 tags: [CRA,ghpage]
----GitHub Pages的CRA项目部署
+---
 
 ## [GitHub Pages](https://pages.github.com/)
 
