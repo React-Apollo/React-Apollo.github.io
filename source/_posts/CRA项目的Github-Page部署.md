@@ -3,7 +3,7 @@ title: CRA项目部署到ghpage的方法
 subtitle:不走hexo的部署路线，注意项目和子项目的部署差异
 date: 2017-04-04 13:18:28
 categories: 翻译
-tags: [Redux,saga]
+tags: [CRA,ghpage]
 ---GitHub Pages的CRA项目部署
 
 ## [GitHub Pages](https://pages.github.com/)
