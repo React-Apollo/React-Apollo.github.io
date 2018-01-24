@@ -133,5 +133,6 @@ const flowAsync = (...fns) => {
   return _.flow(wrappedFns)
 }
 const getArray = (obj) => obj.page.items;
+//这里的的流顺序是从左至右
 const insertData = flowAsync( getDataFromMediumWaitForUrl, getArray , insertDataWaitForData)
 ```
