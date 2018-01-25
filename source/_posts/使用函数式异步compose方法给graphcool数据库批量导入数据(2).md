@@ -97,7 +97,7 @@ const insertData = compose(insertDataWaitForData, getArray, getDataFromMediumWai
 ```
 
 
-<script src="https://embed.cacher.io/85563fd55960fb46f8f9409b08781cf12c5afc10.js?a=d09cd283fe294be41b583f3ee54c1787&t=monokai_sublime"></script>
+<script src="https://embed.cacher.io/85563fd55960fb46f8f9409b08781cf12c5afc10.js?a=d09cd283fe294be41b583f3ee54c1787&t=github_gist"></script>
 
 
 
