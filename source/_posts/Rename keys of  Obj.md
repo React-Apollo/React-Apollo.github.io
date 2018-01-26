@@ -8,12 +8,13 @@ tags: [Ramda,fp,javascript]
 > 关键点是`{oldkey: newkey}`
 
 ### 步骤是：
-1. `R.key(obj)` 取出对象的键作为数组
+1. 使用`R.key(obj)` 取出对象的键作为数组
 2. 使用`R.assoc`把要转换键名的对象复制空对象中
 3. 使用`R.reduce`函数遍历函数，改变键名
 
 ### 难点：
 1. R.assoc可以改变或者添加新属性，第一个参数为要改变或者添加的属性，第二个参数为属性值，第三个为对象
+
 ```
 R.assoc('c', 3, {a: 1, b: 2}); //=> {a: 1, b: 2, c: 3}
 ```
@@ -27,7 +28,7 @@ R.reduce((acc, key) => R.assoc(keysMap[key] || key, obj[key], acc), {}, R.keys(o
 
 `R.reduce`函数中的三个位置，一是`R.assoc函数`,用于转换的函数，`{}`为初始值，`R.key(obj)`为原始对象的键名组成的数组
 
-刚开始第一步，对象为空， `R.assoc`第一个参数为keysMap[key]，keyMap的定义为`{oldkey:newkey}`，所以`keysMap[key]`取出的就是新的键名，`obj[key]`就是原对象中的属性值， 复制到空对象中。第一步可以分解为：
+刚开始第一步，对象为空， `R.assoc`第一个参数为keysMap[key]，keyMap的定义为`{oldkey:newkey}`，所以`keysMap[key]`取出的就是新的键名，`obj[key]`就是原对象中的属性值， 复制到空对象中。key在keyMap中出现，就用旧的键(`keyMap[key]||key`).第一步可以分解为：
 ```
  R.assoc(newKey, value, {}) 
 ```
