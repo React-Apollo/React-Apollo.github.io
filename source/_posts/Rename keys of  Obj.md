@@ -11,6 +11,7 @@ tags: [Ramda,fp,javascript]
 1. `R.key(obj)` 取出对象的键作为数组
 2. 使用`R.assoc`把要转换键名的对象复制空对象中
 3. 使用`R.reduce`函数遍历函数，改变键名
+
 ### 难点：
 1. R.assoc可以改变或者添加新属性，第一个参数为要改变或者添加的属性，第二个参数为属性值，第三个为对象
 ```
@@ -33,6 +34,6 @@ R.reduce((acc, key) => R.assoc(keysMap[key] || key, obj[key], acc), {}, R.keys(o
 这样就把第一个对象属性名改变，并存入到新的空对象中
 接下来的方式就是Reduce的标准模式了。
 
-####  这个方法有点绕，绕着绕着就明白了。 
+###  这个方法有点绕，绕着绕着就明白了。 
 
 <script src="https://embed.cacher.io/825631865d31aa44acaa1191582c12f27e5ea114.js?a=34c25bf41a39c6352202f03679d458ad&t=github_gist"></script>
