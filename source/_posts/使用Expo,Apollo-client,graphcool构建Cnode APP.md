@@ -1,6 +1,6 @@
 ---
 title: 使用Expo,Apollo-client,graphcool构建Cnode APP 
-date: 2017-01-26 8:53:28
+date: 2018-01-26 8:53:28
 categories: 技术备忘
 tags: [expo,Apollo,graphcool,cnode]
 ---
