@@ -54,7 +54,7 @@ CNODE的这个expo项目已经有了一些内容实现，所以趁还没忘，�
 graphql服务器是以shcema为核心的，schema对于字段类型，和执行方法都有严格的约束，这里严格后面的操作就轻松。
 参照Graphcool-framework 的做法
 ##### 定义scheme
-```
+```js
 //对于查询cnode api的信息字段的约束条件
 type AllCnodePayload {
 	id: String!
@@ -80,7 +80,7 @@ extend type Query {
 在`Query`,中定义了查询时可以传递的参数。`这里没有做关联`，实际是可以做关联的。在Hotel-GeoData的项目中有数据的关联操作。 `tab`参数是用于分类查询的，page这个参数用于分页，由于apollo-client做了很多工作，客户端的分页变得很简单，实际只要处理这个一个参数既可以了，返回的数据和原先的数据拼接在一起就可以了。
 **`有一点要注意：如果是client,schema和这里的还不太一样，例如`**
 
-```
+```js
 query getFirstPageInformation{
   all: allCnode(page:1,tab:""){
     id,
@@ -117,7 +117,7 @@ query getFirstPageInformation{
 对于放在REST API之前的 graphcool 服务器， Resolver是核心， 从API获取的信息，在这里根据shcema做处理， 之后就可以使用graphql的各种优点来进行操作。如果认为Graphcool只是做了REST API的代理，认识是非常肤浅的。 
 `从Cnode REST API 获取数据并处理的Resolver函数`
 
-```
+```js
 require('isomorphic-fetch');
 const R = require('ramda');
 const url = 'https://cnodejs.org/api/v1/topics';
@@ -158,7 +158,7 @@ module.exports = (event) => {
 graphql优点是带有一个GraphiQL的可视化界面，可以在这里测试一下查询，
 用上面的代码块可以获得数据
 
-```
+```js
 {
   "data": {
     "getWeatherByCity": {
@@ -201,7 +201,7 @@ graphql优点是带有一个GraphiQL的可视化界面，可以在这里测试�
 ##### 入口文件引入apollo-client的包和Graphql的 endpoint
 Expo/app.js
 
-```
+```js
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import {TabNavigator, StackNavigator, DrawerNavigator} from 'react-navigation'
@@ -297,7 +297,7 @@ apollo-client可以和Redux一起工作， 在顶层组件中再次引入Redux�
 ##### 组件中的apollo-client的使用
 `cnode列表组件`
 
-```
+```js
 import React, { Component } from 'react';
 import { View, Text, FlatList,Button} from 'react-native';
 import { List, ListItem ,Header} from 'react-native-elements';
@@ -430,7 +430,7 @@ export default graphql(allNodesQuery,{
 3. <FlatList  data={this.props.allCnode}  列表组件只需要传入这个数据属性
 4.  Item组件解析对象属性,点击即可进入下一页。 具体内容的schema和列表是一差不多的
 
-```
+```js
 <ListItem
       roundAvatar
       refreshing={this.props.networkStatus === 4}
@@ -447,7 +447,7 @@ export default graphql(allNodesQuery,{
 5. 如果列表到了末端.page变量加 1  `variables: { page: this.props.allCnode.length + 1,tab:"share"}` 
 6. 数据返回以后和之前的数据拼接就可以了 `allCnode: previousResult.allCnode.concat(fetchMoreResult.allCnode)`
 
-```
+```js
 onEndReached={() => {
         // The fetchMore method is used to load new data and add it
         // to the original query we used to populate the list
