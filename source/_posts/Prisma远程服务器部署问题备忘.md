@@ -1,9 +1,10 @@
- ---
-title: Prisma服务器部署
-date: 2018-01-27 12:30:28
-categories: 技术备忘
-tags: [Grapcool, node.js,Prisma]
 ---
+title: Prisma服务器构建
+date: 2017-04-04 13:18:28
+categories: 技术备忘
+tags: [Graphcool,Prisma]
+---
+
 
 {{TOC}}
 
