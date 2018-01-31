@@ -74,7 +74,14 @@ type  ReactScript {
 node.js的代码段
 
 <script src="https://embed.cacher.io/d4566dd20434ac12a8af45920c7b1eaf7f59fc10.js?a=879ce6b7a1ff7ace22c8a791e7511f7f&t=github_gist"></script>
-
+<div class="search-content">
+   <div class="search">
+     <form action="/resources/search.php" method="GET" id="searchtForm">
+    <input type="text" size="90" name="q" placeholder="Search resources..." id="searchinput">
+    <input type="submit" value="Search">
+                                    </form>
+                                </div>
+                            </div>
 
 
  
