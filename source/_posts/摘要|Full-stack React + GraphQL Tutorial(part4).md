@@ -23,6 +23,7 @@ tags: [Grahpql,Apollo-client]
 针对 mutation 和其他需要根据客户端的操作来更新 store的操作, Apollo-client提供了一套有力的工具:`readQuery`,`writeQuery`,`readFragment`和`writeFragment`.
 
 客户端的添加操作,可以如下操作,先写入缓存里
+
 ```js
 const handleKeyUp = (evt) => {
     if (evt.keyCode === 13) {
@@ -44,6 +45,7 @@ const handleKeyUp = (evt) => {
     }
   };
 ``` 
+
 这样一旦, mutation 操作完成,可以立刻得到结果,不会有延迟存在.
 ![](https://ws1.sinaimg.cn/large/006tNc79gy1fobmr5zy1sj30c2092q2w.jpg)
 
