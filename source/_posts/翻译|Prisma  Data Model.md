@@ -210,6 +210,193 @@ Fields 是构建 type的基础块. 每个字段由名字来引用, 要么是标�
 #### Float
 `float`是有小数位的数字,  `float:42`,`float:4.2`
 #### Boolean
+`boolean:true`,`boolean:false`
+#### DateTime
+`DateTime` type 用来保存日期或者时间值. 某人的出生日期就是一个例子.
+在`query`和`mutations`中,`DateTime`字段要定义为`ISO8601 format`.
+- `datetime:"2015"`
+#### Enum 枚举
+用于定义服务的范围
+和 boolean 一样,有一套预设值,不同点是可以自己设置.   限定为`191个字符`
+#### JSON
+有时候要储存松散的数据结构,可以可以用 JSON.
+`json: "{\"int\": 1, \"string\": \"value\"}"`
+#### ID
+25个字符串,基于 cuid.
+### Type modifiers
+#### List
+`listString: ["a string", "another string"], listInt: [12, 24]`.
+#### Required
+fields 可以被标记位 required(non-null).  `name:String!`
+
+### field 限定
+字段可以使用特定的字段限定
+#### Unique
+连个 node,不能有同样的值.唯一例外是`null`.
+>通常 User type 的`email`是唯一的
+
+只有开始的191个字符是唯一的, 并且是区分大小写的. 
+```js
+type User {
+  email: String! @unique
+  age: Int!
+}
+```
+
+对于使用`@unique`限定的字段可以借此查询对应的 node.
+例如可以返回拥有此 email 的用户节点:
+```js
+query {
+  user(where: {
+    email: "alice@graph.cool"
+  }) {
+    age
+  }
+}
+```
+
+#### 后续还有其他的限定条件加入
+
+### Default Value
+可以为标量设定默认值. `@default`指令
+
+```js
+type Story {
+  isPublished: Boolean @default(value: "false")
+  someNumber: Int! @default(value: "42")
+  title: String! @default(value: "My New Post")
+  publishDate: DateTime! @default(value: "2018-01-26")
+}
+```
+
+一定要用双引号,即使不是字符串
+
+### System fields
+
+三个字段`id`,`createdAt`,`updatedAT`有特殊的意义. 在 datamodel 中是可选,但是在底层的数据库中会一直存在.
+除非要是导入的数据, 否则, 这三个值在 graphql API 中是只读的.
+## Relations
+relation 定义了连接两个 type 的语法. 两个类型通过 relation fields 连接在一起.如果 relation 可能会混淆的时候,要使用`@relation`来区分开
+连接自身的字段也可以
+### Required relations
+
+### `@relation` directive
+有两个参数
+- `name`: 用于识别 relation.
+- `onDelete`:用于定义删除行为:
+  - `SET_NULL`(default):设定 related node 为`null`
+  - `CASCADE`:删除 related nodes.
+
+实例:
+```js
+type User {
+  id: ID! @unique
+  stories: [Story!]! @relation(name: "StoriesByUser" onDelete: CASCADE)
+}
+
+type Story {
+  id: ID! @unique
+  text: String!
+  author: User @relation(name: "StoriesByUser")
+}
+```
+
+上面例子的删除行为:
+- 当`User`node被删除以后, 与之有关的`Story` node 也被删除
+- 当`Story` node被删除,只会从`User` 的`stories`列表中删除
+
+#### 省略`@relation`指令
+当两个 type 不会发生歧义的时候,可以不用写这个指令
+
+```js
+type User {
+  id: ID! @unique
+  stories: [Story!]!
+}
+
+type Story {
+  id: ID! @unique
+  text: String!
+  author: User
+}
+
+```
+
+- 当`User`删除掉, `author`中所有的相关`Story`都会被设为`null`.如果 author 被设定为 required,操作就会引发错误
+- 当一个`Story`被删除掉以后,只会从`User` node  list 中删除
+
+#### 在`@relation`指令中使用` name`参数
+
+```js
+type User {
+  id: ID! @unique
+  writtenStories: [Story!]! @relation(name: "WrittenStories")
+  likedStories: [Story!]! @relation(name: "LikedStories")
+}
+
+type Story {
+  id: ID! @unique
+  text: String!
+  author: User! @relation(name: "WrittenStories")
+  likedBy: [User!]! @relation(name: "LikedStories")
+}
+```
+
+#### 在`@relation`指令中使用`onDelete`参数
+
+```js
+type User {
+  id: ID! @unique
+  comments: [Comment!]! @relation(name: "CommentAuthor", onDelete: CASCADE)
+  blog: Blog @relation(name: "BlogOwner", onDelete: CASCADE)
+}
+
+type Blog {
+  id: ID! @unique
+  comments: [Comment!]! @relation(name: "Comments", onDelete: CASCADE)
+  owner: User! @relation(name: "BlogOwner", onDelete: SET_NULL)
+}
+
+type Comment {
+  id: ID! @unique
+  blog: Blog! @relation(name: "Comments", onDelete: SET_NULL)
+  author: User @relation(name: "CommentAuthor", onDelete: SET_NULL)
+}
+```
+
+看看三个不同的类型:
+
+-  `User` node 被删除
+   - 所有的`Comment` nodes 被删除
+   - `Blog` node 也被删除
+-  当`Blog` node 被删除,
+   - 所有相关的`Comment`nodes被删除
+   - 拥有`blog`字段的`User` node 被设置为空
+-  当`Comment` node 被删除
+   - 相关的`Blog` node会继续存在,`Comments`会从`comment` list 中删掉
+   - 相关的`User`会一直存在, `Comment` node会从`comments` list 中删掉
+
+#### 为 relations 生成 API 操作
+- `relation queries` 会跨 types查询数据或者聚合 relation
+- `nest mutations`  跨 types, create,connect,update upsert和 delete nodes
+- `relation subscription` 改变 relation时获取通知
+
+### GraphQL 指令
+
+#### 临时性指令
+#### renaming a type or field
+`@rename(oldName:String!)`
+
+```js
+# renaming the `Post` type to `Story`, and its `text` field to `content`
+type Story @rename(oldName: "Post") {
+  content: String @rename(oldName: "text")
+}
+```
+
+
+
+
 
 
   
