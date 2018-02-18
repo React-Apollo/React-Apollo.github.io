@@ -6,7 +6,10 @@ tags: [React,pattern]
 ---
 
 {{TOC}}
+
 > 原文在[reactpattern](https://github.com/chantastic/reactpatterns.com/blob/master/README.markdown)
+> 这个Readme 来的正是时候. 
+
 ## Contents
 
 * [Stateless function](#stateless-function)
