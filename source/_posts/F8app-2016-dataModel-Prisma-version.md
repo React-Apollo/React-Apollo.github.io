@@ -92,4 +92,6 @@ id:ID!@unique
   }
 ```
 
+### playground中的方法
 
+![添加一个 Agenda 需要输入的字段](https://ws4.sinaimg.cn/large/006tNbRwgy1foplebiinyj30w20hvq3w.jpg)
