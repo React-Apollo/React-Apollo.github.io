@@ -15,14 +15,14 @@ type Agenda {
   id: ID! @unique
   startTime:String
   endTime:String
-  speakers:[Speaker] @relation(name:"AgendaBySpeaker") #一个 agenda可以有多个发言者
+  speakers:[Speaker!]! @relation(name:"AgendaBySpeaker") #一个 agenda可以有多个发言者
   tags:[Tag!]! # 一个 Agenda可以有多个 tag, 不会发生歧义所以不用@ relation关联条件
   allDay:Boolean@default(value:"false")
   day:Int! 
   hasDetails:Boolean@default(value:"true")
   onMySchedule:Boolean@default(value:"false")
   sessionDescription:String
-  sessionLocation:String@relation(name:"AgendaOfMap") #每个 agenda有一个地理位置
+  sessionLocation:Map!@relation(name:"AgendaOfMap") #每个 agenda有一个地理位置
   sessionSlug: String
   sessionTitle:String!
   createdAt: DateTime!
@@ -36,7 +36,7 @@ type Speaker {
   speakerTitle:String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  agendas:[Agenda]@relation(name:"AgendaBySpeaker")  #一个发言者可以有多个 agenda
+  agendas:[Agenda!]!@relation(name:"AgendaBySpeaker")  #一个发言者可以有多个 agenda
 
 }
 
@@ -48,7 +48,7 @@ type Map {
   name:String 
   createdAt: DateTime!
   updatedAt: DateTime!
-  mapOfagendas:[Agenda!]@relation(name:"AgendaOfMap") # 一个地图可以有多个 agenda
+  mapOfAgendas:[Agenda!]!@relation(name:"AgendaOfMap") # 一个地图可以有多个 agenda
 }
 
 type Faq {
@@ -90,7 +90,6 @@ id:ID!@unique
    description:String
    agenda:Agenda
   }
-
 ```
 
 
