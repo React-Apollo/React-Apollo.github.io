@@ -1,5 +1,5 @@
 ---
-title: f8App-datamodel-Agenda-item
+title: f8App-datamodel
 date: 2018-02-22 14:56:04
 categories: 技术备忘
 tags: [GraphQL,Prisma]
