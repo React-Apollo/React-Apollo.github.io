@@ -95,3 +95,36 @@ id:ID!@unique
 ### playground中的方法
 
 ![添加一个 Agenda 需要输入的字段](https://ws4.sinaimg.cn/large/006tNbRwgy1foplebiinyj30w20hvq3w.jpg)
+
+### 单个 Agenda 的mutate 操作
+
+```js
+mutate AgendaCreateInput {
+   startTime: String
+   endTime: String
+   allDay: Boolean
+   day: Int!
+   hasDetails: Boolean
+   onMySchedule: Boolean
+   sessionDescription: String
+   sessionSlug: String
+   sessionTitle: String!
+   speakers:{
+     speakerPic: String
+     speakerName: String!
+     speakerTitle: String!
+   }
+
+   tags:{
+     text: String
+     description: String
+   }
+
+  sessionLocation:{
+    x1: String
+    x2: String
+    x3: String
+    name: String
+  }
+}
+```
