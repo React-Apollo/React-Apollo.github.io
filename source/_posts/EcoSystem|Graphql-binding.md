@@ -41,6 +41,7 @@ binding.mutation.<rootField>: QueryMap<any> // where <rootField> is the name of 
 
 `binding`对象暴露出两个接口 `query`,`mutate`可以用于执行操作.分别接收三个参数
 
+
  Name | Required |  Type | Note |
 | ---  | --- | --- | --- |
 | `args` | No | `[key: string]: any` |  An object that contains the arguments of the root field |
