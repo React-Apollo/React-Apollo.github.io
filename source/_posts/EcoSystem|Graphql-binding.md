@@ -42,11 +42,7 @@ binding.mutation.<rootField>: QueryMap<any> // where <rootField> is the name of 
 `binding`对象暴露出两个接口 `query`,`mutate`可以用于执行操作.分别接收三个参数
 
 
- Name | Required |  Type | Note |
-| ---  | --- | --- | --- |
-| `args` | No | `[key: string]: any` |  An object that contains the arguments of the root field |
-| `context` | No | `[key: string]: any` |  The `context` object that's passed down the GraphQL resolver chain; every resolver can read from and write to that object |
-| `info` | No | `GraphQLResolveInfo` &#124; `string` |  The `info` object (which contains an AST of the incoming query/mutation) that's passed down the GraphQL resolver chain or a string containing a [selection set](https://medium.com/front-end-developers/graphql-selection-sets-d588f6782e90) |
+ ![](https://ws1.sinaimg.cn/large/006tNc79gy1foqaqdtgatj30p006kwev.jpg)
 
 #### 实例
 假设有下面的 schema
