@@ -1,5 +1,5 @@
 ---
-title: Prisma|DataModel_aribnb
+title: Prisma|DataModel_airbnb
 date: 2018-02-25 08:59:29
 categories: 技术备忘
 tags: [Graphcool,Prisma]
