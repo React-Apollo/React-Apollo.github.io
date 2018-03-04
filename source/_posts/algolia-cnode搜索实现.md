@@ -47,11 +47,11 @@ tags: [Graphcool,algolia,cnode,express]
 
 创建了一个简单的模型包含有 title,content, tab 字段,添加其他的也可以.首要任务是跑通流程
 
-- 使用整合服务
+使用整合服务
   ![](https://ws3.sinaimg.cn/large/006tNc79gy1fp0usjkvmvj30530733yb.jpg)
   
    整合 aloglia 的服务, 点击进入
-- 添加key
+添加key
 
    ![](https://ws2.sinaimg.cn/large/006tNc79gy1fp0utvc97uj30c201nq2q.jpg)
    
@@ -61,9 +61,9 @@ tags: [Graphcool,algolia,cnode,express]
    
    **`有两个key,我们要使用允许读写的的那个key才行`**
 
-- 点击![](https://ws2.sinaimg.cn/large/006tNc79gy1fp0uwrd9h6j302z0130o6.jpg) 
+点击![](https://ws2.sinaimg.cn/large/006tNc79gy1fp0uwrd9h6j302z0130o6.jpg) 
 
-- 添加index.
+添加index.
 
 ```js
 //这里实际是一个 Graphql的查询,所以灵活性很大. 
