@@ -62,9 +62,10 @@ tags: [Graphcool,algolia,cnode,express]
    **`有两个key,我们要使用允许读写的的那个key才行`**
 
 - 点击![](https://ws2.sinaimg.cn/large/006tNc79gy1fp0uwrd9h6j302z0130o6.jpg) 
-- 添加 index
 
-```
+- 添加index.
+
+```js
 //这里实际是一个 Graphql的查询,所以灵活性很大. 
    {
     node {
