@@ -22,13 +22,12 @@ tags: [Graphcool,algolia,cnode,express]
 
 ![](https://ws3.sinaimg.cn/large/006tNc79gy1fp0u1bkut2g30am0djnp6.gif)
 
-## 实现方案
-### 注册,建立应用,获取 APPID
+##  实现方案
+###  注册,建立应用,获取 APPID
 - `①`登录:[https://www.algolia.com](https://www.algolia.com),注册直接用 github 登录. 
 - `②`:点击右上角 dashboard 进入管理界面
 - `③`: 点击![](https://ws1.sinaimg.cn/large/006tNc79gy1fp0u9165tej306e026742.jpg) 创建一个应用
 - `④`:进入应用,其他不动, 我们只会使用到 key, 点击钥匙![](https://ws2.sinaimg.cn/large/006tNc79gy1fp0ubg7zkqj301e01m0k5.jpg)
-
 -  `⑤`: 这里会有一个 search-only-key,专门用于前端搜索用的, 我们在 all api key下创建一个新的有用读写记录的key. 注意还有 application ID
 -  `⑥` 点击![](https://ws3.sinaimg.cn/large/006tNc79gy1fp0uemyd9ij304a01fq2p.jpg) 
 -  `⑦`: 设置,名字,还有权限,只需要读写的权限就可以了.点击生成, 
@@ -39,21 +38,20 @@ tags: [Graphcool,algolia,cnode,express]
     
     通过以上的步骤,现在我们有三个要使用的 id, 一个应用的 ID,一个所有使用的key,一个用于配置服务的key.  由于用于索引的数据都是从后台同步的,这里目前就不要再做任何的工作了. 后续可以做些优化工作.
     
-### 后台服务服务的建立        
-#### 建立模型
-- 创建 graphcool服务器, 这个参看 graphcool网站的教程, 
+###  后台服务服务的建立        
+####  建立模型
+- 创建graphcool服务器, 这个参看 graphcool网站的教程, 
 - 建立模型  
    
    ![](https://ws1.sinaimg.cn/large/006tNc79gy1fp0uqwqv8mj305e049wea.jpg)
 
 创建了一个简单的模型包含有 title,content, tab 字段,添加其他的也可以.首要任务是跑通流程
 
-
--  使用整合服务
+- 使用整合服务
   ![](https://ws3.sinaimg.cn/large/006tNc79gy1fp0usjkvmvj30530733yb.jpg)
   
    整合 aloglia 的服务, 点击进入
--  添加key
+- 添加key
 
    ![](https://ws2.sinaimg.cn/large/006tNc79gy1fp0utvc97uj30c201nq2q.jpg)
    
@@ -89,9 +87,8 @@ tags: [Graphcool,algolia,cnode,express]
    在 graphcool 手动输入一条信息, algolia如果有记录出现,配置完成
    接着进行下一步, 导入数据
 
-### 导入数据, 这里不详细说, 通过 cnode的 API获取数据,然后依照 graphql 的mutate 方法,导入到 Graphcool 的数据库.参见下面的代码
+###  导入数据, 这里不详细说, 通过 cnode的 API获取数据,然后依照 graphql 的mutate 方法,导入到 Graphcool 的数据库.参见下面的代码
 
-   
 ```
 'use strict'
 import express from 'express'
