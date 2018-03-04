@@ -63,7 +63,8 @@ tags: [Graphcool,algolia,cnode,express]
    
    **`有两个key,我们要使用允许读写的的那个key才行`**
 
-- 点击![](https://ws2.sinaimg.cn/large/006tNc79gy1fp0uwrd9h6j302z0130o6.jpg) 添加 index
+- 点击![](https://ws2.sinaimg.cn/large/006tNc79gy1fp0uwrd9h6j302z0130o6.jpg) 
+- 添加 index
 
 ```
 //这里实际是一个 Graphql的查询,所以灵活性很大. 
@@ -87,7 +88,9 @@ tags: [Graphcool,algolia,cnode,express]
  
    在 graphcool 手动输入一条信息, algolia如果有记录出现,配置完成
    接着进行下一步, 导入数据
+
 ### 导入数据, 这里不详细说, 通过 cnode的 API获取数据,然后依照 graphql 的mutate 方法,导入到 Graphcool 的数据库.参见下面的代码
+
    
 ```
 'use strict'
