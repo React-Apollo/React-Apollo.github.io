@@ -66,8 +66,8 @@ tags: [Graphcool,algolia,cnode,express]
 添加index.
 
 ```js
-//这里实际是一个 Graphql的查询,所以灵活性很大. 
-   {
+ 
+{
     node {
       content
       tab
@@ -76,6 +76,7 @@ tags: [Graphcool,algolia,cnode,express]
   }
 ```  
 
+---
 点击创建 index,我们的配置工作就完成了
 现在可以添加一条索引,验证一项 algolia 会不会自动同步数据
 
