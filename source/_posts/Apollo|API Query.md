@@ -468,6 +468,33 @@ export default graphql(gql`query { ... }`, {
 ### `options.errorPolicy`
 用于定制 fetch data error的处理. runtime error和获取数据错误
 
+- `none`: 默认值,
+- `ignore`: 
+- `all`: 
+
+### `options.pollInterval`
+
+```js
+export default graphql(gql`query { ... }`, {
+  options: { pollInterval: 5000 },
+})(MyComponent);
+```
+
+### `options.notifyOnNetworkStatusChange`
+
+网络状态发生变化时,触发组件的重新渲染
+
+实例:
+```
+export default graphql(gql`query { ... }`, {
+  options: { notifyOnNetworkStatusChange: true },
+})(MyComponent);
+```
+
+### `optins.context`
+
+在`context`对象下的所有的内容都可以直接传递到 network chain 中. 
+
 
 
 
