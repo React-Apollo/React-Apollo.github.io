@@ -284,6 +284,7 @@ Container(List(ListItem(TodoItem)));
  */
 ``` 
  
+
 `Container(List(ListItem(TodoItem)))`
 这里我们把TodoItem 数据传给 ListItem, 然后结果作为 List 的参数, 返回的结果又作为 Container的参数
 
@@ -340,6 +341,7 @@ TodoList(TodoItem);
 
 
 `const TodoList = R.compose(Container, List, ListItem);`
+
 列表的工厂函数,TodoList 组件可以看作为Container,List和 ListItem 的组合
 现在 还只能接受一个参数, 需要可以接受一个数组
 
