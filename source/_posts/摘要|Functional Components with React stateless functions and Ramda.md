@@ -285,7 +285,7 @@ Container(List(ListItem(TodoItem)));
 ``` 
  
 
-`Container(List(ListItem(TodoItem)))`
+- `Container(List(ListItem(TodoItem)))`
 这里我们把TodoItem 数据传给 ListItem, 然后结果作为 List 的参数, 返回的结果又作为 Container的参数
 
 如果用 compose 函数,过程如下
@@ -340,7 +340,7 @@ TodoList(TodoItem);
 ``` 
 
 
-`const TodoList = R.compose(Container, List, ListItem);`
+- `const TodoList = R.compose(Container, List, ListItem);`
 
 列表的工厂函数,TodoList 组件可以看作为Container,List和 ListItem 的组合
 现在 还只能接受一个参数, 需要可以接受一个数组
@@ -378,7 +378,7 @@ TodoList(mock);
  */
 ```
 
-mapTodos 可以有更简单的模式
+- mapTodos 可以有更简单的模式
 
 ```js
 //This
@@ -410,7 +410,7 @@ const mapTodos = R.map(ListItem);
 const TodoList = R.compose(Container, List, R.map(ListItem));
 ```
 
-`const mapTodos = R.map(ListItem);` Ramda 函数式自动柯理化的,所以代码是这样的,  等待传递数据数组,返回的数组的形式是<Li>{data.item}</Li>组成的数组
+- `const mapTodos = R.map(ListItem);` Ramda 函数式自动柯理化的,所以代码是这样的,  等待传递数据数组,返回的数组的形式是<Li>{data.item}</Li>组成的数组
 
 
 ### 完整的 TodoList 的代码就是
