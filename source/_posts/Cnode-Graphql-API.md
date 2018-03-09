@@ -12,7 +12,7 @@ tags: [Graphcool,Prisma,cnode]
 需要修改的可以看代码,做出修改. 通过 graphql 的 rest-wrapper  resolver 包装以后,就可以获得 graphql的一些很好的特征了.   因为没有数据写入的Grpahql 的数据库,所以所有的操作都用的是query. 没有用 mutate. 因为最终还是访问的 REST API.  
 这的graphql采用的是 graphcool 的服务器, 尽管试, 没有写入操作.
 
- [`Graphcool-cnode-server graphiQL地址`](https://api.graph.cool/simple/v1/cje86sc3a3p1d0140rkquung1) 
+ [`Graphcool-cnode-server graphiQL地址`](https://api.graph.cool/simple/v1/cjej7yyuo31a80129z6hr4r89) 
  
  服务器的初始化可以参考这里[`Graphcool Server`](https://www.graph.cool/)  
  
