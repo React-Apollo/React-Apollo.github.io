@@ -2,7 +2,7 @@
 title: 摘要|Offline-First Web Application Using Redux and PouchDB
 date: 2018-03-12 10:07:01
 categories: 技术备忘
-tags: [React-Native,offline]
+tags: [React-Native,offline,Redux,PouchDB]
 ---
 
 [`摘要|Offline-First Web Application Using Redux and PouchDB`](https://stories.jotform.com/offline-first-web-applications-d2d321444510)
