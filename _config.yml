@@ -44,9 +44,9 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-highlight: false
-  line_number: false
-  auto_detect: false
+highlight: true
+  line_number: true
+  auto_detect: true
   tab_replace:
 
 # Category & Tag
@@ -82,7 +82,7 @@ deploy:
   repo: https://gh_token@github.com/React-Apollo/React-Apollo.github.io.git
   branch: master
  # code highlight 
-prism_plugin:
-  mode: 'preprocess'    # realtime/preprocess
-  theme: 'atom-dark'
-  line_number: true   # default false
+#prism_plugin:
+ # mode: 'preprocess'    # realtime/preprocess
+  #theme: 'atom-dark'
+  #line_number: true   # default false
