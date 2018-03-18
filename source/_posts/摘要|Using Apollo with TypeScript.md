@@ -118,6 +118,7 @@ export default withCharacter(({ loading, hero, error }) => {
 
 ### 使用class组件定义
 
+
 ```js
 import { ChildProps } from "react-apollo";
 
