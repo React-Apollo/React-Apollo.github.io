@@ -118,26 +118,6 @@ export default withCharacter(({ loading, hero, error }) => {
 
 ### 使用class组件定义
 
-
-```js
-import { ChildProps } from "react-apollo";
-
-const withCharacter = graphql<Response, InputProps>(HERO_QUERY, {
-  options: ({ episode }) => ({
-    variables: { episode }
-  })
-});
-
-class Character extends React.Component<ChildProps<InputProps, Response>, {}> {
-  render(){
-    const { loading, hero, error } = this.props.data;
-    if (loading) return <div>Loading</div>;
-    if (error) return <h1>ERROR</h1>;
-    return ...// actual component with data;
-  }
-}
-
-export default withCharacter(Character);
-``` 
+<script src="https://embed.cacher.io/d0576b89083aa911fbac13c10b251ff42a08ff12.js?a=c5bac0aea5383e14f8fb522500a488f2&t=atom_one_light"></script>
 
 
