@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Javascript-React-Apollo-GraphQL-Ramda
+title: Javascript-React-Apollo-GraphQL-Ramda-Prisma
 subtitle: All In One
 description: base on javascript 
 author: React-Apollo
@@ -44,8 +44,7 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-highlight:
-  enable: true
+highlight: true
   line_number: true
   auto_detect: true
   tab_replace:
@@ -82,3 +81,8 @@ deploy:
   type: git
   repo: https://gh_token@github.com/React-Apollo/React-Apollo.github.io.git
   branch: master
+ # code highlight 
+#prism_plugin:
+ # mode: 'preprocess'    # realtime/preprocess
+  #theme: 'atom-dark'
+  #line_number: true   # default false
