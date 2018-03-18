@@ -81,8 +81,3 @@ deploy:
   type: git
   repo: https://gh_token@github.com/React-Apollo/React-Apollo.github.io.git
   branch: master
- # code highlight 
-#prism_plugin:
- # mode: 'preprocess'    # realtime/preprocess
-  #theme: 'atom-dark'
-  #line_number: true   # default false
