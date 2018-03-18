@@ -45,7 +45,6 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false
   line_number: true
   auto_detect: true
   tab_replace:
@@ -85,5 +84,5 @@ deploy:
  # code highlight 
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
-  theme: 'hopscotch'
+  theme: 'atom-dark'
   line_number: true   # default false
