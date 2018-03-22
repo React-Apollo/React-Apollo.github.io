@@ -1,5 +1,5 @@
 ---
-title: GraphQL Server Basics: The Network Layer
+title: 摘要|GraphQL Server Basics  The Network Layer
 date: 2018-02-08 12:12:39
 categories: 技术备忘
 tags: [Graphcool,graqhql]

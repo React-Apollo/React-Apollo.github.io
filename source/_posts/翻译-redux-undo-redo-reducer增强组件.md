@@ -2,7 +2,7 @@
 title: 翻译|redux undo/redo  reducer增强组件
 date: 2017-04-04 13:18:28
 categories: 翻译
-tags: Redux
+tags: [Redux]
 ---
 
 >Redux的文档中提供一个可以做undo/redo的解决办法,实际是有previous,current,prew的对象,围绕这数据的压入和弹出来实现操作步骤的记忆,结合persist就可以实现更强大的记忆功能.今天的这个增强组件实际把这个功能给包装了一下,内部实现细节仍然没有变.只需要把reducer用这个增强组件包装一下就可以用了.
