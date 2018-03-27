@@ -1,7 +1,5 @@
-
-
 ---
-title: 翻译|Getting Started with React, Redux and Immutable: a Test-Driven Tutorial (Part 2)
+title:  翻译|Getting Started with React, Redux and Immutable a Test-Driven Tutorial (Part 2)
 date: 2017-03-26 15:01:24
 categories: 技术备忘
 tags: [React,redux,Immutable.js]
