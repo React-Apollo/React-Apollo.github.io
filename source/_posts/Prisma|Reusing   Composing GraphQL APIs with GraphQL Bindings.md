@@ -1,5 +1,5 @@
 ---
-title: 博客模板
+title: Prisma|Reusing & Composing GraphQL APIs with GraphQL Bindings
 date: 2018-03-31 12:57:01
 categories: 技术备忘
 tags: [Graphcool,Prisma]
