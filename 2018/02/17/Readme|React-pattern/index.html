@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React,pattern," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文在reactpattern这个Readme 来的正是时候.   Contents Stateless function JSX spread attributes Destructuring arguments Conditional rendering Children types Array as children Function as children Render callbac">
+<meta name="keywords" content="React,pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Readme|Reactpattern">
+<meta property="og:url" content="https://React-Apollo.github.io/2018/02/17/Readme|React-pattern/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="原文在reactpattern这个Readme 来的正是时候.   Contents Stateless function JSX spread attributes Destructuring arguments Conditional rendering Children types Array as children Function as children Render callbac">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-07T02:42:18.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Readme|Reactpattern">
+<meta name="twitter:description" content="原文在reactpattern这个Readme 来的正是时候.   Contents Stateless function JSX spread attributes Destructuring arguments Conditional rendering Children types Array as children Function as children Render callbac">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2018/02/17/Readme|React-pattern/"/>
+
+
+
+
+
+  <title>Readme|Reactpattern | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2018/02/17/Readme|React-pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Readme|Reactpattern</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-17T13:29:04+00:00">
+                2018-02-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:42:18+00:00">
+                2018-04-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/17/Readme|React-pattern/" class="leancloud_visitors" data-flag-title="Readme|Reactpattern">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,535
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+<blockquote>
+<p>原文在<a href="https://github.com/chantastic/reactpatterns.com/blob/master/README.markdown" target="_blank" rel="noopener">reactpattern</a><br>这个Readme 来的正是时候. </p>
+</blockquote>
+<h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><ul>
+<li><a href="#stateless-function">Stateless function</a></li>
+<li><a href="#jsx-spread-attributes">JSX spread attributes</a></li>
+<li><a href="#destructuring-arguments">Destructuring arguments</a></li>
+<li><a href="#conditional-rendering">Conditional rendering</a></li>
+<li><a href="#children-types">Children types</a></li>
+<li><a href="#array-as-children">Array as children</a></li>
+<li><a href="#function-as-children">Function as children</a></li>
+<li><a href="#render-callback">Render callback</a></li>
+<li><a href="#children-pass-through">Children pass-through</a></li>
+<li><a href="#proxy-component">Proxy component</a></li>
+<li><a href="#style-component">Style component</a></li>
+<li><a href="#event-switch">Event switch</a></li>
+<li><a href="#layout-component">Layout component</a></li>
+<li><a href="#container-component">Container component</a></li>
+<li><a href="#higher-order-component">Higher-order component</a></li>
+<li><a href="#state-hoisting">State hoisting</a></li>
+<li><a href="#controlled-input">Controlled input</a></li>
+</ul>
+<h2 id="Stateless-function"><a href="#Stateless-function" class="headerlink" title="Stateless function"></a>Stateless function</h2><p><a href="https://facebook.github.io/react/docs/components-and-props.html" target="_blank" rel="noopener">Stateless functions</a> are a brilliant way to define highly reusable components. They don’t hold <code>state</code>; they’re just functions.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Greeting = <span class="function"><span class="params">()</span> =&gt;</span> &lt;div&gt;Hi there!<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>They get passed <code>props</code> and <code>context</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Greeting = <span class="function">(<span class="params">props, context</span>) =&gt;</span></span><br><span class="line">  &lt;div style=&#123;&#123;<span class="attr">color</span>: context.color&#125;&#125;&gt;Hi &#123;props.name&#125;!<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>They can define local variables, where a function block is used.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Greeting = <span class="function">(<span class="params">props, context</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> style = &#123;</span><br><span class="line">    fontWeight: <span class="string">"bold"</span>,</span><br><span class="line">    color: context.color,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;style&#125;</span>&gt;</span>&#123;props.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>But you could get the same result by using other functions.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getStyle = <span class="function"><span class="params">context</span> =&gt;</span> (&#123;</span><br><span class="line">  fontWeight: <span class="string">"bold"</span>,</span><br><span class="line">  color: context.color,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Greeting = <span class="function">(<span class="params">props, context</span>) =&gt;</span></span><br><span class="line">  &lt;div style=&#123;getStyle(context)&#125;&gt;&#123;props.name&#125;&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>They can have defined <code>defaultProps</code>, <code>propTypes</code> and <code>contextTypes</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Greeting.propTypes = &#123;</span><br><span class="line">  name: PropTypes.string.isRequired</span><br><span class="line">&#125;</span><br><span class="line">Greeting.defaultProps = &#123;</span><br><span class="line">  name: <span class="string">"Guest"</span></span><br><span class="line">&#125;</span><br><span class="line">Greeting.contextTypes = &#123;</span><br><span class="line">  color: PropTypes.string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="JSX-spread-attributes"><a href="#JSX-spread-attributes" class="headerlink" title="JSX spread attributes"></a>JSX spread attributes</h2><p>Spread Attributes is a JSX feature. It’s syntactic sugar for passing all of an object’s properties as JSX attributes.</p>
+<p>These two examples are equivalent.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// props written as attributes</span></span><br><span class="line">&lt;main className=<span class="string">"main"</span> role=<span class="string">"main"</span>&gt;&#123;children&#125;&lt;<span class="regexp">/main&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ props "spread" from object</span></span><br><span class="line"><span class="regexp">&lt;main &#123;...&#123;className: "main", role: "main", children&#125;&#125; /</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Use this to forward <code>props</code> to underlying components.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> FancyDiv = <span class="function"><span class="params">props</span> =&gt;</span></span><br><span class="line">  &lt;div className=<span class="string">"fancy"</span> &#123;...props&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<p>Now, I can expect <code>FancyDiv</code> to add the attributes it’s concerned with as well as those it’s not.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FancyDiv data-id=<span class="string">"my-fancy-div"</span>&gt;So Fancy&lt;<span class="regexp">/FancyDiv&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ output: &lt;div className="fancy" data-id="my-fancy-div"&gt;So Fancy&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<p>Keep in mind that order matters. If <code>props.className</code> is defined, it’ll clobber the <code>className</code> defined by <code>FancyDiv</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FancyDiv className=<span class="string">"my-fancy-div"</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: &lt;div className="my-fancy-div"&gt;&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>We can make <code>FancyDiv</code>s className always “win” by placing it after the spread props <code>({...props})</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my `className` clobbers your `className`</span></span><br><span class="line"><span class="keyword">const</span> FancyDiv = <span class="function"><span class="params">props</span> =&gt;</span></span><br><span class="line">  &lt;div &#123;...props&#125; className=<span class="string">"fancy"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>You should handle these types of props gracefully. In this case, I’ll merge the author’s <code>props.className</code> with the <code>className</code> needed to style my component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> FancyDiv = <span class="function">(<span class="params">&#123; className, ...props &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;div</span><br><span class="line">    className=&#123;[<span class="string">"fancy"</span>, className].join(<span class="string">' '</span>)&#125;</span><br><span class="line">    &#123;...props&#125;</span><br><span class="line">  /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="destructuring-arguments"><a href="#destructuring-arguments" class="headerlink" title="destructuring arguments"></a>destructuring arguments</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">Destructuring assignment</a> is an ES2015 feature. It pairs nicely with <code>props</code> in Stateless Functions.</p>
+<p>These examples are equivalent.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Greeting = <span class="function"><span class="params">props</span> =&gt;</span> &lt;div&gt;Hi &#123;props.name&#125;!<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Greeting = <span class="function">(<span class="params">&#123; name &#125;</span>) =&gt;</span> &lt;div&gt;Hi &#123;name&#125;!<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters" target="_blank" rel="noopener">rest parameter syntax</a> (<code>...</code>) allows you to collect all the remaining properties in a new object.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Greeting = <span class="function">(<span class="params">&#123; name, ...props &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;div&gt;Hi &#123;name&#125;!<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>In turn, this object can use <a href="#jsx-spread-attributes">JSX Spread Attributes</a> to forward <code>props</code> to the composed component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Greeting = <span class="function">(<span class="params">&#123; name, ...props &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;div &#123;...props&#125;&gt;Hi &#123;name&#125;!<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>Avoid forwarding non-DOM <code>props</code> to composed components. Destructuring makes this very easy because you can create a new <code>props</code> object <strong>without</strong> component-specific <code>props</code>.</p>
+<h2 id="conditional-rendering"><a href="#conditional-rendering" class="headerlink" title="conditional rendering"></a>conditional rendering</h2><p>You can’t use regular if/else conditions inside a component definition. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator" target="_blank" rel="noopener">The conditional (ternary) operator</a> is your friend.</p>
+<p><code>if</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;condition &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Rendered when `truthy`<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> &#125;</span><br></pre></td></tr></table></figure>
+<p><code>unless</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;condition || <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Rendered when `falsey`<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> &#125;</span><br></pre></td></tr></table></figure>
+<p><code>if-else</code> (tidy one-liners)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;condition</span><br><span class="line">  ? <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Rendered when `truthy`<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">  : <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Rendered when `falsey`<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>if-else</code> (big blocks)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;condition ? (</span><br><span class="line">  &lt;span&gt;</span><br><span class="line">    Rendered when <span class="string">`truthy`</span></span><br><span class="line">  &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">) : (</span></span><br><span class="line"><span class="regexp">  &lt;span&gt;</span></span><br><span class="line"><span class="regexp">    Rendered when `falsey`</span></span><br><span class="line"><span class="regexp">  &lt;/</span>span&gt;</span><br><span class="line">)&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Children-types"><a href="#Children-types" class="headerlink" title="Children types"></a>Children types</h2><p>React can render <code>children</code> of many types. In most cases it’s either an <code>array</code> or a <code>string</code>.</p>
+<p><code>string</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  Hello World!</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>array</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &#123;[<span class="string">"Hello "</span>, &lt;span&gt;World&lt;<span class="regexp">/span&gt;, "!"]&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<p>Functions may be used as children. However, it requires <a href="#render-callback">coordination with the parent component</a> to be useful.</p>
+<p><code>function</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &#123;(<span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="keyword">return</span> <span class="string">"hello world!"</span>&#125;)()&#125;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Array-as-children"><a href="#Array-as-children" class="headerlink" title="Array as children"></a>Array as children</h2><p>Providing an array as <code>children</code> is a very common. It’s how lists are drawn in React.</p>
+<p>We use <code>map()</code> to create an array of React Elements for every value in the array.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &#123;[<span class="string">"first"</span>, <span class="string">"second"</span>].map(<span class="function">(<span class="params">item</span>) =&gt;</span> (</span><br><span class="line">    &lt;li&gt;&#123;item&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  ))&#125;</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+<p>That’s equivalent to providing a literal <code>array</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &#123;[</span><br><span class="line">    &lt;li&gt;first&lt;<span class="regexp">/li&gt;,</span></span><br><span class="line"><span class="regexp">    &lt;li&gt;second&lt;/</span>li&gt;,</span><br><span class="line">  ]&#125;</span><br><span class="line">&lt;<span class="regexp">/ul&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This pattern can be combined with destructuring, JSX Spread Attributes, and other components, for some serious terseness.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &#123;arrayOfMessageObjects.map(<span class="function">(<span class="params">&#123; id, ...message &#125;</span>) =&gt;</span></span><br><span class="line">    &lt;Message key=&#123;id&#125; &#123;...message&#125; /&gt;</span><br><span class="line">  )&#125;</span><br><span class="line">&lt;<span class="regexp">/ul&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Function-as-children"><a href="#Function-as-children" class="headerlink" title="Function as children"></a>Function as children</h2><p>Using a function as <code>children</code> isn’t inherently useful.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;() =&gt; &#123; <span class="keyword">return</span> <span class="string">"hello world!"</span>&#125;()&#125;&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>However, it can be used in component authoring for some serious power. This technique is commonly referred to as <code>render callbacks</code>.</p>
+<p>This is a powerful technique used by libraries like <a href="https://github.com/chenglou/react-motion" target="_blank" rel="noopener">ReactMotion</a>. When applied, rendering logic can be kept in the owner component, instead of being delegated.</p>
+<p>See <a href="#render-callback">Render callbacks</a>, for more details.</p>
+<h2 id="Render-callback"><a href="#Render-callback" class="headerlink" title="Render callback"></a>Render callback</h2><p>Here’s a component that uses a Render callback. It’s not useful, but it’s an easy illustration to start with.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Width = <span class="function">(<span class="params">&#123; children &#125;</span>) =&gt;</span> children(<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<p>The component calls <code>children</code> as a function, with some number of arguments. Here, it’s the number <code>500</code>.</p>
+<p>To use this component, we give it a <a href="#function-as-children">function as <code>children</code></a>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Width&gt;</span><br><span class="line">  &#123;width =&gt; <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>window is &#123;width&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">&lt;<span class="regexp">/Width&gt;</span></span><br></pre></td></tr></table></figure>
+<p>We get this output.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;<span class="built_in">window</span> is <span class="number">500</span>&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>With this setup, we can use this <code>width</code> to make rendering decisions.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Width&gt;</span><br><span class="line">  &#123;width =&gt;</span><br><span class="line">    width &gt; <span class="number">600</span></span><br><span class="line">      ? <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>min-width requirement met!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">      : <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/Width&gt;</span></span><br></pre></td></tr></table></figure>
+<p>If we plan to use this condition a lot, we can define another components to encapsulate the reused logic.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MinWidth = <span class="function">(<span class="params">&#123; width: minWidth, children &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;Width&gt;</span><br><span class="line">    &#123;width =&gt;</span><br><span class="line">      width &gt; minWidth</span><br><span class="line">        ? children</span><br><span class="line">        : <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &lt;<span class="regexp">/Width&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Obviously a static <code>Width</code> component isn’t useful but one that watches the browser window is. Here’s a sample implementation.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WindowWidth</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>()</span><br><span class="line">    <span class="keyword">this</span>.state = &#123; <span class="attr">width</span>: <span class="number">0</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(</span><br><span class="line">      &#123;<span class="attr">width</span>: <span class="built_in">window</span>.innerWidth&#125;,</span><br><span class="line">      <span class="built_in">window</span>.addEventListener(</span><br><span class="line">        <span class="string">"resize"</span>,</span><br><span class="line">        (&#123; target &#125;) =&gt;</span><br><span class="line">          <span class="keyword">this</span>.setState(&#123;<span class="attr">width</span>: target.innerWidth&#125;)</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.props.children(<span class="keyword">this</span>.state.width)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Many developers favor <a href="#higher-order-component">Higher Order Components</a> for this type of functionality. It’s a matter of preference.</p>
+<h2 id="Children-pass-through"><a href="#Children-pass-through" class="headerlink" title="Children pass-through"></a>Children pass-through</h2><p>You might create a component designed to apply <code>context</code> and render its <code>children</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeContextProvider</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  getChildContext() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="attr">some</span>: <span class="string">"context"</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="comment">// how best do we return `children`?</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You’re faced with a decision. Wrap <code>children</code> in an extraneous <code>&lt;div /&gt;</code> or return <code>children</code> directly. The first options gives you extra markup (which can break some stylesheets). The second will result in unhelpful errors.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// option 1: extra div</span></span><br><span class="line"><span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// option 2: unhelpful errors</span></span><br><span class="line"><span class="keyword">return</span> children</span><br></pre></td></tr></table></figure>
+<p>It’s best to treat <code>children</code> as an opaque data type. React provides <code>React.Children</code> for dealing with <code>children</code> appropriately.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> React.Children.only(<span class="keyword">this</span>.props.children)</span><br></pre></td></tr></table></figure>
+<h2 id="Proxy-component"><a href="#Proxy-component" class="headerlink" title="Proxy component"></a>Proxy component</h2><p><em>(I’m not sure if this name makes sense)</em></p>
+<p>Buttons are everywhere in web apps. And every one of them must have the <code>type</code> attribute set to “button”.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=<span class="string">"button"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>Writing this attribute hundreds of times is error prone. We can write a higher level component to proxy <code>props</code> to a lower-level <code>button</code> component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Button = <span class="function"><span class="params">props</span> =&gt;</span></span><br><span class="line">  &lt;button type=<span class="string">"button"</span> &#123;...props&#125;&gt;</span><br></pre></td></tr></table></figure>
+<p>We can use <code>Button</code> in place of <code>button</code> and ensure that the <code>type</code> attribute is consistently applied everywhere.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button /&gt;</span><br><span class="line"><span class="comment">// &lt;button type="button"&gt;&lt;button&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;Button className=<span class="string">"CTA"</span>&gt;Send Money&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ &lt;button type="button" class="CTA"&gt;Send Money&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Style-component"><a href="#Style-component" class="headerlink" title="Style component"></a>Style component</h2><p>This is a <a href="#proxy-component">Proxy component</a> applied to the practices of style.</p>
+<p>Say we have a button. It uses classes to be styled as a “primary” button.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=<span class="string">"button"</span> className=<span class="string">"btn btn-primary"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>We can generate this output using a couple single-purpose components.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> classnames <span class="keyword">from</span> <span class="string">'classnames'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> PrimaryBtn = <span class="function"><span class="params">props</span> =&gt;</span></span><br><span class="line">  &lt;Btn &#123;...props&#125; primary /&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Btn = <span class="function">(<span class="params">&#123; className, primary, ...props &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;button</span><br><span class="line">    type=<span class="string">"button"</span></span><br><span class="line">    className=&#123;classnames(</span><br><span class="line">      <span class="string">"btn"</span>,</span><br><span class="line">      primary &amp;&amp; <span class="string">"btn-primary"</span>,</span><br><span class="line">      className</span><br><span class="line">    )&#125;</span><br><span class="line">    &#123;...props&#125;</span><br><span class="line">  /&gt;</span><br></pre></td></tr></table></figure>
+<p>It can help to visualize this.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PrimaryBtn()</span><br><span class="line">  ↳ Btn(&#123;<span class="attr">primary</span>: <span class="literal">true</span>&#125;)</span><br><span class="line">    ↳ Button(&#123;<span class="attr">className</span>: <span class="string">"btn btn-primary"</span>&#125;, <span class="attr">type</span>: <span class="string">"button"</span>&#125;)</span><br><span class="line">      ↳ <span class="string">'&lt;button type="button" class="btn btn-primary"&gt;&lt;/button&gt;'</span></span><br></pre></td></tr></table></figure>
+<p>Using these components, all of these result in the same output.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;PrimaryBtn /&gt;</span><br><span class="line">&lt;Btn primary /&gt;</span><br><span class="line">&lt;button type=<span class="string">"button"</span> className=<span class="string">"btn btn-primary"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>This can be a huge boon to style maintenance. It isolates all concerns of style to a single component.</p>
+<h2 id="Event-switch"><a href="#Event-switch" class="headerlink" title="Event switch"></a>Event switch</h2><p>When writing event handlers it’s common to adopt the <code>handle{eventName}</code> naming convention.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">handleClick(e) &#123; <span class="comment">/* do something */</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>For components that handle several event types, these function names can be repetitive. The names themselves might not provide much value, as they simply proxy to other actions/functions.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handleClick() &#123; <span class="built_in">require</span>(<span class="string">"./actions/doStuff"</span>)(<span class="comment">/* action stuff */</span>) &#125;</span><br><span class="line">handleMouseEnter() &#123; <span class="keyword">this</span>.setState(&#123; <span class="attr">hovered</span>: <span class="literal">true</span> &#125;) &#125;</span><br><span class="line">handleMouseLeave() &#123; <span class="keyword">this</span>.setState(&#123; <span class="attr">hovered</span>: <span class="literal">false</span> &#125;) &#125;</span><br></pre></td></tr></table></figure>
+<p>Consider writing a single event handler for your component and switching on <code>event.type</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">handleEvent(&#123;type&#125;) &#123;</span><br><span class="line">  <span class="keyword">switch</span>(type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"click"</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">require</span>(<span class="string">"./actions/doStuff"</span>)(<span class="comment">/* action dates */</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"mouseenter"</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.setState(&#123; <span class="attr">hovered</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"mouseleave"</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.setState(&#123; <span class="attr">hovered</span>: <span class="literal">false</span> &#125;)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">console</span>.warn(<span class="string">`No case for event type "<span class="subst">$&#123;type&#125;</span>"`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Alternatively, for simple components, you can call imported actions/functions directly from components, using arrow functions.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClick=&#123;() =&gt; someImportedAction(&#123; <span class="attr">action</span>: <span class="string">"DO_STUFF"</span> &#125;)&#125;</span><br></pre></td></tr></table></figure>
+<p>Don’t fret about performance optimizations until you have problems. Seriously don’t.</p>
+<h2 id="Layout-component"><a href="#Layout-component" class="headerlink" title="Layout component"></a>Layout component</h2><p>Layout components result in some form of static DOM element. It might not need to update frequently, if ever.</p>
+<p>Consider a component that renders two <code>children</code> side-by-side.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;HorizontalSplit</span><br><span class="line">  leftSide=&#123;&lt;SomeSmartComponent /&gt;&#125;</span><br><span class="line">  rightSide=&#123;&lt;AnotherSmartComponent /&gt;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<p>We can aggressively optimize this component.</p>
+<p>While <code>HorizontalSplit</code> will be <code>parent</code> to both components, it will never be their <code>owner</code>. We can tell it to update never, without interrupting the lifecycle of the components inside.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HorizontalSplit</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  shouldComponentUpdate() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    &lt;FlexContainer&gt;</span><br><span class="line">      &lt;div&gt;&#123;<span class="keyword">this</span>.props.leftSide&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;&#123;this.props.rightSide&#125;&lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/FlexContainer&gt;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Container-component"><a href="#Container-component" class="headerlink" title="Container component"></a>Container component</h2><p>“A container does data fetching and then renders its corresponding sub-component. That’s it.”&mdash;<a href="https://twitter.com/jasonbonta" target="_blank" rel="noopener">Jason Bonta</a></p>
+<p>Given this reusable <code>CommentList</code> component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CommentList = <span class="function">(<span class="params">&#123; comments &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &#123;comments.map(<span class="function"><span class="params">comment</span> =&gt;</span></span><br><span class="line">      &lt;li&gt;&#123;comment.body&#125;-&#123;comment.author&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    )&#125;</span></span><br><span class="line"><span class="regexp">  &lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+<p>We can create a new component responsible for fetching data and rendering the stateless <code>CommentList</code> component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommentListContainer</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>()</span><br><span class="line">    <span class="keyword">this</span>.state = &#123; <span class="attr">comments</span>: [] &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">      url: <span class="string">"/my-comments.json"</span>,</span><br><span class="line">      dataType: <span class="string">'json'</span>,</span><br><span class="line">      success: <span class="function"><span class="params">comments</span> =&gt;</span></span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;<span class="attr">comments</span>: comments&#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">CommentList</span> <span class="attr">comments</span>=<span class="string">&#123;this.state.comments&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>We can write different containers for different application contexts.</p>
+<h2 id="Higher-order-component"><a href="#Higher-order-component" class="headerlink" title="Higher-order component"></a>Higher-order component</h2><p>A <a href="https://en.wikipedia.org/wiki/Higher-order_function" target="_blank" rel="noopener">higher-order function</a> is a function that takes and/or returns a function. It’s not more complicated than that. So, what’s a higher-order component?</p>
+<p>If you’re already using <a href="#container-component">container components</a>, these are just generic containers, wrapped up in a function.</p>
+<p>Let’s start with our stateless <code>Greeting</code> component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Greeting = <span class="function">(<span class="params">&#123; name &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!name) &#123; <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Connecting...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hi &#123;name&#125;!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If it gets <code>props.name</code>, it’s gonna render that data. Otherwise it’ll say that it’s “Connecting…”. Now for the the higher-order bit.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Connect = <span class="function"><span class="params">ComposedComponent</span> =&gt;</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">      <span class="keyword">super</span>()</span><br><span class="line">      <span class="keyword">this</span>.state = &#123; <span class="attr">name</span>: <span class="string">""</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">      <span class="comment">// this would fetch or connect to a store</span></span><br><span class="line">      <span class="keyword">this</span>.setState(&#123; <span class="attr">name</span>: <span class="string">"Michael"</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;ComposedComponent</span><br><span class="line">          &#123;...this.props&#125;</span><br><span class="line">          name=&#123;<span class="keyword">this</span>.state.name&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>This is just a function that returns component that renders the component we passed as an argument.</p>
+<p>Last step, we need to wrap our our <code>Greeting</code> component in <code>Connect</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ConnectedMyComponent = Connect(Greeting)</span><br></pre></td></tr></table></figure>
+<p>This is a powerful pattern for providing fetching and providing data to any number of <a href="#stateless-function">stateless function components</a>.</p>
+<h2 id="State-hoisting"><a href="#State-hoisting" class="headerlink" title="State hoisting"></a>State hoisting</h2><p><a href="#stateless-function">Stateless functions</a> don’t hold state (as the name implies).</p>
+<p>Events are changes in state.<br>Their data needs to be passed to stateful <a href="#container-component">container components</a> parents.</p>
+<p>This is called “state hoisting”.<br>It’s accomplished by passing a callback from a container component to a child component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NameContainer</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Name</span> <span class="attr">onChange</span>=<span class="string">&#123;newName</span> =&gt;</span> alert(newName)&#125; /&gt;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">const Name = (&#123; onChange &#125;) =&gt;</span></span><br><span class="line">  &lt;input onChange=&#123;e =&gt; onChange(e.target.value)&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<p><code>Name</code> receives an <code>onChange</code> callback from <code>NameContainer</code> and calls on events.</p>
+<p>The <code>alert</code> above makes for a terse demo but it’s not changing state.<br>Let’s change the internal state of <code>NameContainer</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NameContainer</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>()</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">name</span>: <span class="string">""</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Name</span> <span class="attr">onChange</span>=<span class="string">&#123;newName</span> =&gt;</span> this.setState(&#123;name: newName&#125;)&#125; /&gt;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>The state is <em>hoisted</em> to the container, by the provided callback, where it’s used to update local state.<br>This sets a nice clear boundary and maximizes the re-usability of stateless function.</p>
+<p>This pattern isn’t limited to stateless functions.<br>Because stateless function don’t have lifecycle events,<br>you’ll use this pattern with component classes as well.</p>
+<p><em><a href="#controlled-input">Controlled input</a> is an important pattern to know for use with state hoisting</em></p>
+<p><em>(It’s best to process the event object on the stateful component)</em></p>
+<h2 id="Controlled-input"><a href="#Controlled-input" class="headerlink" title="Controlled input"></a>Controlled input</h2><p>It’s hard to talk about controlled inputs in the abstract.<br>Let’s start with an uncontrolled (normal) input and go from there.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"text"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>When you fiddle with this input in the browser, you see your changes.<br>This is normal.</p>
+<p>A controlled input disallows the DOM mutations that make this possible.<br>You set the <code>value</code> of the input in component-land and it doesn’t change in DOM-land.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"text"</span> value=<span class="string">"This won't change. Try it."</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>Obviously static inputs aren’t very useful to your users.<br>So, we derive a <code>value</code> from state.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ControlledNameInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>()</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">name</span>: <span class="string">""</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">&#123;this.state.name&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Then, changing the input is a matter of changing component state.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;input</span><br><span class="line">    value=&#123;<span class="keyword">this</span>.state.name&#125;</span><br><span class="line">    onChange=&#123;e =&gt; <span class="keyword">this</span>.setState(&#123; <span class="attr">name</span>: e.target.value &#125;)&#125;</span><br><span class="line">  /&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>This is a controlled input.<br>It only updates the DOM when state has changed in our component.<br>This is invaluable when creating consistent UIs.</p>
+<p><em>If you’re using <a href="#stateless-function">stateless functions</a> for form elements,<br>read about using <a href="#state-hoisting">state hoisting</a> to move new state up the component tree.</em></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/pattern/" rel="tag"># pattern</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/13/摘要|React Higher Order Components in depth/" rel="next" title="摘要|React Higher Order Components in depth">
+                <i class="fa fa-chevron-left"></i> 摘要|React Higher Order Components in depth
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/17/Prisma Data Model/" rel="prev" title="Prisma DataModel">
+                Prisma DataModel <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="React-Apollo" />
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Contents"><span class="nav-number">1.</span> <span class="nav-text">Contents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stateless-function"><span class="nav-number">2.</span> <span class="nav-text">Stateless function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-spread-attributes"><span class="nav-number">3.</span> <span class="nav-text">JSX spread attributes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#destructuring-arguments"><span class="nav-number">4.</span> <span class="nav-text">destructuring arguments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conditional-rendering"><span class="nav-number">5.</span> <span class="nav-text">conditional rendering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Children-types"><span class="nav-number">6.</span> <span class="nav-text">Children types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-as-children"><span class="nav-number">7.</span> <span class="nav-text">Array as children</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-as-children"><span class="nav-number">8.</span> <span class="nav-text">Function as children</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Render-callback"><span class="nav-number">9.</span> <span class="nav-text">Render callback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Children-pass-through"><span class="nav-number">10.</span> <span class="nav-text">Children pass-through</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy-component"><span class="nav-number">11.</span> <span class="nav-text">Proxy component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style-component"><span class="nav-number">12.</span> <span class="nav-text">Style component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event-switch"><span class="nav-number">13.</span> <span class="nav-text">Event switch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout-component"><span class="nav-number">14.</span> <span class="nav-text">Layout component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container-component"><span class="nav-number">15.</span> <span class="nav-text">Container component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Higher-order-component"><span class="nav-number">16.</span> <span class="nav-text">Higher-order component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State-hoisting"><span class="nav-number">17.</span> <span class="nav-text">State hoisting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controlled-input"><span class="nav-number">18.</span> <span class="nav-text">Controlled input</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">126.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Apollo,cnode,expo,graphcool," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="项目起因 技术流程已经建立了，这几天在构建express-mongodb-graqhql的服务器器，花了很长时间，回过头来看又快忘了，感觉到了现在的阶段，人老了，理解能力还是有的，但是记忆力确实不行了。千万要详细记录，要不然就白学很多东西了。 记录越详细越好。  项目缘由主要是三大块，中间始终贯穿函数式编程的想法，但是有些没有实现 Graphcool(Prisma）在Medium网站查找Ramd">
+<meta name="keywords" content="Apollo,cnode,expo,graphcool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Expo,Apollo-client,graphcool构建Cnode APP">
+<meta property="og:url" content="https://React-Apollo.github.io/2018/01/26/使用Expo,Apollo-client,graphcool构建Cnode APP/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="项目起因 技术流程已经建立了，这几天在构建express-mongodb-graqhql的服务器器，花了很长时间，回过头来看又快忘了，感觉到了现在的阶段，人老了，理解能力还是有的，但是记忆力确实不行了。千万要详细记录，要不然就白学很多东西了。 记录越详细越好。  项目缘由主要是三大块，中间始终贯穿函数式编程的想法，但是有些没有实现 Graphcool(Prisma）在Medium网站查找Ramd">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fnu2vyl225j308r05dq2y.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fnu2wks6saj30bs06nwez.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fnu2cd2i6xj30hs0qon0m.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fnu2zn9vhyj30cz04vt8q.jpg">
+<meta property="og:updated_time" content="2018-04-07T02:42:18.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Expo,Apollo-client,graphcool构建Cnode APP">
+<meta name="twitter:description" content="项目起因 技术流程已经建立了，这几天在构建express-mongodb-graqhql的服务器器，花了很长时间，回过头来看又快忘了，感觉到了现在的阶段，人老了，理解能力还是有的，但是记忆力确实不行了。千万要详细记录，要不然就白学很多东西了。 记录越详细越好。  项目缘由主要是三大块，中间始终贯穿函数式编程的想法，但是有些没有实现 Graphcool(Prisma）在Medium网站查找Ramd">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fnu2vyl225j308r05dq2y.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2018/01/26/使用Expo,Apollo-client,graphcool构建Cnode APP/"/>
+
+
+
+
+
+  <title>使用Expo,Apollo-client,graphcool构建Cnode APP | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2018/01/26/使用Expo,Apollo-client,graphcool构建Cnode APP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用Expo,Apollo-client,graphcool构建Cnode APP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-26T08:53:28+00:00">
+                2018-01-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:42:18+00:00">
+                2018-04-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/26/使用Expo,Apollo-client,graphcool构建Cnode APP/" class="leancloud_visitors" data-flag-title="使用Expo,Apollo-client,graphcool构建Cnode APP">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,510
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+<h3 id="项目起因"><a href="#项目起因" class="headerlink" title="项目起因"></a>项目起因</h3><blockquote>
+<p>技术流程已经建立了，这几天在构建express-mongodb-graqhql的服务器器，花了很长时间，回过头来看又快忘了，感觉到了现在的阶段，人老了，理解能力还是有的，但是记忆力确实不行了。千万要详细记录，要不然就白学很多东西了。 记录越详细越好。</p>
+</blockquote>
+<h4 id="项目缘由"><a href="#项目缘由" class="headerlink" title="项目缘由"></a>项目缘由</h4><p>主要是三大块，中间始终贯穿函数式编程的想法，但是有些没有实现</p>
+<h5 id="Graphcool-Prisma）"><a href="#Graphcool-Prisma）" class="headerlink" title="Graphcool(Prisma）"></a>Graphcool(Prisma）</h5><p>在Medium网站查找Ramda的文章，结果首页给我推送，apollo,graphcool的文章，graphcool的图标是绿色的，天生有好感，就想看看到是干什么的，因为前面想着手翻译<learning graphql="" and="" relay="">, 这两个技术也很新，所以花了很长时间研究，但是最终没有翻译，感觉到Relay的前景并不是很好，但是最近看Relay还在不断的演化，背靠FB,的确在人才上面和技术上有很大的优势。 但是这个月最终Apollo-Graphcool的构架已经彻底征服了我。 其实选择什么框架并不是什么大问题，没有涉及到核心的问题。这些框架的核心是所有的东西都围绕着GraphQL的<code>Schema</code>来展开。刚开始在使用graphcool的Resolver(解析函数)包装Cnode的api的时候，觉得在定义的时候添加<code>schema</code>一项是多余的。但是随着学习，我发现，GraphQL的威力就在schema上，有了schema，数据的查询就很厉害了。 所有后边的学习重点就围绕schema展开。Graphcool 1.0版本，代号已经改为Prisma.最终要在这里导入CNODE 的API. 根据Graphcool服务器的schema来进行各项操作</learning></p>
+<h5 id="Apollo"><a href="#Apollo" class="headerlink" title="Apollo"></a>Apollo</h5><p>Apollo 这个构架是在看meteor的时候就已经知道，所以在Medium网站推送时，相关内容也来来，随便看了一下，没有什么概念， 突然就在SegmentFault网上看到一个系列的文章，突然感觉就入门了，这个系列的文章，提到Apollo的客户端在执行异步请求是，是从网络层抽象的，幸运，CCNA满分，很快理解这个构架的优势。Redux中异步请求时的flag突然就没有了，因为这个flag可以直接从请求的网络状态获得，网络层的请求本来就有几个状态。 这个地方解决的太巧妙。  由此就开始了Apollo构架的学习，这个构架实际也包括server，但是所有的server和graphcool相比都逊色不少，配置graphcool的服务器几乎没有花费任何的学习时间，除了resolver的编程。</p>
+<p>后面又看到这篇文章<a href="https://react-apollo.github.io/2018/01/04/the%20future%20of%20state%20mangement/">未来的状态管理技术</a>.的确是有未来状态管理的潜力，Redux与之相比有点啰嗦了。其实Redux的技术构架核心，我认为有三个：</p>
+<ul>
+<li><code>单一事实来源(数据单向流动)</code>，</li>
+<li><code>Reducer函数(数据Immutable)</code>，</li>
+<li><code>Container(数据注入方式)</code></li>
+</ul>
+<p>衍生出的<code>Action</code>和很多中间件都是为之服务的。  所以只要具有核心可以了，在未来状态的管理技术中提到的<code>apollo-link-state</code>这个技术就是依次而生， 本地20%的state和80%的远程数据合二为一，React组件中的所有Action(函数)都依据graphql的<code>shcema</code>干活，如果是本地数据<code>@Client</code>指令就会阻止Action执行远程的请求，只能用于本地的数据访问。 可以简单理解，在Apollo的<code>Store</code>中只加了一个标记就解决了这个问题。</p>
+<p>Apollo的技术构架还在不断的演化，前面我的思想中强烈的<code>Redux</code>正统思想和Apollo的进步思想一直打架，毕竟在Redux上花了太多的时间和精力，收获还不大。 要舍弃Reducx太难，没办法技术进步太快，要勇于学习新的知识。 说道这里，看到有的文章简介说什么javascript疲劳，现在来看根本没有这回事情。 应该称之为<code>选择性疲劳</code>，除了为了框架而框架的项目，但凡GitHub评价很高的项目诞生都是有原因的。了解了技术诞生的原因，就学习就比较简单了。比如前面看了一下Eixlir的东西，没什么概念，为什么会有这么一个语言会存活呢？ 原因就是为了处理高并发和稳定性。 这几天突然想，我已经建了好几个graphcool的服务器，那么如果是我想把这几个服务器用在一个项目呢？例如：从一组关键字[‘js’,’ramda’,’redux’,’react’]中查询结果，那么可以不可以用一个<code>总的服务器</code>来接受查询项目，然后下发给<code>子graphcool</code>.这样效果是不是会更好？  总的服务器用’Express’可以，<code>Eixlir</code>是不是就是为此而生的？  所以学习<code>Eixlir</code>的缘由和目标就有了。</p>
+<h5 id="Expo-RN的启动项目"><a href="#Expo-RN的启动项目" class="headerlink" title="Expo RN的启动项目"></a>Expo RN的启动项目</h5><p>RN本机的配置实在是太麻烦，iOS还好一点，直接装Xcode就可以了，安卓的就不好搞，Expo就是为此而生。 直接create-react-naive-app就生成 Expo-RN项目，手机安装Expo软件，扫码就可以进行调试了。实在是简化了操作。</p>
+<p>但是Expo也有自己的问题，它打包了一些子代服务，你用不用都有，所以即使hello world项目也有二十多兆，很大。 我的想法是在expo里使用和调试，但是不用expo自己封装到组件，直接自己安装， 需要的时候可以迁移JS文件的正式的RN项目中。</p>
+<p>CNODE的这个expo项目已经有了一些内容实现，所以趁还没忘，记录一下流程和代码。</p>
+<h3 id="项目流程"><a href="#项目流程" class="headerlink" title="项目流程"></a>项目流程</h3><h4 id="Graphcool服务构建"><a href="#Graphcool服务构建" class="headerlink" title="Graphcool服务构建"></a>Graphcool服务构建</h4><h5 id="服务器初始化"><a href="#服务器初始化" class="headerlink" title="服务器初始化"></a>服务器初始化</h5><p>这个实在是太简单.</p>
+<ul>
+<li><code>graphcool init</code> :安装依赖包</li>
+<li><code>graphcool deploy</code> ：部署，本地部署需要docker,mac下的docker用抢先版就可以，远程部署，直接选择就可以了<br>新的版本<a href="https://www.prismagraphql.com/" target="_blank" rel="noopener">Prisma</a>命令稍微有点改动</li>
+<li>获取数据库endpoint。随时可以在项目文件夹中用<code>graphcool info</code>查看部署信息</li>
+</ul>
+<h4 id="创建schema"><a href="#创建schema" class="headerlink" title="创建schema"></a>创建schema</h4><p>graphql服务器是以shcema为核心的，schema对于字段类型，和执行方法都有严格的约束，这里严格后面的操作就轻松。<br>参照Graphcool-framework 的做法</p>
+<h5 id="定义scheme"><a href="#定义scheme" class="headerlink" title="定义scheme"></a>定义scheme</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对于查询cnode api的信息字段的约束条件</span></span><br><span class="line">type AllCnodePayload &#123;</span><br><span class="line">	id: <span class="built_in">String</span>!</span><br><span class="line">	tab: <span class="built_in">String</span></span><br><span class="line">	title: <span class="built_in">String</span>!</span><br><span class="line">	visit: Int!</span><br><span class="line">	aurl: <span class="built_in">String</span>!</span><br><span class="line">	author_id: <span class="built_in">String</span>!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">input QueryInput &#123;</span><br><span class="line">	page: Int!</span><br><span class="line">	tab: <span class="built_in">String</span>!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extend type Query &#123;</span><br><span class="line">	allCnode(page: Int!, <span class="attr">tab</span>: <span class="built_in">String</span>!): [AllCnodePayload!]!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在type定义里并没有返回cnode API的 content字段信息。 如果在前端显示列表，content基本是不需要的，或者有需求需要显示摘要， 可以在resolver的时候，做处理。<br>这样做，graphcool 服务器从api获取的数据虽然包含有content,但是我们用schema过滤掉了。  客户端请求时的数据量就减少了。这个地方体现的就是graphql的灵活性。</p>
+<p>在<code>Query</code>,中定义了查询时可以传递的参数。<code>这里没有做关联</code>，实际是可以做关联的。在Hotel-GeoData的项目中有数据的关联操作。 <code>tab</code>参数是用于分类查询的，page这个参数用于分页，由于apollo-client做了很多工作，客户端的分页变得很简单，实际只要处理这个一个参数既可以了，返回的数据和原先的数据拼接在一起就可以了。<br><strong><code>有一点要注意：如果是client,schema和这里的还不太一样，例如</code></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">query getFirstPageInformation&#123;</span><br><span class="line">  all: allCnode(page:<span class="number">1</span>,<span class="attr">tab</span>:<span class="string">""</span>)&#123;</span><br><span class="line">    id,</span><br><span class="line">    title</span><br><span class="line">  &#125;,</span><br><span class="line">  share: allCnode(page:<span class="number">1</span>,<span class="attr">tab</span>:<span class="string">"share"</span>)&#123;</span><br><span class="line">    id,</span><br><span class="line">    title</span><br><span class="line">  &#125;,</span><br><span class="line">  job: allCnode(page:<span class="number">1</span>,<span class="attr">tab</span>:<span class="string">"job"</span>)&#123;</span><br><span class="line">    id,</span><br><span class="line">    title</span><br><span class="line">  &#125;,</span><br><span class="line">  dev: allCnode(page:<span class="number">1</span>,<span class="attr">tab</span>:<span class="string">"dev"</span>)&#123;</span><br><span class="line">    id,</span><br><span class="line">    title</span><br><span class="line">  &#125;</span><br><span class="line">  getWeatherByCity(city:<span class="string">"Beijing"</span>)&#123;</span><br><span class="line">    temperature,</span><br><span class="line">    humidity,</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面内容拷贝到下面左侧框中，点击执行就可以看到结果</p>
+<p><iframe src="https://api.graph.cool/simple/v1/cjaxudkum2ugf0127kok921bc" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allrow-popups allow-scripts allow-same-origin"><br></iframe><br>客户端的schema可以集各家之大成，一次查询获取所有数据，http只需要做一次请求。</p>
+<h5 id="Resolver函数"><a href="#Resolver函数" class="headerlink" title="Resolver函数"></a>Resolver函数</h5><p>对于放在REST API之前的 graphcool 服务器， Resolver是核心， 从API获取的信息，在这里根据shcema做处理， 之后就可以使用graphql的各种优点来进行操作。如果认为Graphcool只是做了REST API的代理，认识是非常肤浅的。<br><code>从Cnode REST API 获取数据并处理的Resolver函数</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'isomorphic-fetch'</span>);</span><br><span class="line"><span class="keyword">const</span> R = <span class="built_in">require</span>(<span class="string">'ramda'</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">'https://cnodejs.org/api/v1/topics'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> &#123; tab, page &#125; = event.data;<span class="comment">//这里就是查询的参数，</span></span><br><span class="line">	<span class="comment">//在graphiql，在查询关键词后添加参数，客户端通过apollo-client传递</span></span><br><span class="line">	</span><br><span class="line">	urlWithParams = <span class="string">`<span class="subst">$&#123;url&#125;</span>?tab=<span class="subst">$&#123;tab&#125;</span>&amp;page=<span class="subst">$&#123;page&#125;</span>`</span>;</span><br><span class="line">	<span class="keyword">let</span> options = &#123;</span><br><span class="line">		method: <span class="string">'GET'</span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">return</span> fetch(urlWithParams, options).then(<span class="function">(<span class="params">response</span>) =&gt;</span> response.json()).then(<span class="function">(<span class="params">responseData</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> NodeList = responseData.data;</span><br><span class="line">		<span class="keyword">const</span> allCnode = [];</span><br><span class="line">	<span class="comment">//去毛处理</span></span><br><span class="line">		<span class="keyword">const</span> selectPropertyX = <span class="function">(<span class="params">x</span>) =&gt;</span> (&#123;</span><br><span class="line">			id: x.id,</span><br><span class="line">			tab: x.tab,</span><br><span class="line">			aurl: <span class="string">'https://randomuser.me/api/portraits/thumb/men/97.jpg'</span>,</span><br><span class="line">			visit: x.visit_count,</span><br><span class="line">			title: x.title,</span><br><span class="line">			author_id: x.author_id</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		 <span class="keyword">const</span> allCnode = R.map(selectPropertyX, NodeList);</span><br><span class="line">		<span class="comment">//const getIdcollections=R.curry(R.map(selectPropertyX,data));</span></span><br><span class="line">		<span class="comment">//const allCnode=getIdcollections(NodeList);</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> &#123; <span class="attr">data</span>: allCnode &#125;;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="graqhiQL测试"><a href="#graqhiQL测试" class="headerlink" title="graqhiQL测试"></a>graqhiQL测试</h5><p>graphql优点是带有一个GraphiQL的可视化界面，可以在这里测试一下查询，<br>用上面的代码块可以获得数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"data"</span>: &#123;</span><br><span class="line">    <span class="string">"getWeatherByCity"</span>: &#123;</span><br><span class="line">      <span class="string">"temperature"</span>: <span class="number">-4.87</span>,</span><br><span class="line">      <span class="string">"humidity"</span>: <span class="number">93</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"all"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"id"</span>: <span class="string">"5a2403226190c8912ebaceeb"</span>,</span><br><span class="line">        <span class="string">"title"</span>: <span class="string">"企业级 Node.js 框架 Egg 发布 2.0，性能提升 30%，拥抱 Async"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"id"</span>: <span class="string">"5a54a8a4afa0a121784a8ab0"</span>,</span><br><span class="line">        <span class="string">"title"</span>: <span class="string">"玉伯《从前端技术到体验科技（附演讲视频）》"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"id"</span>: <span class="string">"592917b59e32cc84569a7458"</span>,</span><br><span class="line">        <span class="string">"title"</span>: <span class="string">"测试请发到客户端测试专区，违规影响用户的，直接封号"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"id"</span>: <span class="string">"5a6a47119d371d4a059eee66"</span>,</span><br><span class="line">        <span class="string">"title"</span>: <span class="string">"北京求推荐一个好的node线下培训课程"</span></span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+<p>上面这个的结果实际是来自两个api的，一个是cnode客户端，一个是天气查询的api.<br>一次查询就返回了结果。 <code>这就是graphql的魅力所在</code>。</p>
+<h4 id="Expo-RN-APP-编程"><a href="#Expo-RN-APP-编程" class="headerlink" title="Expo RN APP 编程"></a>Expo RN APP 编程</h4><p>使用Create-react-native-app方法构建导入组件有</p>
+<ul>
+<li><code>导航</code>  react-navigation</li>
+<li><code>组件库</code> react-elements</li>
+<li><code>样式库</code> styled-components  太牛了，这实际也是函数式编程库</li>
+<li><code>函数式编程库</code>：  Ramda, recompose库</li>
+</ul>
+<p>主要的思想上的变化是使用函数式编程库。 styled-components的作者问了一个问题，如果函数式编程风格的React组件是无状态组件(函数)，样式也是函数呢？ 由于刚好在学习函数式编程，感觉到黑暗中找到了明灯。  这不就是高阶函数吗？， 样式也可以通过函数传递了。 背后的英雄还是闭包。<br>自从学习了Ramada的规范，即每个函数只<code>解决一个问题</code>， <code>函数链从右向左</code>，<code>数据从右边开始传递</code>，之后，感觉以前一团乱麻的想法，慢慢清晰了。  在这个地方，思考问题自动分解了，其实从整体看一团乱麻， 单个函数处理问题并不乱。 引入函数式编程的好处真是无可比拟。 在编程中处理的核心数据结构是数组(Ramda叫List)和对象。围绕这个这两个方面，Ramda有一堆的工具可供使用。 R.curry,R.compose,R.reduce是绝对的核心。 思想方法是分解问题，制造和<code>配置</code>生产零件，然后compose成工厂。 在Ramda模式下 compose成的工厂会给在右边留下一个入口，从右边输入猪肉，左边就会后香肠出来。  柯理化和js的闭包在制造和<code>配置</code>生产函数时时直观重要的。我一再的强调<code>配置性</code> 由于高阶函数的特性，函数可以作为参数传递，所以可以传递行使不同功能的函数来配置成执行不同功能的零件，在背后是js函数闭包负责把配置给你保存起来，备用。  js的函数可配置性使得js中可以使用函数组合成各种不同的工厂，只需要传递数据给它即可工作。  </p>
+<h4 id="APP-中引入Apollo-client数据层"><a href="#APP-中引入Apollo-client数据层" class="headerlink" title="APP 中引入Apollo-client数据层"></a>APP 中引入Apollo-client数据层</h4><h5 id="入口文件引入apollo-client的包和Graphql的-endpoint"><a href="#入口文件引入apollo-client的包和Graphql的-endpoint" class="headerlink" title="入口文件引入apollo-client的包和Graphql的 endpoint"></a>入口文件引入apollo-client的包和Graphql的 endpoint</h5><p>Expo/app.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet &#125; <span class="keyword">from</span> <span class="string">'react-native'</span></span><br><span class="line"><span class="keyword">import</span> &#123;TabNavigator, StackNavigator, DrawerNavigator&#125; <span class="keyword">from</span> <span class="string">'react-navigation'</span></span><br><span class="line"><span class="keyword">import</span> &#123; ApolloProvider &#125; <span class="keyword">from</span> <span class="string">'react-apollo'</span></span><br><span class="line"><span class="keyword">import</span> &#123; ApolloClient, HttpLink, InMemoryCache &#125; <span class="keyword">from</span> <span class="string">'apollo-client-preset'</span></span><br><span class="line"><span class="keyword">import</span> My <span class="keyword">from</span> <span class="string">'./app/My'</span></span><br><span class="line"><span class="keyword">import</span> Message <span class="keyword">from</span> <span class="string">'./app/Message'</span></span><br><span class="line"><span class="keyword">import</span> Post <span class="keyword">from</span> <span class="string">'./app/Post'</span></span><br><span class="line"><span class="keyword">import</span> Editor <span class="keyword">from</span> <span class="string">'./app/Editor'</span></span><br><span class="line"><span class="keyword">import</span> &#123;MyNotificationsScreen, MyHomeScreen&#125; <span class="keyword">from</span> <span class="string">'./app/Drawer'</span></span><br><span class="line"><span class="keyword">import</span> Topic <span class="keyword">from</span> <span class="string">'./app/Topic'</span></span><br><span class="line"><span class="keyword">import</span> Collection <span class="keyword">from</span> <span class="string">'./app/Collection'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Drawer = DrawerNavigator(&#123;</span><br><span class="line">  Home: &#123;</span><br><span class="line">    screen: MyHomeScreen ,</span><br><span class="line">  &#125;,</span><br><span class="line">  Notifications: &#123;</span><br><span class="line">    screen: MyNotificationsScreen ,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>  tabNavigator=TabNavigator(&#123;</span><br><span class="line">  主题: &#123;</span><br><span class="line">    screen: Collection,</span><br><span class="line">  &#125;,</span><br><span class="line">  Notifications: &#123;</span><br><span class="line">    screen: Message,</span><br><span class="line">  &#125;,</span><br><span class="line">  Add:&#123; </span><br><span class="line">    screen: Editor,</span><br><span class="line">  &#125;,</span><br><span class="line">  My:&#123;</span><br><span class="line">    screen: My,</span><br><span class="line">  &#125;,</span><br><span class="line">  收藏:&#123;</span><br><span class="line">    screen :Topic</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  tabBarPosition: <span class="string">'bottom'</span>,</span><br><span class="line">  animationEnabled: <span class="literal">true</span>,</span><br><span class="line">  tabBarOptions: &#123;</span><br><span class="line">    activeTintColor: <span class="string">'#e91e63'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Navigator = StackNavigator(&#123;</span><br><span class="line">  Home: &#123; </span><br><span class="line">    screen: tabNavigator,</span><br><span class="line">    navigationOptions: &#123;</span><br><span class="line">      title: <span class="string">'Info'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  Detail: &#123; <span class="attr">screen</span>: Post &#125;,</span><br><span class="line">  <span class="comment">//Setting: &#123; sreen: Drawer&#125;,</span></span><br><span class="line"> </span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//graphcool 服务器的url</span></span><br><span class="line"><span class="keyword">const</span> httpLink = <span class="keyword">new</span> HttpLink(&#123; <span class="attr">uri</span>: <span class="string">'https://api.graph.cool/simple/v1/cjaxudkum2ugf0127kok921bc'</span> &#125;)</span><br><span class="line"><span class="comment">//构建client对象</span></span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> ApolloClient(&#123;</span><br><span class="line">  link: httpLink,</span><br><span class="line">  cache: <span class="keyword">new</span> InMemoryCache(),</span><br><span class="line">  connectToDevTools: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//包装对象注入顶层组件，如果你还要使用Redux,在包装一下，也没有问题。</span></span><br><span class="line"><span class="comment">//分别是两个不同的对象而已。</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;ApolloProvider client=&#123;client&#125;&gt;</span><br><span class="line">        &lt;Navigator /&gt;</span><br><span class="line">      &lt;<span class="regexp">/ApolloProvider&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const  styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">  container: &#123;</span></span><br><span class="line"><span class="regexp">    flex: 1,</span></span><br><span class="line"><span class="regexp">    backgroundColor: '#fff',</span></span><br><span class="line"><span class="regexp">    alignItems: 'center',</span></span><br><span class="line"><span class="regexp">    justifyContent: 'center'</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>配置其实很简单， 在顶层组件注入apollo-client的对象就可以了。redux的其他的文件夹全没有了。<br>apollo-client可以和Redux一起工作， 在顶层组件中再次引入Redux的store,也没有问题。因为这两者是独立的。 像是同一个写字楼里的两家公司，虽然在一起，但是各干个的工作，但是也有使用相同组件的地方，例如两家公司可以同时使用一个卫生间。公家的东西显然大家都不太爱惜，很不好。如果两个公司合二为一呢？ 那就好了。 Apollo的团队想到了这个问题。<br><code>apollo-link-state</code>就把两拨统一了。 不详细讲，准备翻译apollo的文档了。</p>
+<h5 id="组件中的apollo-client的使用"><a href="#组件中的apollo-client的使用" class="headerlink" title="组件中的apollo-client的使用"></a>组件中的apollo-client的使用</h5><p><code>cnode列表组件</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View, Text, FlatList,Button&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; List, ListItem ,Header&#125; <span class="keyword">from</span> <span class="string">'react-native-elements'</span>;</span><br><span class="line"><span class="keyword">import</span> Dropdown   <span class="keyword">from</span> <span class="string">'./Drowdown'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//导入graphql组件，具体使用在代码最后</span></span><br><span class="line"><span class="keyword">import</span> &#123; graphql &#125; <span class="keyword">from</span> <span class="string">'react-apollo'</span>;</span><br><span class="line"><span class="comment">//tag 用于拼接graphql的语句</span></span><br><span class="line"><span class="keyword">import</span> gql <span class="keyword">from</span> <span class="string">'graphql-tag'</span>;</span><br><span class="line"><span class="comment">//拼接的语句，这个语句的效果和在graqhiQL中使用效果是一样的</span></span><br><span class="line"><span class="comment">//查询所有文章的id,title等，schema定义什么就可以返回什么</span></span><br><span class="line"><span class="keyword">const</span> allNodesQuery = gql<span class="string">`</span></span><br><span class="line"><span class="string">  query($page:Int!,$tab:String!) &#123;</span></span><br><span class="line"><span class="string">    allCnode(page:$page,tab:$tab) &#123;</span></span><br><span class="line"><span class="string">      id</span></span><br><span class="line"><span class="string">      title</span></span><br><span class="line"><span class="string">      tab</span></span><br><span class="line"><span class="string">      aurl</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;`</span>;</span><br><span class="line"><span class="comment">//文章列表组件  </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Topic</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">  state = &#123;</span><br><span class="line">    page: <span class="number">1</span>,</span><br><span class="line">    tab: <span class="string">""</span>,</span><br><span class="line">  &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123;navigate&#125; = <span class="keyword">this</span>.props.navigation;<span class="comment">//react-</span></span><br><span class="line">      <span class="comment">//navigation的导航对象，其实这个就和Redux的store一样，顶层导入的</span></span><br><span class="line">      <span class="comment">//所有的子组件可以使用</span></span><br><span class="line">      </span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.props)</span><br><span class="line">      <span class="comment">//props会有需要的数据</span></span><br><span class="line">      <span class="comment">//apollo-client神奇的地方， 请求数据的flag借用的是网络层的数据</span></span><br><span class="line">      <span class="comment">//由于这里天然就带有各种状态标记，直接使用就可以了</span></span><br><span class="line">      <span class="comment">//networkStatus===1表示正在请求数据</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.props.networkStatus===<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt; <span class="xml"><span class="tag">&lt;<span class="name">Text</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">         )</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line"></span><br><span class="line">        &lt;View&gt;</span><br><span class="line">          &lt;Header  outerContainerStyles=&#123;&#123;<span class="attr">marginTop</span>:<span class="number">0</span>,<span class="attr">zIndex</span>:<span class="number">9999</span>&#125;&#125;</span><br><span class="line">        leftComponent=&#123;&lt;Button title=&#123;<span class="string">'setting'</span>&#125; onPress=&#123;(props)=&gt;</span><br><span class="line">         </span><br><span class="line">          <span class="keyword">this</span>.props.refetch(&#123; <span class="attr">page</span>:<span class="number">1</span>, <span class="attr">tab</span>:<span class="string">"job"</span> &#125;) &#125;</span><br><span class="line">         /&gt;&#125;</span><br><span class="line">        centerComponent=&#123;&#123; <span class="attr">text</span>: <span class="string">'MY TITLE'</span>, <span class="attr">style</span>: &#123; <span class="attr">color</span>: <span class="string">'#fff'</span> &#125; &#125;&#125;</span><br><span class="line">        rightComponent=&#123;&lt;Dropdown refetch=&#123;<span class="keyword">this</span>.props.refetch&#125;/&gt;&#125;</span><br><span class="line">        </span><br><span class="line">        /&gt;</span><br><span class="line">        &#123;(<span class="keyword">this</span>.props.networksStatus===<span class="number">2</span>)&amp;&amp;<span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;&#123;flex:1,alignItems:</span>'<span class="attr">center</span>',<span class="attr">justifyContent:</span>'<span class="attr">center</span>',<span class="attr">zIndex:999</span>,<span class="attr">opacity:0.8</span>&#125;&#125;&gt;</span></span></span><br><span class="line"><span class="xml">           <span class="tag">&lt;<span class="name">Text</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span>&#125;</span><br><span class="line">        &lt;List containerStyle=&#123;&#123; <span class="attr">borderTopWidth</span>: <span class="number">0</span>, <span class="attr">borderBottomWidth</span>: <span class="number">0</span>,<span class="attr">marginTop</span>:<span class="number">0</span> &#125;&#125;&gt;</span><br><span class="line">         &lt;FlatList</span><br><span class="line">            data=&#123;<span class="keyword">this</span>.props.allCnode&#125;</span><br><span class="line">            renderItem=&#123;(&#123; item &#125;) =&gt; (</span><br><span class="line">              &lt;ListItem</span><br><span class="line">                roundAvatar</span><br><span class="line">                refreshing=&#123;<span class="keyword">this</span>.props.networkStatus === <span class="number">4</span>&#125;</span><br><span class="line">                onRefresh=&#123;() =&gt; <span class="keyword">this</span>.props.refetch()&#125;</span><br><span class="line">                title=&#123;<span class="string">`<span class="subst">$&#123;item.title&#125;</span>`</span>&#125;</span><br><span class="line">                subtitle=&#123;<span class="string">`<span class="subst">$&#123;item.tab&#125;</span>`</span>&#125;</span><br><span class="line">                avatar=&#123;&#123; <span class="attr">uri</span>: item.aurl &#125;&#125;</span><br><span class="line">                containerStyle=&#123;&#123; <span class="attr">borderBottomWidth</span>: <span class="number">0</span> &#125;&#125;</span><br><span class="line">                onPress=&#123;() =&gt; navigate(<span class="string">'Detail'</span>,&#123;<span class="attr">id</span>:<span class="string">`<span class="subst">$&#123;item.id&#125;</span>`</span>&#125;)&#125;</span><br><span class="line">              /&gt;</span><br><span class="line">            )&#125;</span><br><span class="line">            keyExtractor=&#123;item =&gt; item.id&#125;</span><br><span class="line">            onEndReachedThreshold=&#123;<span class="number">0.5</span>&#125;</span><br><span class="line">            onEndReached=&#123;() =&gt; &#123;</span><br><span class="line">        <span class="comment">// The fetchMore method is used to load new data and add it</span></span><br><span class="line">        <span class="comment">// to the original query we used to populate the list</span></span><br><span class="line">        <span class="keyword">this</span>.props.fetchMore(&#123;</span><br><span class="line">          variables: &#123; <span class="attr">page</span>: <span class="keyword">this</span>.props.allCnode.length + <span class="number">1</span>,<span class="attr">tab</span>:<span class="string">"share"</span>&#125;,</span><br><span class="line">          updateQuery: <span class="function">(<span class="params">previousResult, &#123; fetchMoreResult &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// Don't do anything if there weren't any new items</span></span><br><span class="line">            <span class="comment">//console.log(fetchMoreResult)</span></span><br><span class="line">            <span class="keyword">if</span> (!fetchMoreResult || fetchMoreResult.allCnode.length === <span class="number">0</span>) &#123;</span><br><span class="line">              <span class="keyword">return</span> previousResult;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">              <span class="comment">// Concatenate the new feed results after the old ones</span></span><br><span class="line">              allCnode: previousResult.allCnode.concat(fetchMoreResult.allCnode),</span><br><span class="line">            &#125;;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;<span class="regexp">/List&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>View&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//这里是graphql注入组件的位置</span></span><br><span class="line"><span class="comment">//options就是初始的参数</span></span><br><span class="line"><span class="comment">//props可以用map方法进行筛选</span></span><br><span class="line">aooNodesQuery是查询语句</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> graphql(allNodesQuery,&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    </span><br><span class="line">    variables: &#123; <span class="attr">page</span>:<span class="number">1</span>, <span class="attr">tab</span>:<span class="string">""</span> &#125;,</span><br><span class="line">    </span><br><span class="line">  &#125;,</span><br><span class="line">  props: <span class="function">(<span class="params">&#123; ownProps, data: &#123; loading, allCnode, refetch,fetchMore,networkStatus,updateQuery&#125; &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">    Loading: loading,</span><br><span class="line">    allCnode: allCnode,</span><br><span class="line">    refetch: refetch,</span><br><span class="line">    fetchMore: fetchMore,</span><br><span class="line">    networkStatus: networkStatus,</span><br><span class="line">    updateQuer: updateQuery</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;</span><br><span class="line">  )(Topic);</span><br></pre></td></tr></table></figure>
+<p>上面代码的要点是</p>
+<ol>
+<li>使用了网络层的状态来表示请求的状态</li>
+<li><dropdown refetch="{this.props.refetch}/"> 组件传递了apollo 对象子代的属性方法，refetch用于重新设定 查询的tab.</dropdown></li>
+<li>&lt;FlatList  data={this.props.allCnode}  列表组件只需要传入这个数据属性</li>
+<li>Item组件解析对象属性,点击即可进入下一页。 具体内容的schema和列表是一差不多的</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;ListItem</span><br><span class="line">      roundAvatar</span><br><span class="line">      refreshing=&#123;<span class="keyword">this</span>.props.networkStatus === <span class="number">4</span>&#125;</span><br><span class="line">      onRefresh=&#123;() =&gt; <span class="keyword">this</span>.props.refetch()&#125;</span><br><span class="line">      title=&#123;<span class="string">`<span class="subst">$&#123;item.title&#125;</span>`</span>&#125;</span><br><span class="line">      subtitle=&#123;<span class="string">`<span class="subst">$&#123;item.tab&#125;</span>`</span>&#125;</span><br><span class="line">     avatar=&#123;&#123; <span class="attr">uri</span>: item.aurl &#125;&#125;</span><br><span class="line">     containerStyle=&#123;&#123; <span class="attr">borderBottomWidth</span>: <span class="number">0</span> &#125;&#125;</span><br><span class="line">     onPress=&#123;() =&gt; navigate(<span class="string">'Detail'</span>,&#123;<span class="attr">id</span>:<span class="string">`<span class="subst">$&#123;item.id&#125;</span>`</span>&#125;)&#125;</span><br><span class="line">              /&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>如果列表到了末端.page变量加 1  <code>variables: { page: this.props.allCnode.length + 1,tab:&quot;share&quot;}</code> </li>
+<li>数据返回以后和之前的数据拼接就可以了 <code>allCnode: previousResult.allCnode.concat(fetchMoreResult.allCnode)</code></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">onEndReached=&#123;() =&gt; &#123;</span><br><span class="line">        <span class="comment">// The fetchMore method is used to load new data and add it</span></span><br><span class="line">        <span class="comment">// to the original query we used to populate the list</span></span><br><span class="line">        <span class="keyword">this</span>.props.fetchMore(&#123;</span><br><span class="line">          variables: &#123; <span class="attr">page</span>: <span class="keyword">this</span>.props.allCnode.length + <span class="number">1</span>,<span class="attr">tab</span>:<span class="string">"share"</span>&#125;,</span><br><span class="line">          updateQuery: <span class="function">(<span class="params">previousResult, &#123; fetchMoreResult &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// Don't do anything if there weren't any new items</span></span><br><span class="line">            <span class="comment">//console.log(fetchMoreResult)</span></span><br><span class="line">            <span class="keyword">if</span> (!fetchMoreResult || fetchMoreResult.allCnode.length === <span class="number">0</span>) &#123;</span><br><span class="line">              <span class="keyword">return</span> previousResult;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">              <span class="comment">// Concatenate the new feed results after the old ones</span></span><br><span class="line">              allCnode: previousResult.allCnode.concat(fetchMoreResult.allCnode),</span><br><span class="line">            &#125;;</span><br><span class="line">          &#125;,</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fnu2vyl225j308r05dq2y.jpg" alt="数据请求的状态，true"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fnu2wks6saj30bs06nwez.jpg" alt="请求成功以后的状态和数据，到这一步数据以没问题了"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fnu2cd2i6xj30hs0qon0m.jpg" alt="文章列表"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fnu2zn9vhyj30cz04vt8q.jpg" alt="文章列表下拉刷新的结果"></p>
+<h3 id="整个数据数据流程就建立完成了"><a href="#整个数据数据流程就建立完成了" class="headerlink" title="整个数据数据流程就建立完成了"></a>整个数据数据流程就建立完成了</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Apollo/" rel="tag"># Apollo</a>
+          
+            <a href="/tags/cnode/" rel="tag"># cnode</a>
+          
+            <a href="/tags/expo/" rel="tag"># expo</a>
+          
+            <a href="/tags/graphcool/" rel="tag"># graphcool</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/26/Rename keys of  Obj/" rel="next" title="Rename key of Object">
+                <i class="fa fa-chevron-left"></i> Rename key of Object
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/27/Prisma远程服务器部署问题备忘/" rel="prev" title="Prisma服务器构建">
+                Prisma服务器构建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="React-Apollo" />
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目起因"><span class="nav-number">1.</span> <span class="nav-text">项目起因</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目缘由"><span class="nav-number">1.1.</span> <span class="nav-text">项目缘由</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Graphcool-Prisma）"><span class="nav-number">1.1.1.</span> <span class="nav-text">Graphcool(Prisma）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Apollo"><span class="nav-number">1.1.2.</span> <span class="nav-text">Apollo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Expo-RN的启动项目"><span class="nav-number">1.1.3.</span> <span class="nav-text">Expo RN的启动项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目流程"><span class="nav-number">2.</span> <span class="nav-text">项目流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Graphcool服务构建"><span class="nav-number">2.1.</span> <span class="nav-text">Graphcool服务构建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#服务器初始化"><span class="nav-number">2.1.1.</span> <span class="nav-text">服务器初始化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建schema"><span class="nav-number">2.2.</span> <span class="nav-text">创建schema</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义scheme"><span class="nav-number">2.2.1.</span> <span class="nav-text">定义scheme</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Resolver函数"><span class="nav-number">2.2.2.</span> <span class="nav-text">Resolver函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#graqhiQL测试"><span class="nav-number">2.2.3.</span> <span class="nav-text">graqhiQL测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Expo-RN-APP-编程"><span class="nav-number">2.3.</span> <span class="nav-text">Expo RN APP 编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#APP-中引入Apollo-client数据层"><span class="nav-number">2.4.</span> <span class="nav-text">APP 中引入Apollo-client数据层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#入口文件引入apollo-client的包和Graphql的-endpoint"><span class="nav-number">2.4.1.</span> <span class="nav-text">入口文件引入apollo-client的包和Graphql的 endpoint</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#组件中的apollo-client的使用"><span class="nav-number">2.4.2.</span> <span class="nav-text">组件中的apollo-client的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整个数据数据流程就建立完成了"><span class="nav-number">3.</span> <span class="nav-text">整个数据数据流程就建立完成了</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">126.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

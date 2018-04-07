@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Prisma," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="from howtographql.com   API需求: Retrieve a list (feed) of link elements Allow users to signup up with their name, email and password Users who signed up should be able to login again with their email">
+<meta name="keywords" content="Prisma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prisma|HackerNews_clone">
+<meta property="og:url" content="https://React-Apollo.github.io/2018/03/05/Prisma|HackerNews_Clone/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="from howtographql.com   API需求: Retrieve a list (feed) of link elements Allow users to signup up with their name, email and password Users who signed up should be able to login again with their email">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-07T02:42:18.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Prisma|HackerNews_clone">
+<meta name="twitter:description" content="from howtographql.com   API需求: Retrieve a list (feed) of link elements Allow users to signup up with their name, email and password Users who signed up should be able to login again with their email">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2018/03/05/Prisma|HackerNews_Clone/"/>
+
+
+
+
+
+  <title>Prisma|HackerNews_clone | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2018/03/05/Prisma|HackerNews_Clone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Prisma|HackerNews_clone</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T10:27:34+00:00">
+                2018-03-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:42:18+00:00">
+                2018-04-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/05/Prisma|HackerNews_Clone/" class="leancloud_visitors" data-flag-title="Prisma|HackerNews_clone">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,234
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>from <a href="https://www.howtographql.com/graphql-js/1-getting-started/" target="_blank" rel="noopener"><code>howtographql.com</code></a> </p>
+</blockquote>
+<h2 id="API需求"><a href="#API需求" class="headerlink" title="API需求:"></a>API需求:</h2><ul>
+<li><code>Retrieve a list</code> (feed) of link elements</li>
+<li>Allow users to <code>signup up</code> with their name, email and password</li>
+<li>Users who signed up should be able to <code>login</code> again with their email and password</li>
+<li>Allow authenticated users to <code>post</code> new link elements</li>
+<li>Allow authenticated users to <code>upvote</code> an existing link element</li>
+<li>Send <code>realtime updates</code> to subscribed clients when a new link element is created</li>
+<li>Send <code>realtime updates</code> to subscribed clients when an existing link element is upvoted</li>
+</ul>
+<h2 id="定义-应用-schema"><a href="#定义-应用-schema" class="headerlink" title="定义 应用 schema"></a>定义 应用 schema</h2><p><code>这一步非常好,根据应用的需求首先定义需要实现的 query,mutation,subscribe,然后围绕这个schema 展开工作</code>,目前我们不关注<code>User</code>,<code>Link</code>,<code>Vote</code>的实现细节</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">  # Retrieve a list (<span class="string">"feed"</span>) of link elements</span><br><span class="line">  feed(filter: String, skip: Int, first: Int): [Link!]!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Mutation &#123;</span><br><span class="line">  # Allow<span class="built_in"> users </span><span class="keyword">to</span> signup up with their name, email <span class="keyword">and</span> password</span><br><span class="line">  signup(name: String!, email: String!, password: String!): AuthPayload!</span><br><span class="line">  #<span class="built_in"> Users </span>who signed up should be able <span class="keyword">to</span> login again with their email <span class="keyword">and</span> password</span><br><span class="line">  login(email: String!, password: String!): AuthPayload!</span><br><span class="line">  # Allow authenticated<span class="built_in"> users </span><span class="keyword">to</span> post new link elements</span><br><span class="line">  post(url: String!, description: String!): Link</span><br><span class="line">  # Allow authenticated<span class="built_in"> users </span><span class="keyword">to</span> upvote an existing link element</span><br><span class="line">  vote(linkId: ID!): Vote</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Subscription &#123;</span><br><span class="line">  # Send realtime updates <span class="keyword">to</span> subscribed clients when a new link element is created</span><br><span class="line">  newLink: LinkSubscriptionPayload</span><br><span class="line">  # Send realtime updates <span class="keyword">to</span> subscribed clients when an existing link element is upvoted</span><br><span class="line">  newVote: VoteSubscriptionPayload</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type AuthPayload &#123;</span><br><span class="line">  token: String</span><br><span class="line">  user: User</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来就是逐渐实现这些操作.每一步实现的流程实际是基本类似的-这也就是<strong>schema-driven-development</strong></p>
+<ol>
+<li>调整 data model</li>
+<li>调整之后,部署服务</li>
+<li>用新的根字段扩展应用的 schema</li>
+<li>实现 resolver, 通过代理执行对应的 Prisma resolver</li>
+</ol>
+<h2 id="初始化文件结构"><a href="#初始化文件结构" class="headerlink" title="初始化文件结构"></a>初始化文件结构</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── package.json</span><br><span class="line">├── src</span><br><span class="line">│   ├── index.js</span><br><span class="line">│   ├── schema.graphql</span><br><span class="line">│   └── generated</span><br><span class="line">│       └── prisma.graphql</span><br><span class="line">└── database</span><br><span class="line">    ├── prisma.yml</span><br><span class="line">    └── datamodel.graphql</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>src</code>包含应用的实现代码和<code>应用schema(application schema)</code>,Prisma根据 dataModel生成的 <code>Prisma schema</code></li>
+<li><code>database</code> 包含初始化配置文件 prisma.yml和应用的 data model</li>
+</ul>
+<p> <code>src/schema.graphql(Apllication schema)</code>定义了暴露给 client 端的 graphql API. </p>
+<p><code>src/generated/prisma.graphql(Prisma schema)</code>定义了对数据库操作的 CRUD API. 对于在 <code>data model</code> 中的每个类型,  Prisma会生成读写数据库节点的操作</p>
+<p><code>data model</code>并不是实际的 Graphql schema,缺少 root type. data model 用于生成实际执行的 schema.</p>
+<h2 id="理解初始化步骤"><a href="#理解初始化步骤" class="headerlink" title="理解初始化步骤"></a>理解初始化步骤</h2><p>有两个依赖包:</p>
+<ul>
+<li><code>graphql-yoga</code>: GraphQL Server 需要的文件,实际是 express 服务器</li>
+<li><code>prisma-binding</code>: 可以允许绑定应用 schema 的 resolvers到自动生成的 Prisma database服务. </li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const server = <span class="keyword">new</span> GraphQLServer(&#123;</span><br><span class="line">  typeDef<span class="variable">s:</span> <span class="string">'./src/schema.graphql'</span>,</span><br><span class="line">  resolvers,</span><br><span class="line">  contex<span class="variable">t:</span> req =&gt; (&#123;</span><br><span class="line">    ...req,</span><br><span class="line">    d<span class="variable">b:</span> <span class="keyword">new</span> Prisma(&#123;</span><br><span class="line">      typeDef<span class="variable">s:</span> <span class="string">'src/generated/database.graphql'</span>,</span><br><span class="line">      endpoin<span class="variable">t:</span> <span class="string">'http://localhost:60000/hackernews-node/dev'</span>,</span><br><span class="line">      secre<span class="variable">t:</span> <span class="string">'mysecret123'</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="在-data-model-中定义-Link-type"><a href="#在-data-model-中定义-Link-type" class="headerlink" title="在 data model 中定义 Link type"></a>在 data model 中定义 <code>Link</code> type</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">type</span> <span class="selector-tag">Link</span> &#123;</span><br><span class="line">  <span class="attribute">id</span>: ID! <span class="variable">@unique</span></span><br><span class="line">  <span class="attribute">description</span>: String!</span><br><span class="line">  <span class="attribute">url</span>: String!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>yarn prisma deploy 之后</p>
+<p>会自动生成prisma.graphql</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">Query</span> &#123;</span><br><span class="line">  links(where: <span class="type">LinkWhereInput</span>, orderBy: <span class="type">LinkOrderByInput</span>, skip: <span class="type">Int</span>, after: <span class="type">String</span>, before: <span class="type">String</span>, first: <span class="type">Int</span>, last: <span class="type">Int</span>): [<span class="type">Link</span>]!</span><br><span class="line">  link(where: <span class="type">LinkWhereUniqueInput</span>!): <span class="type">Link</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="type">Mutation</span> &#123;</span><br><span class="line">  createLink(data: <span class="type">LinkCreateInput</span>!): <span class="type">Link</span>!</span><br><span class="line">  updateLink(data: <span class="type">LinkUpdateInput</span>!, where: <span class="type">LinkWhereUniqueInput</span>!): <span class="type">Link</span></span><br><span class="line">  deleteLink(where: <span class="type">LinkWhereUniqueInput</span>!): <span class="type">Link</span></span><br><span class="line">  updateManyLinks(data: <span class="type">LinkUpdateInput</span>!, where: <span class="type">LinkWhereInput</span>!): <span class="type">BatchPayload</span>!</span><br><span class="line">  deleteManyLinks(where: <span class="type">LinkWhereInput</span>!): <span class="type">BatchPayload</span>!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="对-应用的-schema-做出调整"><a href="#对-应用的-schema-做出调整" class="headerlink" title="对 应用的 schema 做出调整"></a>对 应用的 schema 做出调整</h3><p>定义<code>feed</code>查询</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import Link from "./generated/prisma.graphql"</span></span><br><span class="line"></span><br><span class="line">type Query &#123;</span><br><span class="line">  feed(filter: String, skip: Int, first: Int): [Link!]!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实现-feed的-resolver"><a href="#实现-feed的-resolver" class="headerlink" title="实现 feed的 resolver"></a>实现 <code>feed</code>的 resolver</h3><p>每个<code>Query</code>,<code>Mutation</code>都由 resolver 支撑. 相应的定义为 <code>Query.js</code>,<code>Mutation.js</code>,<code>Subscription.js</code>.</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">feed</span><span class="params">(parent, args, context, info)</span> &#123;</span></span><br><span class="line">  const &#123; <span class="built_in">filter</span>, <span class="keyword">first</span>, skip &#125; = <span class="keyword">args</span> // destructure <span class="built_in">input</span> arguments</span><br><span class="line">  const where = <span class="built_in">filter</span></span><br><span class="line">    ? &#123; OR: [&#123; url_contain<span class="variable">s:</span> <span class="built_in">filter</span> &#125;, &#123; description_contain<span class="variable">s:</span> <span class="built_in">filter</span> &#125;] &#125;</span><br><span class="line">    : &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> context.db.query.links(&#123; <span class="keyword">first</span>, skip, where &#125;, info)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  feed,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>resolver 函数接收四个参数,</p>
+<ol>
+<li><code>parent</code>:包含 resolver 链的初始值</li>
+<li><code>args</code>:包含查询参数的对象.</li>
+<li><code>context</code>:包含定制的数据,可以在 resolver 链中传递.例如每个 resolver 都可以读写</li>
+<li><code>info</code>包含了 AST信息</li>
+</ol>
+<p>打开 <code>index.js</code>替换下面的<code>resolver</code>对象:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> resolvers = &#123;</span><br><span class="line">  Query,</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">导入我们自己定义的`</span>Query<span class="string">`对象</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="keyword">const</span> Query=<span class="built_in">require</span>(<span class="string">'./resolvers/Query'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="测试-API"><a href="#测试-API" class="headerlink" title="测试 API"></a>测试 API</h3><p>在项目的根目录执行<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yarn dev</span></span><br></pre></td></tr></table></figure></p>
+<p>打开 graphiQL, 输入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mutation &#123;</span><br><span class="line">  createLink(data: &#123;</span><br><span class="line">    url: <span class="string">"https://www.graph.cool"</span>,</span><br><span class="line">    description: <span class="string">"A GraphQL Database"</span></span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    id</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Mutations"><a href="#Mutations" class="headerlink" title="Mutations"></a>Mutations</h2><h3 id="Mutation-for-posting-new-links"><a href="#Mutation-for-posting-new-links" class="headerlink" title="Mutation for posting new links"></a>Mutation for posting new links</h3><p>打开 <code>src/schema.graphql</code>添加如下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type Mutation &#123;</span><br><span class="line">  post(url: <span class="built_in">String</span>!, <span class="attr">description</span>: <span class="built_in">String</span>!): Link!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>src/resolvers</code>创建新的<code>Mutation.js</code>,添加代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">post</span>(<span class="params">parent, args, context, info</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; url, description &#125; = args</span><br><span class="line">  <span class="keyword">return</span> context.db.mutation.createLink(&#123; <span class="attr">data</span>: &#123; url, description &#125; &#125;, info)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  post,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>index.js</code>中添加新的<code>mutation</code>声明</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Mutation = <span class="built_in">require</span>(<span class="string">'./resolvers/Mutation'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> resolvers = &#123;</span><br><span class="line">  Query,</span><br><span class="line">  Mutation,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutation &#123;</span><br><span class="line">  post(url: <span class="string">"https://www.howtographql.com"</span>, <span class="attr">description</span>: <span class="string">"Fullstack tutorial website for GraphQL"</span>) &#123;</span><br><span class="line">    id</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Signup-amp-Login"><a href="#Signup-amp-Login" class="headerlink" title="Signup&amp;Login"></a>Signup&amp;Login</h2><h3 id="为用户提供登录功能"><a href="#为用户提供登录功能" class="headerlink" title="为用户提供登录功能"></a>为用户提供登录功能</h3><h4 id="Signup"><a href="#Signup" class="headerlink" title="Signup"></a>Signup</h4><p>注册的实现步骤:</p>
+<ol>
+<li>服务器收到新用户的<code>email</code>,<code>password</code>(还有<code>name</code>)</li>
+<li>服务器在数据库创建新用户,并储存<code>name</code>,<code>email</code>和 hash过的密码</li>
+<li>服务器创建一个认证 token(JWT)</li>
+<li>服务器把 token返回给用户</li>
+</ol>
+<h4 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h4><ol>
+<li>服务器收到<code>login</code> mutation</li>
+<li>服务器比较<code>password</code>的一致性</li>
+<li>如果密码一致, 服务器创建一个 token</li>
+<li>服务器把 token 返回给用户</li>
+</ol>
+<h3 id="实现注册流程"><a href="#实现注册流程" class="headerlink" title="实现注册流程"></a>实现注册流程</h3><p>创建secret</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> APP_SECRET = <span class="string">'GraphQL-is-aw3some'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  APP_SECRET</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在应用的 schema 中添加 <code>signup</code>  <code>Mutation</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type Mutation &#123;</span><br><span class="line">  post(url: <span class="built_in">String</span>!, <span class="attr">description</span>: <span class="built_in">String</span>!): Link!</span><br><span class="line">  signup(email: <span class="built_in">String</span>!, <span class="attr">password</span>: <span class="built_in">String</span>!, <span class="attr">name</span>: <span class="built_in">String</span>!): AuthPayload</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>src/schema.graphql</code><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type AuthPayload &#123;</span><br><span class="line">  token: String</span><br><span class="line">  user: User</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>database/datamodel.graphql</code></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">type</span> <span class="selector-tag">User</span> &#123;</span><br><span class="line">  <span class="attribute">id</span>: ID! <span class="variable">@unique</span></span><br><span class="line">  <span class="attribute">name</span>: String!</span><br><span class="line">  <span class="attribute">email</span>: String! <span class="variable">@unique</span></span><br><span class="line">  <span class="attribute">password</span>: String!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>部署以后会生成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">  users(where: UserWhereInput, <span class="attr">orderBy</span>: UserOrderByInput, <span class="attr">skip</span>: Int, <span class="attr">after</span>: <span class="built_in">String</span>, <span class="attr">before</span>: <span class="built_in">String</span>, <span class="attr">first</span>: Int, <span class="attr">last</span>: Int): [User]!</span><br><span class="line">  user(where: UserWhereUniqueInput!): User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Mutation &#123;</span><br><span class="line">  createUser(data: UserCreateInput!): User!</span><br><span class="line">  updateUser(data: UserUpdateInput!, <span class="attr">where</span>: UserWhereUniqueInput!): User</span><br><span class="line">  deleteUser(where: UserWhereUniqueInput!): User</span><br><span class="line">  upsertUser(where: UserWhereUniqueInput!, <span class="attr">create</span>: UserCreateInput!, <span class="attr">update</span>: UserUpdateInput!): User!</span><br><span class="line">  updateManyUsers(data: UserUpdateInput!, <span class="attr">where</span>: UserWhereInput!): BatchPayload!</span><br><span class="line">  deleteManyUsers(where: UserWhereInput!): BatchPayload!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打开应用 schema <code>src/schema.graphql</code>添加如下的类型</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">User</span>&#123;</span><br><span class="line">   id: <span class="type">ID</span>!</span><br><span class="line">   name:<span class="type">String</span>!</span><br><span class="line">   email:<span class="type">String</span>!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的定义和 Prisma schema 里的定义类似,但是没有<code>password</code>,也就是不允许用户查询 password</p>
+<p>接下来需要<code>signup</code> mutation</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">signup</span>(<span class="params">parent, args, context, info</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> password = <span class="keyword">await</span> bcrypt.hash(args.password, <span class="number">10</span>)</span><br><span class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> context.db.mutation.createUser(&#123;</span><br><span class="line">    data: &#123; ...args, password &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> token = jwt.sign(&#123; <span class="attr">userId</span>: user.id &#125;, APP_SECRET)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    token,</span><br><span class="line">    user,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>signup</code> resolver 中, 首先创建密码的加密版本, 接下来, 使用<code>Prisma</code>的实例,创建新的<code>User</code>节点.最后返回包含<code>AuthPayload</code>包含创建的 token 和新的 user 对象</p>
+<h3 id="实现login-mutation"><a href="#实现login-mutation" class="headerlink" title="实现login mutation"></a>实现<code>login</code> mutation</h3><p>接下来,实现<code>login</code> mutation. </p>
+<p><code>src/schema.graphql</code>中添加Mutation 类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Mutation &#123;</span><br><span class="line">  post(url: <span class="built_in">String</span>!, <span class="attr">description</span>: <span class="built_in">String</span>!): Link!</span><br><span class="line">  signup(email: <span class="built_in">String</span>!, <span class="attr">password</span>: <span class="built_in">String</span>!, <span class="attr">name</span>: <span class="built_in">String</span>!): AuthPayload</span><br><span class="line">  login(email: <span class="built_in">String</span>!, <span class="attr">password</span>: <span class="built_in">String</span>!): AuthPayload</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打开 <code>src/resolvers/Mutation.js</code>添加如下函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">parent, args, context, info</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> context.db.query.user(&#123; <span class="attr">where</span>: &#123; <span class="attr">email</span>: args.email &#125; &#125;)</span><br><span class="line">  <span class="keyword">if</span> (!user) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Could not find user with email: <span class="subst">$&#123;args.email&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> valid = <span class="keyword">await</span> bcrypt.compare(args.password, user.password)</span><br><span class="line">  <span class="keyword">if</span> (!valid) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Invalid password'</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> token = jwt.sign(&#123; <span class="attr">userId</span>: user.id &#125;, APP_SECRET)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    token,</span><br><span class="line">    user,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先使用 email 查询是否存在, 然后比较密码是否一致.  完成后,返回一个 token 给用户</p>
+<h3 id="应用-Authentication"><a href="#应用-Authentication" class="headerlink" title="应用 Authentication"></a>应用 Authentication</h3><h4 id="创建User和Link的关联"><a href="#创建User和Link的关联" class="headerlink" title="创建User和Link的关联"></a>创建<code>User</code>和<code>Link</code>的关联</h4><p>在需求中,我们提出只有通过认证的用户才可以创建新的 <code>Link</code>元素.</p>
+<p>打开 <code>database/datamodel.js</code> 改变<code>User</code>和<code>Link</code>类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">type Link &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  description: <span class="built_in">String</span>!</span><br><span class="line">  url: <span class="built_in">String</span>!</span><br><span class="line">  postedBy: User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type User &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  name: <span class="built_in">String</span>!</span><br><span class="line">  email: <span class="built_in">String</span>! @unique</span><br><span class="line">  password: <span class="built_in">String</span>!</span><br><span class="line">  links: [Link!]!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以执行如下的操作</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">mutation</span> &#123;</span><br><span class="line">  <span class="selector-tag">createLink</span>(<span class="attribute">data</span>: &#123;</span><br><span class="line">    <span class="attribute">url</span>: <span class="string">"https://www.graphql.org"</span>,</span><br><span class="line">    <span class="attribute">description</span>: <span class="string">"Official GraphQL Website"</span>,</span><br><span class="line">    <span class="attribute">postedBy</span>: &#123;</span><br><span class="line">      <span class="attribute">connect</span>: &#123;</span><br><span class="line">        <span class="attribute">email</span>: <span class="string">"johndoe@graph.cool"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    <span class="selector-tag">id</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打开 <code>src/resolvers/Mutation.js</code>改变<code>post</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">post</span>(<span class="params">parent, &#123; url, description &#125;, context, info</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> userId = getUserId(context)</span><br><span class="line">  <span class="keyword">return</span> context.db.mutation.createLink(</span><br><span class="line">    &#123; <span class="attr">data</span>: &#123; url, description, <span class="attr">postedBy</span>: &#123; <span class="attr">connect</span>: &#123; <span class="attr">id</span>: userId &#125; &#125; &#125; &#125;,</span><br><span class="line">    info,</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和之前的版本不同的地方是,首先获取到用户的 id, 然后传递给<code>createLink</code>-mutation 作为<code>connect</code>的参数. </p>
+<p>现在我们需要一个工具函数 <code>getUserId</code>,</p>
+<p><code>src/utils.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserId</span>(<span class="params">context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> Authorization = context.request.get(<span class="string">'Authorization'</span>)</span><br><span class="line">  <span class="keyword">if</span> (Authorization) &#123;</span><br><span class="line">    <span class="keyword">const</span> token = Authorization.replace(<span class="string">'Bearer '</span>, <span class="string">''</span>)</span><br><span class="line">    <span class="keyword">const</span> &#123; userId &#125; = jwt.verify(token, APP_SECRET)</span><br><span class="line">    <span class="keyword">return</span> userId</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Not authenticated'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>context</code>参数有一个<code>request</code>属性,代表着携带 query 或者 mutation的 HTTP 请求.  重要的是,它提供了访问头 .token就在头部中</p>
+<h4 id="认证一个用户"><a href="#认证一个用户" class="headerlink" title="认证一个用户"></a>认证一个用户</h4><ol>
+<li>在 playground中, 发送<code>signup</code>或者<code>login</code> mutation,从 graphql server 中获取到 <code>token</code>.</li>
+<li>在<code>PlayGround</code>中设置Header</li>
+<li>发送<code>post</code> mutation,创建新的<code>Link</code> 元素</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mutation &#123;</span><br><span class="line">  login(</span><br><span class="line">    email: <span class="string">"johndoe@graph.cool"</span></span><br><span class="line">    password: <span class="string">"graphql"</span></span><br><span class="line">  ) &#123;</span><br><span class="line">    token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置好以后,执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mutation &#123;</span><br><span class="line">  post(</span><br><span class="line">    url: <span class="string">"https://www.graphqlweekly.com"</span></span><br><span class="line">    description: <span class="string">"Weekly GraphQL Newsletter"</span></span><br><span class="line">  ) &#123;</span><br><span class="line">    id</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="投票部分"><a href="#投票部分" class="headerlink" title="投票部分"></a>投票部分</h2><h2 id="Subscriptions"><a href="#Subscriptions" class="headerlink" title="Subscriptions"></a>Subscriptions</h2><h3 id="实现-GraphQL订阅"><a href="#实现-GraphQL订阅" class="headerlink" title="实现 GraphQL订阅"></a>实现 GraphQL订阅</h3><p>打开<code>src/schema.graphql</code>,添加<code>Subscription</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type Subscription &#123;</span><br><span class="line">  newLink: LinkSubscriptionPayload</span><br><span class="line">  newVote: VoteSubscriptionPayload</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>src/resolvers</code>创建一个新的文件, <code>SubScription.js</code>添加如下代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> newLink = &#123;</span><br><span class="line">  subscribe: <span class="function">(<span class="params">parent, args, ctx, info</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> ctx.db.subscription.link(</span><br><span class="line">      &#123; &#125;,</span><br><span class="line">      info,</span><br><span class="line">    )</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newVote = &#123;</span><br><span class="line">  subscribe: <span class="function">(<span class="params">parent, args, ctx, info</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> ctx.db.subscription.vote(</span><br><span class="line">      &#123; &#125;,</span><br><span class="line">      info,</span><br><span class="line">    )</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  newLink,</span><br><span class="line">  newVote,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在的<code>src/inde.js</code>文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; GraphQLServer &#125; = <span class="built_in">require</span>(<span class="string">'graphql-yoga'</span>)</span><br><span class="line"><span class="keyword">const</span> &#123; Prisma &#125; = <span class="built_in">require</span>(<span class="string">'prisma-binding'</span>)</span><br><span class="line"><span class="keyword">const</span> Query = <span class="built_in">require</span>(<span class="string">'./resolvers/Query'</span>)</span><br><span class="line"><span class="keyword">const</span> Mutation = <span class="built_in">require</span>(<span class="string">'./resolvers/Mutation'</span>)</span><br><span class="line"><span class="keyword">const</span> Subscription = <span class="built_in">require</span>(<span class="string">'./resolvers/Subscription'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> resolvers = &#123;</span><br><span class="line">  Query,</span><br><span class="line">  Mutation,</span><br><span class="line">  Subscription</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Prisma/" rel="tag"># Prisma</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/04/algolia-cnode搜索实现/" rel="next" title="algolia-cnode即时搜索实现- React版">
+                <i class="fa fa-chevron-left"></i> algolia-cnode即时搜索实现- React版
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/05/Prisma|Github oAuth登录操作/" rel="prev" title="Prisma|Github oAuth登录操作">
+                Prisma|Github oAuth登录操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="React-Apollo" />
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#API需求"><span class="nav-number">1.</span> <span class="nav-text">API需求:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-应用-schema"><span class="nav-number">2.</span> <span class="nav-text">定义 应用 schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化文件结构"><span class="nav-number">3.</span> <span class="nav-text">初始化文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解初始化步骤"><span class="nav-number">4.</span> <span class="nav-text">理解初始化步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询"><span class="nav-number">5.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-data-model-中定义-Link-type"><span class="nav-number">5.1.</span> <span class="nav-text">在 data model 中定义 Link type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对-应用的-schema-做出调整"><span class="nav-number">5.2.</span> <span class="nav-text">对 应用的 schema 做出调整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-feed的-resolver"><span class="nav-number">5.3.</span> <span class="nav-text">实现 feed的 resolver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-API"><span class="nav-number">5.4.</span> <span class="nav-text">测试 API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mutations"><span class="nav-number">6.</span> <span class="nav-text">Mutations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mutation-for-posting-new-links"><span class="nav-number">6.1.</span> <span class="nav-text">Mutation for posting new links</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signup-amp-Login"><span class="nav-number">7.</span> <span class="nav-text">Signup&amp;Login</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为用户提供登录功能"><span class="nav-number">7.1.</span> <span class="nav-text">为用户提供登录功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Signup"><span class="nav-number">7.1.1.</span> <span class="nav-text">Signup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Login"><span class="nav-number">7.1.2.</span> <span class="nav-text">Login</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现注册流程"><span class="nav-number">7.2.</span> <span class="nav-text">实现注册流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现login-mutation"><span class="nav-number">7.3.</span> <span class="nav-text">实现login mutation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用-Authentication"><span class="nav-number">7.4.</span> <span class="nav-text">应用 Authentication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建User和Link的关联"><span class="nav-number">7.4.1.</span> <span class="nav-text">创建User和Link的关联</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#认证一个用户"><span class="nav-number">7.4.2.</span> <span class="nav-text">认证一个用户</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#投票部分"><span class="nav-number">8.</span> <span class="nav-text">投票部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subscriptions"><span class="nav-number">9.</span> <span class="nav-text">Subscriptions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-GraphQL订阅"><span class="nav-number">9.1.</span> <span class="nav-text">实现 GraphQL订阅</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">126.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

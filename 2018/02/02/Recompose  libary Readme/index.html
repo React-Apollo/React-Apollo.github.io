@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Recompose,hoc," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="APIIn these API docs, a higher-order component (HOC) refers to a function that accepts a single React component and returns a new React component. 1const EnhancedComponent = hoc(BaseComponent) This f">
+<meta name="keywords" content="Recompose,hoc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Recompose  libary Readme">
+<meta property="og:url" content="https://React-Apollo.github.io/2018/02/02/Recompose  libary Readme/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="APIIn these API docs, a higher-order component (HOC) refers to a function that accepts a single React component and returns a new React component. 1const EnhancedComponent = hoc(BaseComponent) This f">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-07T02:42:18.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Recompose  libary Readme">
+<meta name="twitter:description" content="APIIn these API docs, a higher-order component (HOC) refers to a function that accepts a single React component and returns a new React component. 1const EnhancedComponent = hoc(BaseComponent) This f">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2018/02/02/Recompose  libary Readme/"/>
+
+
+
+
+
+  <title>Recompose  libary Readme | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2018/02/02/Recompose  libary Readme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Recompose  libary Readme</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T20:12:01+00:00">
+                2018-02-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:42:18+00:00">
+                2018-04-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Readme/" itemprop="url" rel="index">
+                    <span itemprop="name">Readme</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/02/Recompose  libary Readme/" class="leancloud_visitors" data-flag-title="Recompose  libary Readme">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,682
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p>In these API docs, a <strong>higher-order component</strong> (HOC) refers to a function that accepts a single React component and returns a new React component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EnhancedComponent = hoc(BaseComponent)</span><br></pre></td></tr></table></figure>
+<p>This form makes HOCs (sometimes called <strong>enhancers</strong>) composable:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> composedHoc = compose(hoc1, hoc2, hoc3)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Same as</span></span><br><span class="line"><span class="keyword">const</span> composedHoc = <span class="function"><span class="params">BaseComponent</span> =&gt;</span> hoc1(hoc2(hoc3(BaseComponent)))</span><br></pre></td></tr></table></figure>
+<p>Most Recompose helpers are <strong>functions that return higher-order components</strong>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> hoc = mapProps(<span class="function"><span class="params">ownerProps</span> =&gt;</span> childProps)</span><br><span class="line"><span class="keyword">const</span> EnhancedComponent = hoc(BaseComponent)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Same as</span></span><br><span class="line"><span class="keyword">const</span> EnhancedComponent = mapProps(<span class="function"><span class="params">ownerProps</span> =&gt;</span> childProps)(BaseComponent)</span><br></pre></td></tr></table></figure>
+<p>Some, like <code>pure</code>, are higher-order components themselves:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PureComponent = pure(BaseComponent)</span><br></pre></td></tr></table></figure>
+<h2 id="TOC"><a href="#TOC" class="headerlink" title="TOC"></a>TOC</h2><ul>
+<li><a href="#higher-order-components">Higher-order components</a><ul>
+<li><a href="#mapprops"><code>mapProps()</code></a></li>
+<li><a href="#withprops"><code>withProps()</code></a></li>
+<li><a href="#withpropsonchange"><code>withPropsOnChange()</code></a></li>
+<li><a href="#withhandlers"><code>withHandlers()</code></a></li>
+<li><a href="#defaultprops"><code>defaultProps()</code></a></li>
+<li><a href="#renameprop"><code>renameProp()</code></a></li>
+<li><a href="#renameprops"><code>renameProps()</code></a></li>
+<li><a href="#flattenprop"><code>flattenProp()</code></a></li>
+<li><a href="#withstate"><code>withState()</code></a></li>
+<li><a href="#withstatehandlers"><code>withStateHandlers()</code></a></li>
+<li><a href="#withreducer"><code>withReducer()</code></a></li>
+<li><a href="#branch"><code>branch()</code></a></li>
+<li><a href="#rendercomponent"><code>renderComponent()</code></a></li>
+<li><a href="#rendernothing"><code>renderNothing()</code></a></li>
+<li><a href="#shouldupdate"><code>shouldUpdate()</code></a></li>
+<li><a href="#pure"><code>pure()</code></a></li>
+<li><a href="#onlyupdateforkeys"><code>onlyUpdateForKeys()</code></a></li>
+<li><a href="#onlyupdateforproptypes"><code>onlyUpdateForPropTypes()</code></a></li>
+<li><a href="#withcontext"><code>withContext()</code></a></li>
+<li><a href="#getcontext"><code>getContext()</code></a></li>
+<li><a href="#lifecycle"><code>lifecycle()</code></a></li>
+<li><a href="#toclass"><code>toClass()</code></a></li>
+</ul>
+</li>
+<li><a href="#static-property-helpers">Static property helpers</a><ul>
+<li><a href="#setstatic"><code>setStatic()</code></a></li>
+<li><a href="#setproptypes"><code>setPropTypes()</code></a></li>
+<li><a href="#setdisplayname"><code>setDisplayName()</code></a></li>
+</ul>
+</li>
+<li><a href="#utilities">Utilities</a><ul>
+<li><a href="#compose"><code>compose()</code></a></li>
+<li><a href="#getdisplayname"><code>getDisplayName()</code></a></li>
+<li><a href="#wrapdisplayname"><code>wrapDisplayName()</code></a></li>
+<li><a href="#shallowequal"><code>shallowEqual()</code></a></li>
+<li><a href="#isclasscomponent"><code>isClassComponent()</code></a></li>
+<li><a href="#createsink"><code>createSink()</code></a></li>
+<li><a href="#componentfromprop"><code>componentFromProp()</code></a></li>
+<li><a href="#nest"><code>nest()</code></a></li>
+<li><a href="#hoiststatics"><code>hoistStatics()</code></a></li>
+</ul>
+</li>
+<li><a href="#observable-utilities">Observable utilities</a><ul>
+<li><a href="#componentfromstream"><code>componentFromStream()</code></a></li>
+<li><a href="#componentfromstreamwithconfig"><code>componentFromStreamWithConfig()</code></a></li>
+<li><a href="#mappropsstream"><code>mapPropsStream()</code></a></li>
+<li><a href="#mappropsstreamwithconfig"><code>mapPropsStreamWithConfig()</code></a></li>
+<li><a href="#createeventhandler"><code>createEventHandler()</code></a></li>
+<li><a href="#createeventhandlerwithconfig"><code>createEventHandlerWithConfig()</code></a></li>
+<li><a href="#setobservableconfig"><code>setObservableConfig()</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Higher-order-components"><a href="#Higher-order-components" class="headerlink" title="Higher-order components"></a>Higher-order components</h2><h3 id="mapProps"><a href="#mapProps" class="headerlink" title="mapProps()"></a><code>mapProps()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mapProps(</span><br><span class="line">  propsMapper: <span class="function">(<span class="params">ownerProps: <span class="built_in">Object</span></span>) =&gt;</span> <span class="built_in">Object</span>,</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Accepts a function that maps owner props to a new collection of props that are passed to the base component.</p>
+<p><code>mapProps()</code> pairs well with functional utility libraries like <a href="https://github.com/lodash/lodash/tree/npm/fp" target="_blank" rel="noopener">lodash/fp</a>. For example, Recompose does not come with a <code>omitProps()</code> function, but you can easily build one using lodash-fp’s <code>omit()</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> omitProps = <span class="function"><span class="params">keys</span> =&gt;</span> mapProps(<span class="function"><span class="params">props</span> =&gt;</span> omit(keys, props))</span><br><span class="line"></span><br><span class="line"><span class="comment">// Because of currying in lodash-fp, this is the same as</span></span><br><span class="line"><span class="keyword">const</span> omitProps = compose(mapProps, omit)</span><br></pre></td></tr></table></figure>
+<h3 id="withProps"><a href="#withProps" class="headerlink" title="withProps()"></a><code>withProps()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">withProps(</span><br><span class="line">  createProps: <span class="function">(<span class="params">ownerProps: <span class="built_in">Object</span></span>) =&gt;</span> <span class="built_in">Object</span> | <span class="built_in">Object</span></span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Like <code>mapProps()</code>, except the newly created props are merged with the owner props.</p>
+<p>Instead of a function, you can also pass a props object directly. In this form, it is similar to <code>defaultProps()</code>, except the provided props take precedence over props from the owner.</p>
+<h3 id="withPropsOnChange"><a href="#withPropsOnChange" class="headerlink" title="withPropsOnChange()"></a><code>withPropsOnChange()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">withPropsOnChange(</span><br><span class="line">  shouldMapOrKeys: <span class="built_in">Array</span>&lt;string&gt; | <span class="function">(<span class="params">props: <span class="built_in">Object</span>, nextProps: <span class="built_in">Object</span></span>) =&gt;</span> boolean,</span><br><span class="line">  createProps: <span class="function">(<span class="params">ownerProps: <span class="built_in">Object</span></span>) =&gt;</span> <span class="built_in">Object</span></span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Like <code>withProps()</code>, except the new props are only created when one of the owner props specified by <code>shouldMapOrKeys</code> changes. This helps ensure that expensive computations inside <code>createProps()</code> are only executed when necessary.</p>
+<p>Instead of an array of prop keys, the first parameter can also be a function that returns a boolean, given the current props and the next props. This allows you to customize when <code>createProps()</code> should be called.</p>
+<h3 id="withHandlers"><a href="#withHandlers" class="headerlink" title="withHandlers()"></a><code>withHandlers()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">withHandlers(</span><br><span class="line">  handlerCreators: &#123;</span><br><span class="line">    [handlerName: string]: <span class="function">(<span class="params">props: <span class="built_in">Object</span></span>) =&gt;</span> <span class="built_in">Function</span></span><br><span class="line">  &#125; |</span><br><span class="line">  handlerCreatorsFactory: <span class="function">(<span class="params">initialProps</span>) =&gt;</span> &#123;</span><br><span class="line">    [handlerName: string]: <span class="function">(<span class="params">props: <span class="built_in">Object</span></span>) =&gt;</span> <span class="built_in">Function</span></span><br><span class="line">  &#125;</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Takes an object map of handler creators or a factory function. These are higher-order functions that accept a set of props and return a function handler:</p>
+<p>This allows the handler to access the current props via closure, without needing to change its signature.</p>
+<p>Handlers are passed to the base component as immutable props, whose identities are preserved across renders. This avoids a common pitfall where functional components create handlers inside the body of the function, which results in a new handler on every render and breaks downstream <code>shouldComponentUpdate()</code> optimizations that rely on prop equality. This is the main reason to use <code>withHandlers</code> to create handlers instead of using <code>mapProps</code> or <code>withProps</code>, which will create new handlers every time when it get updated.</p>
+<p>Usage example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> enhance = compose(</span><br><span class="line">  withState(<span class="string">'value'</span>, <span class="string">'updateValue'</span>, <span class="string">''</span>),</span><br><span class="line">  withHandlers(&#123;</span><br><span class="line">    onChange: <span class="function"><span class="params">props</span> =&gt;</span> event =&gt; &#123;</span><br><span class="line">      props.updateValue(event.target.value)</span><br><span class="line">    &#125;,</span><br><span class="line">    onSubmit: <span class="function"><span class="params">props</span> =&gt;</span> event =&gt; &#123;</span><br><span class="line">      event.preventDefault()</span><br><span class="line">      submitForm(props.value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Form = enhance(<span class="function">(<span class="params">&#123; value, onChange, onSubmit &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;form onSubmit=&#123;onSubmit&#125;&gt;</span><br><span class="line">    &lt;label&gt;Value</span><br><span class="line">      &lt;input type=<span class="string">"text"</span> value=&#123;value&#125; onChange=&#123;onChange&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>form&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="defaultProps"><a href="#defaultProps" class="headerlink" title="defaultProps()"></a><code>defaultProps()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">defaultProps(</span><br><span class="line">  props: <span class="built_in">Object</span></span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Specifies props to be passed by default to the base component. Similar to <code>withProps()</code>, except the props from the owner take precedence over props provided to the HoC.</p>
+<p>Although it has a similar effect, using the <code>defaultProps()</code> HoC is <em>not</em> the same as setting the static <code>defaultProps</code> property directly on the component.</p>
+<h3 id="renameProp"><a href="#renameProp" class="headerlink" title="renameProp()"></a><code>renameProp()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">renameProp(</span><br><span class="line">  oldName: string,</span><br><span class="line">  newName: string</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Renames a single prop.</p>
+<h3 id="renameProps"><a href="#renameProps" class="headerlink" title="renameProps()"></a><code>renameProps()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">renameProps(</span><br><span class="line">  nameMap: &#123; [key: string]: string &#125;</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Renames multiple props, using a map of old prop names to new prop names.</p>
+<h3 id="flattenProp"><a href="#flattenProp" class="headerlink" title="flattenProp()"></a><code>flattenProp()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flattenProp(</span><br><span class="line">  propName: string</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Flattens a prop so that its fields are spread out into the props object.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> enhance = compose(</span><br><span class="line">  withProps(&#123;</span><br><span class="line">    object: &#123; <span class="attr">a</span>: <span class="string">'a'</span>, <span class="attr">b</span>: <span class="string">'b'</span> &#125;,</span><br><span class="line">    c: <span class="string">'c'</span></span><br><span class="line">  &#125;),</span><br><span class="line">  flattenProp(<span class="string">'object'</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">const</span> Abc = enhance(BaseComponent)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Base component receives props: &#123; a: 'a', b: 'b', c: 'c', object: &#123; a: 'a', b: 'b' &#125; &#125;</span></span><br></pre></td></tr></table></figure>
+<p>An example use case for <code>flattenProp()</code> is when receiving fragment data from Relay. Relay fragments are passed as an object of props, which you often want flattened out into its constituent fields:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The `post` prop is an object with title, author, and content fields</span></span><br><span class="line"><span class="keyword">const</span> enhance = flattenProp(<span class="string">'post'</span>)</span><br><span class="line"><span class="keyword">const</span> Post = enhance(<span class="function">(<span class="params">&#123; title, content, author &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;article&gt;</span><br><span class="line">    &lt;h1&gt;&#123;title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;h2&gt;By &#123;author.name&#125;&lt;/</span>h2&gt;</span><br><span class="line">    &lt;div&gt;&#123;content&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>article&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="withState"><a href="#withState" class="headerlink" title="withState()"></a><code>withState()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">withState(</span><br><span class="line">  stateName: string,</span><br><span class="line">  stateUpdaterName: string,</span><br><span class="line">  initialState: any | <span class="function">(<span class="params">props: <span class="built_in">Object</span></span>) =&gt;</span> any</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Passes two additional props to the base component: a state value, and a function to update that state value. The state updater has the following signature:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stateUpdater&lt;T&gt;<span class="function">(<span class="params">(prevValue: T</span>) =&gt;</span> T, ?callback: <span class="built_in">Function</span>): <span class="keyword">void</span></span><br><span class="line">stateUpdater(newValue: any, ?callback: <span class="built_in">Function</span>): <span class="keyword">void</span></span><br></pre></td></tr></table></figure>
+<p>The first form accepts a function which maps the previous state value to a new state value. You’ll likely want to use this state updater along with <code>withHandlers()</code> to create specific updater functions. For example, to create a HoC that adds basic counting functionality to a component:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addCounting = compose(</span><br><span class="line">  withState(<span class="string">'counter'</span>, <span class="string">'setCounter'</span>, <span class="number">0</span>),</span><br><span class="line">  withHandlers(&#123;</span><br><span class="line">    increment: <span class="function">(<span class="params">&#123; setCounter &#125;</span>) =&gt;</span> () =&gt; setCounter(<span class="function"><span class="params">n</span> =&gt;</span> n + <span class="number">1</span>),</span><br><span class="line">    decrement: <span class="function">(<span class="params">&#123; setCounter &#125;</span>) =&gt;</span> () =&gt;  setCounter(<span class="function"><span class="params">n</span> =&gt;</span> n - <span class="number">1</span>),</span><br><span class="line">    reset: <span class="function">(<span class="params">&#123; setCounter &#125;</span>) =&gt;</span> () =&gt; setCounter(<span class="number">0</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>The second form accepts a single value, which is used as the new state.</p>
+<p>Both forms accept an optional second parameter, a callback function that will be executed once <code>setState()</code> is completed and the component is re-rendered.</p>
+<p>An initial state value is required. It can be either the state value itself, or a function that returns an initial state given the initial props.</p>
+<h3 id="withStateHandlers"><a href="#withStateHandlers" class="headerlink" title="withStateHandlers()"></a><code>withStateHandlers()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">withStateHandlers(</span><br><span class="line">  initialState: <span class="built_in">Object</span> | <span class="function">(<span class="params">props: <span class="built_in">Object</span></span>) =&gt;</span> any,</span><br><span class="line">  stateUpdaters: &#123;</span><br><span class="line">    [key: string]: <span class="function">(<span class="params">state:<span class="built_in">Object</span>, props:<span class="built_in">Object</span></span>) =&gt;</span> (...payload: any[]) =&gt; <span class="built_in">Object</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>Passes state object properties and immutable updater functions<br>in a form of <code>(...payload: any[]) =&gt; Object</code> to the base component.</p>
+<p>Every state updater function accepts state, props and payload and must return a new state or undefined. The new state is shallowly merged with the previous state.<br>Returning undefined does not cause a component rerender.</p>
+<p>Example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Counter = withStateHandlers(</span><br><span class="line">  (&#123; initialCounter = <span class="number">0</span> &#125;) =&gt; (&#123;</span><br><span class="line">    counter: initialCounter,</span><br><span class="line">  &#125;),</span><br><span class="line">  &#123;</span><br><span class="line">    incrementOn: <span class="function">(<span class="params">&#123; counter &#125;</span>) =&gt;</span> (value) =&gt; (&#123;</span><br><span class="line">      counter: counter + value,</span><br><span class="line">    &#125;),</span><br><span class="line">    decrementOn: <span class="function">(<span class="params">&#123; counter &#125;</span>) =&gt;</span> (value) =&gt; (&#123;</span><br><span class="line">      counter: counter - value,</span><br><span class="line">    &#125;),</span><br><span class="line">    resetCounter: <span class="function">(<span class="params">_, &#123; initialCounter = <span class="number">0</span> &#125;</span>) =&gt;</span> () =&gt; (&#123;</span><br><span class="line">      counter: initialCounter,</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;</span><br><span class="line">)(</span><br><span class="line">  (&#123; counter, incrementOn, decrementOn, resetCounter &#125;) =&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Button onClick=&#123;() =&gt; incrementOn(<span class="number">2</span>)&#125;&gt;Inc&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Button onClick=&#123;() =&gt; decrementOn(3)&#125;&gt;Dec&lt;/</span>Button&gt;</span><br><span class="line">      &lt;Button onClick=&#123;resetCounter&#125;&gt;Reset&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="withReducer"><a href="#withReducer" class="headerlink" title="withReducer()"></a><code>withReducer()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">withReducer&lt;S, A&gt;(</span><br><span class="line">  stateName: string,</span><br><span class="line">  dispatchName: string,</span><br><span class="line">  reducer: <span class="function">(<span class="params">state: S, action: A</span>) =&gt;</span> S,</span><br><span class="line">  initialState: S | <span class="function">(<span class="params">ownerProps: <span class="built_in">Object</span></span>) =&gt;</span> S</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Similar to <code>withState()</code>, but state updates are applied using a reducer function. A reducer is a function that receives a state and an action, and returns a new state.</p>
+<p>Passes two additional props to the base component: a state value, and a dispatch method. The dispatch method sends an action to the reducer, and the new state is applied.</p>
+<h3 id="branch"><a href="#branch" class="headerlink" title="branch()"></a><code>branch()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">branch(</span><br><span class="line">  test: <span class="function">(<span class="params">props: <span class="built_in">Object</span></span>) =&gt;</span> boolean,</span><br><span class="line">  left: HigherOrderComponent,</span><br><span class="line">  right: ?HigherOrderComponent</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Accepts a test function and two higher-order components. The test function is passed the props from the owner. If it returns true, the <code>left</code> higher-order component is applied to <code>BaseComponent</code>; otherwise, the <code>right</code> higher-order component is applied. If the <code>right</code> is not supplied, it will by default render the wrapped component.</p>
+<h3 id="renderComponent"><a href="#renderComponent" class="headerlink" title="renderComponent()"></a><code>renderComponent()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">renderComponent(</span><br><span class="line">  Component: ReactClass | ReactFunctionalComponent | string</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Takes a component and returns a higher-order component version of that component.</p>
+<p>This is useful in combination with another helper that expects a higher-order component, like <code>branch()</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// `isLoading()` is a function that returns whether or not the component</span></span><br><span class="line"><span class="comment">// is in a loading state</span></span><br><span class="line"><span class="keyword">const</span> spinnerWhileLoading = <span class="function"><span class="params">isLoading</span> =&gt;</span></span><br><span class="line">  branch(</span><br><span class="line">    isLoading,</span><br><span class="line">    renderComponent(Spinner) <span class="comment">// `Spinner` is a React component</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment">// Now use the `spinnerWhileLoading()` helper to add a loading spinner to any</span></span><br><span class="line"><span class="comment">// base component</span></span><br><span class="line"><span class="keyword">const</span> enhance = spinnerWhileLoading(</span><br><span class="line">  props =&gt; !(props.title &amp;&amp; props.author &amp;&amp; props.content)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">const</span> Post = enhance(<span class="function">(<span class="params">&#123; title, author, content &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;article&gt;</span><br><span class="line">    &lt;h1&gt;&#123;title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;h2&gt;By &#123;author.name&#125;&lt;/</span>h2&gt;</span><br><span class="line">    &lt;div&gt;&#123;content&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>article&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="renderNothing"><a href="#renderNothing" class="headerlink" title="renderNothing()"></a><code>renderNothing()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">renderNothing: HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>A higher-order component that always renders <code>null</code>.</p>
+<p>This is useful in combination with another helper that expects a higher-order component, like <code>branch()</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// `hasNoData()` is a function that returns true if the component has</span></span><br><span class="line"><span class="comment">// no data</span></span><br><span class="line"><span class="keyword">const</span> hideIfNoData = <span class="function"><span class="params">hasNoData</span> =&gt;</span></span><br><span class="line">  branch(</span><br><span class="line">    hasNoData,</span><br><span class="line">    renderNothing</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="comment">// Now use the `hideIfNoData()` helper to hide any base component</span></span><br><span class="line"><span class="keyword">const</span> enhance = hideIfNoData(</span><br><span class="line">  props =&gt; !(props.title &amp;&amp; props.author &amp;&amp; props.content)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">const</span> Post = enhance(<span class="function">(<span class="params">&#123; title, author, content &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;article&gt;</span><br><span class="line">    &lt;h1&gt;&#123;title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;h2&gt;By &#123;author.name&#125;&lt;/</span>h2&gt;</span><br><span class="line">    &lt;div&gt;&#123;content&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>article&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="shouldUpdate"><a href="#shouldUpdate" class="headerlink" title="shouldUpdate()"></a><code>shouldUpdate()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shouldUpdate(</span><br><span class="line">  test: <span class="function">(<span class="params">props: <span class="built_in">Object</span>, nextProps: <span class="built_in">Object</span></span>) =&gt;</span> boolean</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Higher-order component version of <a href="https://facebook.github.io/react/docs/react-component.html#shouldcomponentupdate" target="_blank" rel="noopener"><code>shouldComponentUpdate()</code></a>. The test function accepts both the current props and the next props.</p>
+<h3 id="pure"><a href="#pure" class="headerlink" title="pure()"></a><code>pure()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pure: HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Prevents the component from updating unless a prop has changed. Uses <code>shallowEqual()</code> to test for changes.</p>
+<h3 id="onlyUpdateForKeys"><a href="#onlyUpdateForKeys" class="headerlink" title="onlyUpdateForKeys()"></a><code>onlyUpdateForKeys()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onlyUpdateForKeys(</span><br><span class="line">  propKeys: <span class="built_in">Array</span>&lt;string&gt;</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Prevents the component from updating unless a prop corresponding to one of the given keys has updated. Uses <code>shallowEqual()</code> to test for changes.</p>
+<p>This is a much better optimization than the popular approach of using PureRenderMixin, <code>shouldPureComponentUpdate()</code>, or Recompose’s own <code>pure()</code> helper, because those tools compare <em>every</em> prop, whereas <code>onlyUpdateForKeys()</code> only cares about the props that you specify.</p>
+<p>Example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * If the owner passes unnecessary props (say, an array of comments), it will</span></span><br><span class="line"><span class="comment"> * not lead to wasted render cycles.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Goes well with destructuring because it's clear which props the component</span></span><br><span class="line"><span class="comment"> * actually cares about.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> enhance = onlyUpdateForKeys([<span class="string">'title'</span>, <span class="string">'content'</span>, <span class="string">'author'</span>])</span><br><span class="line"><span class="keyword">const</span> Post = enhance(<span class="function">(<span class="params">&#123; title, content, author &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;article&gt;</span><br><span class="line">    &lt;h1&gt;&#123;title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;h2&gt;By &#123;author.name&#125;&lt;/</span>h2&gt;</span><br><span class="line">    &lt;div&gt;&#123;content&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>article&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="onlyUpdateForPropTypes"><a href="#onlyUpdateForPropTypes" class="headerlink" title="onlyUpdateForPropTypes()"></a><code>onlyUpdateForPropTypes()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onlyUpdateForPropTypes: HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Works like <code>onlyUpdateForKeys()</code>, but prop keys are inferred from the <code>propTypes</code> of the base component. Useful in conjunction with <code>setPropTypes()</code>.</p>
+<p>If the base component does not have any <code>propTypes</code>, the component will never receive any updates. This probably isn’t the expected behavior, so a warning is printed to the console.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> PropTypes <span class="keyword">from</span> <span class="string">'prop-types'</span>; <span class="comment">// You need to import prop-types. See https://facebook.github.io/react/docs/typechecking-with-proptypes.html</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> enhance = compose(</span><br><span class="line">  onlyUpdateForPropTypes,</span><br><span class="line">  setPropTypes(&#123;</span><br><span class="line">    title: PropTypes.string.isRequired,</span><br><span class="line">    content: PropTypes.string.isRequired,</span><br><span class="line">    author: PropTypes.object.isRequired</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Post = enhance(<span class="function">(<span class="params">&#123; title, content, author &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;article&gt;</span><br><span class="line">    &lt;h1&gt;&#123;title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;h2&gt;By &#123;author.name&#125;&lt;/</span>h2&gt;</span><br><span class="line">    &lt;div&gt;&#123;content&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>article&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="withContext"><a href="#withContext" class="headerlink" title="withContext()"></a><code>withContext()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">withContext(</span><br><span class="line">  childContextTypes: <span class="built_in">Object</span>,</span><br><span class="line">  getChildContext: <span class="function">(<span class="params">props: <span class="built_in">Object</span></span>) =&gt;</span> <span class="built_in">Object</span></span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Provides context to the component’s children. <code>childContextTypes</code> is an object of React prop types. <code>getChildContext()</code> is a function that returns the child context. Use along with <code>getContext()</code>.</p>
+<h3 id="getContext"><a href="#getContext" class="headerlink" title="getContext()"></a><code>getContext()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getContext(</span><br><span class="line">  contextTypes: <span class="built_in">Object</span></span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Gets values from context and passes them along as props. Use along with <code>withContext()</code>.</p>
+<h3 id="lifecycle"><a href="#lifecycle" class="headerlink" title="lifecycle()"></a><code>lifecycle()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lifecycle(</span><br><span class="line">  spec: <span class="built_in">Object</span>,</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>A higher-order component version of <a href="https://facebook.github.io/react/docs/react-api.html#react.component" target="_blank" rel="noopener"><code>React.Component()</code></a>. It supports the entire <code>Component</code> API, except the <code>render()</code> method, which is implemented by default (and overridden if specified; an error will be logged to the console). You should use this helper as an escape hatch, in case you need to access component lifecycle methods.</p>
+<p>Any state changes made in a lifecycle method, by using <code>setState</code>, will be propagated to the wrapped component as props.</p>
+<p>Example:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PostsList = <span class="function">(<span class="params">&#123; posts &#125;</span>) =&gt;</span> (</span><br><span class="line">  &lt;ul&gt;&#123;posts.map(<span class="function"><span class="params">p</span> =&gt;</span> &lt;li&gt;&#123;p.title&#125;&lt;<span class="regexp">/li&gt;)&#125;&lt;/u</span>l&gt;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> PostsListWithData = lifecycle(&#123;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    fetchPosts().then(<span class="function"><span class="params">posts</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123; posts &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(PostsList);</span><br></pre></td></tr></table></figure></p>
+<h3 id="toClass"><a href="#toClass" class="headerlink" title="toClass()"></a><code>toClass()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">toClass: HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Takes a function component and wraps it in a class. This can be used as a fallback for libraries that need to add a ref to a component, like Relay.</p>
+<p>If the base component is already a class, it returns the given component.</p>
+<h2 id="Static-property-helpers"><a href="#Static-property-helpers" class="headerlink" title="Static property helpers"></a>Static property helpers</h2><p>These functions look like higher-order component helpers — they are curried and component-last. However, rather than returning a new component, they mutate the base component by setting or overriding a static property.</p>
+<h3 id="setStatic"><a href="#setStatic" class="headerlink" title="setStatic()"></a><code>setStatic()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setStatic(</span><br><span class="line">  key: string,</span><br><span class="line">  value: any</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Assigns a value to a static property on the base component.</p>
+<h3 id="setPropTypes"><a href="#setPropTypes" class="headerlink" title="setPropTypes()"></a><code>setPropTypes()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setPropTypes(</span><br><span class="line">  propTypes: <span class="built_in">Object</span></span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Assigns to the <code>propTypes</code> property on the base component.</p>
+<h3 id="setDisplayName"><a href="#setDisplayName" class="headerlink" title="setDisplayName()"></a><code>setDisplayName()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setDisplayName(</span><br><span class="line">  displayName: string</span><br><span class="line">): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Assigns to the <code>displayName</code> property on the base component.</p>
+<h2 id="Utilities"><a href="#Utilities" class="headerlink" title="Utilities"></a>Utilities</h2><p>Recompose also includes some additional helpers that aren’t higher-order components, but are still useful.</p>
+<h3 id="compose"><a href="#compose" class="headerlink" title="compose()"></a><code>compose()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compose(...functions: <span class="built_in">Array</span>&lt;<span class="built_in">Function</span>&gt;): <span class="built_in">Function</span></span><br></pre></td></tr></table></figure>
+<p>Use to compose multiple higher-order components into a single higher-order component. This works exactly like the function of the same name in Redux, or lodash’s <code>flowRight()</code>.</p>
+<h3 id="getDisplayName"><a href="#getDisplayName" class="headerlink" title="getDisplayName()"></a><code>getDisplayName()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getDisplayName(</span><br><span class="line">  component: ReactClass | ReactFunctionalComponent</span><br><span class="line">): string</span><br></pre></td></tr></table></figure>
+<p>Returns the display name of a React component. Falls back to <code>&#39;Component&#39;</code>.</p>
+<h3 id="wrapDisplayName"><a href="#wrapDisplayName" class="headerlink" title="wrapDisplayName()"></a><code>wrapDisplayName()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wrapDisplayName(</span><br><span class="line">  component: ReactClass | ReactFunctionalComponent,</span><br><span class="line">  wrapperName: string</span><br><span class="line">): string</span><br></pre></td></tr></table></figure>
+<p>Returns a wrapped version of a React component’s display name. For instance, if the display name of <code>component</code> is <code>&#39;Post&#39;</code>, and <code>wrapperName</code> is <code>&#39;mapProps&#39;</code>, the return value is <code>&#39;mapProps(Post)&#39;</code>. Most Recompose higher-order components use <code>wrapDisplayName()</code>.</p>
+<h3 id="shallowEqual"><a href="#shallowEqual" class="headerlink" title="shallowEqual()"></a><code>shallowEqual()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shallowEqual(a: <span class="built_in">Object</span>, <span class="attr">b</span>: <span class="built_in">Object</span>): boolean</span><br></pre></td></tr></table></figure>
+<p>Returns true if objects are shallowly equal.</p>
+<h3 id="isClassComponent"><a href="#isClassComponent" class="headerlink" title="isClassComponent()"></a><code>isClassComponent()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isClassComponent(value: any): boolean</span><br></pre></td></tr></table></figure>
+<p>Returns true if the given value is a React component class.</p>
+<h3 id="createSink"><a href="#createSink" class="headerlink" title="createSink()"></a><code>createSink()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createSink(callback: <span class="function">(<span class="params">props: <span class="built_in">Object</span></span>) =&gt;</span> <span class="keyword">void</span>): ReactClass</span><br></pre></td></tr></table></figure>
+<p>Creates a component that renders nothing (null) but calls a callback when receiving new props.</p>
+<h3 id="componentFromProp"><a href="#componentFromProp" class="headerlink" title="componentFromProp()"></a><code>componentFromProp()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">componentFromProp(propName: string): ReactFunctionalComponent</span><br></pre></td></tr></table></figure>
+<p>Creates a component that accepts a component as a prop and renders it with the remaining props.</p>
+<p>Example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> enhance = defaultProps(&#123; <span class="attr">component</span>: <span class="string">'button'</span> &#125;)</span><br><span class="line"><span class="keyword">const</span> Button = enhance(componentFromProp(<span class="string">'component'</span>))</span><br><span class="line"></span><br><span class="line">&lt;Button foo=<span class="string">"bar"</span> /&gt; <span class="comment">// renders &lt;button foo="bar" /&gt;</span></span><br><span class="line">&lt;Button component=<span class="string">"a"</span> foo=<span class="string">"bar"</span> /&gt;  <span class="comment">// renders &lt;a foo="bar" /&gt;</span></span><br><span class="line">&lt;Button component=&#123;Link&#125; foo=<span class="string">"bar"</span> /&gt;  <span class="comment">// renders &lt;Link foo="bar" /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="nest"><a href="#nest" class="headerlink" title="nest()"></a><code>nest()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nest(</span><br><span class="line">  ...Components: <span class="built_in">Array</span>&lt;ReactClass | ReactFunctionalComponent | string&gt;</span><br><span class="line">): ReactClass</span><br></pre></td></tr></table></figure>
+<p>Composes components by nesting each one inside the previous. For example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Given components A, B, and C</span></span><br><span class="line"><span class="keyword">const</span> ABC = nest(A, B, C)</span><br><span class="line">&lt;ABC pass=<span class="string">"through"</span>&gt;Child&lt;<span class="regexp">/ABC&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ Effectively the same as</span></span><br><span class="line"><span class="regexp">&lt;A pass="through"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;B pass="through"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;C pass="through"&gt;</span></span><br><span class="line"><span class="regexp">      Child</span></span><br><span class="line"><span class="regexp">    &lt;/</span>C&gt;</span><br><span class="line">  &lt;<span class="regexp">/B&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>A&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="hoistStatics"><a href="#hoistStatics" class="headerlink" title="hoistStatics()"></a><code>hoistStatics()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hoistStatics(hoc: HigherOrderComponent): HigherOrderComponent</span><br></pre></td></tr></table></figure>
+<p>Augments a higher-order component so that when used, it copies non-react static properties from the base component to the new component. This is helpful when using Recompose with libraries like Relay.</p>
+<p>Note that this only hoists <em>non-react</em> statics. The following static properties will not be hoisted: <code>childContextTypes</code>, <code>contextTypes</code>, <code>defaultProps</code>, <code>displayName</code>, <code>getDefaultProps</code>, <code>mixins</code>, <code>propTypes</code>, and <code>type</code>. The following native static methods will also be ignored: <code>name</code>, <code>length</code>, <code>prototype</code>, <code>caller</code>, <code>arguments</code>, and <code>arity</code>.</p>
+<h2 id="Observable-utilities"><a href="#Observable-utilities" class="headerlink" title="Observable utilities"></a>Observable utilities</h2><p>It turns out that much of the React Component API can be expressed in terms of observables:</p>
+<ul>
+<li>Instead of <code>setState()</code>, combine multiple streams together.</li>
+<li>Instead of <code>getInitialState()</code>, use <code>startWith()</code> or <code>concat()</code>.</li>
+<li>Instead of <code>shouldComponentUpdate()</code>, use <code>distinctUntilChanged()</code>, <code>debounce()</code>, etc.</li>
+</ul>
+<p>Other benefits include:</p>
+<ul>
+<li>No distinction between state and props – everything is a stream.</li>
+<li>No need to worry about unsubscribing from event listeners. Subscriptions are handled for you.</li>
+<li>Sideways data loading is trivial – just combine the props stream with an external stream.</li>
+<li>Access to an ecosystem of observable libraries, such as RxJS.</li>
+</ul>
+<p><strong>Recompose’s observable utilities can be configured to work with any observable or stream-like library. See <a href="#setobservableconfig"><code>setObservableConfig()</code></a> below for details.</strong></p>
+<h3 id="componentFromStream"><a href="#componentFromStream" class="headerlink" title="componentFromStream()"></a><code>componentFromStream()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentFromStream(</span><br><span class="line">  propsToReactNode: <span class="function">(<span class="params">props$: Observable&lt;object&gt;</span>) =&gt;</span> Observable&lt;ReactNode&gt;</span><br><span class="line">): ReactComponent</span><br></pre></td></tr></table></figure>
+<p>Creates a React component by mapping an observable stream of props to a stream of React nodes (vdom).</p>
+<p>You can think of <code>propsToReactNode</code> as a function <code>f</code> such that</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vdom$ = f(props$)</span><br></pre></td></tr></table></figure>
+<p>where <code>props$</code> is a stream of props and <code>vdom$</code> is a stream of React nodes. This formulation similar to the popular notion of React views as a function, often communicated as</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">v</span> = f(d)</span><br></pre></td></tr></table></figure>
+<p>Example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Counter = componentFromStream(<span class="function"><span class="params">props$</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">handler</span>: increment, <span class="attr">stream</span>: increment$ &#125; = createEventHandler()</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">handler</span>: decrement, <span class="attr">stream</span>: decrement$ &#125; = createEventHandler()</span><br><span class="line">  <span class="keyword">const</span> count$ = Observable.merge(</span><br><span class="line">      increment$.mapTo(<span class="number">1</span>),</span><br><span class="line">      decrement$.mapTo(<span class="number">-1</span>)</span><br><span class="line">    )</span><br><span class="line">    .startWith(<span class="number">0</span>)</span><br><span class="line">    .scan(<span class="function">(<span class="params">count, n</span>) =&gt;</span> count + n, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> props$.combineLatest(</span><br><span class="line">    count$,</span><br><span class="line">    (props, count) =&gt;</span><br><span class="line">      &lt;div &#123;...props&#125;&gt;</span><br><span class="line">        Count: &#123;count&#125;</span><br><span class="line">        &lt;button onClick=&#123;increment&#125;&gt;+<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">        &lt;button onClick=&#123;decrement&#125;&gt;-<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="componentFromStreamWithConfig"><a href="#componentFromStreamWithConfig" class="headerlink" title="componentFromStreamWithConfig()"></a><code>componentFromStreamWithConfig()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">componentFromStreamWithConfig&lt;Stream&gt;(</span><br><span class="line">  config: &#123;</span><br><span class="line">    fromESObservable&lt;T&gt;: ?<span class="function">(<span class="params">observable: Observable&lt;T&gt;</span>) =&gt;</span> Stream&lt;T&gt;,</span><br><span class="line">    toESObservable&lt;T&gt;: ?<span class="function">(<span class="params">stream: Stream&lt;T&gt;</span>) =&gt;</span> Observable&lt;T&gt;,</span><br><span class="line">  &#125;</span><br><span class="line">) =&gt; (</span><br><span class="line">  propsToReactNode: <span class="function">(<span class="params">props$: Stream&lt;object&gt;</span>) =&gt;</span> Stream&lt;ReactNode&gt;</span><br><span class="line">): ReactComponent</span><br></pre></td></tr></table></figure>
+<p>Alternative to <code>componentFromStream()</code> that accepts an observable config and returns a customized <code>componentFromStream()</code> which uses the specified observable library. This option is recommended if you want to avoid global state with <code>setObservableConfig()</code>.</p>
+<p><strong>Note: The following configuration modules are not included in the main export. You must import them individually, as shown in the examples.</strong></p>
+<h4 id="RxJS"><a href="#RxJS" class="headerlink" title="RxJS"></a>RxJS</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rxjsConfig <span class="keyword">from</span> <span class="string">'recompose/rxjsObservableConfig'</span></span><br><span class="line"><span class="keyword">const</span> componentFromStream = componentFromStreamWithConfig(rxjsConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="RxJS-4-legacy"><a href="#RxJS-4-legacy" class="headerlink" title="RxJS 4 (legacy)"></a>RxJS 4 (legacy)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rxjs4Config <span class="keyword">from</span> <span class="string">'recompose/rxjs4ObservableConfig'</span></span><br><span class="line"><span class="keyword">const</span> componentFromStream = componentFromStreamWithConfig(rxjs4Config)</span><br></pre></td></tr></table></figure>
+<h4 id="most"><a href="#most" class="headerlink" title="most"></a>most</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mostConfig <span class="keyword">from</span> <span class="string">'recompose/mostObservableConfig'</span></span><br><span class="line"><span class="keyword">const</span> componentFromStream = componentFromStreamWithConfig(mostConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="xstream"><a href="#xstream" class="headerlink" title="xstream"></a>xstream</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xstreamConfig <span class="keyword">from</span> <span class="string">'recompose/xstreamObservableConfig'</span></span><br><span class="line"><span class="keyword">const</span> componentFromStream = componentFromStreamWithConfig(xstreamConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="Bacon"><a href="#Bacon" class="headerlink" title="Bacon"></a>Bacon</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> baconConfig <span class="keyword">from</span> <span class="string">'recompose/baconObservableConfig'</span></span><br><span class="line"><span class="keyword">const</span> componentFromStream = componentFromStreamWithConfig(baconConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="Kefir"><a href="#Kefir" class="headerlink" title="Kefir"></a>Kefir</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kefirConfig <span class="keyword">from</span> <span class="string">'recompose/kefirObservableConfig'</span></span><br><span class="line"><span class="keyword">const</span> componentFromStream = componentFromStreamWithConfig(kefirConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="Flyd"><a href="#Flyd" class="headerlink" title="Flyd"></a>Flyd</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> flydConfig <span class="keyword">from</span> <span class="string">'recompose/flydObservableConfig'</span></span><br><span class="line"><span class="keyword">const</span> componentFromStream = componentFromStreamWithConfig(flydConfig)</span><br></pre></td></tr></table></figure>
+<h3 id="mapPropsStream"><a href="#mapPropsStream" class="headerlink" title="mapPropsStream()"></a><code>mapPropsStream()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mapPropsStream(</span><br><span class="line">  ownerPropsToChildProps: <span class="function">(<span class="params">props$: Observable&lt;object&gt;</span>) =&gt;</span> Observable&lt;object&gt;,</span><br><span class="line">  BaseComponent: ReactElementType</span><br><span class="line">): ReactComponent</span><br></pre></td></tr></table></figure>
+<p>A higher-order component version of <code>componentFromStream()</code> — accepts a function that maps an observable stream of owner props to a stream of child props, rather than directly to a stream of React nodes. The child props are then passed to a base component.</p>
+<p>You may want to use this version to interoperate with other Recompose higher-order component helpers.</p>
+<h3 id="mapPropsStreamWithConfig"><a href="#mapPropsStreamWithConfig" class="headerlink" title="mapPropsStreamWithConfig()"></a><code>mapPropsStreamWithConfig()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mapPropsStreamWithConfig&lt;Stream&gt;(</span><br><span class="line">  config: &#123;</span><br><span class="line">    fromESObservable&lt;T&gt;: ?<span class="function">(<span class="params">observable: Observable&lt;T&gt;</span>) =&gt;</span> Stream&lt;T&gt;,</span><br><span class="line">    toESObservable&lt;T&gt;: ?<span class="function">(<span class="params">stream: Stream&lt;T&gt;</span>) =&gt;</span> Observable&lt;T&gt;,</span><br><span class="line">  &#125;,</span><br><span class="line">) =&gt; (</span><br><span class="line">  ownerPropsToChildProps: <span class="function">(<span class="params">props$: Stream&lt;object&gt;</span>) =&gt;</span> Stream&lt;object&gt;,</span><br><span class="line">  BaseComponent: ReactElementType</span><br><span class="line">): ReactComponent</span><br></pre></td></tr></table></figure>
+<p>Alternative to <code>mapPropsStream()</code> that accepts a observable config and returns a customized <code>mapPropsStream()</code> that uses the specified observable library. See <code>componentFromStreamWithConfig()</code> above.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> enhance = mapPropsStream(<span class="function"><span class="params">props$</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> timeElapsed$ = Observable.interval(<span class="number">1000</span>)</span><br><span class="line">  <span class="keyword">return</span> props$.combineLatest(timeElapsed$, (props, timeElapsed) =&gt; (&#123;</span><br><span class="line">    ...props,</span><br><span class="line">    timeElapsed</span><br><span class="line">  &#125;))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Timer = enhance(<span class="function">(<span class="params">&#123; timeElapsed &#125;</span>) =&gt;</span></span><br><span class="line">  &lt;div&gt;Time elapsed: &#123;timeElapsed&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<h3 id="createEventHandler"><a href="#createEventHandler" class="headerlink" title="createEventHandler()"></a><code>createEventHandler()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">createEventHandler&lt;T&gt;(): &#123;</span><br><span class="line">  handler: <span class="function">(<span class="params">value: T</span>) =&gt;</span> <span class="keyword">void</span>,</span><br><span class="line">  stream: Observable&lt;T&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Returns an object with properties <code>handler</code> and <code>stream</code>. <code>stream</code> is an observable sequence, and <code>handler</code> is a function that pushes new values onto the sequence. Useful for creating event handlers like <code>onClick</code>.</p>
+<h3 id="createEventHandlerWithConfig"><a href="#createEventHandlerWithConfig" class="headerlink" title="createEventHandlerWithConfig()"></a><code>createEventHandlerWithConfig()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">createEventHandlerWithConfig&lt;T&gt;(</span><br><span class="line">  config: &#123;</span><br><span class="line">    fromESObservable&lt;T&gt;: ?<span class="function">(<span class="params">observable: Observable&lt;T&gt;</span>) =&gt;</span> Stream&lt;T&gt;,</span><br><span class="line">    toESObservable&lt;T&gt;: ?<span class="function">(<span class="params">stream: Stream&lt;T&gt;</span>) =&gt;</span> Observable&lt;T&gt;,</span><br><span class="line">  &#125;</span><br><span class="line">) =&gt; (): &#123;</span><br><span class="line">  handler: <span class="function">(<span class="params">value: T</span>) =&gt;</span> <span class="keyword">void</span>,</span><br><span class="line">  stream: Observable&lt;T&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Alternative to <code>createEventHandler()</code> that accepts an observable config and returns a customized <code>createEventHandler()</code> that uses the specified observable library. See <code>componentFromStreamWithConfig()</code> above.</p>
+<h3 id="setObservableConfig"><a href="#setObservableConfig" class="headerlink" title="setObservableConfig()"></a><code>setObservableConfig()</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setObservableConfig&lt;Stream&gt;(&#123;</span><br><span class="line">  fromESObservable&lt;T&gt;: ?<span class="function">(<span class="params">observable: Observable&lt;T&gt;</span>) =&gt;</span> Stream&lt;T&gt;,</span><br><span class="line">  toESObservable&lt;T&gt;: ?<span class="function">(<span class="params">stream: Stream&lt;T&gt;</span>) =&gt;</span> Observable&lt;T&gt;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>Note: <code>setObservableConfig()</code> uses global state, and could break apps if used inside a package intended to be shared. See <code>componentFromStreamWithConfig()</code> and <code>mapPropsStreamWithConfig()</code> as alternatives for package authors.</strong></p>
+<p>Observables in Recompose are plain objects that conform to the <a href="https://github.com/zenparsing/es-observable" target="_blank" rel="noopener">ES Observable proposal</a>. Usually, you’ll want to use them alongside an observable library like RxJS so that you have access to its suite of operators. By default, this requires you to convert the observables provided by Recompose before applying any transforms:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mapPropsStream(<span class="function"><span class="params">props$</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> rxjsProps$ = Rx.Observable.from(props$)</span><br><span class="line">  <span class="comment">// ...now you can use map, filter, scan, etc.</span></span><br><span class="line">  <span class="keyword">return</span> transformedProps$</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>This quickly becomes tedious. Rather than performing this transform for each stream individually, <code>setObservableConfig()</code> sets a global observable transform that is applied automatically.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Rx <span class="keyword">from</span> <span class="string">'rxjs'</span></span><br><span class="line"><span class="keyword">import</span> &#123; setObservableConfig &#125; <span class="keyword">from</span> <span class="string">'recompose'</span></span><br><span class="line"></span><br><span class="line">setObservableConfig(&#123;</span><br><span class="line">  <span class="comment">// Converts a plain ES observable to an RxJS 5 observable</span></span><br><span class="line">  fromESObservable: Rx.Observable.from</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>In addition to <code>fromESObservable</code>, the config object also accepts <code>toESObservable</code>, which converts a stream back into an ES observable. Because RxJS 5 observables already conform to the ES observable spec, <code>toESObservable</code> is not necessary in the above example. However, it is required for libraries like RxJS 4 or xstream, whose streams do not conform to the ES observable spec.</p>
+<p>Fortunately, you likely don’t need to worry about how to configure Recompose for your favorite stream library, because Recompose provides drop-in configuration for you.</p>
+<p><strong>Note: The following configuration modules are not included in the main export. You must import them individually, as shown in the examples.</strong></p>
+<h4 id="RxJS-1"><a href="#RxJS-1" class="headerlink" title="RxJS"></a>RxJS</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rxjsconfig <span class="keyword">from</span> <span class="string">'recompose/rxjsObservableConfig'</span></span><br><span class="line">setObservableConfig(rxjsconfig)</span><br></pre></td></tr></table></figure>
+<h4 id="RxJS-4-legacy-1"><a href="#RxJS-4-legacy-1" class="headerlink" title="RxJS 4 (legacy)"></a>RxJS 4 (legacy)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rxjs4config <span class="keyword">from</span> <span class="string">'recompose/rxjs4ObservableConfig'</span></span><br><span class="line">setObservableConfig(rxjs4config)</span><br></pre></td></tr></table></figure>
+<h4 id="most-1"><a href="#most-1" class="headerlink" title="most"></a>most</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mostConfig <span class="keyword">from</span> <span class="string">'recompose/mostObservableConfig'</span></span><br><span class="line">setObservableConfig(mostConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="xstream-1"><a href="#xstream-1" class="headerlink" title="xstream"></a>xstream</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xstreamConfig <span class="keyword">from</span> <span class="string">'recompose/xstreamObservableConfig'</span></span><br><span class="line">setObservableConfig(xstreamConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="Bacon-1"><a href="#Bacon-1" class="headerlink" title="Bacon"></a>Bacon</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> baconConfig <span class="keyword">from</span> <span class="string">'recompose/baconObservableConfig'</span></span><br><span class="line">setObservableConfig(baconConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="Kefir-1"><a href="#Kefir-1" class="headerlink" title="Kefir"></a>Kefir</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kefirConfig <span class="keyword">from</span> <span class="string">'recompose/kefirObservableConfig'</span></span><br><span class="line">setObservableConfig(kefirConfig)</span><br></pre></td></tr></table></figure>
+<h4 id="Flyd-1"><a href="#Flyd-1" class="headerlink" title="Flyd"></a>Flyd</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> flydConfig <span class="keyword">from</span> <span class="string">'recompose/flydObservableConfig'</span></span><br><span class="line">setObservableConfig(flydConfig)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Recompose/" rel="tag"># Recompose</a>
+          
+            <a href="/tags/hoc/" rel="tag"># hoc</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/02/翻译| Simplify your React components with Apollo and Recompose/" rel="next" title="翻译| Simplify your React components with Apollo and Recompose">
+                <i class="fa fa-chevron-left"></i> 翻译| Simplify your React components with Apollo and Recompose
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/04/apollo-client-Incremental loading/" rel="prev" title="Apollo-client 的Incremental loading(增量加载)">
+                Apollo-client 的Incremental loading(增量加载) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="React-Apollo" />
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#API"><span class="nav-number">1.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TOC"><span class="nav-number">1.1.</span> <span class="nav-text">TOC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Higher-order-components"><span class="nav-number">1.2.</span> <span class="nav-text">Higher-order components</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mapProps"><span class="nav-number">1.2.1.</span> <span class="nav-text">mapProps()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#withProps"><span class="nav-number">1.2.2.</span> <span class="nav-text">withProps()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#withPropsOnChange"><span class="nav-number">1.2.3.</span> <span class="nav-text">withPropsOnChange()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#withHandlers"><span class="nav-number">1.2.4.</span> <span class="nav-text">withHandlers()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defaultProps"><span class="nav-number">1.2.5.</span> <span class="nav-text">defaultProps()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#renameProp"><span class="nav-number">1.2.6.</span> <span class="nav-text">renameProp()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#renameProps"><span class="nav-number">1.2.7.</span> <span class="nav-text">renameProps()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flattenProp"><span class="nav-number">1.2.8.</span> <span class="nav-text">flattenProp()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#withState"><span class="nav-number">1.2.9.</span> <span class="nav-text">withState()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#withStateHandlers"><span class="nav-number">1.2.10.</span> <span class="nav-text">withStateHandlers()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#withReducer"><span class="nav-number">1.2.11.</span> <span class="nav-text">withReducer()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branch"><span class="nav-number">1.2.12.</span> <span class="nav-text">branch()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#renderComponent"><span class="nav-number">1.2.13.</span> <span class="nav-text">renderComponent()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#renderNothing"><span class="nav-number">1.2.14.</span> <span class="nav-text">renderNothing()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shouldUpdate"><span class="nav-number">1.2.15.</span> <span class="nav-text">shouldUpdate()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pure"><span class="nav-number">1.2.16.</span> <span class="nav-text">pure()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onlyUpdateForKeys"><span class="nav-number">1.2.17.</span> <span class="nav-text">onlyUpdateForKeys()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onlyUpdateForPropTypes"><span class="nav-number">1.2.18.</span> <span class="nav-text">onlyUpdateForPropTypes()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#withContext"><span class="nav-number">1.2.19.</span> <span class="nav-text">withContext()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getContext"><span class="nav-number">1.2.20.</span> <span class="nav-text">getContext()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lifecycle"><span class="nav-number">1.2.21.</span> <span class="nav-text">lifecycle()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toClass"><span class="nav-number">1.2.22.</span> <span class="nav-text">toClass()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Static-property-helpers"><span class="nav-number">1.3.</span> <span class="nav-text">Static property helpers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setStatic"><span class="nav-number">1.3.1.</span> <span class="nav-text">setStatic()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setPropTypes"><span class="nav-number">1.3.2.</span> <span class="nav-text">setPropTypes()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setDisplayName"><span class="nav-number">1.3.3.</span> <span class="nav-text">setDisplayName()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Utilities"><span class="nav-number">1.4.</span> <span class="nav-text">Utilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#compose"><span class="nav-number">1.4.1.</span> <span class="nav-text">compose()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getDisplayName"><span class="nav-number">1.4.2.</span> <span class="nav-text">getDisplayName()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wrapDisplayName"><span class="nav-number">1.4.3.</span> <span class="nav-text">wrapDisplayName()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shallowEqual"><span class="nav-number">1.4.4.</span> <span class="nav-text">shallowEqual()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isClassComponent"><span class="nav-number">1.4.5.</span> <span class="nav-text">isClassComponent()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createSink"><span class="nav-number">1.4.6.</span> <span class="nav-text">createSink()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#componentFromProp"><span class="nav-number">1.4.7.</span> <span class="nav-text">componentFromProp()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nest"><span class="nav-number">1.4.8.</span> <span class="nav-text">nest()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hoistStatics"><span class="nav-number">1.4.9.</span> <span class="nav-text">hoistStatics()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Observable-utilities"><span class="nav-number">1.5.</span> <span class="nav-text">Observable utilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#componentFromStream"><span class="nav-number">1.5.1.</span> <span class="nav-text">componentFromStream()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#componentFromStreamWithConfig"><span class="nav-number">1.5.2.</span> <span class="nav-text">componentFromStreamWithConfig()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RxJS"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">RxJS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RxJS-4-legacy"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">RxJS 4 (legacy)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#most"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">most</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xstream"><span class="nav-number">1.5.2.4.</span> <span class="nav-text">xstream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bacon"><span class="nav-number">1.5.2.5.</span> <span class="nav-text">Bacon</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kefir"><span class="nav-number">1.5.2.6.</span> <span class="nav-text">Kefir</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flyd"><span class="nav-number">1.5.2.7.</span> <span class="nav-text">Flyd</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapPropsStream"><span class="nav-number">1.5.3.</span> <span class="nav-text">mapPropsStream()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapPropsStreamWithConfig"><span class="nav-number">1.5.4.</span> <span class="nav-text">mapPropsStreamWithConfig()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createEventHandler"><span class="nav-number">1.5.5.</span> <span class="nav-text">createEventHandler()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createEventHandlerWithConfig"><span class="nav-number">1.5.6.</span> <span class="nav-text">createEventHandlerWithConfig()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setObservableConfig"><span class="nav-number">1.5.7.</span> <span class="nav-text">setObservableConfig()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RxJS-1"><span class="nav-number">1.5.7.1.</span> <span class="nav-text">RxJS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RxJS-4-legacy-1"><span class="nav-number">1.5.7.2.</span> <span class="nav-text">RxJS 4 (legacy)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#most-1"><span class="nav-number">1.5.7.3.</span> <span class="nav-text">most</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xstream-1"><span class="nav-number">1.5.7.4.</span> <span class="nav-text">xstream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bacon-1"><span class="nav-number">1.5.7.5.</span> <span class="nav-text">Bacon</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kefir-1"><span class="nav-number">1.5.7.6.</span> <span class="nav-text">Kefir</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flyd-1"><span class="nav-number">1.5.7.7.</span> <span class="nav-text">Flyd</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">126.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

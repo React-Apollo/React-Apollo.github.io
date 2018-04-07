@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="graphql,Graphcool," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概览Prisma 使用  GraphQL Schema Definition Language 定义数据模型.数据模型可以写在一个或多个.graphql文件中.在内部它是 Prisma 生成实际数据库 schema 的基础.如果只使用单个的定义文件,可以被称为datamodel.graphql. .graphql文件需要在prisma.yml中声明. 例如: 123datamodel:  - t">
+<meta name="keywords" content="graphql,Graphcool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻译|Prisma  Data Model">
+<meta property="og:url" content="https://React-Apollo.github.io/2018/02/09/翻译|Prisma  Data Model/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="概览Prisma 使用  GraphQL Schema Definition Language 定义数据模型.数据模型可以写在一个或多个.graphql文件中.在内部它是 Prisma 生成实际数据库 schema 的基础.如果只使用单个的定义文件,可以被称为datamodel.graphql. .graphql文件需要在prisma.yml中声明. 例如: 123datamodel:  - t">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-07T02:42:18.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="翻译|Prisma  Data Model">
+<meta name="twitter:description" content="概览Prisma 使用  GraphQL Schema Definition Language 定义数据模型.数据模型可以写在一个或多个.graphql文件中.在内部它是 Prisma 生成实际数据库 schema 的基础.如果只使用单个的定义文件,可以被称为datamodel.graphql. .graphql文件需要在prisma.yml中声明. 例如: 123datamodel:  - t">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2018/02/09/翻译|Prisma  Data Model/"/>
+
+
+
+
+
+  <title>翻译|Prisma  Data Model | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2018/02/09/翻译|Prisma  Data Model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">翻译|Prisma  Data Model</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T11:02:23+00:00">
+                2018-02-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:42:18+00:00">
+                2018-04-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/09/翻译|Prisma  Data Model/" class="leancloud_visitors" data-flag-title="翻译|Prisma  Data Model">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,537
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>Prisma 使用  <a href="https://blog.graph.cool/graphql-sdl-schema-definition-language-6755bcb9ce51" target="_blank" rel="noopener"><code>GraphQL Schema Definition Language</code></a> 定义数据模型.数据模型可以写在一个或多个<code>.graphql</code>文件中.在内部它是 Prisma 生成实际数据库 schema 的基础.如果只使用单个的定义文件,可以被称为<code>datamodel.graphql</code>.</p>
+<p><code>.graphql</code>文件需要在<code>prisma.yml</code>中声明. 例如:</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">datamodel:</span><br><span class="line">  -<span class="ruby"> types.graphql</span></span><br><span class="line"><span class="ruby">  - enums.graphql</span></span><br></pre></td></tr></table></figure>
+<p>如果是单个文件:<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">datamodel:</span>datamodel.graphql</span><br></pre></td></tr></table></figure></p>
+<p>data model 是 基于Prisma服务的 GraphQL API 的基础. Prisma会以此生成一套强有力的 Graphql Schema(被称为 <strong>Prisma data schema</strong>),为 data model 定义了全部的 CRUD 操作.</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>一个简单的<code>datamodel.graphql</code>文件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">type Tweet &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  createdAt: DateTime!</span><br><span class="line">  text: <span class="built_in">String</span>!</span><br><span class="line">  owner: User!</span><br><span class="line">  location: Location!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type User &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  createdAt: DateTime!</span><br><span class="line">  updatedAt: DateTime!</span><br><span class="line">  handle: <span class="built_in">String</span>! @unique</span><br><span class="line">  name: <span class="built_in">String</span></span><br><span class="line">  tweets: [Tweet!]!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Location &#123;</span><br><span class="line">  latitude: Float!</span><br><span class="line">  longitude: Float!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实例展示了一些data model 的重要概念:</p>
+<ul>
+<li>三个类型 <code>Tweet</code>,<code>User</code>,<code>Location</code>被映射到数据库的表中</li>
+<li><code>User</code>,<code>Tweet</code>之间是双向关系</li>
+<li><code>Tweet</code>到<code>Location</code>是单向关系</li>
+<li>除了 <code>User</code>的 <code>name</code>字段,所有的字段都是必须的(用!表示)</li>
+<li><code>id</code>,<code>createdAt</code>,<code>updateAt</code>字段由 Prisma 管理,在 GraphQL API 中只读</li>
+</ul>
+<p>创建和更新 datamodel 和修改文本文件一样简单.一旦 datamodel 的修改达到你的需求,可以执行<code>prisma deploy</code>命令 :<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">$ prisma deploy</span><br><span class="line"></span><br><span class="line">Changes:</span><br><span class="line"></span><br><span class="line">  Tweet (Type)</span><br><span class="line">  + Created<span class="built_in"> type </span>`Tweet`</span><br><span class="line">  + Created field `id` of<span class="built_in"> type </span>`GraphQLID!`</span><br><span class="line">  + Created field `createdAt` of<span class="built_in"> type </span>`DateTime!`</span><br><span class="line">  + Created field `text` of<span class="built_in"> type </span>`String!`</span><br><span class="line">  + Created field `owner` of<span class="built_in"> type </span>`Relation!`</span><br><span class="line">  + Created field `location` of<span class="built_in"> type </span>`Relation!`</span><br><span class="line">  + Created field `updatedAt` of<span class="built_in"> type </span>`DateTime!`</span><br><span class="line"></span><br><span class="line"> <span class="built_in"> User </span>(Type)</span><br><span class="line">  + Created<span class="built_in"> type </span>`User`</span><br><span class="line">  + Created field `id` of<span class="built_in"> type </span>`GraphQLID!`</span><br><span class="line">  + Created field `createdAt` of<span class="built_in"> type </span>`DateTime!`</span><br><span class="line">  + Created field `updatedAt` of<span class="built_in"> type </span>`DateTime!`</span><br><span class="line">  + Created field `handle` of<span class="built_in"> type </span>`String!`</span><br><span class="line">  + Created field `name` of<span class="built_in"> type </span>`String`</span><br><span class="line">  + Created field `tweets` of<span class="built_in"> type </span>`[Relation!]!`</span><br><span class="line"></span><br><span class="line">  Location (Type)</span><br><span class="line">  + Created<span class="built_in"> type </span>`Location`</span><br><span class="line">  + Created field `latitude` of<span class="built_in"> type </span>`Float!`</span><br><span class="line">  + Created field `longitude` of<span class="built_in"> type </span>`Float!`</span><br><span class="line">  + Created field `id` of<span class="built_in"> type </span>`GraphQLID!`</span><br><span class="line">  + Created field `updatedAt` of<span class="built_in"> type </span>`DateTime!`</span><br><span class="line">  + Created field `createdAt` of<span class="built_in"> type </span>`DateTime!`</span><br><span class="line"></span><br><span class="line">  TweetToUser (Relation)</span><br><span class="line">  + Created relation between Tweet <span class="keyword">and</span> User</span><br><span class="line"></span><br><span class="line">  LocationToTweet (Relation)</span><br><span class="line">  + Created relation between Location <span class="keyword">and</span> Tweet</span><br><span class="line"></span><br><span class="line">Applying changes<span class="built_in">..</span>. (22/22)</span><br><span class="line">Applying changes<span class="built_in">..</span>. 0.4s</span><br></pre></td></tr></table></figure></p>
+<h3 id="构建-data-model-模块"><a href="#构建-data-model-模块" class="headerlink" title="构建 data model 模块"></a>构建 data model 模块</h3><p>有几种可以使用的模块用于描述 data model</p>
+<ul>
+<li><code>Types</code> 包含fields,用于把类似的实体分组. 每个data model 中的 type 都被映射到数据库的表和 CRUD操作,然后添加的 graphQL 的 schema 中</li>
+<li><code>Relations</code> 描述 typee 之间的关系</li>
+<li><code>Interfaces</code>属于抽象 types,包含了一组特定的字段, type在实现时必须要遵循. 现在 interface 还不能由用户定义.但是已经有这样的需求.</li>
+<li>特定的<code>directives</code>指令,包含不同的使用用例, 例如 type 约束或者是级联删除的行为.</li>
+</ul>
+<p>接下里的内容就是描述这些构建块的具体细节问题</p>
+<h2 id="Prisma-的-database-和-data-model"><a href="#Prisma-的-database-和-data-model" class="headerlink" title="Prisma 的 database 和 data model"></a>Prisma 的 database 和 data model</h2><p>刚开使用 GraphQL和 Prisma时, <code>.graphql</code>文件的数量会让你不是所措.然而理解每个文件扮演的角色又是很关键的问题.<br>总体上讲,一个<code>graphql</code>文件可以包含下面的内容:</p>
+<ul>
+<li>GraphQL 的操作(例如  query, mutate或者 subscriptions)</li>
+<li>使用 SDL 定义的 GraphQL type</li>
+</ul>
+<p>如果要区分 Prisma database schema 和 data model的话,只有后者是有关联的!</p>
+<p>现在这一很重要<code>data model 并不是实际的 GraphQL schema</code>,虽然也是用 SDL定义的,但是缺少 root types,所以不能生成实际的 API 操作符! Prisma 只是使用 data model作为一个硬工具表达一下具体的 data model 的外观.</p>
+<p>正如上面提到的, Prisma 会生成实际的 GraphQL schema,包含<code>query</code>,<code>mutation</code>,<code>subscription</code> 三种 root type. 生成的 <code>prisma.graphql</code>文件被称为 <strong> Prisma database schema </strong>.注意了,一定不要修改这个文件.这是系统自己生成的.</p>
+<p>作为实例,看看一个最简单的 data model:</p>
+<p><code>datamodel graphql</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type User &#123;</span><br><span class="line">  id: ID! @uniue</span><br><span class="line">  name: <span class="built_in">String</span>!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果部署了 Prisma 的服务, Prisma 将会生成服务所需的一些 API:</p>
+<p><code>prisma.graphql</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">type Query &#123;</span><br><span class="line">  users(where: UserWhereInput, <span class="attr">orderBy</span>: UserOrderByInput, <span class="attr">skip</span>: Int, <span class="attr">after</span>: <span class="built_in">String</span>, <span class="attr">before</span>: <span class="built_in">String</span>, <span class="attr">first</span>: Int, <span class="attr">last</span>: Int): [User]!</span><br><span class="line">  user(where: UserWhereUniqueInput!): User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Mutation &#123;</span><br><span class="line">  createUser(data: UserCreateInput!): User!</span><br><span class="line">  updateUser(data: UserUpdateInput!, <span class="attr">where</span>: UserWhereUniqueInput!): User</span><br><span class="line">  deleteUser(where: UserWhereUniqueInput!): User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Subscription &#123;</span><br><span class="line">  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其实在生成的 Graphql server 中还有一个<code>.graphql</code>文件, 这个文件被称为 application shema. 这里定义的 API是<code>实际暴露给最终用户的</code>.   Prisma 的 API 就作为 “query egine”来实际执行操作. </p>
+</blockquote>
+<p>所以,一个 基于PRISMA的Graphql server实际包含两个 API.可以认为是服务的两个数据层:</p>
+<ul>
+<li>Aplication layer: 定义客户端可以使用的操作</li>
+<li>Database layer: 定义 Prisma database 的服务</li>
+</ul>
+<h2 id="Object-types"><a href="#Object-types" class="headerlink" title="Object types"></a>Object types</h2><p>object type(简称为 type)定义了实现data model 的实际组成部分. 用于代表应用主域的实体.<br>如果你很熟悉 SQL databases,可以把 type 看成是 关系型数据库的 table,一个 type 有一个名字,一个或者多个字段.<br>type的实例称为 <em>node</em>,这个术语指的是 data graph 中的 node. 在 data model 中定义的每个 type和 Prisma生成的 database schema 很类似.</p>
+<h3 id="定义一个-object-type"><a href="#定义一个-object-type" class="headerlink" title="定义一个 object type"></a>定义一个 object type</h3><p>用<code>type</code>关键字定义一个object type</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">type Article &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  text: <span class="built_in">String</span>!</span><br><span class="line">  isPublished: <span class="built_in">Boolean</span> @<span class="keyword">default</span>(value: <span class="string">"false"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">上面的 type 定义包含下面的属性:</span></span><br><span class="line"><span class="string">- Name:`</span>Article<span class="string">`</span></span><br><span class="line"><span class="string">- Fields: `</span>id<span class="string">`,`</span>text<span class="string">`,`</span>isPublished<span class="string">`(默认值是`</span><span class="literal">false</span><span class="string">`)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 为 type 生成 API 操作符</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">在 datamodel 中定义的 type 会影响 prisma graphql API 的生成. </span></span><br><span class="line"><span class="string">- queries</span></span><br><span class="line"><span class="string">- mutations</span></span><br><span class="line"><span class="string">- subscriptions</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## Fields</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Fields 是构建 type的基础块. 每个字段由名字来引用, 要么是标量,要么是 relation 字段</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 标量类型</span></span><br><span class="line"><span class="string">#### String</span></span><br><span class="line"><span class="string">`</span><span class="built_in">String</span><span class="string">`承载 text,可以用于 username,blog的正文,或者代表 txt 的内容</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">注意: String在共享的 cluster 中容量是256kb.可以通过 clusters 的配置来扩增.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">在 query 或者 mutation 中, String字段要用双引号定义:`</span>string:<span class="string">"some-string"</span><span class="string">`</span></span><br><span class="line"><span class="string">#### Integer</span></span><br><span class="line"><span class="string">`</span>Int<span class="string">`是没有小数位的数字,可以用来储存成分重量, 或者最小年龄等. </span></span><br><span class="line"><span class="string">  `</span>int:<span class="number">42</span><span class="string">`</span></span><br><span class="line"><span class="string">#### Float</span></span><br><span class="line"><span class="string">`</span>float<span class="string">`是有小数位的数字,  `</span>float:<span class="number">42</span><span class="string">`,`</span>float:<span class="number">4.2</span><span class="string">`</span></span><br><span class="line"><span class="string">#### Boolean</span></span><br><span class="line"><span class="string">`</span>boolean:<span class="literal">true</span><span class="string">`,`</span>boolean:<span class="literal">false</span><span class="string">`</span></span><br><span class="line"><span class="string">#### DateTime</span></span><br><span class="line"><span class="string">`</span>DateTime<span class="string">` type 用来保存日期或者时间值. 某人的出生日期就是一个例子.</span></span><br><span class="line"><span class="string">在`</span>query<span class="string">`和`</span>mutations<span class="string">`中,`</span>DateTime<span class="string">`字段要定义为`</span>ISO8601 format<span class="string">`.</span></span><br><span class="line"><span class="string">- `</span>datetime:<span class="string">"2015"</span><span class="string">`</span></span><br><span class="line"><span class="string">#### Enum 枚举</span></span><br><span class="line"><span class="string">用于定义服务的范围</span></span><br><span class="line"><span class="string">和 boolean 一样,有一套预设值,不同点是可以自己设置.   限定为`</span><span class="number">191</span>个字符<span class="string">`</span></span><br><span class="line"><span class="string">#### JSON</span></span><br><span class="line"><span class="string">有时候要储存松散的数据结构,可以可以用 JSON.</span></span><br><span class="line"><span class="string">`</span>json: <span class="string">"&#123;\"int\": 1, \"string\": \"value\"&#125;"</span><span class="string">`</span></span><br><span class="line"><span class="string">#### ID</span></span><br><span class="line"><span class="string">25个字符串,基于 cuid.</span></span><br><span class="line"><span class="string">### Type modifiers</span></span><br><span class="line"><span class="string">#### List</span></span><br><span class="line"><span class="string">`</span>listString: [<span class="string">"a string"</span>, <span class="string">"another string"</span>], <span class="attr">listInt</span>: [<span class="number">12</span>, <span class="number">24</span>]<span class="string">`.</span></span><br><span class="line"><span class="string">#### Required</span></span><br><span class="line"><span class="string">fields 可以被标记位 required(non-null).  `</span>name:<span class="built_in">String</span>!<span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### field 限定</span></span><br><span class="line"><span class="string">字段可以使用特定的字段限定</span></span><br><span class="line"><span class="string">#### Unique</span></span><br><span class="line"><span class="string">连个 node,不能有同样的值.唯一例外是`</span><span class="literal">null</span><span class="string">`.</span></span><br><span class="line"><span class="string">&gt;通常 User type 的`</span>email<span class="string">`是唯一的</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">只有开始的191个字符是唯一的, 并且是区分大小写的. </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line">type User &#123;</span><br><span class="line">  email: <span class="built_in">String</span>! @unique</span><br><span class="line">  age: Int!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于使用<code>@unique</code>限定的字段可以借此查询对应的 node.<br>例如可以返回拥有此 email 的用户节点:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">query &#123;</span><br><span class="line">  user(where: &#123;</span><br><span class="line">    email: <span class="string">"alice@graph.cool"</span></span><br><span class="line">  &#125;) &#123;</span><br><span class="line">    age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="后续还有其他的限定条件加入"><a href="#后续还有其他的限定条件加入" class="headerlink" title="后续还有其他的限定条件加入"></a>后续还有其他的限定条件加入</h4><h3 id="Default-Value"><a href="#Default-Value" class="headerlink" title="Default Value"></a>Default Value</h3><p>可以为标量设定默认值. <code>@default</code>指令</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type Story &#123;</span><br><span class="line">  isPublished: <span class="built_in">Boolean</span> @<span class="keyword">default</span>(value: <span class="string">"false"</span>)</span><br><span class="line">  someNumber: Int! @<span class="keyword">default</span>(value: <span class="string">"42"</span>)</span><br><span class="line">  title: <span class="built_in">String</span>! @<span class="keyword">default</span>(value: <span class="string">"My New Post"</span>)</span><br><span class="line">  publishDate: DateTime! @<span class="keyword">default</span>(value: <span class="string">"2018-01-26"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一定要用双引号,即使不是字符串</p>
+<h3 id="System-fields"><a href="#System-fields" class="headerlink" title="System fields"></a>System fields</h3><p>三个字段<code>id</code>,<code>createdAt</code>,<code>updatedAT</code>有特殊的意义. 在 datamodel 中是可选,但是在底层的数据库中会一直存在.<br>除非要是导入的数据, 否则, 这三个值在 graphql API 中是只读的.</p>
+<h2 id="Relations"><a href="#Relations" class="headerlink" title="Relations"></a>Relations</h2><p>relation 定义了连接两个 type 的语法. 两个类型通过 relation fields 连接在一起.如果 relation 可能会混淆的时候,要使用<code>@relation</code>来区分开<br>连接自身的字段也可以</p>
+<h3 id="Required-relations"><a href="#Required-relations" class="headerlink" title="Required relations"></a>Required relations</h3><h3 id="relation-directive"><a href="#relation-directive" class="headerlink" title="@relation directive"></a><code>@relation</code> directive</h3><p>有两个参数</p>
+<ul>
+<li><code>name</code>: 用于识别 relation.</li>
+<li><code>onDelete</code>:用于定义删除行为:<ul>
+<li><code>SET_NULL</code>(default):设定 related node 为<code>null</code></li>
+<li><code>CASCADE</code>:删除 related nodes.</li>
+</ul>
+</li>
+</ul>
+<p>实例:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type User &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  stories: [Story!]! @relation(name: <span class="string">"StoriesByUser"</span> onDelete: CASCADE)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Story &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  text: <span class="built_in">String</span>!</span><br><span class="line">  author: User @relation(name: <span class="string">"StoriesByUser"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面例子的删除行为:</p>
+<ul>
+<li>当<code>User</code>node被删除以后, 与之有关的<code>Story</code> node 也被删除</li>
+<li>当<code>Story</code> node被删除,只会从<code>User</code> 的<code>stories</code>列表中删除</li>
+</ul>
+<h4 id="省略-relation指令"><a href="#省略-relation指令" class="headerlink" title="省略@relation指令"></a>省略<code>@relation</code>指令</h4><p>当两个 type 不会发生歧义的时候,可以不用写这个指令</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type User &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  stories: [Story!]!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Story &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  text: <span class="built_in">String</span>!</span><br><span class="line">  author: User</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当<code>User</code>删除掉, <code>author</code>中所有的相关<code>Story</code>都会被设为<code>null</code>.如果 author 被设定为 required,操作就会引发错误</li>
+<li>当一个<code>Story</code>被删除掉以后,只会从<code>User</code> node  list 中删除</li>
+</ul>
+<h4 id="在-relation指令中使用name参数"><a href="#在-relation指令中使用name参数" class="headerlink" title="在@relation指令中使用name参数"></a>在<code>@relation</code>指令中使用<code>name</code>参数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">type User &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  writtenStories: [Story!]! @relation(name: <span class="string">"WrittenStories"</span>)</span><br><span class="line">  likedStories: [Story!]! @relation(name: <span class="string">"LikedStories"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Story &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  text: <span class="built_in">String</span>!</span><br><span class="line">  author: User! @relation(name: <span class="string">"WrittenStories"</span>)</span><br><span class="line">  likedBy: [User!]! @relation(name: <span class="string">"LikedStories"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在-relation指令中使用onDelete参数"><a href="#在-relation指令中使用onDelete参数" class="headerlink" title="在@relation指令中使用onDelete参数"></a>在<code>@relation</code>指令中使用<code>onDelete</code>参数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">type User &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  comments: [Comment!]! @relation(name: <span class="string">"CommentAuthor"</span>, <span class="attr">onDelete</span>: CASCADE)</span><br><span class="line">  blog: Blog @relation(name: <span class="string">"BlogOwner"</span>, <span class="attr">onDelete</span>: CASCADE)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Blog &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  comments: [Comment!]! @relation(name: <span class="string">"Comments"</span>, <span class="attr">onDelete</span>: CASCADE)</span><br><span class="line">  owner: User! @relation(name: <span class="string">"BlogOwner"</span>, <span class="attr">onDelete</span>: SET_NULL)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Comment &#123;</span><br><span class="line">  id: ID! @unique</span><br><span class="line">  blog: Blog! @relation(name: <span class="string">"Comments"</span>, <span class="attr">onDelete</span>: SET_NULL)</span><br><span class="line">  author: User @relation(name: <span class="string">"CommentAuthor"</span>, <span class="attr">onDelete</span>: SET_NULL)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看看三个不同的类型:</p>
+<ul>
+<li><code>User</code> node 被删除<ul>
+<li>所有的<code>Comment</code> nodes 被删除</li>
+<li><code>Blog</code> node 也被删除</li>
+</ul>
+</li>
+<li>当<code>Blog</code> node 被删除,<ul>
+<li>所有相关的<code>Comment</code>nodes被删除</li>
+<li>拥有<code>blog</code>字段的<code>User</code> node 被设置为空</li>
+</ul>
+</li>
+<li>当<code>Comment</code> node 被删除<ul>
+<li>相关的<code>Blog</code> node会继续存在,<code>Comments</code>会从<code>comment</code> list 中删掉</li>
+<li>相关的<code>User</code>会一直存在, <code>Comment</code> node会从<code>comments</code> list 中删掉</li>
+</ul>
+</li>
+</ul>
+<h4 id="为-relations-生成-API-操作"><a href="#为-relations-生成-API-操作" class="headerlink" title="为 relations 生成 API 操作"></a>为 relations 生成 API 操作</h4><ul>
+<li><code>relation queries</code> 会跨 types查询数据或者聚合 relation</li>
+<li><code>nest mutations</code>  跨 types, create,connect,update upsert和 delete nodes</li>
+<li><code>relation subscription</code> 改变 relation时获取通知</li>
+</ul>
+<h3 id="GraphQL-指令"><a href="#GraphQL-指令" class="headerlink" title="GraphQL 指令"></a>GraphQL 指令</h3><h4 id="临时性指令"><a href="#临时性指令" class="headerlink" title="临时性指令"></a>临时性指令</h4><h4 id="renaming-a-type-or-field"><a href="#renaming-a-type-or-field" class="headerlink" title="renaming a type or field"></a>renaming a type or field</h4><p><code>@rename(oldName:String!)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># renaming the `Post` type to `Story`, and its `text` field to `content`</span><br><span class="line">type Story @rename(oldName: <span class="string">"Post"</span>) &#123;</span><br><span class="line">  content: <span class="built_in">String</span> @rename(oldName: <span class="string">"text"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/graphql/" rel="tag"># graphql</a>
+          
+            <a href="/tags/Graphcool/" rel="tag"># Graphcool</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/08/在 prisma 中实现新特性的步骤/" rel="next" title="Prisma 实现新特性的步骤">
+                <i class="fa fa-chevron-left"></i> Prisma 实现新特性的步骤
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/10/摘要|Full-stack React + GraphQL Tutorial/" rel="prev" title="摘要|Full-stack React + GraphQL Tutorial(part1)">
+                摘要|Full-stack React + GraphQL Tutorial(part1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="React-Apollo" />
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">1.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建-data-model-模块"><span class="nav-number">1.2.</span> <span class="nav-text">构建 data model 模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prisma-的-database-和-data-model"><span class="nav-number">2.</span> <span class="nav-text">Prisma 的 database 和 data model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-types"><span class="nav-number">3.</span> <span class="nav-text">Object types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义一个-object-type"><span class="nav-number">3.1.</span> <span class="nav-text">定义一个 object type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#后续还有其他的限定条件加入"><span class="nav-number">3.1.1.</span> <span class="nav-text">后续还有其他的限定条件加入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Default-Value"><span class="nav-number">3.2.</span> <span class="nav-text">Default Value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System-fields"><span class="nav-number">3.3.</span> <span class="nav-text">System fields</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relations"><span class="nav-number">4.</span> <span class="nav-text">Relations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Required-relations"><span class="nav-number">4.1.</span> <span class="nav-text">Required relations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relation-directive"><span class="nav-number">4.2.</span> <span class="nav-text">@relation directive</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#省略-relation指令"><span class="nav-number">4.2.1.</span> <span class="nav-text">省略@relation指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-relation指令中使用name参数"><span class="nav-number">4.2.2.</span> <span class="nav-text">在@relation指令中使用name参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-relation指令中使用onDelete参数"><span class="nav-number">4.2.3.</span> <span class="nav-text">在@relation指令中使用onDelete参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为-relations-生成-API-操作"><span class="nav-number">4.2.4.</span> <span class="nav-text">为 relations 生成 API 操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GraphQL-指令"><span class="nav-number">4.3.</span> <span class="nav-text">GraphQL 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#临时性指令"><span class="nav-number">4.3.1.</span> <span class="nav-text">临时性指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#renaming-a-type-or-field"><span class="nav-number">4.3.2.</span> <span class="nav-text">renaming a type or field</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">126.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
