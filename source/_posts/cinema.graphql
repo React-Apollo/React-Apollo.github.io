@@ -1,0 +1,103 @@
+type User @model { #观影用户
+  id: ID! @isUnique
+  email: String! @isUnique
+  name: String!
+  stripeCustomerId: String
+  password: String!
+  orders: [Order!]! @relation(name: "OrdersOfUser")
+}
+
+type Order @model {#电影订单
+  id: ID! @isUnique
+  description: String!
+  user: User @relation(name: "OrdersOfUser")
+  items: [Item!]! @relation(name: "Items")
+  orderStatus: OrderStatus @defaultValue(value: NEW)
+}
+
+
+enum OrderStatus {
+  NEW
+  PAID
+}
+# 单个电影的记录 ,单个电影有多个时间线
+type Movie @model {
+  id: ID! @isUnique
+  name: String!
+  description: String
+  imageUrl: String
+  doubanLink:String
+  price: Int!
+  timing: [Timing!]! @relation(name: "MovieOnTiming")
+}
+
+type Timing @model { #电影上映时间
+  id: ID! @isUnique
+  name: String!
+  startTime:String!
+  endTime:String!
+  movie: Movie! @relation(name: "MovieOnTiming")
+}
+# City 城市,一个城市有多个影院, 有 GeoData
+type City @model { 
+  id: ID! @isUnique
+  name: String!
+  imageUlr:String
+  code:String
+  cinema: [Cinema!]!@relation(name:"CinemaInCity")
+  cityGeolocation: GeoData!@relation(name:"CityGeoData")
+}
+# Cinema 一个影院属于一个城市, 一个影院可能有过个厅, 有 GeoData
+type Cinema @model {
+  id: ID! @isUnique
+  name: String!
+  imageUlr:String
+  ratingStars: Int!
+  streetAddress: String!
+  postalCode: String!
+  city:City!@relation(name:"CinemaInCity")
+  cinemaGeolocation: GeoData!@relation(name:"CinemaGeoData")
+  hall: [Hall!]!@relation(name:"HallInCinema")
+}
+# GeoData, 城市和影院都可以有地理位置
+type GeoData @model{
+    id: ID! @isUnique 
+    latitude: Float!
+    longitude: Float!
+    cinema: Cinema @relation(name:"CinemaGeoData") 
+    city: City @relation(name:"CityGeoData")
+}
+# 放映厅属于一个影院,一个放映厅有多个座位.
+type Hall @model {
+  id: ID! @isUnique
+  name: String!
+  imageUlr:String
+  cinema: Cinema!@relation(name:"HallInCinema")
+  seat:[Seat!]!@relation(name:"SeatInHall")
+}
+#每个座位属于一个放映厅,有 x,y 坐标, 是否售出有布尔值标记
+#注意的是这个问题,每天,每个时间段
+type Seat @model{
+    id: ID! @isUnique 
+    PositionX: String!
+    PositionY: String!
+    occupied: Boolean!
+    hall: Hall @relation(name:"SeatInHall") 
+    
+}
+#=================================================================================
+type Item @model {
+  id: ID! @isUnique
+  product: Product @relation(name: "ProductOnItem")
+  order: Order @relation(name: "Items")
+  amount: Int! @default(value: 1)
+}
+
+type Product @model {
+  id: ID! @isUnique
+  items: [Item!]! @relation(name: "ProductOnItem")
+  name: String!
+  description: String
+  imageUrl: String
+  price: Int!
+}
