@@ -1,6 +1,6 @@
 ---
 title: Pocketer-CRA项目说明
-date: 2019年1月21日,上午10:26
+date: 2019年1月21日 10:26
 categories: 技术备忘
 tags: [React,Redux]
 ---
