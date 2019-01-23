@@ -7,7 +7,7 @@ tags: [Graphcool,graphql]
 
 {{TOC}}
 
-#Prima简介
+# Prima简介
 >用于数据库的开源GraphQL API抽象层.本来准备翻译 medium上面的简介,但是最后感觉也太简单了,说明不了太多问题.  总体上, Prisma 是位于 grpqh-client 和传统数据库或者 REST API 之间的应用层, 利用了 graphQL的强类型和 schema 的优点.在这个系统中, 核心是围绕`Schema`展开. 最终构建了灵活可用数据的CRUD 方法. 
 
 **Prisma是GraphQL 数据库的代理，它可以把你的数据库转化为GraphQL API.** 你可以使用
