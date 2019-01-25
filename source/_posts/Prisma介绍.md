@@ -1,6 +1,6 @@
 ---
 title: Prisma简介(翻译)
-date: 2018-1-20 13:18:28
+date: 2018-01-20 13:18:28
 categories: 翻译
 tags: [Graphcool,graphql]
 ---

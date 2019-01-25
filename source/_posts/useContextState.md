@@ -1,10 +1,9 @@
 ---
 title: useContentState代码实例
-date: 2019年1月24日 8:26
+date: 2019-01-24 8:26
 categories: 技术备忘
 tags: [React,Reacthooks]
 ---
-{{TOC}}
 
 ![](https://ws1.sinaimg.cn/large/006tNc79gy1fzhdlyplzaj30u00v343a.jpg)
 

@@ -1,6 +1,6 @@
 ---
 title: 翻译|卷积网络的直觉理解
-date: 2018年9月14日 星期五 中国标准时间 下午9:40:07
+date: 2018-09-14 9:40:07
 categories: Medium
 tags: [ANN,Deep Learning]
 ---

@@ -1,6 +1,6 @@
 ---
 title: 重新翻译版本|Redux-Reselect 文档
-date: Friday, December 7, 2018 at 2:19:47 PM China Standard Time
+date:  2019-01-24 8:26
 categories: 技术备忘
 tags: [React,Redux]
 ---

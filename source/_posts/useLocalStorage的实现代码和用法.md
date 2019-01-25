@@ -1,6 +1,6 @@
 ---
 title: useLocalStorage的代码
-date: 2019年1月24日 上午9:53
+date: 2019-01-24 9:53
 categories: 技术备忘
 tags: [React,ReactHooks]
 ---
