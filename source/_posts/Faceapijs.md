@@ -1,8 +1,8 @@
 ---
-title: 翻译|face-api.js — JavaScript API for Face Recognition in the Browser with tensorflow.js
+title: 翻译| face-api.js  — JavaScript API for Face Recognition in the Browser with  tensorflow.js
 date:  2019-01-24 13:26
 categories: 技术备忘
-tags: [JavaScript,Medium,TensorFlow.js]
+tags: [ JavaScript,Medium,TensorFlow.js]
 ---
 
 
