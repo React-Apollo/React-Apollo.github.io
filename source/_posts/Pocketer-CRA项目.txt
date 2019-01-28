@@ -2,7 +2,7 @@
 title: PocketerCRA项目说明
 date: 2018-01-23 20:18:28
 categories: 技术备忘
-tags: [graphql]
+tags: [ graphql]
 ---
 # Pocketer-CRA项目说明
 ## 主要技术介绍
