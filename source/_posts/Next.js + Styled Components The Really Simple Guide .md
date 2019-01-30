@@ -1,7 +1,3 @@
-
-
-
-
 ---
 title: 摘要|Next.js + Styled Components The Really Simple Guide 
 date: 2019-01-30 21:59
@@ -57,7 +53,7 @@ mkdir pages&& touch pages/index.js
 
 编写`./pages/index.js`文件
 
-```js
+```javascript
 Export default ()=>{
    <div>
       <h1> My First Next.js Page </h1>
@@ -121,7 +117,7 @@ touch .babelrc
 
 最后得到的`.babelrc`文件如下
 
-```.babelrc
+```babelrc
 {
   "presets": [
     "next/babel"
@@ -153,7 +149,7 @@ Touch pages/_document.js
 如果只渲染page，不做其他工作，`_document.js`文件如下：
 
 
-```javascritpt
+```javascript
 import Document, { Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
