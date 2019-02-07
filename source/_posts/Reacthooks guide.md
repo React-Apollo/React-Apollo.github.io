@@ -2,13 +2,10 @@
 title:React-Hooks Guide
 date: 2019-02-05 10:40
 categories: 技术备忘
-tags: [React,Reack-Hooks]
+tags: [React, Reack-Hooks]
 ---
 
 
-{{TOC}}
-
-# React-Hooks Guide
 
 ## 内置方法
 ### useEffect
