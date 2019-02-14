@@ -283,6 +283,8 @@ const MainTabNavigator = TabNavigator(
 
 ## 实际应用代码
 
+![](https://ws1.sinaimg.cn/large/006tKfTcgy1g05v782ifcj30pe0eyae5.jpg)
+
 ### Splash页面
 判断用户是否登录，如果登录跳转的Main路由，如果没有登录过，跳转到登录页面.Splash页面不属于应用的流程， 只是从store获取登录状态，
 
@@ -613,6 +615,9 @@ export const authReducer = (state = initialState, action = {}) => {
 };
 
 ```
+
+
+
 
 
 
