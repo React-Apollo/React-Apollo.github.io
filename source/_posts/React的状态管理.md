@@ -11,7 +11,7 @@ tags: [Javascript,React,React-Hooks,Redux]
  **我们从基本的方式开始**
  ## React和数据的基本交互方式
  
- 在MVC程序构架中,React经常被称为`View`层,但实际上并不王权是这样, React实际对MVC模式做了新的构想. 本质上React只是借助JSX语法实现的UI界面库,但是UI都需要数据来填充,所以问题就是如何获取数据,如何灵活的展现数据.
+ 在MVC程序构架中,React经常被称为`View`层,但实际上并不完全是这样, React实际对MVC模式做了新的构想. 本质上React只是借助JSX语法实现的UI界面库,但是UI都需要数据来填充,所以问题就是如何获取数据,如何灵活的展现数据.
  
  
  ### MVC的思想
@@ -22,7 +22,7 @@ tags: [Javascript,React,React-Hooks,Redux]
  - 控制层(Controller)在应用程序中扶着提供数据处理的逻辑操作.
 
 React处理数据和MVC有微妙的区别. 在由多个子组件组合而成的视图(父组件)里, 子组件可以管理自己的数据处理方式,而且也可以从父组件获取数据,只需要在父组件中提供一个控制器就可以了. 
-### React的思想
+## React的思想
 
 在React的组件中有两种不同的数据类型:
 
@@ -438,7 +438,65 @@ function Demo() {
 `未完成,还有一些内容`
 
 
+## 微软的Resub
+下面我们来看看微软的Resub库. 这个库是配合微软的ReactXP项目的附属.
+我没看过mobx的文档,我猜想应该和Mobx是很像的. 
+
+主要内容就是使用StoreBase定义数据和数据处理方法,
+
+```javascript
+import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
+
+@AutoSubscribeStore
+class TodosStore extends StoreBase {
+    private _todos: string[] = [];
+
+    addTodo(todo: string) {
+        // Don't use .push here, we need a new array since the old _todos array was passed to the component by reference value
+        this._todos = this._todos.concat(todo);
+        this.trigger();
+    }
+
+    @autoSubscribe
+    getTodos() {
+        return this._todos;
+    }
+}
+
+export = new TodosStore();
+```
 
 
 
+在组件中使用数据和方法
 
+```
+import * as React from 'react';
+import { ComponentBase } from 'resub';
+
+import TodosStore = require('./TodosStore');
+
+interface TodoListState {
+    todos?: string[];
+}
+
+class TodoList extends ComponentBase<{}, TodoListState> {
+    protected _buildState(props: {}, initialBuild: boolean): TodoListState {
+        return {
+            todos: TodosStore.getTodos()
+        }
+    }
+
+    render() {
+        return (
+            <ul className="todos">
+                { this.state.todos.map(todo => <li>{ todo }</li> ) }
+            </ul>
+        );
+    }
+}
+
+export = TodoList;
+```
+
+应该也算是非常简洁的.而且有TS的类型约束, 出错的机会要少很多. Redux的TS方法,我后面也会提到.
