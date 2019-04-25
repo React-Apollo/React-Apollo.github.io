@@ -35,7 +35,7 @@ const composedHoc=BaseComponent=>hoc1(hoc2(hoc3(BaseComponent)))
      ):HigherOrderComponent
 ```
 
-接收一个函数,映射拥有者的 props称为新的 props 集合, 并传递给 baseComponent.
+接收一个函数,映射拥有者的 props成为新的 props 集合, 并传递给 baseComponent.
 `mapProps()`和其他的函数式工具可以很好的一起工作, 例如 Recomopose 没有`omitProps()`函数,但是可以很容易的使用 lodash 的函数`omit()`
 
 ```js
