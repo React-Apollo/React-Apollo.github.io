@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redux,React,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="“selector”是一个简单的Redux库,灵感来源于NuclearJS.   Selector可以计算衍生的数据,可以让Redux做到存储尽可能少的state。 Selector比较高效,只有在某个参数发生变化的时候才发生计算过程. Selector是可以组合的,他们可以作为输入,传递到其他的selector.  12345678910111213141516171819202122232">
+<meta name="keywords" content="Redux,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重新翻译版本|Redux-Reselect 文档">
+<meta property="og:url" content="https://React-Apollo.github.io/2019/01/24/重新翻译版本|Redux-Reselect/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="“selector”是一个简单的Redux库,灵感来源于NuclearJS.   Selector可以计算衍生的数据,可以让Redux做到存储尽可能少的state。 Selector比较高效,只有在某个参数发生变化的时候才发生计算过程. Selector是可以组合的,他们可以作为输入,传递到其他的selector.  12345678910111213141516171819202122232">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重新翻译版本|Redux-Reselect 文档">
+<meta name="twitter:description" content="“selector”是一个简单的Redux库,灵感来源于NuclearJS.   Selector可以计算衍生的数据,可以让Redux做到存储尽可能少的state。 Selector比较高效,只有在某个参数发生变化的时候才发生计算过程. Selector是可以组合的,他们可以作为输入,传递到其他的selector.  12345678910111213141516171819202122232">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2019/01/24/重新翻译版本|Redux-Reselect/">
+
+
+
+
+
+  <title>重新翻译版本|Redux-Reselect 文档 | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2019/01/24/重新翻译版本|Redux-Reselect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">重新翻译版本|Redux-Reselect 文档</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T08:26:00+00:00">
+                2019-01-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/24/重新翻译版本|Redux-Reselect/" class="leancloud_visitors" data-flag-title="重新翻译版本|Redux-Reselect 文档">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,762
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  27
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+<blockquote>
+<p>“selector”是一个简单的Redux库,灵感来源于<code>NuclearJS</code>.</p>
+</blockquote>
+<ul>
+<li>Selector可以计算衍生的数据,可以让Redux做到存储尽可能少的state。</li>
+<li>Selector比较高效,只有在某个参数发生变化的时候才发生计算过程.</li>
+<li>Selector是可以组合的,他们可以作为输入,传递到其他的selector.</li>
+</ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个例子不必太在意,后面会有详细的介绍</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSelector &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> shopItemsSelector = <span class="function"><span class="params">state</span> =&gt;</span> state.shop.items</span><br><span class="line"><span class="keyword">const</span> taxPercentSelector = <span class="function"><span class="params">state</span> =&gt;</span> state.shop.taxPercent</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> subtotalSelector = createSelector(</span><br><span class="line">  shopItemsSelector,</span><br><span class="line">  items =&gt; items.reduce(<span class="function">(<span class="params">acc, item</span>) =&gt;</span> acc + item.value, <span class="number">0</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> taxSelector = createSelector(</span><br><span class="line">  subtotalSelector,</span><br><span class="line">  taxPercentSelector,</span><br><span class="line">  (subtotal, taxPercent) =&gt; subtotal * (taxPercent / <span class="number">100</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> totalSelector = createSelector(</span><br><span class="line">  subtotalSelector,</span><br><span class="line">  taxSelector,</span><br><span class="line">  (subtotal, tax) =&gt; (&#123; <span class="attr">total</span>: subtotal + tax &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> exampleState = &#123;</span><br><span class="line">  shop: &#123;</span><br><span class="line">    taxPercent: <span class="number">8</span>,</span><br><span class="line">    items: [</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">value</span>: <span class="number">1.20</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'orange'</span>, <span class="attr">value</span>: <span class="number">0.95</span> &#125;,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(subtotalSelector(exampleState)) <span class="comment">// 2.15</span></span><br><span class="line"><span class="built_in">console</span>.log(taxSelector(exampleState))      <span class="comment">// 0.172</span></span><br><span class="line"><span class="built_in">console</span>.log(totalSelector(exampleState))    <span class="comment">// &#123; total: 2.322 &#125;</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h2><ul>
+<li><a href="#安装">Installation</a></li>
+<li><a href="#实例">实例</a><ul>
+<li><a href="#motivation-for-memoized-selectors">Motivation for Memoized Selectors</a></li>
+<li><a href="#creating-a-memoized-selector">Creating a Memoized Selector</a></li>
+<li><a href="#composing-selectors">Composing Selectors</a></li>
+<li><a href="#connecting-a-selector-to-the-redux-store">Connecting a Selector to the Redux Store</a></li>
+<li><a href="#accessing-react-props-in-selectors">Accessing React Props in Selectors</a></li>
+<li><a href="#sharing-selectors-with-props-across-multiple-components">Sharing Selectors with Props Across Multiple Components</a></li>
+</ul>
+</li>
+<li><a href="#api">API</a><ul>
+<li><a href="#createselectorinputselectors--inputselectors-resultfunc"><code>createSelector</code></a></li>
+<li><a href="#defaultmemoizefunc-equalitycheck--defaultequalitycheck"><code>defaultMemoize</code></a></li>
+<li><a href="#createselectorcreatormemoize-memoizeoptions"><code>createSelectorCreator</code></a></li>
+<li><a href="#createstructuredselectorinputselectors-selectorcreator--createselector"><code>createStructuredSelector</code></a></li>
+</ul>
+</li>
+<li><p><a href="#faq">FAQ</a></p>
+<ul>
+<li><a href="#q-why-isnt-my-selector-recomputing-when-the-input-state-changes">Why isn’t my selector recomputing when the input state changes?</a></li>
+<li><a href="#q-why-is-my-selector-recomputing-when-the-input-state-stays-the-same">Why is my selector recomputing when the input state stays the same?</a></li>
+<li><a href="#q-can-i-use-reselect-without-redux">Can I use Reselect without Redux?</a></li>
+<li><a href="#q-the-default-memoization-function-is-no-good-can-i-use-a-different-one">The default memoization function is no good, can I use a different one?</a></li>
+<li><a href="#q-how-do-i-test-a-selector">How do I test a selector?</a></li>
+<li><a href="#q-how-do-i-create-a-selector-that-takes-an-argument">How do I create a selector that takes an argument? </a></li>
+<li><a href="#q-how-do-i-use-reselect-with-immutablejs">How do I use Reselect with Immutable.js?</a></li>
+<li><a href="#q-can-i-share-a-selector-across-multiple-components">Can I share a selector across multiple components?</a></li>
+<li><a href="#q-are-there-typescript-typings">Are there TypeScript typings?</a></li>
+<li><a href="#q-how-can-i-make-a-curried-selector">How can I make a curried selector?</a></li>
+</ul>
+</li>
+<li><p><a href="#related-projects">Related Projects</a></p>
+</li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>npm install reselect</code></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="缓存Selcectos的动机"><a href="#缓存Selcectos的动机" class="headerlink" title="缓存Selcectos的动机"></a>缓存Selcectos的动机</h3><blockquote>
+<p>实例是基于 <a href="http://redux.js.org/docs/basics/UsageWithReact.html" target="_blank" rel="noopener">Redux Todos List example</a>.</p>
+</blockquote>
+<p><code>containers/VisibleTodoList.js</code><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></span><br><span class="line"><span class="keyword">import</span> &#123; toggleTodo &#125; <span class="keyword">from</span> <span class="string">'../actions'</span></span><br><span class="line"><span class="keyword">import</span> TodoList <span class="keyword">from</span> <span class="string">'../components/TodoList'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面这段代码是根据过滤器的state来改变日程state的函数</span></span><br><span class="line"><span class="keyword">const</span> getVisibleTodos = <span class="function">(<span class="params">todos, filter</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (filter) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'SHOW_ALL'</span>:</span><br><span class="line">      <span class="keyword">return</span> todos</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'SHOW_COMPLETED'</span>:</span><br><span class="line">      <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">t</span> =&gt;</span> t.completed)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'SHOW_ACTIVE'</span>:</span><br><span class="line">      <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">t</span> =&gt;</span> !t.completed)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">//todos是根据过滤函数返回的state，传入两个实参</span></span><br><span class="line">    todos: getVisibleTodos(state.todos, state.visibilityFilter)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//mapDispatchToProps来传递dispatch的方法</span></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    onTodoClick: <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">      dispatch(toggleTodo(id))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用Redux的connect函数注入state,到TodoList组件</span></span><br><span class="line"><span class="keyword">const</span> VisibleTodoList = connect(</span><br><span class="line">  mapStateToProps,</span><br><span class="line">  mapDispatchToProps</span><br><span class="line">)(TodoList)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> VisibleTodoList</span><br></pre></td></tr></table></figure></div></p>
+<p>在上面的例子中,<code>mapStateToProps</code>调用<code>getVisibleTodos</code>去计算<code>todos</code>.这个函数设计的是相当好的,但是有个缺点：<code>todos</code>在每一次组件更新的时候都会重新计算.如果state树的结构比较大,或者计算比较昂贵,每一次组件更新的时候都进行计算的话,将会导致性能问题.<code>Reselect</code>能够帮助redux避免不必要的计算过程.</p>
+<h3 id="创建一个缓存Selector"><a href="#创建一个缓存Selector" class="headerlink" title="创建一个缓存Selector"></a>创建一个缓存Selector</h3><p>我们可以使用记忆缓存selector代替<code>getVisibleTodos</code>,如果<code>state.todos</code>和<code>state.visibilityFilter</code>发生变化,他会重新计算<code>state</code>,但是只发生在其他部分的state变化,就不会重新计算.</p>
+<p>Reslect提供一个函数<code>createSelector</code>来创建一个记忆selectors.<code>createSelector</code>接受<code>input-selectors</code>和一个变换函数作为参数.如果Redux的state发生改变造成<code>input-selector</code>的值发生改变,selector会调用变换函数,依据<code>input-selector</code>做参数,返回一个结果.如果<code>input-selector</code>返回的结果和前面的一样,那么就会直接返回有关state,会省略变换函数的调用.</p>
+<p>下面我们定义一个记忆selector<code>getVisibleTodos</code>替代非记忆的版本</p>
+<p> <code>selectors/index.js</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelector &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getVisibilityFilter = <span class="function">(<span class="params">state</span>) =&gt;</span> state.visibilityFilter</span><br><span class="line"><span class="keyword">const</span> getTodos = <span class="function">(<span class="params">state</span>) =&gt;</span> state.todos</span><br><span class="line"><span class="comment">//下面的函数是经过包装的</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getVisibleTodos = createSelector(</span><br><span class="line">  [ getVisibilityFilter, getTodos ],</span><br><span class="line">  (visibilityFilter, todos) =&gt; &#123;</span><br><span class="line">    <span class="keyword">switch</span> (visibilityFilter) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'SHOW_ALL'</span>:</span><br><span class="line">        <span class="keyword">return</span> todos</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'SHOW_COMPLETED'</span>:</span><br><span class="line">        <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">t</span> =&gt;</span> t.completed)</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'SHOW_ACTIVE'</span>:</span><br><span class="line">        <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">t</span> =&gt;</span> !t.completed)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<hr>
+<p>上面的的实例中,<code>getVisibilityfilter</code>和<code>getTodos</code>是input-selectors.这两个函数是普通的非记忆selector函数,因为他们没有变换他们select的数据.<code>getVisibleTodos</code>另一方面是一个记忆selector.他接收<code>getVisibilityfilter</code>和<code>getTodos</code>作为input-selectors,并且作为一个变换函数计算筛选的todo list.</p>
+<h3 id="组合selectors"><a href="#组合selectors" class="headerlink" title="组合selectors"></a>组合selectors</h3><p>一个记忆性selector本身也可以作为另一个记忆性selector的input-selector.这里<code>getVisibleTodos</code>可以作为input-selector作为关键字筛选的input-selector:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getKeyword = <span class="function">(<span class="params">state</span>) =&gt;</span> state.keyword</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getVisibleTodosFilteredByKeyword = createSelector(</span><br><span class="line">  [ getVisibleTodos, getKeyword ],</span><br><span class="line">  (visibleTodos, keyword) =&gt; visibleTodos.filter(</span><br><span class="line">    todo =&gt; todo.text.indexOf(keyword) &gt; <span class="number">-1</span></span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="把Selector连接到Redux-Store"><a href="#把Selector连接到Redux-Store" class="headerlink" title="把Selector连接到Redux Store"></a>把Selector连接到Redux Store</h3><p>如果你正在使用 <a href="https://github.com/reactjs/react-redux" target="_blank" rel="noopener">React Redux</a>, 你可以 直接在<code>mapStateToProps()</code>中调用 selector:</p>
+<p> <code>containers/VisibleTodoList.js</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></span><br><span class="line"><span class="keyword">import</span> &#123; toggleTodo &#125; <span class="keyword">from</span> <span class="string">'../actions'</span></span><br><span class="line"><span class="keyword">import</span> TodoList <span class="keyword">from</span> <span class="string">'../components/TodoList'</span></span><br><span class="line"><span class="keyword">import</span> &#123; getVisibleTodos &#125; <span class="keyword">from</span> <span class="string">'../selectors'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    todos: getVisibleTodos(state)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    onTodoClick: <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">      dispatch(toggleTodo(id))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> VisibleTodoList = connect(</span><br><span class="line">  mapStateToProps,</span><br><span class="line">  mapDispatchToProps</span><br><span class="line">)(TodoList)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> VisibleTodoList</span><br></pre></td></tr></table></figure></div>
+<h3 id="在Selectors中获取-React-的-props"><a href="#在Selectors中获取-React-的-props" class="headerlink" title="在Selectors中获取 React 的 props"></a>在Selectors中获取 React 的 props</h3><blockquote>
+<p>这一部分我们假设程序将会有一个扩展,我们允许selector支持多重todo List.请注意如果要完全实施这个扩展,reducers,components,actions等等都需要作出改变.这些内容和主题不是太相关,所以这里就省略掉了.</p>
+</blockquote>
+<p>目前为止,我们仅仅看到selectors接收store的state作为一个参数,其实一个selector叶可以接受props.</p>
+<p>这里是一个<code>App</code>组件,渲染出三个<code>VisibleTodoList</code>组件,每一个组件有<code>ListId</code>属性.</p>
+<p> <code>components/App.js</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> Footer <span class="keyword">from</span> <span class="string">'./Footer'</span></span><br><span class="line"><span class="keyword">import</span> AddTodo <span class="keyword">from</span> <span class="string">'../containers/AddTodo'</span></span><br><span class="line"><span class="keyword">import</span> VisibleTodoList <span class="keyword">from</span> <span class="string">'../containers/VisibleTodoList'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;VisibleTodoList listId=<span class="string">"1"</span> /&gt;</span><br><span class="line">    &lt;VisibleTodoList listId=<span class="string">"2"</span> /&gt;</span><br><span class="line">    &lt;VisibleTodoList listId=<span class="string">"3"</span> /&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure></div>
+<p>每一个<code>VisibleTodoList</code>container应该根据各自的<code>listId</code>属性获取state的不同部分.所以我们修改一下<code>getVisibilityFilter</code>和<code>getTodos</code>,便于接受一个属性参数</p>
+<h4 id="selectors-todoSelectors-js"><a href="#selectors-todoSelectors-js" class="headerlink" title="selectors/todoSelectors.js"></a><code>selectors/todoSelectors.js</code></h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelector &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getVisibilityFilter = <span class="function">(<span class="params">state, props</span>) =&gt;</span></span><br><span class="line">  state.todoLists[props.listId].visibilityFilter</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getTodos = <span class="function">(<span class="params">state, props</span>) =&gt;</span></span><br><span class="line">  state.todoLists[props.listId].todos <span class="comment">//这里是为二维数组了</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getVisibleTodos = createSelector(</span><br><span class="line">  [ getVisibilityFilter, getTodos ],</span><br><span class="line">  (visibilityFilter, todos) =&gt; &#123;</span><br><span class="line">    <span class="keyword">switch</span> (visibilityFilter) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'SHOW_COMPLETED'</span>:</span><br><span class="line">        <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.completed)</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'SHOW_ACTIVE'</span>:</span><br><span class="line">        <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> !todo.completed)</span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">return</span> todos</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> getVisibleTodos</span><br></pre></td></tr></table></figure></div>
+<p><code>props</code>可以从<code>mapStateToProps</code>传递到<code>getVisibleTodos</code>：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    todos: getVisibleTodos(state, props)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>现在<code>getVisibleTodos</code>可以获取<code>props</code>,每一部分似乎都工作的不错.</p>
+<p><em>**但是还有个问题!</em><br>当<code>getVisibleTodos</code>selector和<code>VisibleTodoList</code>container的多个实例一起工作的时候,记忆功能就不能正常运行:</p>
+<p> <code>containers/VisibleTodoList.js</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></span><br><span class="line"><span class="keyword">import</span> &#123; toggleTodo &#125; <span class="keyword">from</span> <span class="string">'../actions'</span></span><br><span class="line"><span class="keyword">import</span> TodoList <span class="keyword">from</span> <span class="string">'../components/TodoList'</span></span><br><span class="line"><span class="keyword">import</span> &#123; getVisibleTodos &#125; <span class="keyword">from</span> <span class="string">'../selectors'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// WARNING: THE FOLLOWING SELECTOR DOES NOT CORRECTLY MEMOIZE</span></span><br><span class="line">    <span class="comment">//⚠️下面的selector不能正确的记忆</span></span><br><span class="line">    todos: getVisibleTodos(state, props)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    onTodoClick: <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">      dispatch(toggleTodo(id))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> VisibleTodoList = connect(</span><br><span class="line">  mapStateToProps,</span><br><span class="line">  mapDispatchToProps</span><br><span class="line">)(TodoList)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> VisibleTodoList</span><br></pre></td></tr></table></figure></div>
+<p>使用<code>createSelector</code>创建的selector时候,如果他的参数集合和上一次的参数机会是一样的,仅仅返回缓存的值.如果我们交替渲染<code>&lt;VisibleTodoList listId=&quot;1&quot; /&gt;</code> 和<code>&lt;VisibleTodoList listId=&quot;2&quot; /&gt;</code>时,共享的selector将会交替接受<code>{listId：1}</code>和<code>{listId:2}</code>作为他的props的参数.这将会导致每一次调用的时候的参数都不同,因此selector每次都会重新来计算而不是返回缓存的值.下一部分我们将会介绍怎么解决这个问题.</p>
+<h3 id="跨越多个组件使用selectors共享props"><a href="#跨越多个组件使用selectors共享props" class="headerlink" title="跨越多个组件使用selectors共享props"></a>跨越多个组件使用selectors共享props</h3><blockquote>
+<p>这一部分的实例需要React Redux v4.3.0或者更高版本的支持.</p>
+</blockquote>
+<p>在多个<code>VisibleTodoList</code>组件中共享selector,同时还要<strong>保持</strong>记忆性,每一个组件的实例需要他们自己的selector私有拷贝.</p>
+<p>现在让我们创建一个函数<code>makeGetVisibleTodos</code>,这个函数每次调用的时候返回一个新的<code>getVisibleTodos</code>的拷贝:</p>
+<p> <code>selectors/todoSelectors.js</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelector &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getVisibilityFilter = <span class="function">(<span class="params">state, props</span>) =&gt;</span></span><br><span class="line">  state.todoLists[props.listId].visibilityFilter</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getTodos = <span class="function">(<span class="params">state, props</span>) =&gt;</span></span><br><span class="line">  state.todoLists[props.listId].todos</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> makeGetVisibleTodos = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> createSelector(</span><br><span class="line">    [ getVisibilityFilter, getTodos ],</span><br><span class="line">    (visibilityFilter, todos) =&gt; &#123;</span><br><span class="line">      <span class="keyword">switch</span> (visibilityFilter) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'SHOW_COMPLETED'</span>:</span><br><span class="line">          <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.completed)</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'SHOW_ACTIVE'</span>:</span><br><span class="line">          <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> !todo.completed)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">          <span class="keyword">return</span> todos</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> makeGetVisibleTodos</span><br></pre></td></tr></table></figure></div>
+<p>我们也需要设置给每一个组件的实例他们各自获取私有的selector方法.<code>mapStateToProps</code>的<code>connect</code>函数可以帮助完成这个功能.</p>
+<p>如果<code>mapStateToProps</code>提供给<code>connect</code>的不是一个对形象,而是一个函数,每个<code>container</code>中就会创建独立的<code>mapStateToProps</code>实例. </p>
+<p>在下面的实例中,<code>mapStateProps</code>创建一个新的<code>getVisibleTodos</code>selector,他返回一个<code>mapStateToProps</code>函数,这个函数能够接入新的selector.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> makeMapStateToProps = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> getVisibleTodos = makeGetVisibleTodos()</span><br><span class="line">  <span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      todos: getVisibleTodos(state, props)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mapStateToProps</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>如果我们把<code>makeMapStateToprops</code>传递到<code>connect</code>,每一个<code>visibleTodoList</code>container将会获得各自的含有私有<code>getVisibleTodos</code>selector的<code>mapStateToProps</code>函数.这样一来记忆就正常了,不管<code>VisibleTodoList</code>containers的渲染顺序怎么样.</p>
+<p> <code>containers/VisibleTodoList.js</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></span><br><span class="line"><span class="keyword">import</span> &#123; toggleTodo &#125; <span class="keyword">from</span> <span class="string">'../actions'</span></span><br><span class="line"><span class="keyword">import</span> TodoList <span class="keyword">from</span> <span class="string">'../components/TodoList'</span></span><br><span class="line"><span class="keyword">import</span> &#123; makeGetVisibleTodos &#125; <span class="keyword">from</span> <span class="string">'../selectors'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> makeMapStateToProps = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> getVisibleTodos = makeGetVisibleTodos()</span><br><span class="line">  <span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, props</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      todos: getVisibleTodos(state, props)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mapStateToProps</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    onTodoClick: <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">      dispatch(toggleTodo(id))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> VisibleTodoList = connect(</span><br><span class="line">  makeMapStateToProps,</span><br><span class="line">  mapDispatchToProps</span><br><span class="line">)(TodoList)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> VisibleTodoList</span><br></pre></td></tr></table></figure></div>
+<hr>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="createSelector-…inputSelectors-inputSelectors-resultFunc"><a href="#createSelector-…inputSelectors-inputSelectors-resultFunc" class="headerlink" title="createSelector(…inputSelectors|[inputSelectors],resultFunc)"></a>createSelector(…inputSelectors|[inputSelectors],resultFunc)</h3><p>接受一个或者多个selectors,或者一个selectors数组,计算他们的值并且作为参数传递给<code>resultFunc</code>.</p>
+<p><code>createSelector</code>通过判断input-selector之前调用和之后调用的返回值的全等于(===,这个地方英文文献叫reference equality,引用等于,这个单词是本质,中文没有翻译出来).经过<code>createSelector</code>创建的selector应该是immutable(不变的).</p>
+<p>经过<code>createSelector</code>创建的Selectors有一个缓存,大小是1.这意味着当一个input-selector变化的时候,他们总是会重新计算state,因为Selector仅仅存储每一个input-selector前一个值.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mySelector = createSelector(</span><br><span class="line">  state =&gt; state.values.value1,</span><br><span class="line">  state =&gt; state.values.value2,</span><br><span class="line">  (value1, value2) =&gt; value1 + value2</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can also pass an array of selectors</span></span><br><span class="line"><span class="comment">//可以出传递一个selector数组</span></span><br><span class="line"><span class="keyword">const</span> totalSelector = createSelector(</span><br><span class="line">  [</span><br><span class="line">    state =&gt; state.values.value1,</span><br><span class="line">    state =&gt; state.values.value2</span><br><span class="line">  ],</span><br><span class="line">  (value1, value2) =&gt; value1 + value2</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>在selector内部获取一个组件的props非常有用.当一个selector通过<code>connect</code>函数连接到一个组件上,组件的属性作为第二个参数传递给selector:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> abSelector = <span class="function">(<span class="params">state, props</span>) =&gt;</span> state.a * props.b</span><br><span class="line"></span><br><span class="line"><span class="comment">// props only (ignoring state argument)</span></span><br><span class="line"><span class="keyword">const</span> cSelector =  <span class="function">(<span class="params">_, props</span>) =&gt;</span> props.c</span><br><span class="line"></span><br><span class="line"><span class="comment">// state only (props argument omitted as not required)</span></span><br><span class="line"><span class="keyword">const</span> dSelector = <span class="function"><span class="params">state</span> =&gt;</span> state.d</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> totalSelector = createSelector(</span><br><span class="line">  abSelector,</span><br><span class="line">  cSelector,</span><br><span class="line">  dSelector,</span><br><span class="line">  (ab, c, d) =&gt; (&#123;</span><br><span class="line">    total: ab + c + d</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div></p>
+<hr>
+<h3 id="defaultMemoize-func-equalityCheck-defaultEqualityCheck"><a href="#defaultMemoize-func-equalityCheck-defaultEqualityCheck" class="headerlink" title="defaultMemoize(func, equalityCheck = defaultEqualityCheck)"></a>defaultMemoize(func, equalityCheck = defaultEqualityCheck)</h3><p><code>defaultMemoize</code>能记住通过func传递的参数.这是<code>createSelector</code>使用的记忆函数.</p>
+<p><code>defaultMemoize</code> 通过调用<code>equalityCheck</code>函数来决定一个参数是否已经发生改变.因为<code>defaultMemoize</code>设计出来就是和immutable数据一起使用,默认的<code>equalityCheck</code>使用引用全等于来判断变化:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">defaultEqualityCheck</span>(<span class="params">currentVal, previousVal</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> currentVal === previousVal</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<hr>
+<p><code>defaultMemoize</code>和<code>createSelectorCreator</code>去<a href="#配置-equalitycheck-for-defaultmemoize">配置<code>equalityCheck</code>函数</a>.</p>
+<h3 id="createSelectorCreator-memoize-…memoizeOptions"><a href="#createSelectorCreator-memoize-…memoizeOptions" class="headerlink" title="createSelectorCreator(memoize,…memoizeOptions)"></a>createSelectorCreator(memoize,…memoizeOptions)</h3><p><code>createSelectorCreator</code>用来配置定制版本的<code>createSelector</code>.</p>
+<p><code>memoize</code>参数是一个有记忆功能的函数,来代替<code>defaultMemoize</code>.<br><code>…memoizeOption</code>展开的参数是0或者更多的配置选项,这些参数传递给<code>memoizeFunc</code>.selectors<code>resultFunc</code>作为第一个参数传递给<code>memoize</code>,<code>memoizeOptions</code>作为第二个参数:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> customSelectorCreator = createSelectorCreator(</span><br><span class="line">  customMemoize, <span class="comment">// function to be used to memoize resultFunc,记忆resultFunc</span></span><br><span class="line">  option1, <span class="comment">// option1 will be passed as second argument to customMemoize 第二个惨呼</span></span><br><span class="line">  option2, <span class="comment">// option2 will be passed as third argument to customMemoize 第三个参数</span></span><br><span class="line">  option3 <span class="comment">// option3 will be passed as fourth argument to customMemoize   第四个参数</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> customSelector = customSelectorCreator(</span><br><span class="line">  input1,</span><br><span class="line">  input2,</span><br><span class="line">  resultFunc <span class="comment">// resultFunc will be passed as first argument to customMemoize  作为第一个参数传递给customMomize</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<hr>
+<p>在<code>customSelecotr</code>内部滴啊用memoize的函数的代码如下:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">customMemoize(resultFunc, option1, option2, option3)</span><br></pre></td></tr></table></figure></div></p>
+<hr>
+<p>下面是几个可能会用到的<code>createSelectorCreator</code>的实例:</p>
+<p> 为<code>defaultMemoize</code>配置<code>equalityCheck</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelectorCreator, defaultMemoize &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"><span class="keyword">import</span> isEqual <span class="keyword">from</span> <span class="string">'lodash.isEqual'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// create a "selector creator" that uses lodash.isEqual instead of ===</span></span><br><span class="line"><span class="keyword">const</span> createDeepEqualSelector = createSelectorCreator(</span><br><span class="line">  defaultMemoize,</span><br><span class="line">  isEqual</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// use the new "selector creator" to create a selector</span></span><br><span class="line"><span class="keyword">const</span> mySelector = createDeepEqualSelector(</span><br><span class="line">  state =&gt; state.values.filter(<span class="function"><span class="params">val</span> =&gt;</span> val &lt; <span class="number">5</span>),</span><br><span class="line">  values =&gt; values.reduce(<span class="function">(<span class="params">acc, val</span>) =&gt;</span> acc + val, <span class="number">0</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>使用loadsh的memoize函数来缓存未绑定的缓存.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelectorCreator &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"><span class="keyword">import</span> memoize <span class="keyword">from</span> <span class="string">'lodash.memoize'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> called = <span class="number">0</span></span><br><span class="line"><span class="keyword">const</span> hashFn = <span class="function">(<span class="params">...args</span>) =&gt;</span> args.reduce(</span><br><span class="line">  (acc, val) =&gt; acc + <span class="string">'-'</span> + <span class="built_in">JSON</span>.stringify(val),</span><br><span class="line">  <span class="string">''</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">const</span> customSelectorCreator = createSelectorCreator(memoize, hashFn)</span><br><span class="line"><span class="keyword">const</span> selector = customSelectorCreator(</span><br><span class="line">  state =&gt; state.a,</span><br><span class="line">  state =&gt; state.b,</span><br><span class="line">  (a, b) =&gt; &#123;</span><br><span class="line">    called++</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<h3 id="createStructuredSelector-inputSelectors-selectorCreator-createSelector"><a href="#createStructuredSelector-inputSelectors-selectorCreator-createSelector" class="headerlink" title="createStructuredSelector({inputSelectors}, selectorCreator = createSelector)"></a>createStructuredSelector({inputSelectors}, selectorCreator = createSelector)</h3><p>如果在普通的模式下使用<code>createStructuredSelector</code>函数可以提升便利性.传递到<code>connect</code>的selector装饰者(这是js设计模式的概念,可以参考相关的书籍)接受他的input-selectors,并且在一个对象内映射到一个键上.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mySelectorA = <span class="function"><span class="params">state</span> =&gt;</span> state.a</span><br><span class="line"><span class="keyword">const</span> mySelectorB = <span class="function"><span class="params">state</span> =&gt;</span> state.b</span><br><span class="line"></span><br><span class="line"><span class="comment">// The result function in the following selector</span></span><br><span class="line"><span class="comment">// is simply building an object from the input selectors 由selectors构建的一个对象</span></span><br><span class="line"><span class="keyword">const</span> structuredSelector = createSelector(</span><br><span class="line">   mySelectorA,</span><br><span class="line">   mySelectorB,</span><br><span class="line">   mySelectorC,</span><br><span class="line">   (a, b, c) =&gt; (&#123;</span><br><span class="line">     a,</span><br><span class="line">     b,</span><br><span class="line">     c</span><br><span class="line">   &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p><code>createStructuredSelector</code>接受一个对象,这个对象的属性是input-selectors,函数返回一个结构性的selector.这个结构性的selector返回一个对象,对象的键和<code>inputSelectors</code>的参数是相同的,但是使用selectors代替了其中的值.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mySelectorA = <span class="function"><span class="params">state</span> =&gt;</span> state.a</span><br><span class="line"><span class="keyword">const</span> mySelectorB = <span class="function"><span class="params">state</span> =&gt;</span> state.b</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> structuredSelector = createStructuredSelector(&#123;</span><br><span class="line">  x: mySelectorA,</span><br><span class="line">  y: mySelectorB</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = structuredSelector(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;) <span class="comment">// will produce &#123; x: 1, y: 2 &#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>结构性的selectors可以是嵌套式的:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> nestedSelector = createStructuredSelector(&#123;</span><br><span class="line">  subA: createStructuredSelector(&#123;</span><br><span class="line">    selectorA,</span><br><span class="line">    selectorB</span><br><span class="line">  &#125;),</span><br><span class="line">  subB: createStructuredSelector(&#123;</span><br><span class="line">    selectorC,</span><br><span class="line">    selectorD</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="Q-为什么当输入的state发生改变的时候-selector不重新计算？"><a href="#Q-为什么当输入的state发生改变的时候-selector不重新计算？" class="headerlink" title="Q:为什么当输入的state发生改变的时候,selector不重新计算？"></a>Q:为什么当输入的state发生改变的时候,selector不重新计算？</h3><p>A:检查一下你的记忆韩式是不是和你的state更新函数相兼容(例如:如果你正在使用Redux).例如:使用<code>createSelector</code>创建的selector总是创建一个新的对象,原来期待的是更新一个已经存在的对象.<code>createSelector</code>使用(===)检测输入是否改变,因此如果改变一个已经存在的对象没有触发selector重新计算的原因是改变一个对象的时候没有触发相关的检测.提示：如果你正在使用Redux,改变一个state对象的<a href="http://redux.js.org/docs/Troubleshooting.html" target="_blank" rel="noopener">错误可能有</a>.</p>
+<p>下面的实例定义了一个selector可以决定数组的第一个todo项目是不是已经被完成:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isFirstTodoCompleteSelector = createSelector(</span><br><span class="line">  state =&gt; state.todos[<span class="number">0</span>],</span><br><span class="line">  todo =&gt; todo &amp;&amp; todo.completed</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div></p>
+<hr>
+<p>下面的state更新函数和<code>isFirstTodoCompleteSelector</code><strong>将不会</strong>正常工作工作:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">todos</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">  <span class="keyword">case</span> COMPLETE_ALL:</span><br><span class="line">    <span class="keyword">const</span> areAllMarked = state.every(<span class="function"><span class="params">todo</span> =&gt;</span> todo.completed)</span><br><span class="line">    <span class="comment">// BAD: mutating an existing object</span></span><br><span class="line">    <span class="keyword">return</span> state.map(<span class="function"><span class="params">todo</span> =&gt;</span> &#123;</span><br><span class="line">      todo.completed = !areAllMarked</span><br><span class="line">      <span class="keyword">return</span> todo</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>下面的state更新函数和<code>isFirstTodoComplete</code>一起<strong>可以</strong>正常工作.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">todos</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">  <span class="keyword">case</span> COMPLETE_ALL:</span><br><span class="line">    <span class="keyword">const</span> areAllMarked = state.every(<span class="function"><span class="params">todo</span> =&gt;</span> todo.completed)</span><br><span class="line">    <span class="comment">// GOOD: returning a new object each time with Object.assign</span></span><br><span class="line">    <span class="keyword">return</span> state.map(<span class="function"><span class="params">todo</span> =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, todo, &#123;</span><br><span class="line">      completed: !areAllMarked</span><br><span class="line">    &#125;))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>如果你没有使用Redux,但是有使用mutable数据的需求,你可以使用<code>createSelectorCreator</code>代替默认的记忆函数,并且使用不同的等值检测函数.请参看<a href="#use-memoize-function-from-lodash-for-an-unbounded-cache">这里</a> 和 <a href="#customize-equalitycheck-for-defaultmemoize">这里</a>作为参考.</p>
+<h3 id="Q-为什么input-state没有改变的时候-selector还是会重新计算"><a href="#Q-为什么input-state没有改变的时候-selector还是会重新计算" class="headerlink" title="Q:为什么input state没有改变的时候,selector还是会重新计算?"></a>Q:为什么input state没有改变的时候,selector还是会重新计算?</h3><p>A: 检查一下你的记忆函数和你你的state更新函数是不是兼容(如果是使用Redux的时候,看看reducer).例如:使用每一次更新的时候,不管值是不是发生改变,<code>createSelector</code>创建的selector总是会收到一个新的对象.<code>createSelector</code>函数使用(<code>===</code>)检测input的变化,由此可知如果每次都返回一个新对象,表示selector总是在每次更新的时候重新计算.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; REMOVE_OLD &#125; <span class="keyword">from</span> <span class="string">'../constants/ActionTypes'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initialState = [</span><br><span class="line">  &#123;</span><br><span class="line">    text: <span class="string">'Use Redux'</span>,</span><br><span class="line">    completed: <span class="literal">false</span>,</span><br><span class="line">    id: <span class="number">0</span>,</span><br><span class="line">    timestamp: <span class="built_in">Date</span>.now()</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">todos</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">  <span class="keyword">case</span> REMOVE_OLD:</span><br><span class="line">    <span class="keyword">return</span> state.filter(<span class="function"><span class="params">todo</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> todo.timestamp + <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span> &gt; <span class="built_in">Date</span>.now()</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>下面的selector在每一次REMOVE_OLD调用的时候,都会重新计算,因为Array.filter总是返回一个新对象.但是在大多数情况下,REMOVE_OLD action都不会改变todo列表,所以重新计算是不必要的.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelector &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todosSelector = <span class="function"><span class="params">state</span> =&gt;</span> state.todos</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> visibleTodosSelector = createSelector(</span><br><span class="line">  todosSelector,</span><br><span class="line">  (todos) =&gt; &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>你可以通过state更新函数返回一个新对象来减少不必要的重计算操作,这个对象执行深度等值检测,只有深度不相同的时候才返回新对象.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; REMOVE_OLD &#125; <span class="keyword">from</span> <span class="string">'../constants/ActionTypes'</span></span><br><span class="line"><span class="keyword">import</span> isEqual <span class="keyword">from</span> <span class="string">'lodash.isEqual'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initialState = [</span><br><span class="line">  &#123;</span><br><span class="line">    text: <span class="string">'Use Redux'</span>,</span><br><span class="line">    completed: <span class="literal">false</span>,</span><br><span class="line">    id: <span class="number">0</span>,</span><br><span class="line">    timestamp: <span class="built_in">Date</span>.now()</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">todos</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">  <span class="keyword">case</span> REMOVE_OLD:</span><br><span class="line">    <span class="keyword">const</span> updatedState =  state.filter(<span class="function"><span class="params">todo</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> todo.timestamp + <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span> &gt; <span class="built_in">Date</span>.now()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> isEqual(updatedState, state) ? state : updatedState</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>替代的方法是,在selector中使用深度检测方法替代默认的<code>equalityCheck</code>函数:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelectorCreator, defaultMemoize &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"><span class="keyword">import</span> isEqual <span class="keyword">from</span> <span class="string">'lodash.isEqual'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todosSelector = <span class="function"><span class="params">state</span> =&gt;</span> state.todos</span><br><span class="line"></span><br><span class="line"><span class="comment">// create a "selector creator" that uses lodash.isEqual instead of ===</span></span><br><span class="line"><span class="keyword">const</span> createDeepEqualSelector = createSelectorCreator(</span><br><span class="line">  defaultMemoize,</span><br><span class="line">  isEqual</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// use the new "selector creator" to create a selector</span></span><br><span class="line"><span class="keyword">const</span> mySelector = createDeepEqualSelector(</span><br><span class="line">  todosSelector,</span><br><span class="line">  (todos) =&gt; &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>检查<code>equalityCheck</code>函数的更替或者在state更新函数中做深度检测并不总是比重计算的花销小.如果每次重计算的花销总是比较小,可能的原因是Reselect没有通过<code>connect</code>函数传递<code>mapStateProps</code>单纯对象的原因.</p>
+<h3 id="Q-没有Redux的情况下可以使用Reselect吗？"><a href="#Q-没有Redux的情况下可以使用Reselect吗？" class="headerlink" title="Q:没有Redux的情况下可以使用Reselect吗？"></a>Q:没有Redux的情况下可以使用Reselect吗？</h3><p>A:可以.Reselect没有其他任何的依赖包,因此尽管他设计的和Redux比较搭配,但是独立使用也是可以的.目前的版本在传统的Flux APP下使用是比较成功的.</p>
+<blockquote>
+<p>如果你使用<code>createSelector</code>创建的selectors,需要确保他的参数是immutable的.</p>
+</blockquote>
+<blockquote>
+<p>看<a href="#createselectorinputselectors--inputselectors-resultfunc">这里</a></p>
+</blockquote>
+<h3 id="Q-怎么才能创建一个接收参数的selector"><a href="#Q-怎么才能创建一个接收参数的selector" class="headerlink" title="Q:怎么才能创建一个接收参数的selector."></a>Q:怎么才能创建一个接收参数的selector.</h3><p>A:Reselect没有支持创建接收参数的selectors,但是这里有一些实现类似函数功能的建议.</p>
+<p>如果参数不是动态的,你可以使用工厂函数:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> expensiveItemSelectorFactory = <span class="function"><span class="params">minValue</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> createSelector(</span><br><span class="line">    shopItemsSelector,</span><br><span class="line">    items =&gt; items.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.value &gt; minValue)</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> subtotalSelector = createSelector(</span><br><span class="line">  expensiveItemSelectorFactory(<span class="number">200</span>),</span><br><span class="line">  items =&gt; items.reduce(<span class="function">(<span class="params">acc, item</span>) =&gt;</span> acc + item.value, <span class="number">0</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<hr>
+<p>总的达成共识<a href="https://github.com/reactjs/reselect/issues/38" target="_blank" rel="noopener">看这里</a>和<a href="https://github.com/optimizely/nuclear-js/issues/14" target="_blank" rel="noopener">超越 neclear-js</a>是:如果一个selector需要动态的参数,那么参数应该是store中的state.如果你决定好了在应用中使用动态参数,像下面这样返回一个记忆函数是比较合适的:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelector &#125; <span class="keyword">from</span> <span class="string">'reselect'</span></span><br><span class="line"><span class="keyword">import</span> memoize <span class="keyword">from</span> <span class="string">'lodash.memoize'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> expensiveSelector = createSelector(</span><br><span class="line">  state =&gt; state.items,</span><br><span class="line">  items =&gt; memoize(</span><br><span class="line">    minValue =&gt; items.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.value &gt; minValue)</span><br><span class="line">  )</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> expensiveFilter = expensiveSelector(state)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> slightlyExpensive = expensiveFilter(<span class="number">100</span>)</span><br><span class="line"><span class="keyword">const</span> veryExpensive = expensiveFilter(<span class="number">1000000</span>)</span><br></pre></td></tr></table></figure></div>
+<hr>
+<h3 id="Q：默认的记忆函数不太好-我能用个其他的吗？"><a href="#Q：默认的记忆函数不太好-我能用个其他的吗？" class="headerlink" title="Q：默认的记忆函数不太好,我能用个其他的吗？"></a>Q：默认的记忆函数不太好,我能用个其他的吗？</h3><p>A: 我认为这个记忆韩式工作的还可以,但是如果你需要一个其他的韩式也是可以的.<br>可以看看这个<a href="#customize-equalitycheck-for-defaultmemoize">例子</a></p>
+<h3 id="Q-怎么才能测试一个selector"><a href="#Q-怎么才能测试一个selector" class="headerlink" title="Q:怎么才能测试一个selector?"></a>Q:怎么才能测试一个selector?</h3><p>A:对于一个给定的input,一个selector总是产出相同的结果.基于这个原因,做单元测试是非常简单的.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selector = createSelector(</span><br><span class="line">  state =&gt; state.a,</span><br><span class="line">  state =&gt; state.b,</span><br><span class="line">  (a, b) =&gt; (&#123;</span><br><span class="line">    c: a * <span class="number">2</span>,</span><br><span class="line">    d: b * <span class="number">3</span></span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">test(<span class="string">"selector unit test"</span>, () =&gt; &#123;</span><br><span class="line">  assert.deepEqual(selector(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;), &#123; <span class="attr">c</span>: <span class="number">2</span>, <span class="attr">d</span>: <span class="number">6</span> &#125;)</span><br><span class="line">  assert.deepEqual(selector(&#123; <span class="attr">a</span>: <span class="number">2</span>, <span class="attr">b</span>: <span class="number">3</span> &#125;), &#123; <span class="attr">c</span>: <span class="number">4</span>, <span class="attr">d</span>: <span class="number">9</span> &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>在state更新函数调用的时候同时检测selector的记忆函数的功能也是非常有用的(例如 使用Redux的时候检查reducer).每一个selector都有一个<code>recomputations</code>方法返回重新计算的次数:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">suite(<span class="string">'selector'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> state = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> reducer = <span class="function">(<span class="params">state, action</span>) =&gt;</span> (</span><br><span class="line">    &#123;</span><br><span class="line">      a: action(state.a),</span><br><span class="line">      b: action(state.b)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> selector = createSelector(</span><br><span class="line">    state =&gt; state.a,</span><br><span class="line">    state =&gt; state.b,</span><br><span class="line">    (a, b) =&gt; (&#123;</span><br><span class="line">      c: a * <span class="number">2</span>,</span><br><span class="line">      d: b * <span class="number">3</span></span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> plusOne = <span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span></span><br><span class="line">  <span class="keyword">const</span> id = <span class="function"><span class="params">x</span> =&gt;</span> x</span><br><span class="line"></span><br><span class="line">  test(<span class="string">"selector unit test"</span>, () =&gt; &#123;</span><br><span class="line">    state = reducer(state, plusOne)</span><br><span class="line">    assert.deepEqual(selector(state), &#123; <span class="attr">c</span>: <span class="number">4</span>, <span class="attr">d</span>: <span class="number">9</span> &#125;)</span><br><span class="line">    state = reducer(state, id)</span><br><span class="line">    assert.deepEqual(selector(state), &#123; <span class="attr">c</span>: <span class="number">4</span>, <span class="attr">d</span>: <span class="number">9</span> &#125;)</span><br><span class="line">    assert.equal(selector.recomputations(), <span class="number">1</span>)</span><br><span class="line">    state = reducer(state, plusOne)</span><br><span class="line">    assert.deepEqual(selector(state), &#123; <span class="attr">c</span>: <span class="number">6</span>, <span class="attr">d</span>: <span class="number">12</span> &#125;)</span><br><span class="line">    assert.equal(selector.recomputations(), <span class="number">2</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div></p>
+<p>另外,selectors保留了最后一个函数调用结果的引用,这个引用作为<code>.resultFunc</code>.如果你已经聚合了其他的selectors,这个函数引用可以帮助你测试每一个selector,不需要从state中解耦测试.</p>
+<p>例如如果你的selectors集合像下面这样:</p>
+<p><code>selectors.js</code><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> firstSelector = createSelector( ... )</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> secondSelector = createSelector( ... )</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> thirdSelector = createSelector( ... )</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> myComposedSelector = createSelector(</span><br><span class="line">  firstSelector,</span><br><span class="line">  secondSelector,</span><br><span class="line">  thirdSelector,</span><br><span class="line">  (first, second, third) =&gt; first * second &lt; third</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div></p>
+<p>单元测试就像下面这样:<br><code>test/selectors.js</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tests for the first three selectors...</span></span><br><span class="line">test(<span class="string">"firstSelector unit test"</span>, () =&gt; &#123; ... &#125;)</span><br><span class="line">test(<span class="string">"secondSelector unit test"</span>, () =&gt; &#123; ... &#125;)</span><br><span class="line">test(<span class="string">"thirdSelector unit test"</span>, () =&gt; &#123; ... &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// We have already tested the previous</span></span><br><span class="line"><span class="comment">// three selector outputs so we can just call `.resultFunc`</span></span><br><span class="line"><span class="comment">// with the values we want to test directly:</span></span><br><span class="line">test(<span class="string">"myComposedSelector unit test"</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// here instead of calling selector()</span></span><br><span class="line">  <span class="comment">// we just call selector.resultFunc()</span></span><br><span class="line">  assert(selector.resultFunc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), <span class="literal">true</span>)</span><br><span class="line">  assert(selector.resultFunc(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>), <span class="literal">false</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>最后,每一个selector有一个<code>resetRecomputations</code>方法,重置recomputations方法为0,这个参数的意图是在面对复杂的selector的时候,需要很多独立的测试,你不需要管理复杂的手工计算,或者为每一个测试创建”傻瓜”selector.</p>
+<h3 id="Q-Reselect怎么和Immutble-js一起使用"><a href="#Q-Reselect怎么和Immutble-js一起使用" class="headerlink" title="Q:Reselect怎么和Immutble.js一起使用?"></a>Q:Reselect怎么和Immutble.js一起使用?</h3><p>A:<code>creatSelector</code>创建的Selectors应该可以和Immutable.js数据结构一起完美的工作.<br>如果你的selector正在重计算,并且你认为state没有发生变化,一定要确保知道哪一个Immutable.js更新方法,这个方法只要一更新<strong>总是</strong>返回新对象.哪一个方法只有<strong>集合实际发生变化的时候</strong>才返回新对象.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Immutable <span class="keyword">from</span> <span class="string">'immutable'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myMap = Immutable.Map(&#123;</span><br><span class="line">  a: <span class="number">1</span>,</span><br><span class="line">  b: <span class="number">2</span>,</span><br><span class="line">  c: <span class="number">3</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"> <span class="comment">// set, merge and others only return a new obj when update changes collection</span></span><br><span class="line"><span class="keyword">let</span> newMap = myMap.set(<span class="string">'a'</span>, <span class="number">1</span>)</span><br><span class="line">assert.equal(myMap, newMap)</span><br><span class="line">newMap = myMap.merge(&#123; <span class="string">'a'</span>, <span class="number">1</span> &#125;)</span><br><span class="line">assert.equal(myMap, newMap)</span><br><span class="line"><span class="comment">// map, reduce, filter and others always return a new obj</span></span><br><span class="line">newMap = myMap.map(<span class="function"><span class="params">a</span> =&gt;</span> a * <span class="number">1</span>)</span><br><span class="line">assert.notEqual(myMap, newMap)</span><br></pre></td></tr></table></figure></div>
+<p>如果一个操作导致的selector更新总是返回一个新对象,可能会发生不必要的重计算.<a href="#q-why-is-my-selector-recomputing-when-the-input-state-stays-the-same">看这里</a>.这是一个关于pros的讨论,使用深全等于来检测例如<code>immutable.js</code>来减少不必要的重计算过程.</p>
+<h3 id="Q-可以在多个组件之间共享selector吗？"><a href="#Q-可以在多个组件之间共享selector吗？" class="headerlink" title="Q:可以在多个组件之间共享selector吗？"></a>Q:可以在多个组件之间共享selector吗？</h3><p>A: 使用<code>createSelector</code>创建的Selector的缓存的大小只有1.这个设定使得多个组件的实例之间的参数不同,跨组件共享selector变得不合适.这里也有几种办法来解决这个问题:</p>
+<ul>
+<li>使用工程函数方法,为每一个组件实例创建一个新的selector.这里有一个内建的工厂方法,React Redux v4.3或者更高版本可以使用. <a href="#sharing-selectors-with-props-across-multiple-components">看这里</a></li>
+<li>创建一个缓存尺寸大于1的定制selector.</li>
+</ul>
+<h3 id="Q-有TypeScript的类型吗？"><a href="#Q-有TypeScript的类型吗？" class="headerlink" title="Q:有TypeScript的类型吗？"></a>Q:有TypeScript的类型吗？</h3><p>A: 是的！他们包含在<code>package.json</code>里.可以很好的工作.</p>
+<h3 id="Q：怎么构建一个柯里化selector"><a href="#Q：怎么构建一个柯里化selector" class="headerlink" title="Q：怎么构建一个柯里化selector?"></a>Q：怎么构建一个<a href="https://github.com/hemanth/functional-programming-jargon#currying" target="_blank" rel="noopener">柯里化</a>selector?</h3><p>A：尝试一些这里<a href="https://github.com/reactjs/reselect/issues/159#issuecomment-238724788" target="_blank" rel="noopener">助手函数</a>,由<a href="https://github.com/MattSPalmer" target="_blank" rel="noopener">MattSPalmer</a>提供</p>
+<h2 id="有关的项目"><a href="#有关的项目" class="headerlink" title="有关的项目"></a>有关的项目</h2><h3 id="reselect-map"><a href="#reselect-map" class="headerlink" title="reselect-map"></a><a href="https://github.com/HeyImAlex/reselect-map" target="_blank" rel="noopener">reselect-map</a></h3><p>因为Reselect不可能保证缓存你所有的需求,在做<strong>非常昂贵的计算</strong>的时候,这个方法比较有用.查看一下reselect-maps readme</p>
+<p><strong>reselect-map的优化措施仅仅使用在一些小的案例中,如果你不确定是不是需要他,就不要使用它</strong>.</p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>MIT</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/21/翻译|选择性创建对象/" rel="next" title="翻译|How to conditional create Object with es6">
+                <i class="fa fa-chevron-left"></i> 翻译|How to conditional create Object with es6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/24/useContextState/" rel="prev" title="useContentState代码实例">
+                useContentState代码实例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Table-of-Contents"><span class="nav-number">1.</span> <span class="nav-text">Table of Contents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">3.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存Selcectos的动机"><span class="nav-number">3.1.</span> <span class="nav-text">缓存Selcectos的动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个缓存Selector"><span class="nav-number">3.2.</span> <span class="nav-text">创建一个缓存Selector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合selectors"><span class="nav-number">3.3.</span> <span class="nav-text">组合selectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把Selector连接到Redux-Store"><span class="nav-number">3.4.</span> <span class="nav-text">把Selector连接到Redux Store</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Selectors中获取-React-的-props"><span class="nav-number">3.5.</span> <span class="nav-text">在Selectors中获取 React 的 props</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#selectors-todoSelectors-js"><span class="nav-number">3.5.1.</span> <span class="nav-text">selectors/todoSelectors.js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨越多个组件使用selectors共享props"><span class="nav-number">3.6.</span> <span class="nav-text">跨越多个组件使用selectors共享props</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">4.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createSelector-…inputSelectors-inputSelectors-resultFunc"><span class="nav-number">4.1.</span> <span class="nav-text">createSelector(…inputSelectors|[inputSelectors],resultFunc)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defaultMemoize-func-equalityCheck-defaultEqualityCheck"><span class="nav-number">4.2.</span> <span class="nav-text">defaultMemoize(func, equalityCheck = defaultEqualityCheck)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createSelectorCreator-memoize-…memoizeOptions"><span class="nav-number">4.3.</span> <span class="nav-text">createSelectorCreator(memoize,…memoizeOptions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createStructuredSelector-inputSelectors-selectorCreator-createSelector"><span class="nav-number">4.4.</span> <span class="nav-text">createStructuredSelector({inputSelectors}, selectorCreator = createSelector)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">5.</span> <span class="nav-text">FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-为什么当输入的state发生改变的时候-selector不重新计算？"><span class="nav-number">5.1.</span> <span class="nav-text">Q:为什么当输入的state发生改变的时候,selector不重新计算？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-为什么input-state没有改变的时候-selector还是会重新计算"><span class="nav-number">5.2.</span> <span class="nav-text">Q:为什么input state没有改变的时候,selector还是会重新计算?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-没有Redux的情况下可以使用Reselect吗？"><span class="nav-number">5.3.</span> <span class="nav-text">Q:没有Redux的情况下可以使用Reselect吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-怎么才能创建一个接收参数的selector"><span class="nav-number">5.4.</span> <span class="nav-text">Q:怎么才能创建一个接收参数的selector.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q：默认的记忆函数不太好-我能用个其他的吗？"><span class="nav-number">5.5.</span> <span class="nav-text">Q：默认的记忆函数不太好,我能用个其他的吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-怎么才能测试一个selector"><span class="nav-number">5.6.</span> <span class="nav-text">Q:怎么才能测试一个selector?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Reselect怎么和Immutble-js一起使用"><span class="nav-number">5.7.</span> <span class="nav-text">Q:Reselect怎么和Immutble.js一起使用?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-可以在多个组件之间共享selector吗？"><span class="nav-number">5.8.</span> <span class="nav-text">Q:可以在多个组件之间共享selector吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-有TypeScript的类型吗？"><span class="nav-number">5.9.</span> <span class="nav-text">Q:有TypeScript的类型吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q：怎么构建一个柯里化selector"><span class="nav-number">5.10.</span> <span class="nav-text">Q：怎么构建一个柯里化selector?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关的项目"><span class="nav-number">6.</span> <span class="nav-text">有关的项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reselect-map"><span class="nav-number">6.1.</span> <span class="nav-text">reselect-map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#License"><span class="nav-number">7.</span> <span class="nav-text">License</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redux,React,Ramda,FP,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文  目标目标是把Redux中selector: 1234567export const getUserName = state =&amp;gt; state.user.nameexport const isLoggedIn = state =&amp;gt; state.user.id != nullexport const getTotalItemCount = state =&amp;gt;    Objec">
+<meta name="keywords" content="Redux,React,Ramda,FP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="摘要|Better Redux Selectors with Ramda">
+<meta property="og:url" content="https://React-Apollo.github.io/2018/02/28/摘要| Better  Redux Selectors with Ramda/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="原文  目标目标是把Redux中selector: 1234567export const getUserName = state =&amp;gt; state.user.nameexport const isLoggedIn = state =&amp;gt; state.user.id != nullexport const getTotalItemCount = state =&amp;gt;    Objec">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="摘要|Better Redux Selectors with Ramda">
+<meta name="twitter:description" content="原文  目标目标是把Redux中selector: 1234567export const getUserName = state =&amp;gt; state.user.nameexport const isLoggedIn = state =&amp;gt; state.user.id != nullexport const getTotalItemCount = state =&amp;gt;    Objec">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2018/02/28/摘要| Better  Redux Selectors with Ramda/">
+
+
+
+
+
+  <title>摘要|Better Redux Selectors with Ramda | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2018/02/28/摘要| Better  Redux Selectors with Ramda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">摘要|Better Redux Selectors with Ramda</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T09:55:17+00:00">
+                2018-02-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/28/摘要| Better  Redux Selectors with Ramda/" class="leancloud_visitors" data-flag-title="摘要|Better Redux Selectors with Ramda">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,965
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="https://medium.com/@grrttn/better-redux-selectors-with-ramda-c1ab7af3f16" target="_blank" rel="noopener"><code>原文</code></a></p>
+</blockquote>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>目标是把Redux中selector:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getUserName = <span class="function"><span class="params">state</span> =&gt;</span> state.user.name</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isLoggedIn = <span class="function"><span class="params">state</span> =&gt;</span> state.user.id != <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTotalItemCount = <span class="function"><span class="params">state</span> =&gt;</span></span><br><span class="line">    <span class="built_in">Object</span>.values(state.items.byId)</span><br><span class="line">        .reduce(<span class="function">(<span class="params">total, item</span>) =&gt;</span> total + item.count, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+<p>转换为:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> R <span class="keyword">from</span> <span class="string">'ramda'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Helper functions</span></span><br><span class="line"><span class="keyword">const</span> isNotNil = R.complement(R.isNil)</span><br><span class="line"><span class="keyword">const</span> pathIsNotNil = <span class="function"><span class="params">path</span> =&gt;</span> R.compose(isNotNil, R.path(path))</span><br><span class="line"><span class="keyword">const</span> addProp = <span class="function"><span class="params">propName</span> =&gt;</span> R.useWith(R.add, [R.identity, R.prop(propName)])</span><br><span class="line"><span class="keyword">const</span> sumProps = <span class="function"><span class="params">propName</span> =&gt;</span> R.reduce(addProp(propName), <span class="number">0</span>)</span><br><span class="line"><span class="keyword">const</span> sumCounts = sumProps(<span class="string">'count'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Selector functions</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getUserName = R.path([<span class="string">'user'</span>, <span class="string">'name'</span>])</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isLoggedIn = pathIsNotNil([<span class="string">'user'</span>, <span class="string">'id'</span>])</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTotalItemCount =</span><br><span class="line">    R.compose(sumCounts, R.values, R.path([<span class="string">'items'</span>, <span class="string">'byId'</span>]))</span><br></pre></td></tr></table></figure></div>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="Selector函数回顾"><a href="#Selector函数回顾" class="headerlink" title="Selector函数回顾"></a>Selector函数回顾</h3><p><code>selector</code> 的概念在 Redux 的文档中出现过,  为了代替直接在 React 组件中访问 state tree,可以定义从 state 获取数据的函数. 可以认为是<code>从 state获取数据的 API</code>. 不是必须的, 甚至 Redux也不是一定要用. </p>
+<p><code>Selector</code>函数接收 Redux的 state 对象作为参数, 返回任何你需要的数据. 实例:</p>
+<p><code>从 State tree 获取 属性</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserName</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> state.user.name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><code>从属性衍生数据</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isLoggedIn</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> state.user.id != <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><code>从一个列表数据中衍生数据</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTotalItemCount</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(state.items.byId)</span><br><span class="line">        .reduce(<span class="function"><span class="keyword">function</span>(<span class="params">total, id</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> total + state.items.byId[id].count</span><br><span class="line">        &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>假定列表的每个 item都有一个<code>count</code>属性, 这个 selector 使用<code>array.reduce()</code>函数计算<code>count</code>的综合. </p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getUserName</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> state.user.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">isLoggedIn</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> state.user.id != <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getTotalItemCount</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(state.items.byId)</span><br><span class="line">        .reduce(<span class="function"><span class="keyword">function</span>(<span class="params">total, id</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> total + state.items.byId[id].count</span><br><span class="line">        &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>如果使用 ES2015语法,会更简洁</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getUserName = <span class="function"><span class="params">state</span> =&gt;</span> state.user.name</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isLoggedIn = <span class="function"><span class="params">state</span> =&gt;</span> state.user.id != <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTotalItemCount = <span class="function"><span class="params">state</span> =&gt;</span></span><br><span class="line">    <span class="built_in">Object</span>.values(state.items.byId)</span><br><span class="line">        .reduce(<span class="function">(<span class="params">total, item</span>) =&gt;</span> total + item.count, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+<p>Object.values 是 ES2017的语法</p>
+<h3 id="Ramda-的原则"><a href="#Ramda-的原则" class="headerlink" title="Ramda 的原则"></a>Ramda 的原则</h3><ul>
+<li>自动柯理化</li>
+<li>数据最后传入</li>
+</ul>
+<h2 id="使用-Ramda编写-Selectors"><a href="#使用-Ramda编写-Selectors" class="headerlink" title="使用 Ramda编写 Selectors"></a>使用 Ramda编写 Selectors</h2><h3 id="getUserName"><a href="#getUserName" class="headerlink" title="getUserName"></a>getUserName</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getUserName = <span class="function"><span class="params">state</span> =&gt;</span> R.path([<span class="string">'user'</span>, <span class="string">'name'</span>], state)</span><br></pre></td></tr></table></figure></div>
+<p>改为柯理化的版本:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getUserName = <span class="function"><span class="params">state</span> =&gt;</span> R.path([<span class="string">'user'</span>, <span class="string">'name'</span>])(state)</span><br></pre></td></tr></table></figure></div>
+<p>就可以等待数据了</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getUserName = R.path([<span class="string">'user'</span>, <span class="string">'name'</span>])</span><br></pre></td></tr></table></figure></div>
+<p>这里的函数就看不到数据了, 这个技术被称为 point-free style 或者tacit programming.</p>
+<h3 id="isLoggedIn"><a href="#isLoggedIn" class="headerlink" title="isLoggedIn"></a>isLoggedIn</h3><p>我们想要的版本是获取用于的 ID, 然后判断是否为 true</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isLoggedIn = pathIsNotNullOrUndefined([<span class="string">'user'</span>, <span class="string">'id'</span>])</span><br></pre></td></tr></table></figure></div>
+<p>Ramda的 isNil 方法<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R.isNil(<span class="literal">null</span>) <span class="comment">// true</span></span><br><span class="line">R.isNil(<span class="literal">undefined</span>) <span class="comment">// true</span></span><br><span class="line">R.isNil(<span class="literal">false</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div></p>
+<p>现在可以改为:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isNotNil = <span class="function"><span class="params">val</span> =&gt;</span> !R.isNil(val)</span><br></pre></td></tr></table></figure></div>
+<p>在更进一步:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isNotNil = <span class="function"><span class="params">val</span> =&gt;</span> R.not(R.isNil(val))</span><br></pre></td></tr></table></figure></div>
+<p>另一个方法:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isNotNil = R.complement(R.isNil)</span><br><span class="line"></span><br><span class="line">isNotNil(<span class="literal">true</span>) <span class="comment">// true</span></span><br><span class="line">isNotNil(<span class="literal">null</span>) <span class="comment">// false</span></span><br><span class="line">isNotNil(<span class="literal">undefined</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+<p>进一步重构的版本:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PF"><figure class="iseeu highlight /pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const pathIsNotNil = (path, <span class="keyword">state</span>) =&gt; isNotNil(R.path(path, <span class="keyword">state</span>))</span><br><span class="line"></span><br><span class="line">//⛔️柯理化的版本</span><br><span class="line"></span><br><span class="line">const pathIsNotNil = path =&gt; <span class="keyword">state</span> =&gt; isNotNil(R.path(path, <span class="keyword">state</span>))</span><br></pre></td></tr></table></figure></div>
+<p><code>也就是从一个 state获取嵌套属性,并且判断是否为 true</code>, 由于属性的路径是在 default 中已经配置好的, 所以我们可以使用柯理化提前配置获取的方法, 等待变化的 state 数据.  这就配置出了一个处理 state 的工厂.  为什么柯理化在函数式编程中很重要,这就是原因. 配置出的工厂是与数据独立的, 这就是上面提到的 tacit programming 无参数编程,  函数的配置和传入的参数是无关的, 顶多是对参数的类型做出约束. </p>
+<p>在使用 R.compose 做重构</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> pathIsNotNil = <span class="function"><span class="params">path</span> =&gt;</span> state =&gt; R.compose(isNotNil, R.path)(path, state)</span><br></pre></td></tr></table></figure></div>
+<p>整个操作和path,state 有关,  通过 path从 state 获取属性, 然后判断是否为 true,</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pathIsNotNil = <span class="function"><span class="params">path</span> =&gt;</span> state =&gt; R.compose(isNotNil, R.path(path))(state)</span><br><span class="line"><span class="comment">//👇👇柯理化</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pathIsNotNil = <span class="function"><span class="params">path</span> =&gt;</span> R.compose(isNotNil, R.path(path))</span><br></pre></td></tr></table></figure></div>
+<p>在 pathIsNotNil中实际的数据只有 state,path 是属于配置项, 也就是在程序中是不改变的.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isLoggedIn = pathIsNotNil([<span class="string">'user'</span>, <span class="string">'id'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">//配置了从对象的路径 user.id 获取属性值,然后判断是否为 true</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="getTotalItemCount"><a href="#getTotalItemCount" class="headerlink" title="getTotalItemCount"></a>getTotalItemCount</h3><p>//刚开始的方法<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTotalItemCount = <span class="function"><span class="params">state</span> =&gt;</span></span><br><span class="line">    <span class="built_in">Object</span>.values(state.items.byId)</span><br><span class="line">        .reduce(<span class="function">(<span class="params">total, item</span>) =&gt;</span> total + item.count, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></div></p>
+<p>面对复杂的问题, 使用函数式风格进行分解是比较好的选择.创建一个函数<code>sumCounts</code>,接收一个数组, 返回项目中<code>count</code>属性的总计.  </p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sumCounts = <span class="function"><span class="params">items</span> =&gt;</span></span><br><span class="line">    items.reduce(<span class="function">(<span class="params">total, item</span>) =&gt;</span> total + item.count, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+<h4 id="使用-map"><a href="#使用-map" class="headerlink" title="使用 map"></a>使用 map</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sumCounts = R.compose(R.sum, R.map(R.prop(<span class="string">'count'</span>)))</span><br></pre></td></tr></table></figure></div>
+<p>R.map 对数组的每一项调用 R.prop(‘count’)函数, 获取的<code>所有count 属性</code>,放到一个新的数组中, 之后用 R.sum 对数组中的属性值做合计</p>
+<p>Ramda 针对map 这个函数的使用,也有更简单的方法</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sumCounts = R.compose(R.sum, R.pluck(<span class="string">'count'</span>))</span><br></pre></td></tr></table></figure></div>
+<p>R.pluck 从数组中获取每一项的属性值</p>
+<h3 id="使用-Reduce-函数的替代方案"><a href="#使用-Reduce-函数的替代方案" class="headerlink" title="使用 Reduce 函数的替代方案"></a>使用 Reduce 函数的替代方案</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sumCounts = R.reduce(<span class="function">(<span class="params">total, item</span>) =&gt;</span> total + item.count, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addCount=<span class="function">(<span class="params">total,item</span>)=&gt;</span>total+item.count</span><br><span class="line"><span class="keyword">const</span> sumCounts = R.reduce(addCount, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+<p> 使用 Ramda 的 R.add 方法</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addCount = <span class="function">(<span class="params">total, item</span>) =&gt;</span> R.add(total, item.count)</span><br></pre></td></tr></table></figure></div>
+<p>从对象中获取属性</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addCount = <span class="function">(<span class="params">total, item</span>) =&gt;</span> R.add(total, prop(<span class="string">'count'</span>, item))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 柯理化形式</span></span><br><span class="line"><span class="keyword">const</span> addCount = <span class="function">(<span class="params">total, item</span>) =&gt;</span> R.add(total, prop(<span class="string">'count'</span>)(item))</span><br></pre></td></tr></table></figure></div>
+<p>上面的函数通用的模式是: 接收两个参数,传递给另一个函数, 第一个参数不懂, 对第二个参数运用一个函数进行处理,之后再执行第一个函数</p>
+<p>Ramda 有一个函数可以帮我们完成这个任务, <code>useWith</code>,<br><code>useWith</code>函数接收两个参数, 第一个参数是单个的函数,和一个函数数组. 数组中的函数被称为变换函数-在对应位置的参数被第一个函数调用之前进行变换处理. 换句话说,数组的第一个函数对第一个参数进行处理, 第二个函数对第二个参数进行处理,以此类推.转换后的参数传递个第一个参数的函数. </p>
+<p>在我们的实例中,第一个参数的函数 R.add, </p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addCount = R.useWith(R.add, [<span class="comment">/* transformers */</span>])</span><br></pre></td></tr></table></figure></div>
+<p>需要对 R.add 的第二个参数进行处理, 从 <code>count</code>属性中获取值, 所以放在第二个函数的位置</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addCount = R.useWith(R.add [<span class="comment">/* 1st */</span>, R.prop(<span class="string">'count'</span>)])</span><br></pre></td></tr></table></figure></div>
+<p>第一个参数怎么办? 这个参数对应的是 total 值, 不需要转换 , Ramda有一个函数可以原封不动的返回一个数值, R.identity. </p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addCount = R.useWith(R.add, [R.identity, R.prop(<span class="string">'count'</span>)])</span><br></pre></td></tr></table></figure></div>
+<p>现在的函数:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addCount = R.useWith(R.add, [R.identity, R.prop(<span class="string">'count'</span>)])</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sumCounts = R.reduce(addCount, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+<p>现在可以获得更为通用的方式,获取任意的属性, </p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addProp = <span class="function"><span class="params">propName</span> =&gt;</span> R.useWith(R.add, [R.identity, R.prop(propName)])</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sumProps = <span class="function"><span class="params">propName</span> =&gt;</span> R.reduce(addProp(propName), <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sumCounts = sumProps(<span class="string">'count'</span>)</span><br></pre></td></tr></table></figure></div>
+<p>参数的转换方式也可以抽象出来:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addTransformedItem = <span class="function"><span class="params">transformer</span> =&gt;</span></span><br><span class="line">    R.useWith(R.add, [R.identity, transformer])</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sumTransformedItems = <span class="function"><span class="params">transformer</span> =&gt;</span></span><br><span class="line">    R.reduce(addTransformedItem(transformer), <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> totalItemComments = R.compose(R.length, R.prop(<span class="string">'comments'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sumComments = sumTransformedItems(totalItemComments)</span><br></pre></td></tr></table></figure></div>
+<p>最终在 Ramda 的帮助下, 总的数据获取流是有更小的可以重用的函数组成的..</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>如果有下面的数据</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">    items: &#123;</span><br><span class="line">        byId: &#123;</span><br><span class="line">            <span class="string">'item1'</span>: &#123; <span class="attr">id</span>: <span class="string">'item1'</span>, <span class="attr">count</span>: <span class="number">2</span> &#125;,</span><br><span class="line">            <span class="string">'item2'</span>: &#123; <span class="attr">id</span>: <span class="string">'item2'</span>, <span class="attr">count</span>: <span class="number">4</span> &#125;,</span><br><span class="line">            <span class="string">'item3'</span>: &#123; <span class="attr">id</span>: <span class="string">'item3'</span>, <span class="attr">count</span>: <span class="number">7</span> &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTotalItemCount =</span><br><span class="line">    R.compose(sumCounts, R.values, R.path([<span class="string">'items'</span>, <span class="string">'byId'</span>]))</span><br></pre></td></tr></table></figure></div>
+<p>最终得到的结果<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mport R <span class="keyword">from</span> <span class="string">'ramda'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Helper functions</span></span><br><span class="line"><span class="keyword">const</span> isNotNil = R.complement(R.isNil)</span><br><span class="line"><span class="keyword">const</span> pathIsNotNil = <span class="function"><span class="params">path</span> =&gt;</span> R.compose(isNotNil, R.path(path))</span><br><span class="line"><span class="keyword">const</span> addProp = <span class="function"><span class="params">propName</span> =&gt;</span> R.useWith(R.add, [R.identity, R.prop(propName)])</span><br><span class="line"><span class="keyword">const</span> sumProps = <span class="function"><span class="params">propName</span> =&gt;</span> R.reduce(addProp(propName), <span class="number">0</span>)</span><br><span class="line"><span class="keyword">const</span> sumCounts = sumProps(<span class="string">'count'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Selector functions</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getUserName = R.path([<span class="string">'user'</span>, <span class="string">'name'</span>])</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isLoggedIn = pathIsNotNil([<span class="string">'user'</span>, <span class="string">'id'</span>])</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTotalItemCount =</span><br><span class="line">    R.compose(sumCounts, R.values, R.path([<span class="string">'items'</span>, <span class="string">'byId'</span>]))</span><br></pre></td></tr></table></figure></div></p>
+<p><strong><code>函数式编程最好的解释应该是: 数据和要对数据进行操作的函数式分离开的</code></strong>.  基于此, 就可以发现,  React的组件也可以看成一个函数, 接收应用的数据, 对数据进行处理,之后进行渲染.   </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/Ramda/" rel="tag"># Ramda</a>
+          
+            <a href="/tags/FP/" rel="tag"># FP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/27/摘要| Functional Redux Reducers with Ramda/" rel="next" title="摘要| Functional Redux Reducers with Ramda">
+                <i class="fa fa-chevron-left"></i> 摘要| Functional Redux Reducers with Ramda
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/02/摘要|有关 Redux 模式最好的一张图/" rel="prev" title="摘要|有关 Redux 模式最好的一张图">
+                摘要|有关 Redux 模式最好的一张图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selector函数回顾"><span class="nav-number">2.1.</span> <span class="nav-text">Selector函数回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ramda-的原则"><span class="nav-number">2.2.</span> <span class="nav-text">Ramda 的原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Ramda编写-Selectors"><span class="nav-number">3.</span> <span class="nav-text">使用 Ramda编写 Selectors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getUserName"><span class="nav-number">3.1.</span> <span class="nav-text">getUserName</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isLoggedIn"><span class="nav-number">3.2.</span> <span class="nav-text">isLoggedIn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getTotalItemCount"><span class="nav-number">3.3.</span> <span class="nav-text">getTotalItemCount</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-map"><span class="nav-number">3.3.1.</span> <span class="nav-text">使用 map</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Reduce-函数的替代方案"><span class="nav-number">3.4.</span> <span class="nav-text">使用 Reduce 函数的替代方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">3.5.</span> <span class="nav-text">结构</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Graphql,Github,API,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Public GraphQL APIs graphql-apis/README.md at master · APIs-guru/graphql-apisA collective list of public GraphQL APIs. PRs are welcome :smile:If you are interested in GraphQL in general, check out aw">
+<meta name="keywords" content="Graphql,Github,API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Public GraphQL APIs">
+<meta property="og:url" content="https://React-Apollo.github.io/2018/01/20/Public GraphQL APIs/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="Public GraphQL APIs graphql-apis/README.md at master · APIs-guru/graphql-apisA collective list of public GraphQL APIs. PRs are welcome :smile:If you are interested in GraphQL in general, check out aw">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.892Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Public GraphQL APIs">
+<meta name="twitter:description" content="Public GraphQL APIs graphql-apis/README.md at master · APIs-guru/graphql-apisA collective list of public GraphQL APIs. PRs are welcome :smile:If you are interested in GraphQL in general, check out aw">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2018/01/20/Public GraphQL APIs/">
+
+
+
+
+
+  <title>Public GraphQL APIs | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2018/01/20/Public GraphQL APIs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Public GraphQL APIs</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T05:18:28+00:00">
+                2018-01-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/source/" itemprop="url" rel="index">
+                    <span itemprop="name">source</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/20/Public GraphQL APIs/" class="leancloud_visitors" data-flag-title="Public GraphQL APIs">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,208
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> Public GraphQL APIs<br> <a href="https://github.com/APIs-guru/graphql-apis/blob/master/README.md" target="_blank" rel="noopener">graphql-apis/README.md at master · APIs-guru/graphql-apis</a><br><em>A collective list of public <a href="http://graphql.org/" target="_blank" rel="noopener">GraphQL</a> APIs. PRs are welcome :smile:</em><br>If you are interested in GraphQL in general, check out <a href="https://github.com/chentsulin/awesome-graphql" target="_blank" rel="noopener">awesome-graphql</a>.</p>
+<h2 id="Official-APIs"><a href="#Official-APIs" class="headerlink" title="Official APIs"></a>Official APIs</h2><table>
+<thead>
+<tr>
+<th>API</th>
+<th>Description</th>
+<th style="text-align:center">Graph<em>i</em>QL</th>
+<th style="text-align:center">Docs/Repo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brandfolder</td>
+<td>Digital asset management platform</td>
+<td style="text-align:center"><a href="https://graphql.brandfolder.com/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/brandfolder/graphqlify" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Buildkite</td>
+<td>Continuous integration and deployments</td>
+<td style="text-align:center"><a href="https://graphql.buildkite.com/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://building.buildkite.com/tutorial-getting-started-with-graphql-queries-and-mutations-11211dfe5d64#.7uhjusw1q" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>Deutsche Bahn</td>
+<td>Infrastructure Data, like realtime facility status, stations, timetables and more</td>
+<td style="text-align:center"><a href="developer.deutschebahn.com/free1bahnql/graphql">Try it!</a></td>
+<td style="text-align:center"><a href="https://developer.deutschebahn.com/store/apis/info?name=1BahnQL&amp;version=v1&amp;provider=DBOpenData" target="_blank" rel="noopener">Docs</a><br><a href="https://github.com/dbsystel/1BahnQL" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Digitransit HSL</td>
+<td>Transit routes and realtime schedules from Helsinki Regional Transport Authority, Finland</td>
+<td style="text-align:center"><a href="http://dev.hsl.fi/graphql/console/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://digitransit.fi/en/developers/services-and-apis/1-routing-api/" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>EHRI</td>
+<td>Holocaust-related archival materials</td>
+<td style="text-align:center"><a href="https://portal.ehri-project.eu/api/graphql/ui" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://portal.ehri-project.eu/api/graphql" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>EtMDB</td>
+<td>Ethopian Movie Database</td>
+<td style="text-align:center"><a href="https://etmdb.com/graphql?query=%7B%0A%20%20allCinemaDetails(before%3A%20%222017-10-04%22%2C%20after%3A%20%222010-01-01%22" target="_blank" rel="noopener">Try it!</a>%20%7B%0A%20%20%20%20edges%20%7B%0A%20%20%20%20%20%20node%20%7B%0A%20%20%20%20%20%20%20%20slug%0A%20%20%20%20%20%20%20%20hallName%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A)</td>
+<td style="text-align:center"><a href="https://etmdb.com/api/docs/" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>Gdom</td>
+<td>DOM Traversing and Scraping using GraphQL</td>
+<td style="text-align:center"><a href="http://gdom.graphene-python.org/graphql?query=%7B%0A++page%28url%3A%22http%3A%2F%2Fnews.ycombinator.com%22%29+%7B%0A++++items%3A+query%28selector%3A%22tr.athing%22%29+%7B%0A++++++rank%3A+text%28selector%3A%22td+span.rank%22%29%0A++++++title%3A+text%28selector%3A%22td.title+a%22%29%0A++++++sitebit%3A+text%28selector%3A%22span.comhead+a%22%29%0A++++++url%3A+attr%28selector%3A%22td.title+a%22%2C+name%3A%22href%22%29%0A++++++attrs%3A+next+%7B%0A+++++++++score%3A+text%28selector%3A%22span.score%22%29%0A+++++++++user%3A+text%28selector%3A%22a%3Aeq%280%29%22%29%0A+++++++++comments%3A+text%28selector%3A%22a%3Aeq%282%29%22%29%0A++++++%7D%0A++++%7D%0A++%7D%0A%7D" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/syrusakbary/gdom" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>Web-based Git repository hosting service</td>
+<td style="text-align:center"><a href="https://developer.github.com/v4/explorer/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://developer.github.com/v4/" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>GraphLoc</td>
+<td>Find a geolocation of an IP address including latitude, longitude, city, country, time zone and area code. Free to use, SSL supported</td>
+<td style="text-align:center"><a href="https://graphloc.com" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://www.graphloc.com" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>GraphQL Community Graph</td>
+<td>This is an Graph Database full of activity of the GraphQL community, including Twitter, StackOverflow, GitHub, Meetups, Slack.</td>
+<td style="text-align:center"><a href="http://graphql.communitygraph.org/graphiql/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/neo4j-graphql/graphql-community" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>GraphQL Europe</td>
+<td>Europe’s first GraphQL conference</td>
+<td style="text-align:center"><a href="https://graphql-europe.org/graphql" target="_blank" rel="noopener">Try it!</a></td>
+</tr>
+<tr>
+<td>GraphQL Fake</td>
+<td>Fake is a tool for generating fake data using GraphQL queries.</td>
+<td style="text-align:center"><a href="http://fake.graphql.guru" target="_blank" rel="noopener">Try it!</a></td>
+</tr>
+<tr>
+<td>GraphQL World</td>
+<td>The fastest growing community of GraphQL developers</td>
+<td style="text-align:center"><a href="https://us-west-2.api.scaphold.io/graphql/graphql-world" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://graphql-docs.com/docs/?graphqlUrl=https://us-west-2.api.scaphold.io/graphql/graphql-world" target="_blank" rel="noopener">Docs</a><br><a href="https://graphql-world.com/" target="_blank" rel="noopener">Site</a></td>
+</tr>
+<tr>
+<td>HIVDB</td>
+<td>A curated database to represent, store and analyze HIV drug resistance data</td>
+<td style="text-align:center"><a href="https://hivdb.stanford.edu/page/graphiql/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://hivdb.stanford.edu/page/webservice/" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>Hollowverse</td>
+<td>The religions and political views of the influentials.</td>
+<td style="text-align:center"><a href="https://api.hollowverse.com/playground" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/hollowverse/hollowverse/wiki/API-Development" target="_blank" rel="noopener">Docs</a><br><a href="https://github.com/hollowverse/api" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>melodyRepo</td>
+<td>Fast and reliable dependency manager for Go</td>
+<td style="text-align:center"><a href="https://melody.sh/play/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://melody.sh/docs/api" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>Microsoft Graph (DEMO)</td>
+<td>Connect to the data that drives productivity – mail, calendar, contacts, documents, directory, devices, and more.</td>
+<td style="text-align:center"><a href="https://graphql-demo.azurewebsites.net/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/microsoftgraph/graphql-demo" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Shopify Storefront</td>
+<td>The Storefront API gives you full creative control to build customized purchasing experiences for your customers.</td>
+<td style="text-align:center"><a href="https://help.shopify.com/api/storefront-api/graphql-explorer" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://help.shopify.com/api/storefront-api" target="_blank" rel="noopener">Docs</a><br><a href="https://github.com/Shopify/storefront-api-examples" target="_blank" rel="noopener">Examples</a></td>
+</tr>
+<tr>
+<td>SuperChargers</td>
+<td>Locations of Tesla Stores, Superchargers, Destination Chargers and Service centers</td>
+<td style="text-align:center"><a href="https://www.superchargers.io/graphiql" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://www.superchargers.io/faq" target="_blank" rel="noopener">Docs</a><br><a href="https://github.com/wattapp/superchargers" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Universe</td>
+<td>Check what your friends are doing &amp; find unique events near you using our filter.</td>
+<td style="text-align:center"><a href="https://developers.universe.com/page/graphql-explorer" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://developers.universe.com/page/graphql-explorer" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>Yelp</td>
+<td>User Reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More</td>
+<td style="text-align:center"><a href="https://www.yelp.com/developers/graphiql" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://www.yelp.com/developers/graphql/guides/intro" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Unofficial-API-proxies"><a href="#Unofficial-API-proxies" class="headerlink" title="Unofficial API proxies"></a>Unofficial API proxies</h2><table>
+<thead>
+<tr>
+<th>API</th>
+<th>Description</th>
+<th style="text-align:center">Graph<em>i</em>QL</th>
+<th style="text-align:center">Docs/Repo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contentful</td>
+<td>“CMS as a Service”. Graph<em>i</em>QL demo allows to query a simple blog, but the library itself generates a schema automatically for any content model you store in Contentful.</td>
+<td style="text-align:center"><a href="https://cf-graphql-demo.now.sh/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/contentful-labs/cf-graphql" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Hacker News<br>Reddit<br>Twitter<br>Giphy</td>
+<td>GraphQL Hub</td>
+<td style="text-align:center"><a href="https://www.graphqlhub.com/playground/hn2" target="_blank" rel="noopener">Try HN!</a><br><a href="https://www.graphqlhub.com/playground/reddit" target="_blank" rel="noopener">Try Reddit!</a><br><a href="https://www.graphqlhub.com/playground/twitter" target="_blank" rel="noopener">Try Twitter!</a><br><a href="https://www.graphqlhub.com/playground/giphy" target="_blank" rel="noopener">Try Giphy!</a></td>
+<td style="text-align:center"><a href="https://www.graphqlhub.com/" target="_blank" rel="noopener">Docs</a><br><a href="https://github.com/clayallsopp/graphqlhub" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>MusicBrainz</td>
+<td>Open music encyclopedia that collects music metadata</td>
+<td style="text-align:center"><a href="https://graphbrainz.herokuapp.com/?query=query%20NirvanaAlbumSingles%20%7B%0A%20%20lookup%20%7B%0A%20%20%20%20artist(mbid%3A%20%225b11f4ce-a62d-471e-81fc-a69a8278c7da%22" target="_blank" rel="noopener">Try it!</a>%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20releaseGroups(type%3A%20ALBUM)%20%7B%0A%20%20%20%20%20%20%20%20edges%20%7B%0A%20%20%20%20%20%20%20%20%20%20node%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%20%20%20%20firstReleaseDate%0A%20%20%20%20%20%20%20%20%20%20%20%20relationships%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20releaseGroups(type%3A%20%22single%20from%22)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20edges%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20node%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20target%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20…%20on%20ReleaseGroup%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20firstReleaseDate%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A&amp;operationName=NirvanaAlbumSingles)</td>
+<td style="text-align:center"><a href="https://github.com/exogen/graphbrainz" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>NYC Restaurant Grades</td>
+<td>NYC Restaurant Inspection Results data (letter ratings for restaurants)</td>
+<td style="text-align:center"><a href="http://nyc-restaurant-grades.com/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/bswinnerton/nyc-restaurant-grades" target="_blank" rel="noopener">Docs</a></td>
+</tr>
+<tr>
+<td>PokeAPI</td>
+<td>Pokémon Data API</td>
+<td style="text-align:center"><a href="https://pokeapi-graphiql.herokuapp.com/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/patrickshaughnessy/PokeAPI-GraphQL" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Spotify</td>
+<td>Spotify gives you instant access to millions of songs - from old favorites to the latest hits.</td>
+<td style="text-align:center"><a href="http://spotify.thefrench.house/graphql-console/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/thefrenchhouse/spotify-graphql" target="_blank" rel="noopener">Repo</a><br><a href="https://github.com/thefrenchhouse/spotify-graphql-examples" target="_blank" rel="noopener">Examples</a></td>
+</tr>
+<tr>
+<td>SWAPI</td>
+<td>Star Wars API</td>
+<td style="text-align:center"><a href="http://graphql.org/swapi-graphql/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/graphql/swapi-graphql" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Demonstration-only-APIs"><a href="#Demonstration-only-APIs" class="headerlink" title="Demonstration-only APIs"></a>Demonstration-only APIs</h2><table>
+<thead>
+<tr>
+<th>API</th>
+<th>Description</th>
+<th style="text-align:center">Graph<em>i</em>QL</th>
+<th style="text-align:center">Docs/Repo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GraphQL Pokémon</td>
+<td>Get information of a Pokémon with GraphQL or <a href="https://react-relay-pokemon.now.sh/#/" target="_blank" rel="noopener">Demo App</a>!</td>
+<td style="text-align:center"><a href="https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22" target="_blank" rel="noopener">Try it!</a>%20%7B%0A%20%20%20%20id%0A%20%20%20%20number%0A%20%20%20%20name%0A%20%20%20%20attacks%20%7B%0A%20%20%20%20%20%20special%20%7B%0A%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20type%0A%20%20%20%20%20%20%20%20damage%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20evolutions%20%7B%0A%20%20%20%20%20%20id%0A%20%20%20%20%20%20number%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20weight%20%7B%0A%20%20%20%20%20%20%20%20minimum%0A%20%20%20%20%20%20%20%20maximum%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20attacks%20%7B%0A%20%20%20%20%20%20%20%20fast%20%7B%0A%20%20%20%20%20%20%20%20%20%20name%0A%20%20%20%20%20%20%20%20%20%20type%0A%20%20%20%20%20%20%20%20%20%20damage%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)</td>
+<td style="text-align:center"><a href="https://github.com/lucasbento/graphql-pokemon" target="_blank" rel="noopener">Repo</a><br><a href="https://github.com/lucasbento/react-relay-pokemon" target="_blank" rel="noopener">ClientRepo</a></td>
+</tr>
+<tr>
+<td>MongoDB Northwind demo</td>
+<td><a href="https://nodkz.github.io/relay-northwind/" target="_blank" rel="noopener">Demo App</a> build on top of <a href="https://github.com/nodkz/graphql-compose" target="_blank" rel="noopener">graphql-compose</a> and <a href="https://github.com/Automattic/mongoose" target="_blank" rel="noopener">mongoose</a></td>
+<td style="text-align:center"><a href="https://graphql-compose.herokuapp.com/northwind/" target="_blank" rel="noopener">Try it!</a><br><a href="https://nodkz.github.io/relay-northwind/" target="_blank" rel="noopener">Try Relay version!</a></td>
+<td style="text-align:center"><a href="https://github.com/nodkz/graphql-compose" target="_blank" rel="noopener">Docs</a><br><a href="https://github.com/nodkz/graphql-compose-examples" target="_blank" rel="noopener">ServerRepo</a><br><a href="https://github.com/nodkz/relay-northwind-app" target="_blank" rel="noopener">ClientRepo</a></td>
+</tr>
+<tr>
+<td>MongoDB TODO-List</td>
+<td>TODO List using GraphQL and MongoDb</td>
+<td style="text-align:center"><a href="https://todo-mongo-graphql-server.herokuapp.com/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://www.compose.com/articles/using-graphql-with-mongodb/" target="_blank" rel="noopener">Docs</a><br><a href="https://github.com/igorlima/todo-mongo-graphql-server" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Scaphold Slackr</td>
+<td>Real-time API to power Scaphold Slackr</td>
+<td style="text-align:center"><a href="https://us-west-2.api.scaphold.io/graphql/slackr-api" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://scaphold.io/blog/2016/11/09/build-realtime-apps-with-subs.html" target="_blank" rel="noopener">Docs</a><br><a href="https://github.com/scaphold-io/slackr-graphql-subscriptions-starter-kit" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Spotify GraphQL Server</td>
+<td>This demonstrates how to build a GraphQL server which fetches data from an external API (Spotify)</td>
+<td style="text-align:center"><a href="https://spotify-graphql-server.herokuapp.com/graphql?query=%7B%0A%20%20queryArtists(byName%3A%22Red%20Hot%20Chili%20Peppers%22" target="_blank" rel="noopener">Try it!</a>%20%7B%0A%20%20%20%20name%0A%20%20%20%20id%0A%20%20%20%20image%0A%20%20%7D%0A%7D%0A)</td>
+<td style="text-align:center"><a href="https://blog.codecentric.de/en/2017/01/lets-build-spotify-graphql-server" target="_blank" rel="noopener">Docs</a><br> <a href="https://github.com/lowsky/spotify-graphql-server" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>Three.js demo</td>
+<td>Declare a Three.js program with GraphQL</td>
+<td style="text-align:center"><a href="https://jwerle.github.io/three.graphql/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/jwerle/three.graphql" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+<tr>
+<td>UFC GraphQL Server</td>
+<td>Public UFC API turned into a GraphQL server. It’s hosted by <a href="http://now.sh/" target="_blank" rel="noopener">now.sh</a> then, sometimes, it gets freeze.</td>
+<td style="text-align:center"><a href="https://graphql-ufc-api.now.sh/" target="_blank" rel="noopener">Try it!</a></td>
+<td style="text-align:center"><a href="https://github.com/jgcmarins/graphql-ufc-api" target="_blank" rel="noopener">Repo</a></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Graphql/" rel="tag"># Graphql</a>
+          
+            <a href="/tags/Github/" rel="tag"># Github</a>
+          
+            <a href="/tags/API/" rel="tag"># API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/04/the future of state mangement/" rel="next" title="未来的状态管理技术">
+                <i class="fa fa-chevron-left"></i> 未来的状态管理技术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/20/TodoList-graphql-schema-method/" rel="prev" title="TodoList-graphql-model">
+                TodoList-graphql-model <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Official-APIs"><span class="nav-number">1.</span> <span class="nav-text">Official APIs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unofficial-API-proxies"><span class="nav-number">2.</span> <span class="nav-text">Unofficial API proxies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demonstration-only-APIs"><span class="nav-number">3.</span> <span class="nav-text">Demonstration-only APIs</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

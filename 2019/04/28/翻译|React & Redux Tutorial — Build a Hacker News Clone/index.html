@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redux,React,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="翻译|React &amp;amp; Redux Tutorial — Build a Hacker News Clone– Build a production React project using Redux and Styled Components. Deploy the app using GitHub pages.原文参见 本文是 gitconnected Hacktobrefest项目的逐">
+<meta name="keywords" content="Redux,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻译|React &amp; Redux Tutorial — Build a Hacker News Clone">
+<meta property="og:url" content="https://React-Apollo.github.io/2019/04/28/翻译|React & Redux Tutorial — Build a Hacker News Clone/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="翻译|React &amp;amp; Redux Tutorial — Build a Hacker News Clone– Build a production React project using Redux and Styled Components. Deploy the app using GitHub pages.原文参见 本文是 gitconnected Hacktobrefest项目的逐">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fycyouhuf9j30gl091dg7.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fycz8a95cyj30fc0jkglu.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyczobq16mj311s0m4t9v.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyczryyv5ej30u00wn76b.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyczua7grhj30fu0663yf.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyczvc26p2j311s0hwwfk.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd002pc2dj318g0ocaaq.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd02i4w6jj30fm06a746.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd0awnm8dj311s0gujse.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd0ihkknwj311s0eqwf3.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd0l6d5ayj311s0m4dha.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fyd0q6sm3wj312m0hwdgn.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fyd0vxeumqj311s0qcjsh.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd14i99i2j311s0re75s.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd15nfskwj30k2086dg6.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd192bwrhj311s09gq3m.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd1a56e2yj30zv0u0dhn.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd1eqcd23j31130u00uf.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd1nwr1nmj311s0hw751.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd1py5vqmj311s0hwab3.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd1taaq16j31070u0q5o.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd22e7zjrj30u01awgph.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd24hxbnaj318g06qq2x.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd2n70llcj318g0qutbp.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd2wy2s1aj30u00zd79j.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd38xped8j311s0ai0t5.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd3aubj8rj30u00z6q5k.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd3q01y3qj311s0qcdhk.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd3ynyve9j311s0qcwfp.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd42zdz6bj311s0dodgb.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd449n426j318g0ndjsj.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd4b31588j30u00v9gq4.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd4cp0h6wj318g0rbdhl.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fydcy308sxj311s0guaba.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fydd2kyrcrj318g0hkmyb.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fydd4v04ajj308401w0mz.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fydd5q30w3j30u01awq6e.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyddal78evj311s0hwwf2.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyddfxb91ej30u0198dk2.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fyddue4bz1j30mg02m3yj.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyddw03vwij30gi0akdga.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyddx4ikxaj30is01eq2s.jpg">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="翻译|React &amp; Redux Tutorial — Build a Hacker News Clone">
+<meta name="twitter:description" content="翻译|React &amp;amp; Redux Tutorial — Build a Hacker News Clone– Build a production React project using Redux and Styled Components. Deploy the app using GitHub pages.原文参见 本文是 gitconnected Hacktobrefest项目的逐">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fycyouhuf9j30gl091dg7.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2019/04/28/翻译|React & Redux Tutorial — Build a Hacker News Clone/">
+
+
+
+
+
+  <title>翻译|React & Redux Tutorial — Build a Hacker News Clone | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2019/04/28/翻译|React & Redux Tutorial — Build a Hacker News Clone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">翻译|React & Redux Tutorial — Build a Hacker News Clone</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/28/翻译|React & Redux Tutorial — Build a Hacker News Clone/" class="leancloud_visitors" data-flag-title="翻译|React & Redux Tutorial — Build a Hacker News Clone">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,963
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="翻译-React-amp-Redux-Tutorial-—-Build-a-Hacker-News-Clone"><a href="#翻译-React-amp-Redux-Tutorial-—-Build-a-Hacker-News-Clone" class="headerlink" title="翻译|React &amp; Redux Tutorial — Build a Hacker News Clone"></a>翻译|React &amp; Redux Tutorial — Build a Hacker News Clone</h1><h5 id="–-Build-a-production-React-project-using-Redux-and-Styled-Components-Deploy-the-app-using-GitHub-pages"><a href="#–-Build-a-production-React-project-using-Redux-and-Styled-Components-Deploy-the-app-using-GitHub-pages" class="headerlink" title="– Build a production React project using Redux and Styled Components. Deploy the app using GitHub pages."></a>– Build a production React project using Redux and Styled Components. Deploy the app using GitHub pages.</h5><p><a href="https://levelup.gitconnected.com/react-redux-tutorial-build-a-hacker-news-clone-64f320364f85" target="_blank" rel="noopener">原文参见</a></p>
+<p>本文是 <a href="https://gitconnected.com/hacktoberfest" target="_blank" rel="noopener">gitconnected Hacktobrefest项目</a>的逐步解决方法.</p>
+<p>在本教程中,我将会构建一个产品级别的的 Hacker News 克隆. 我们会逐步实现应用的初始化,添加用于状态管理的 Redux,用 React 构建 UI并且部署到 GitHub 主页上.样式将会采用<a href="https://www.styled-components.com/" target="_blank" rel="noopener">`styled-components</a>,API方面使用<a href="https://github.com/axios/axios" target="_blank" rel="noopener"><code>axios</code></a>库调用 <a href="https://github.com/HackerNews/API" target="_blank" rel="noopener"><code>Hacker News API</code></a>.</p>
+<p><a href="https://github.com/gitconnected/hacker-news-reader" target="_blank" rel="noopener"><code>源代码在这里查看</code></a>.</p>
+<p><a href="https://chrome.google.com/webstore/detail/hacker-news/hknoigmfpgfdkccnkbfbjfnocoegoefe?pli=1&amp;authuser=1" target="_blank" rel="noopener"><code>下载 Chrome应用</code></a></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fycyouhuf9j30gl091dg7.jpg" alt></p>
+<p>如果你愿意看视频,可以看看 youtube 上的教程. <a href="http://www.youtube.com/watch?v=oGB_VPrld0U&amp;index=2&amp;list=PLTTC1K14KAxHj6AftnRUD28SQaoVauvl3" target="_blank" rel="noopener">http://www.youtube.com/watch?v=oGB_VPrld0U&amp;index=2&amp;list=PLTTC1K14KAxHj6AftnRUD28SQaoVauvl3</a></p>
+<h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>使用<a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener"><code>create-react-app</code></a>来初始化项目.用这个包初始化项目,就不用担心配置问题了.首先要确定已经安装了<code>create-react-app</code>.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -i -g create-react-app</span><br></pre></td></tr></table></figure></div>
+<p>运行下面的命令来启动项目. <code>create-react-app</code> 安装了所有构建 React 应用的必备依赖包,还有默认的脚本用于管理开发和实际应用的打包.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create-react-app hn-clone</span><br><span class="line"></span><br><span class="line"><span class="comment"># wait for everything to finish...</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> hn-clone</span><br></pre></td></tr></table></figure></div>
+<p>现在可以安装应用所需的核心软件包了.目前我使用的是<code>yarn</code>来管理依赖包,如果你使用的是<code>npm</code>,只需要用<code>npm install</code>替换掉<code>yarn add</code>就可以了.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add redux styled-components react-redux redux-logger redux-thunk axios</span><br></pre></td></tr></table></figure></div>
+<p><code>create-react-app</code>使用<code>NODE_PATH</code> 环境变量(environment variable)来创建绝对路径. 我们可以在<code>.env</code>文件中声明环境变量. <code>create-react-app</code>会识别它,通过<a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener"><code>doten库</code></a> 来应用绝对路径.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用touch 命令创建.env文件</span></span><br><span class="line"></span><br><span class="line">touch .env</span><br><span class="line"><span class="comment"># 在.env文件里添加</span></span><br><span class="line"><span class="comment">#NODE_PATH=src</span></span><br></pre></td></tr></table></figure></div>
+<p>如果你对这个模式不太熟悉, 当我们开始构建应用的时候,对你来说更为有意义.设定环境变量可以让我们直接导入文件而不用考虑文件的路径. 类似这样 <code>../../components/List</code> 变为<code>components/List</code>- 使用上方便多了.</p>
+<h2 id="文件组织结构"><a href="#文件组织结构" class="headerlink" title="文件组织结构"></a>文件组织结构</h2><p>在<code>src</code>文件夹里面, 从应用要适应更为大规模和重用性更强上考虑,做一些更新.</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fycz8a95cyj30fc0jkglu.jpg" alt></p>
+<ul>
+<li><code>components</code>: 这个文件夹包含所有的 React 组件(container和 presentational 组件都包含).</li>
+<li><code>services</code>: Services可以连接到API(例如,使用axios调用 HN API)或者为应用提供扩展的功能(例如,添加markdown)支持.</li>
+<li><code>store</code>: store 包含了所有的Redux和state 管理的逻辑</li>
+<li><code>styles</code>: 在styles文件夹内,我们声明变量,模板和可以在组件间共享的样式模式</li>
+<li><code>utils</code>: 整个应用中可以重用的助手函数</li>
+</ul>
+<p>这里的文件夹结构有两个地方值得注意:</p>
+<ol>
+<li>应用中只有一个路由,位于根<code>./</code>下.如果我们有多个路由,我可能会使用<code>react-router</code>包,同时创建<code>pages</code>文件夹用于保存页面级别的组件.</li>
+<li>我没有使用单独的<code>container</code>文件夹用于连接应用组件到Redux.我发现增加<code>container</code>文件夹反而添加了不必要的复杂性,让一些新手感到很困惑,因为开发者总是要从没有关联的位置中导入文件(<code>container</code>想要连接组件,反之亦然). 在我的使用经验汇总,从当个来源导入文件工作的更好一点.</li>
+</ol>
+<p>因为我们在使用<code>styled-components</code>,所以可以删除掉<code>index.css</code>和<code>app.css</code>文件. 现在我们要在<code>src/styles</code>文件件中添加一些基础模板样式,创建文件<code>global.js</code>和<code>palette.js</code>文件</p>
+<p>Palette包含了应用UI中使用的成组的颜色配置. 在<code>src/styles/palette.js</code>中添加</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyczobq16mj311s0m4t9v.jpg" alt></p>
+<p><code>global.js</code>用于生成应用中共享的基础样式. <code>styled-components</code>的<code>injectGlobal</code>方法应该要小心使用,但是用于应用级别的样式时时非常有用的.</p>
+<p><strong>注意:</strong> 在styled-components v4中<code>injectGlobal</code>已经被<code>createGlobalStyle</code>替代了.</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyczryyv5ej30u00wn76b.jpg" alt></p>
+<p>在<code>components</code>文件夹中创建<code>App</code>文件夹,把所有的 CRA默认生成的文件都移动到这个文件中,把<code>App.js</code>文件重命名为<code>index.js</code>文件. 这样就可以导入<code>components/App</code></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyczua7grhj30fu0663yf.jpg" alt></p>
+<p>现在代开<code>src/index.js</code>文件(项目的根文件),使用更新的文件结构更新文件.</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyczvc26p2j311s0hwwfk.jpg" alt></p>
+<p>注意,因为之前我们定义了<code>NODE_PATH</code>,现在使用<code>components/App</code>导入<code>App</code>文件,<code>styles/globals</code>来导入<code>setGlobalStyles</code>文件. 执行<code>setGlobalStyles()</code>函数可以在应用中导入全局的样式.</p>
+<p>现在我们已经准备好了启动应用开发环境的核心配置. 运行下面命令启动应用,会在<code>http://localhost:3000</code>看到应用. 现在看上去还不是太好,但是应用已经跑起来了 :)</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn start</span><br><span class="line"><span class="comment"># npm 安装用 npm start</span></span><br></pre></td></tr></table></figure></div>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd002pc2dj318g0ocaaq.jpg" alt></p>
+<h2 id="在-React-应用添加Redux"><a href="#在-React-应用添加Redux" class="headerlink" title="在 React 应用添加Redux"></a>在 React 应用添加Redux</h2><p>在<code>src/store</code>文件中,创建<code>index.js</code>,<code>reducer.js</code>和<code>middleware.js</code>文件. 让我们来初始化一个<code>app</code>专项(feature)来管理应用的state.</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd02i4w6jj30fm06a746.jpg" alt></p>
+<p>以我的经验,在生产级别的应用中,如果按照特性而不是按照功能进行分组,Redux会更具有管理性,类似于<a href="https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be" target="_blank" rel="noopener"><code>鸭子方法</code>(Ducks approach)</a>. “按照功能分组(grouping by functionality)” 方法中所有的actions,reducers,等等都位于独立的文件夹中, 当应用规模增加时,在不同文件中切换难度就增大了. 如果按照特性分组,你需要的文件总是在一个位置.</p>
+<p>在<code>index.js</code>文件中,创建<code>configureStore</code>函数,用于初始化应有的 Redux.</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd0awnm8dj311s0gujse.jpg" alt></p>
+<p>使用<code>createStore</code>构建初始化<code>store</code>. 从根reducer文件导入<code>reducer</code>,同时从middleware配置文件中导入 <code>middleware(中间件)</code>. <code>initialState</code> 应该在程序运行时提供,并传递给我们的函数. 在生产中,要能够管理复杂的功能例如 SSR(服务端渲染),或者在初始化时从服务器获取传递的数据. 在这里初始state,可以让我们更优雅的和抽象出store的创建过程.</p>
+<p>在<code>reducer.js</code>文件中,使用<code>combineReducers</code>函数创建根reducer.此函数把所有的reducer函数组合起来生成单个的state树.</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd0ihkknwj311s0eqwf3.jpg" alt></p>
+<p>接下来在<code>middleware.js</code>中创建中间件. 中间件是每一次dispatch action 时都必须要执行的函数. 中间在扩展Redux应用时非常有用. 在文件中添加如下代码</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd0l6d5ayj311s0m4dha.jpg" alt></p>
+<p>也要构建第一个Reducer.在 <code>src/store/app</code>文件加中创建 <code>reducer.js</code>和<code>action.js</code>文件. 需要添加日间/夜间的切换模式功能,所以让我们创建一个action来管理这个特性.在<code>src/store/app/action.js</code> 添加下面代码</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fyd0q6sm3wj312m0hwdgn.jpg" alt></p>
+<p>我们创建了一个<code>actionTypes</code>对象放置actio-type常量. 类似的常量在reducer中用于匹配改变state的类型. 也要创建<code>actions</code>对象,包含了可以从应用中<code>dispatch</code> 用于改变state的 action函数.每一个action都包括了一个<code>type</code>和一个<code>payload</code>(译注: type告诉store要干什么,payload 是执行action时携带的条件).</p>
+<p>最后,创建我们的reducer</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fyd0vxeumqj311s0qcjsh.jpg" alt></p>
+<p>当我们<code>dispatch</code>一个<code>SET_THEME</code> action时, 将会使用<code>payload</code>的内容更新 state中<code>theme</code>的属性值. <code>payload</code>是一个对象,形式是<code>{theme:&#39;value&#39;}</code>.使用es6的展开操作<code>...</code>,<code>state</code>中对应<code>payload</code>键的值会被替换掉.</p>
+<p>如果需要详细理解 Redux的基础 ,看看<a href="https://egghead.io/courses/getting-started-with-redux" target="_blank" rel="noopener">Dan Abramov的视频</a> </p>
+<p>现在返回<code>src/index.js</code>文件,做一些更新,需要把我们的应用连接到 Redux. 为<code>Provider</code>添加一个导入,更新渲染方法</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd14i99i2j311s0re75s.jpg" alt></p>
+<p>现在应该已经做完了 Redux的整个工作.返回到<code>localhost:3000</code>,在Chrome的console中可以看到下面的内容</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd15nfskwj30k2086dg6.jpg" alt></p>
+<h2 id="使用-React和Styld-Components-构建-UI"><a href="#使用-React和Styld-Components-构建-UI" class="headerlink" title="使用 React和Styld Components 构建 UI"></a>使用 React和Styld Components 构建 UI</h2><p>现在 Redux 已经初始化完毕, 开始完成 UI 的工作. 首先声明一些会在应用中使用的样式常量. 在本应用中,我们要创建<code>mediaQueries(媒体查询)</code> 文件包含构建响应式应用的常量. 创建<code>src/styles/mediaQueries.js</code>文件,添加下面的代码</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd192bwrhj311s09gq3m.jpg" alt></p>
+<p>返回到<code>src/components/App</code>文件夹, 在<code>index.js</code>文件中,更新文件内容</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd1a56e2yj30zv0u0dhn.jpg" alt></p>
+<p>其中使用了<code>styled-components</code>的<code>ThemeProvider</code>组件.这个组件尅让我们把”theme”作为<code>prop</code>传递给创建的styled components. 这里初始化theme为 <code>colorDark</code>对象.</p>
+<p><code>App</code>中包含的组件,现在还没有创建,所以现在来创建.首先构建styld-components 组件. 在<code>App</code>文件夹里创建<code>styles.js</code>文件, 添加代码</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd1eqcd23j31130u00uf.jpg" alt></p>
+<p>创建的用于页面的<code>div</code>称为<code>Wrapper</code>. 用于页面标题的<code>h1</code>创建为<code>Title</code>组件. <code>styled-components</code>语法使用<code>styled</code>对象定义 HTML 元素. 可以用字符串定义组件的 CSS 属性.</p>
+<p>注意代码20行, 我们使用了<code>theme</code> prop. 包含<code>props</code>参数的函数由<code>styled-components</code> 注入到样式字符串中,这么,我们就可提起属性或者添加用于动态构建样式的逻辑,从组件中抽象出构建样式的逻辑.</p>
+<p>接下来, 创建包含 Hacker Nees故事的 <code>List</code> 组件. 创建<code>src/components/List</code>文件夹并添加<code>index.js</code>,<code>styles.js</code>文件. 在<code>index.js</code>文件中,添加代码</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd1nwr1nmj311s0hw751.jpg" alt></p>
+<p>在<code>styles.js</code>文件中创建<code>ListWrapper</code>.使用从<code>ThemeProvider</code>组件得到的<code>theme</code> props 的<code>background-color</code>属性.</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd1py5vqmj311s0hwab3.jpg" alt></p>
+<p>最后创建<code>ListItem</code>组件用于显示单个的故事. 创建<code>src/components/ListItem</code>文件夹和<code>index.js</code>,<code>styles.js</code>文件.</p>
+<p>我们想让 UI模仿 Hacker News. 目前会在<code>ListItem</code>中使用fake 数据里模拟. 在<code>index.js</code>文件中添加代码</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd1taaq16j31070u0q5o.jpg" alt></p>
+<p>每个故事都有标题,作者,评分,发帖时间,URL地址,评论数. 初始化这几个值,以便于查看 UI 的样子. 基于安全原因, 添加<code>rel=&quot;nofollow noreferrer noopener&quot;</code>. </p>
+<p>在<code>styles.js</code>文件中添加下面代码</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd22e7zjrj30u01awgph.jpg" alt></p>
+<p>这些应该就是我们需要的基础 UI 组件了. 返回到浏览器,应该看到使用fake数据的单个条目</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd24hxbnaj318g06qq2x.jpg" alt></p>
+<h2 id="使用-Redux-和-Axios-构建-API-调用"><a href="#使用-Redux-和-Axios-构建-API-调用" class="headerlink" title="使用 Redux 和 Axios 构建 API 调用"></a>使用 Redux 和 Axios 构建 API 调用</h2><p>是时候在应用添加实际数据了.我们通过<code>axios</code>库来调用 Hacker News的 API.调用 API 的过程会在应用中引入 “side effect(副作用)”,意思是调用 API 会从外部资源影响本地环境的state.</p>
+<p>API 调用之所以被称为 side effect,原因是在应用的state中引入了外部的数据. 其他的side effect的例子包括和浏览器的<code>localStorage</code>的交互操作, 追踪用户分析,连接到web socket,等等. 在 Redux 应用中可以使用很多库来管理 side effect. 从简单的<a href="https://github.com/reduxjs/redux-thunk" target="_blank" rel="noopener"><code>redux-thunk</code></a> 到更为复杂的<a href="https://github.com/redux-saga/redux-saga" target="_blank" rel="noopener"><code>redux-saga</code></a>. 然而他们的目的是相同的,就是让 Redux与外界交互. <code>redux-thunk</code>是最简单的库, 可以在action <code>对象</code>中再次 <code>dispatch</code> JavaScript <code>函数</code>.<br>这个功能就是我们在使用<code>axios</code>时需要的功能,在 API调用管理返回的promise对象. </p>
+<p>在<code>src/services</code>文件夹中,创建<code>Api.js</code>和<code>hackerNewsApi.js</code>文件. <code>axios</code>库有着难以置信的强大功能和扩展性. <code>Api.js</code>包含的配置使得执行<code>axios</code>请求更容易. 这里没有拷贝完整代码,你可以在<a href="https://github.com/gitconnected/hacker-news-reader/blob/master/src/services/Api.js" target="_blank" rel="noopener"><code>源代码</code></a>中看到信息内容,其中包含了更为精细的配置.</p>
+<p>在<code>src/services/hackerNewsApi.js</code>文件中, 我们要定义请求 Hacker News API 的函数. 在<a href="https://github.com/HackerNews/API" target="_blank" rel="noopener"><code>Hacker New API 文档</code></a> 可以找到,如果要获取 IDs 的列表, 要使用<code>/v0/topstories</code> 入口. 获取每个 id的独立故事要使用<code>/v0/items/&lt;id&gt;</code>  入口.  </p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd2n70llcj318g0qutbp.jpg" alt></p>
+<p><code>v0/topstories</code> 入口返回列表中 IDs的 400-500条故事. 因为我们要获取单个故事的数据,如果立刻获取500个故事的数据会严重影响性能. 为了解决这个问题,我们一次只获取20个故事的数据. 使用<code>.slice()</code>函数基于页面的故事 ID进行分割. 因为我们使用<code>/v0/item/&lt;id&gt;</code> 调用每个故事的数据, 因此使用<code>Promise.all</code>把所有的请求返回的promise对象压缩的一个数组中,然后用一个<code>then()</code>,resolve返回获取数据,并且保存 IDs 的顺序标记.</p>
+<p>为了在应用管理我们的故事state,我们来创建一个<code>story</code> reducer. 创建<code>src/store/story</code>文件夹, 添加<code>reducer.js</code>和<code>action.js</code>文件. 在<code>action.js</code>文件中添加代码</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd2wy2s1aj30u00zd79j.jpg" alt></p>
+<p>为 IDs请求和stor用的API 调用都创建了 request,success,failure的 <code>actionTypes</code>. </p>
+<p>我们的<code>actions</code> 对象中包含了 用于请求管理的<code>thunk</code> 函数. 通过dispatch 函数而不是dispatch action 对象. 我们就可以在请求周期的不同点 dispatch 不同的acitons了.</p>
+<p>函数<code>getTopStoryIds</code>会执行 API 调用,获取整个故事的列表. 在<code>getTopStoryIds</code>函数中success(成功)的回调函数执行时,我们会dispatch <code>fetchStories</code>  action,用于获取第一页故事的结果.</p>
+<p>当 API 调用成功返回时,就可以dispatch  success Action,这样就可以使用新获取的数据来更新 Redux的 store了.</p>
+<p>thunk软件包的基础实现只是用了几行代码. 要充分理解它,需要对 Redux的中间件有了解,但是从代码中,我们可以看到,如果我们使用一个<code>函数</code>来代替一个<code>对象</code>,就可以执行一个函数,并且把<code>dispatch</code>作为函数的参数传递.</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd38xped8j311s0ai0t5.jpg" alt></p>
+<p>现在我们需要创建reducer用于 Redux store中的数据存储. 在<code>src/store/story/reudcer.js</code>中添加代码</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd3aubj8rj30u00z6q5k.jpg" alt></p>
+<p>对于 <code>FETCH_STORY_IDS_SUCCESS</code> action type,我们展开当前 state和 payload. 在 payload 中唯一的键/值是<code>storyIds</code>,展开操作将会用新的值来更新 state.</p>
+<p>对于<code>FETCH_STORIES_SUCCESS</code> action type. 在之前的故事列表中按顺序添加故事,以便于获取更多的页面. 此外,增加page 数, 设置<code>isFetching</code> state 为false.</p>
+<p>现在,State已经由 Redux管理了, 我们就可以在组件中显示数据了.</p>
+<h2 id="把React-APP-连接到-Redux-Store"><a href="#把React-APP-连接到-Redux-Store" class="headerlink" title="把React APP 连接到 Redux  Store"></a>把React APP 连接到 Redux  Store</h2><p>通过使用<code>react-redux</code>绑定,我们可以把组件连接到 Redux的store, 以props的形式接收Redux的 State.之后,只要 store 有更新,props就会引起组件的重新渲染,由此就更新了 UI.</p>
+<p>在需要<code>dispatch</code>  action 的组件中,以 props 的形式传递函数. 之后在组件内部调用这些函数,就可以触发 Redux store 中的state变化.</p>
+<p>来看看如何在应用中管理这个变化. 返回到<code>src/components/App</code>文件夹,创建一个 <code>App.js</code>文件, 从<code>src/components/App/index.js</code>拷贝内容进来. 在<code>index.js</code>文件里面,我们将会把<code>App</code>组件连接到 Redux. 在<code>index.js</code>文件中添加代码</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd3q01y3qj311s0qcdhk.jpg" alt></p>
+<p><code>mapStateToProps</code>函数接受 Redux <code>store</code>作为参数,返回一些属性到连接的组件中.对于<code>App</code>,我们需要 <code>stories</code> 数组, 当前页 <code>page</code>,<code>storyIds</code>数组还有<code>isFetching</code>指示器.</p>
+<p><code>mapDispatchToProps</code>函数接受<code>dispatch</code>函数作为参数,把返回的函数对象作为props传递给我们的组件.  创建的函数<code>fetchStoriesFirstPage</code>,执行时会<code>dispatch</code> action 来获取story IDs(然后获取第一页故事的内容).</p>
+<p>我们在<code>App.js</code>中使用这两个props,首先添加<code>componentDidMount</code>,当组件在 DOM 中渲染完就可以立刻获取数据. 为<code>List</code>组件传递<code>stories</code> props.</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyd3ynyve9j311s0qcwfp.jpg" alt></p>
+<p>在<code>src/components/List/index.js</code>中,遍历stories 数组, 创建 <code>ListItem</code>组件的数组. 设置列表的key为story ID,并且展开story对象: <code>...story</code>.展开操作会把对象的属性值作为单个的props传递给组件. <code>key</code> prop 是 React中组件作为数组加载时的一个策略,可以让列表形式的渲染更新速度更快.</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyd42zdz6bj311s0dodgb.jpg" alt></p>
+<p>如果现在观察屏幕,应该看到到的是硬编码的20行列表数据<br><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd449n426j318g0ndjsj.jpg" alt></p>
+<p>我们需要使用从stories 获取的数据对<code>ListItem</code>进行更新.同时在 Hacker News中, 也会显示上次故事更新的时间和来源的地址. 需要安装<br><a href="https://www.npmjs.com/package/timeago.js" target="_blank" rel="noopener"><code>timeago.js</code></a> 和<a href="https://www.npmjs.com/package/url" target="_blank" rel="noopener"><code>URl</code></a> 软件包帮助计算没有通过 API 直接获取的数据, 使用下面命令执行安装</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add timeago.js url</span><br></pre></td></tr></table></figure></div>
+<p>需要编写助手函数来构建这些值. 从源码的<code>src/utils</code>文件夹中拷贝文件</p>
+<p>现在更新 <code>src/components/ListItem/index.js</code>文件</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyd4b31588j30u00v9gq4.jpg" alt></p>
+<p>通过这一步, 现在就可以在应用显示前20个故事了- cool!</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyd4cp0h6wj318g0rbdhl.jpg" alt></p>
+<h2 id="使用无限滚动来对请求分页"><a href="#使用无限滚动来对请求分页" class="headerlink" title="使用无限滚动来对请求分页"></a>使用无限滚动来对请求分页</h2><p>现在,我们想实现的是当用于页面滚动到底部, 获取新的一页.回忆一下,每次成功获取故事之后,我们都增加了store中page的数字. 所以在第一页到达之后,Redux store 现在应该是<code>page:1</code>.我们需要在滚动到底部时<code>dispatch</code> <code>fetchStories</code> action.</p>
+<p>为了实现无限滚动,我们会使用<code>react-infinite-scroll-component</code>组件. 我们也想实现一个方法来决定管是否要加载更多的页面,这一点我们使用<a href="https://www.npmjs.com/package/reselect" target="_blank" rel="noopener"><code>reselect</code></a> 在selector中实现.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add react-infinite-scroll-component reselect</span><br></pre></td></tr></table></figure></div>
+<p>首先构建selector来计算是否有更多的故事存在. 创建 <code>src/store/story/selecor.js</code>文件. 为了判断是否有更多故事存在, 我们 Redux store中的<code>storyIds</code> 数组的长度是否和<code>stories</code>的长度相同, 如果<code>stories</code>的长度短一点,意思就是有更多的页面存在</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fydcy308sxj311s0guaba.jpg" alt></p>
+<p>在<code>src/components/App/index.js</code> container中,导入<code>hasMoreStoriesSelector</code> 在<code>mapStateToProps</code>中添加 键<code>hasMoreStories</code>.同时在<code>mapDispatchProps</code>中添加<code>fetchStories</code> action,便于滚动时 dispatch action.</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fydd2kyrcrj318g0hkmyb.jpg" alt></p>
+<p>我们想在等待 API请求时使用动画显示. 创建<code>src/components/Loader</code>文件夹,<code>index.js</code>和<code>styles.js</code>文件. 需要的动画是闪动的三个圆点.</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fydd4v04ajj308401w0mz.jpg" alt></p>
+<p>在<code>styles.js</code>文件中添加下面代码</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fydd5q30w3j30u01awq6e.jpg" alt></p>
+<p>@keyframe 是定义动画的 CSS 技术. 上面代码显示了在 Styled Components中的代码抽象. 有三个圆点,透明度从0.2开始增加到1, 然后返回到0.2, 给第二个和第三个点添加延迟,表现出弹跳式的偏移.</p>
+<p>我们的<code>Loader</code>组件就是有三个独立span元素的动画styled components动画组件.</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyddal78evj311s0hwwf2.jpg" alt></p>
+<p>现在,准备为列表添加功能,在<code>App</code>组件中导入无限加载模块和<code>Loader</code>组件.也要创建<code>fetchStories</code>回调函数,将会调用<code>fetchStories</code> prop  dispatch 下一页的action. 只有在<code>isFetching</code>为 false 时dispatch <code>fetchStories</code> action. 如果为 true.我们就多次获取统一页面. 你的<code>src/components/App/App.js</code>文件应该如下</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyddfxb91ej30u0198dk2.jpg" alt></p>
+<p>当我们滚动到页面底部, 只要<code>hasMoreStories</code>为真,<code>InfiniteScroll</code>组件将会调用<code>this.fetchStroies</code>. 当fetchStories API 请求返回时,新的故事会添加到<code>stories</code>数组的尾部,渲染到页面中.</p>
+<h2 id="最后的挑战"><a href="#最后的挑战" class="headerlink" title="最后的挑战"></a>最后的挑战</h2><p>在教程刚开始, 我们初始化了一个<code>theme</code> property.现在,留给你实现一个toggle功能. 在一些组件中添加点击事件,dispatch <code>setTheme</code> action.切换 <code>light</code>和<code>dark</code>的状态. 在<code>ThemeProvider</code>组件中需要一个三元条件判断如果 <code>state.app.theme===&#39;dark&#39;</code>就传递<code>colorDark</code>,否则就传递<code>colorsLight</code>.</p>
+<p>如果你卡住了,可以看看源码的实现.加入<a href="https://community.gitconnected.com/" target="_blank" rel="noopener">Slack</a> 寻求帮助. 试试我们的办法.</p>
+<h2 id="部署到GitHub-主页"><a href="#部署到GitHub-主页" class="headerlink" title="部署到GitHub 主页"></a>部署到GitHub 主页</h2><p>对于应用的最后一步都是投入生产. 因为我们的功能是在客户端,可以免费部署在 GitHub 主页的静态网站.</p>
+<p>提交你的代码并推送到Github. 我命名仓库为<code>hn-clone</code>.如果你在创建仓库和上传代码是遇到问题可以参照一下<a href="https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/" target="_blank" rel="noopener"><code>这个指导</code></a> </p>
+<p>现在使用如下的步骤发送过的 GitHub 主页:</p>
+<ol>
+<li>在package.json文件中添加 <code>&quot;homepage&quot;:&quot;http://&lt;username&gt;.github.io/&lt;repo-name&gt;&quot;</code> 使用你的实际值替换<code>&lt;username&gt;</code>和<code>&lt;repo-name&gt;</code>. 我的值是 <code>treyhuffine</code>和<code>hn-clone</code>.</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fyddue4bz1j30mg02m3yj.jpg" alt></p>
+<ol start="2">
+<li>安装<code>gh-pages</code>作为开发依赖项</li>
+</ol>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add -D gh-pages</span><br></pre></td></tr></table></figure></div>
+<ol start="3">
+<li>在<code>package</code>.json文件中添加两个脚本</li>
+</ol>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"predeploy"</span>: <span class="string">"npm run build"</span>,<span class="string">"deploy"</span>: <span class="string">"gh-pages -d build"</span></span><br></pre></td></tr></table></figure></div>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyddw03vwij30gi0akdga.jpg" alt></p>
+<ol start="4">
+<li>最后运行<code>yarn deploy</code> 并访问在homepage中定义的URL.</li>
+</ol>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyddx4ikxaj30is01eq2s.jpg" alt></p>
+<p>现在你的 Hacker News 投入生产了. </p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>本文覆盖了构建 Hacker News clone所必须的所有的功能. 源码还有一些额外的特性,持续更新中,  查看一下是否有灵感出现可以继续添加功能,学习更多的 React 知识.</p>
+<p>不要忘了下载Chrome 扩展, 并访问 gitconnectec.com网站,加入开发者社区.</p>
+<p>原文发表在 <a href="https://gitconnected.com/courses/learn-react-redux-tutorial-build-a-hacker-news-clone" target="_blank" rel="noopener">gitconnected.com-开发者社区</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/28/翻译| 18 Tips for Training your own Tensorflow.js Models in the Browser/" rel="next" title="翻译|18 Tips for Training your own Tensorflow.js Models in the Browser">
+                <i class="fa fa-chevron-left"></i> 翻译|18 Tips for Training your own Tensorflow.js Models in the Browser
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/28/翻译|How to Use the useReducer Hook/" rel="prev" title="翻译|How to Use the useReducer Hook">
+                翻译|How to Use the useReducer Hook <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#翻译-React-amp-Redux-Tutorial-—-Build-a-Hacker-News-Clone"><span class="nav-number">1.</span> <span class="nav-text">翻译|React &amp; Redux Tutorial — Build a Hacker News Clone</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#–-Build-a-production-React-project-using-Redux-and-Styled-Components-Deploy-the-app-using-GitHub-pages"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">– Build a production React project using Redux and Styled Components. Deploy the app using GitHub pages.</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化项目"><span class="nav-number">1.1.</span> <span class="nav-text">初始化项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件组织结构"><span class="nav-number">1.2.</span> <span class="nav-text">文件组织结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-React-应用添加Redux"><span class="nav-number">1.3.</span> <span class="nav-text">在 React 应用添加Redux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-React和Styld-Components-构建-UI"><span class="nav-number">1.4.</span> <span class="nav-text">使用 React和Styld Components 构建 UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Redux-和-Axios-构建-API-调用"><span class="nav-number">1.5.</span> <span class="nav-text">使用 Redux 和 Axios 构建 API 调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把React-APP-连接到-Redux-Store"><span class="nav-number">1.6.</span> <span class="nav-text">把React APP 连接到 Redux  Store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用无限滚动来对请求分页"><span class="nav-number">1.7.</span> <span class="nav-text">使用无限滚动来对请求分页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后的挑战"><span class="nav-number">1.8.</span> <span class="nav-text">最后的挑战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署到GitHub-主页"><span class="nav-number">1.9.</span> <span class="nav-text">部署到GitHub 主页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">1.10.</span> <span class="nav-text">结论</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

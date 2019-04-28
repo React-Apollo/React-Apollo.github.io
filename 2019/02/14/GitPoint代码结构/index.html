@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React-Native,Redux，styled-compoents,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介React的16.8.1的版本已经发布，在稍后的React-Native的0.59版本会支持React-Hooks这个特性。 经过之间一段时间的学习，对React的函数式编程方式有了一定的了解。刚好遇到React-Hooks发布。 学习了一些Hook上的使用方法。由衷的感慨，React向函数式组件的进化让编程变得非常有意思。 之前看过了GitPoint代码，由于代码结构比较复杂，所以似懂非懂">
+<meta name="keywords" content="React-Native,Redux，styled-compoents">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitPoint代码结构">
+<meta property="og:url" content="https://React-Apollo.github.io/2019/02/14/GitPoint代码结构/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="简介React的16.8.1的版本已经发布，在稍后的React-Native的0.59版本会支持React-Hooks这个特性。 经过之间一段时间的学习，对React的函数式编程方式有了一定的了解。刚好遇到React-Hooks发布。 学习了一些Hook上的使用方法。由衷的感慨，React向函数式组件的进化让编程变得非常有意思。 之前看过了GitPoint代码，由于代码结构比较复杂，所以似懂非懂">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1g05qzkfrgoj30ji0s4q76.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1g05v782ifcj30pe0eyae5.jpg">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GitPoint代码结构">
+<meta name="twitter:description" content="简介React的16.8.1的版本已经发布，在稍后的React-Native的0.59版本会支持React-Hooks这个特性。 经过之间一段时间的学习，对React的函数式编程方式有了一定的了解。刚好遇到React-Hooks发布。 学习了一些Hook上的使用方法。由衷的感慨，React向函数式组件的进化让编程变得非常有意思。 之前看过了GitPoint代码，由于代码结构比较复杂，所以似懂非懂">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1g05qzkfrgoj30ji0s4q76.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2019/02/14/GitPoint代码结构/">
+
+
+
+
+
+  <title>GitPoint代码结构 | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2019/02/14/GitPoint代码结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GitPoint代码结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-14T09:39:00+00:00">
+                2019-02-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/02/14/GitPoint代码结构/" class="leancloud_visitors" data-flag-title="GitPoint代码结构">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,623
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>React的16.8.1的版本已经发布，在稍后的React-Native的0.59版本会支持React-Hooks这个特性。 经过之间一段时间的学习，对React的函数式编程方式有了一定的了解。刚好遇到React-Hooks发布。 学习了一些Hook上的使用方法。由衷的感慨，React向函数式组件的进化让编程变得非常有意思。</p>
+<p>之前看过了GitPoint代码，由于代码结构比较复杂，所以似懂非懂的。<br>又翻出来看，发现GitPoint的技术栈和我之前学习积累的方法已经很接近了。 </p>
+<p><strong>理想的RN技术栈包括如下的技术：</strong></p>
+<ul>
+<li>React,React-hooks  数据管理</li>
+<li>Functional Components   APP组织</li>
+<li>Apollo    异步操作 GraphQL  client</li>
+<li>Styled-Components  函数式CSS,</li>
+<li>Typescript   类型检查</li>
+<li>React-Navigation 用于导航</li>
+</ul>
+<p><strong>GitPoint目前的技术栈</strong>：</p>
+<ul>
+<li>React,Redux  数据管理</li>
+<li>Class Components   APP组织</li>
+<li>GraphQL,      异步操作 Client</li>
+<li>Styled-Components   函数式样式</li>
+<li>Flow    类型检查</li>
+<li>React-Navigation  导航</li>
+</ul>
+<blockquote>
+<p>目的就是想看看从目前的技术栈迁移到理想的技术栈的可行性。<br>对于这个APP,对远程数据的需要比本地的交互操作内容要多得的，<br>Redux结构就稍显复杂，但是React-Hooks的useState ,useEffects和useReducer原理和Redux是完全一样的，之前需要把所有的Reducer合并(combineReducer)一起，现在就不用了， 单个的功能组件管理自己的reducer, 如果是全局的state，可以使用useContext方法， 还要两个论坛包装的方法，也可以在全局使用。 原则就是：<code>‌数据的Immutable</code>,<code>数据的单向流动</code>。 </p>
+</blockquote>
+<h3 id="遵循的原则"><a href="#遵循的原则" class="headerlink" title="遵循的原则"></a>遵循的原则</h3><ol>
+<li>数据的Immutable<br>现在可以借助新的 Immer 使得 Immutable的操作简单化</li>
+<li>数据单相流动，<br> 对于函数式组件，完全不是问题，因为 函数式组件的数据天然是通过函数的参数传入。</li>
+</ol>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p> <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g05qzkfrgoj30ji0s4q76.jpg" alt> </p>
+<ul>
+<li>🔘 <code>app.js</code> :入口文件</li>
+<li>🔘 <code>routes.js</code>: 路由总文件</li>
+<li>🔘 <code>root.store.js</code>: redux的store文件</li>
+<li>🔘  <code>root-reducer.js</code>： redux的reducer的combine文件</li>
+<li>🔘 <code>.flowconfig</code>: flow类型检查的配置文件</li>
+<li>🔘 <code>./src</code> ：程序文件夹</li>
+</ul>
+<h3 id="入口文件-app-jsx"><a href="#入口文件-app-jsx" class="headerlink" title="入口文件 app.jsx"></a>入口文件 app.jsx</h3><p><strong><code>‌静态方法获取当前位置</code></strong></p>
+<p>因为GitPoint App支持多种语言的本地化，在这里获取地理位置之后，后面的界面可以加载不同的文字</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JSX"><figure class="iseeu highlight /jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">async</span> initLocale() &#123;</span><br><span class="line">    <span class="comment">//获取当前位置</span></span><br><span class="line">    <span class="keyword">const</span> locale = <span class="keyword">await</span> getCurrentLocale();</span><br><span class="line">    <span class="comment">//配置当前位置，根据当前位置来设置App本地化信息</span></span><br><span class="line">    configureLocale(locale);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong><code>constructor</code></strong></p>
+<p> 使用<code>redux-persist</code> 保存Redux state至本地。在程序启动时需要判读<code>state</code>读取是否完成，或者是第一个使用，<code>state</code>为<code>null</code>.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JSX"><figure class="iseeu highlight /jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      rehydrated: <span class="literal">false</span>,  </span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">this</span>.statusBarHandler = <span class="keyword">this</span>.statusBarHandler.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong><code>componentWillMount()</code></strong></p>
+<p>在组件挂在周期函数中获取state加密方法，从本地获取state,设置<code>rehydrated:true</code> ,标识state加载完毕</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JSX"><figure class="iseeu highlight /jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount() &#123;</span><br><span class="line">    <span class="keyword">const</span> encryptor = createEncryptor(&#123;</span><br><span class="line">      secretKey: md5(DeviceInfo.getUniqueID()),</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    persistStore(</span><br><span class="line">      configureStore,</span><br><span class="line">      &#123;</span><br><span class="line">        storage: AsyncStorage,</span><br><span class="line">        transforms: [encryptor],</span><br><span class="line">        whitelist: [<span class="string">'auth'</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      () =&gt; &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; <span class="attr">rehydrated</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.constructor.initLocale();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong><code>render（）</code></strong></p>
+<p>render方法要根据rehydrated的状态加载不同的组件<br>如果为<code>false</code> 加载splash界面</p>
+<p>如果为<code>true</code>，跳转到React-Navigation的主路由</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JSX"><figure class="iseeu highlight /jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.state.rehydrated) &#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;Container&gt;</span><br><span class="line">          &lt;Logo source=&#123;<span class="built_in">require</span>(<span class="string">'./src/assets/logo-black.png'</span>)&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/Container&gt;</span></span><br><span class="line"><span class="regexp">      );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">      /</span><span class="regexp">/如果已经登录、就返回Redux store包装的主程序界面</span></span><br><span class="line"><span class="regexp">      /</span><span class="regexp">/gitpoint主程序有React-Navigation来执行路由导航任务</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">      &lt;Provider store=&#123;configureStore&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;GitPoint onNavigationStateChange=&#123;this.statusBarHandler&#125;&gt;</span></span><br><span class="line"><span class="regexp">          &lt;StatusBar /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/GitPoint&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>Provider&gt;</span><br><span class="line">    );</span><br></pre></td></tr></table></figure></div>
+<h3 id="routes-js总路由文件"><a href="#routes-js总路由文件" class="headerlink" title="routes.js总路由文件"></a><code>routes.js</code>总路由文件</h3><ul>
+<li><code>Splash</code> 页面  启动页  </li>
+<li><code>Login</code>  页面  加载了github的第三方登录web页面和一个</li>
+<li><code>Welcome</code> 页面</li>
+<li><code>Main</code>  实际应用的路由</li>
+</ul>
+<p>这四个路由使用堆栈来存放，实际的处理就是按顺序执行， 如果Longin没有完成，无法进入到Welcome的界面和Main的界面</p>
+<h4 id="Main路由的组织"><a href="#Main路由的组织" class="headerlink" title="Main路由的组织"></a><code>Main</code>路由的组织</h4><p><code>Main</code>路由是登录以后的实际路由，分为两大块， 根据BottomTab组织的Tab路由分为：</p>
+<ul>
+<li><code>Home</code></li>
+<li><code>Notification</code></li>
+<li><code>‌Search</code></li>
+<li><code>User</code></li>
+</ul>
+<p>路由的安排和Redux中的Reducer的组织是一样方式，就是按照这个Tab的结构来安排， Tab就是APP的具体内容. 每个Tab中的页面是使用StackNavigator来组织的</p>
+<p>还有一些可以共用的页面单独存放，压入到单个的Tab中。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JSX"><figure class="iseeu highlight /jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyProfileStackNavigator = StackNavigator(</span><br><span class="line">  &#123;</span><br><span class="line">    MyProfile: &#123;</span><br><span class="line">      screen: AuthProfileScreen,</span><br><span class="line">      navigationOptions: &#123;</span><br><span class="line">        header: <span class="literal">null</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...sharedRoutes,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    headerMode: <span class="string">'screen'</span>,</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> MainTabNavigator = TabNavigator(</span><br><span class="line">  &#123;</span><br><span class="line">    Home: &#123;</span><br><span class="line">      screen: HomeStackNavigator,</span><br><span class="line">      navigationOptions: &#123;</span><br><span class="line">        tabBarIcon: <span class="function">(<span class="params">&#123; tintColor &#125;</span>) =&gt;</span> (</span><br><span class="line">          &lt;Icon</span><br><span class="line">            containerStyle=&#123;&#123; <span class="attr">justifyContent</span>: <span class="string">'center'</span>, <span class="attr">alignItems</span>: <span class="string">'center'</span> &#125;&#125;</span><br><span class="line">            color=&#123;tintColor&#125;</span><br><span class="line">            name=<span class="string">"home"</span></span><br><span class="line">            size=&#123;<span class="number">33</span>&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        ),</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    Notifications: &#123;</span><br><span class="line">      screen: NotificationsStackNavigator,</span><br><span class="line">      navigationOptions: &#123;</span><br><span class="line">        tabBarIcon: <span class="function">(<span class="params">&#123; tintColor &#125;</span>) =&gt;</span> (</span><br><span class="line">          &lt;NotificationIcon iconColor=&#123;tintColor&#125; /&gt;</span><br><span class="line">        ),</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    Search: &#123;</span><br><span class="line">      screen: SearchStackNavigator,</span><br><span class="line">      navigationOptions: &#123;</span><br><span class="line">        tabBarIcon: <span class="function">(<span class="params">&#123; tintColor &#125;</span>) =&gt;</span> (</span><br><span class="line">          &lt;Icon</span><br><span class="line">            containerStyle=&#123;&#123; <span class="attr">justifyContent</span>: <span class="string">'center'</span>, <span class="attr">alignItems</span>: <span class="string">'center'</span> &#125;&#125;</span><br><span class="line">            color=&#123;tintColor&#125;</span><br><span class="line">            name=<span class="string">"search"</span></span><br><span class="line">            size=&#123;<span class="number">33</span>&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        ),</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    MyProfile: &#123;</span><br><span class="line">      screen: MyProfileStackNavigator,</span><br><span class="line">      navigationOptions: &#123;</span><br><span class="line">        tabBarIcon: <span class="function">(<span class="params">&#123; tintColor &#125;</span>) =&gt;</span> (</span><br><span class="line">          &lt;Icon</span><br><span class="line">            containerStyle=&#123;&#123; <span class="attr">justifyContent</span>: <span class="string">'center'</span>, <span class="attr">alignItems</span>: <span class="string">'center'</span> &#125;&#125;</span><br><span class="line">            color=&#123;tintColor&#125;</span><br><span class="line">            name=<span class="string">"person"</span></span><br><span class="line">            size=&#123;<span class="number">33</span>&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        ),</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    lazy: <span class="literal">true</span>,</span><br><span class="line">    tabBarPosition: <span class="string">'bottom'</span>,</span><br><span class="line">    tabBarOptions: &#123;</span><br><span class="line">      showLabel: <span class="literal">false</span>,</span><br><span class="line">      activeTintColor: colors.primaryDark,</span><br><span class="line">      inactiveTintColor: colors.grey,</span><br><span class="line">      style: &#123;</span><br><span class="line">        backgroundColor: colors.alabaster,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    tabBarComponent: <span class="function">(<span class="params">&#123; jumpToIndex, ...props &#125;</span>) =&gt;</span> (</span><br><span class="line">      &lt;TabBarBottom</span><br><span class="line">        &#123;...props&#125;</span><br><span class="line">        jumpToIndex=&#123;index =&gt; &#123;</span><br><span class="line">          <span class="keyword">const</span> &#123; dispatch, state &#125; = props.navigation;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (state.index === index &amp;&amp; state.routes[index].routes.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> stackRouteName = [</span><br><span class="line">              <span class="string">'Events'</span>,</span><br><span class="line">              <span class="string">'Notifications'</span>,</span><br><span class="line">              <span class="string">'Search'</span>,</span><br><span class="line">              <span class="string">'MyProfile'</span>,</span><br><span class="line">            ][index];</span><br><span class="line"></span><br><span class="line">            dispatch(</span><br><span class="line">              NavigationActions.reset(&#123;</span><br><span class="line">                index: <span class="number">0</span>,</span><br><span class="line">                actions: [</span><br><span class="line">                  NavigationActions.navigate(&#123; <span class="attr">routeName</span>: stackRouteName &#125;),</span><br><span class="line">                ],</span><br><span class="line">              &#125;)</span><br><span class="line">            );</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            jumpToIndex(index);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    ),</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+<p>在最新版本的 React-Navigtion中，TabBarBottom的配置非常简单。需要做更新。</p>
+<h2 id="实际应用代码"><a href="#实际应用代码" class="headerlink" title="实际应用代码"></a>实际应用代码</h2><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g05v782ifcj30pe0eyae5.jpg" alt></p>
+<h3 id="Splash页面"><a href="#Splash页面" class="headerlink" title="Splash页面"></a>Splash页面</h3><p>判断用户是否登录，如果登录跳转的Main路由，如果没有登录过，跳转到登录页面.Splash页面不属于应用的流程， 只是从store获取登录状态，</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过react-redux mapStateToProps方法从store获取认证信息</span></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = state =&gt; (&#123;</span><br><span class="line">  isAuthenticated: state.auth.isAuthenticated,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//render方法加载  Logo</span></span><br><span class="line"></span><br><span class="line">render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;LogoContainer&gt;</span><br><span class="line">        &lt;Logo source=&#123;require(<span class="string">'../../assets/logo-black.png'</span>)&#125; /&gt;</span><br><span class="line">      &lt;/LogoContainer&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// cdm方法根据isAuthenicated状态决定跳转到那个页面</span></span><br><span class="line"></span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; isAuthenticated, navigation &#125; = <span class="keyword">this</span>.props;</span><br><span class="line">  <span class="comment">//如果登录直接跳转到主界面</span></span><br><span class="line">    <span class="keyword">if</span> (isAuthenticated) &#123;</span><br><span class="line">      resetNavigationTo(<span class="string">'Main'</span>, navigation);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      resetNavigationTo(<span class="string">'Login'</span>, navigation);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="登录流程"><a href="#登录流程" class="headerlink" title="登录流程"></a>登录流程</h3><h4 id="Login-screen-js"><a href="#Login-screen-js" class="headerlink" title="Login.screen.js"></a>Login.screen.js</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">从state获取的信息</span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function"><span class="params">state</span> =&gt;</span> (&#123;</span><br><span class="line">  locale: state.auth.locale,</span><br><span class="line">  isLoggingIn: state.auth.isLoggingIn,</span><br><span class="line">  isAuthenticated: state.auth.isAuthenticated,</span><br><span class="line">  hasInitialUser: state.auth.hasInitialUser,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//dispactch的方法，</span></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function"><span class="params">dispatch</span> =&gt;</span></span><br><span class="line">  bindActionCreators(</span><br><span class="line">    &#123;</span><br><span class="line">      auth,</span><br><span class="line">      getUser,</span><br><span class="line">    &#125;,</span><br><span class="line">    dispatch</span><br><span class="line">  );</span><br></pre></td></tr></table></figure></div>
+<p>在gitPoint中，文件的组织是按照Tab来分类的，每个Tab是一个独立的应用流程。 在独立的流程文件夹中保存了Redux的结构， 容器组件和展示组件没有分开， <em>.action.js ，</em>.reducer.js ，<em>.selector.js , </em>.type.js 文件  位于同一个流程中， 管理起来非常方便。 在Redux内部，每个应用的流程是独立的。一开始学习是感到困惑的CombineReducer，其实只是简单的把reducer合并起来。只要不违反 Redux的三个原则， 文件组织结构可以是很灵活的。 GitPoint的组织结构迁移到React-Hooks模式，将会非常方便。</p>
+<p>未登录时，跳转到github登录页面，如果登录成功，会返回状态和代码,state,code。根据这两个返回结构来执行下面的操作</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PF"><figure class="iseeu highlight /pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//login.screen.js</span><br><span class="line"></span><br><span class="line">handleOpenURL = (&#123; url &#125;) =&gt; &#123;</span><br><span class="line">    if (url &amp;&amp; url.substring(<span class="number">0</span>, <span class="number">11</span>) === 'gitpoint://') &#123;</span><br><span class="line">      const [, queryStringFromUrl] = url.<span class="built_in">match</span>(/\?(.*)/);</span><br><span class="line">      const &#123; <span class="keyword">state</span>, code &#125; = queryString.parse(queryStringFromUrl);</span><br><span class="line">      const &#123; auth, getUser, navigation, locale &#125; = this.props;</span><br><span class="line"></span><br><span class="line">      if (<span class="keyword">state</span>Random === <span class="keyword">state</span>) &#123;</span><br><span class="line">        this.<span class="built_in">set</span>State(&#123;</span><br><span class="line">          code,</span><br><span class="line">          showLoader: true,</span><br><span class="line">          loaderText: t('Preparing GitPoint...', locale),</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">state</span>Random = Math.<span class="keyword">random</span>().<span class="keyword">to</span>String();</span><br><span class="line">       </span><br><span class="line">        CookieManager.clearAll().then(() =&gt; &#123;</span><br><span class="line">          </span><br><span class="line">          auth(code, <span class="keyword">state</span>).then(() =&gt;&#123;//redux  action</span><br><span class="line">            getUser().then(() =&gt; &#123; </span><br><span class="line">              resetNavigationTo('Main', navigation);</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></div>
+<p>在auth.action.js中执行的auth方法</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//auth.action.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//首先获取用户的Token</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> auth = <span class="function">(<span class="params">code, state</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">dispatch</span> =&gt;</span> &#123;</span><br><span class="line">    dispatch(&#123; <span class="attr">type</span>: LOGIN.PENDING &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> delay(fetchAccessToken(code, state), <span class="number">2000</span>)</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        dispatch(&#123;</span><br><span class="line">          type: LOGIN.SUCCESS,</span><br><span class="line">          payload: data.access_token,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">        dispatch(&#123;</span><br><span class="line">          type: LOGIN.ERROR,</span><br><span class="line">          payload: error,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//根据Token获取用户信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getUser = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">dispatch, getState</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> accessToken = getState().auth.accessToken;</span><br><span class="line"></span><br><span class="line">    dispatch(&#123; <span class="attr">type</span>: GET_AUTH_USER.PENDING &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fetchAuthUser(accessToken)</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        dispatch(&#123;</span><br><span class="line">          type: GET_AUTH_USER.SUCCESS,</span><br><span class="line">          payload: data,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">        dispatch(&#123;</span><br><span class="line">          type: GET_AUTH_USER.ERROR,</span><br><span class="line">          payload: error,</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>与用户相关的流程都放在这里， 其他的信息是通过GraphQL来获取的。</p>
+<h4 id="action-type-js"><a href="#action-type-js" class="headerlink" title="action.type.js"></a><code>action.type.js</code></h4><p>在执行异步操作的action时，需要标识状态， GitPoint使用了 <code>action-helper.js</code>中的createActionSet来生成多个方法 </p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createActionSet = <span class="function"><span class="params">actionName</span> =&gt;</span> (&#123;</span><br><span class="line">  PENDING: <span class="string">`<span class="subst">$&#123;actionName&#125;</span>_PENDING`</span>,</span><br><span class="line">  SUCCESS: <span class="string">`<span class="subst">$&#123;actionName&#125;</span>_SUCCESS`</span>,</span><br><span class="line">  ERROR: <span class="string">`<span class="subst">$&#123;actionName&#125;</span>_ERROR`</span>,</span><br><span class="line">  actionName,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createPaginationActionSet = <span class="function"><span class="params">actionName</span> =&gt;</span> (&#123;</span><br><span class="line">  ...createActionSet(actionName),</span><br><span class="line">  RESET: <span class="string">`<span class="subst">$&#123;actionName&#125;</span>_RESET`</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//auth.type.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createActionSet &#125; <span class="keyword">from</span> <span class="string">'utils'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CHANGE_LOCALE = createActionSet(<span class="string">'CHANGE_LOCALE'</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> GET_AUTH_ORGS = createActionSet(<span class="string">'GET_AUTH_ORGS'</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> GET_AUTH_STAR_COUNT = createActionSet(<span class="string">'GET_AUTH_STAR_COUNT'</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> GET_AUTH_USER = createActionSet(<span class="string">'GET_AUTH_USER'</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> LOGIN = createActionSet(<span class="string">'LOGIN'</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> LOGOUT = createActionSet(<span class="string">'LOGOUT'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>由于异步操作开销比较大，所以对于已经执行过的流程，可以缓存起来，GitPoint使用了<code>reselect</code>库来执行这个操作</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSelector &#125; <span class="keyword">from</span> <span class="string">'reselect'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getAuthFromStore = <span class="function"><span class="params">state</span> =&gt;</span> state.auth;</span><br><span class="line"><span class="comment">//缓存了用户的认证信息和当前的地理位置</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getAuthLocale = createSelector(</span><br><span class="line">  getAuthFromStore,</span><br><span class="line">  auth =&gt; auth.locale</span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
+<p>具体执行state修改的是reducer文件.<br>首先从<code>auth.type.js</code>中加载 actionType,目的是要和组件dispacth的 actionType做匹配，决定要执行那个修改state的操作</p>
+<p><code>初始State</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> initialState = &#123;</span><br><span class="line">  isLoggingIn: <span class="literal">false</span>,</span><br><span class="line">  isSigningOut: <span class="literal">false</span>,</span><br><span class="line">  isAuthenticated: <span class="literal">false</span>,</span><br><span class="line">  accessToken: <span class="literal">null</span>,</span><br><span class="line">  user: &#123;&#125;,</span><br><span class="line">  hasInitialUser: <span class="literal">false</span>,</span><br><span class="line">  orgs: [],</span><br><span class="line">  events: [],</span><br><span class="line">  <span class="comment">// <span class="doctag">TODO:</span> there should not be a dependency here that can't be constructor injected.</span></span><br><span class="line">  locale: getLocale(),</span><br><span class="line">  isPendingUser: <span class="literal">false</span>,</span><br><span class="line">  isPendingOrgs: <span class="literal">false</span>,</span><br><span class="line">  isPendingEvents: <span class="literal">false</span>,</span><br><span class="line">  error: <span class="string">''</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>根据actionType对state做出操作(Immutable)</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//auth.reducer.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> authReducer = <span class="function">(<span class="params">state = initialState, action = &#123;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> LOGIN.PENDING:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isLoggingIn: <span class="literal">true</span>,</span><br><span class="line">        isAuthenticated: <span class="literal">false</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> LOGIN.SUCCESS:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isLoggingIn: <span class="literal">false</span>,</span><br><span class="line">        isAuthenticated: <span class="literal">true</span>,</span><br><span class="line">        accessToken: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> LOGIN.ERROR:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isLoggingIn: <span class="literal">false</span>,</span><br><span class="line">        isAuthenticated: <span class="literal">false</span>,</span><br><span class="line">        error: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> LOGOUT.PENDING:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isSigningOut: <span class="literal">true</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> LOGOUT.SUCCESS:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...initialState,</span><br><span class="line">        hasInitialUser: <span class="literal">false</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> LOGOUT.ERROR:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isSigningOut: <span class="literal">false</span>,</span><br><span class="line">        error: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_USER.PENDING:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingUser: <span class="literal">true</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_USER.SUCCESS:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingUser: <span class="literal">false</span>,</span><br><span class="line">        hasInitialUser: <span class="literal">true</span>,</span><br><span class="line">        user: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_USER.ERROR:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingUser: <span class="literal">false</span>,</span><br><span class="line">        error: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_STAR_COUNT.PENDING:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingStarCount: <span class="literal">true</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_STAR_COUNT.SUCCESS:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingStarCount: <span class="literal">false</span>,</span><br><span class="line">        starCount: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_STAR_COUNT.ERROR:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingStarCount: <span class="literal">false</span>,</span><br><span class="line">        error: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_ORGS.PENDING:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingOrgs: <span class="literal">true</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_ORGS.SUCCESS:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingOrgs: <span class="literal">false</span>,</span><br><span class="line">        orgs: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> GET_AUTH_ORGS.ERROR:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        isPendingOrgs: <span class="literal">false</span>,</span><br><span class="line">        error: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> CHANGE_LOCALE.SUCCESS:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...state,</span><br><span class="line">        locale: action.payload,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag"># React-Native</a>
+          
+            <a href="/tags/Redux，styled-compoents/" rel="tag"># Redux，styled-compoents</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/09/摘要|Restaruant Review GraphQL Schema/" rel="next" title="摘要|Restaruant Review GraphQL Schema">
+                <i class="fa fa-chevron-left"></i> 摘要|Restaruant Review GraphQL Schema
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/18/TypeScript的通俗解释/" rel="prev" title="TypeScript的通俗解释">
+                TypeScript的通俗解释 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遵循的原则"><span class="nav-number">1.1.</span> <span class="nav-text">遵循的原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构"><span class="nav-number">2.</span> <span class="nav-text">项目结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本结构"><span class="nav-number">2.1.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入口文件-app-jsx"><span class="nav-number">2.2.</span> <span class="nav-text">入口文件 app.jsx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#routes-js总路由文件"><span class="nav-number">2.3.</span> <span class="nav-text">routes.js总路由文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Main路由的组织"><span class="nav-number">2.3.1.</span> <span class="nav-text">Main路由的组织</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际应用代码"><span class="nav-number">3.</span> <span class="nav-text">实际应用代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Splash页面"><span class="nav-number">3.1.</span> <span class="nav-text">Splash页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录流程"><span class="nav-number">3.2.</span> <span class="nav-text">登录流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Login-screen-js"><span class="nav-number">3.2.1.</span> <span class="nav-text">Login.screen.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#action-type-js"><span class="nav-number">3.2.2.</span> <span class="nav-text">action.type.js</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

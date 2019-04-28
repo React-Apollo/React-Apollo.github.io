@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="GraphQL,Apollo,Apollo-Client,javacript,app-link,app-link-state,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="未来的状态管理技术使用apollo-link-state在Apollo client管理本地状态**随着应用规模的增长，它的状态也日趋复杂化。作为一个开发者我们的任务不仅要从多个远程服务器获取五花八门的数据，同时还要处理与UI交互有关的本地数据。最糟糕的是，我们不得不考略怎么存储这些数据，以便于应用中的组件可以轻松访问数据。很多的开发者的诉求是Apollo client在远程数据的管理上非常优秀">
+<meta name="keywords" content="GraphQL,Apollo,Apollo-Client,javacript,app-link,app-link-state">
+<meta property="og:type" content="article">
+<meta property="og:title" content="未来的状态管理技术">
+<meta property="og:url" content="https://React-Apollo.github.io/2018/01/04/the future of state mangement/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="未来的状态管理技术使用apollo-link-state在Apollo client管理本地状态**随着应用规模的增长，它的状态也日趋复杂化。作为一个开发者我们的任务不仅要从多个远程服务器获取五花八门的数据，同时还要处理与UI交互有关的本地数据。最糟糕的是，我们不得不考略怎么存储这些数据，以便于应用中的组件可以轻松访问数据。很多的开发者的诉求是Apollo client在远程数据的管理上非常优秀">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*YfE1f2lBr0hnpcRESiUy1w.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*ZHTs1iOH247NQLEOxXzHFw.png">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="未来的状态管理技术">
+<meta name="twitter:description" content="未来的状态管理技术使用apollo-link-state在Apollo client管理本地状态**随着应用规模的增长，它的状态也日趋复杂化。作为一个开发者我们的任务不仅要从多个远程服务器获取五花八门的数据，同时还要处理与UI交互有关的本地数据。最糟糕的是，我们不得不考略怎么存储这些数据，以便于应用中的组件可以轻松访问数据。很多的开发者的诉求是Apollo client在远程数据的管理上非常优秀">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/2000/1*YfE1f2lBr0hnpcRESiUy1w.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2018/01/04/the future of state mangement/">
+
+
+
+
+
+  <title>未来的状态管理技术 | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2018/01/04/the future of state mangement/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">未来的状态管理技术</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T04:01:45+00:00">
+                2018-01-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/04/the future of state mangement/" class="leancloud_visitors" data-flag-title="未来的状态管理技术">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,288
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://cdn-images-1.medium.com/max/2000/1*YfE1f2lBr0hnpcRESiUy1w.png" alt></p>
+<h1 id="未来的状态管理技术"><a href="#未来的状态管理技术" class="headerlink" title="未来的状态管理技术"></a>未来的状态管理技术</h1><p><code>使用apollo-link-state在Apollo client管理本地状态**</code><br>随着应用规模的增长，它的状态也日趋复杂化。作为一个开发者我们的任务不仅要从多个远程服务器获取五花八门的数据，同时还要处理与UI交互有关的本地数据。最糟糕的是，我们不得不考略怎么存储这些数据，以便于应用中的组件可以轻松访问数据。<br>很多的开发者的诉求是Apollo client在远程数据的管理上非常优秀，远程数据大概占据了他们80%的数据需求。但是本地数据(例如：全局标记，设备API反馈结果)怎么才能满足剩下的20%需求？<br>在以前(其实也不算久)，Apollo用户在独立的Redux或者Mobx store(两种数据构架存储数据的对象)中管理20%的本地数据需求。对于apollo client 1.0这么做是可行的解决办法，但是Apollo client 2.0已经完全从Redux构建中迁移出来，结果是在如果要在Apollo的store和本地管理构建的store之间同步本地，远程数据会变得非常棘手。最终用户的诉求是希望能在Apollo client中封装本地和远程数据，保持单一数据来源(<strong>one source of truth</strong>)。</p>
+<h3 id="依靠坚实的基础"><a href="#依靠坚实的基础" class="headerlink" title="依靠坚实的基础"></a>依靠坚实的基础</h3><p>Apollo开发者知道，必须要解决这个迫在眉睫的问题，所谓我们提出了问题：在Apollo client中管理状态到底应该是什么样子？刚开始，我们认为应该具有类似Redux的特征，例如Redux的dev tools以及通过connect函数把state注入到组件中。但是我们也考虑到了Redux自身的缺陷，例如模板的问题，还有DIY的问题，核心的特性，例如异步action creator(asyncchronous action creator,Redux执行异步操作时的action的函数一般都有三个)，缓存(caching),以及optimistic UI。</p>
+<p>为了创建理想的state管理方案，我们想依据Redux构建，但是又避免它的备受批评的方面。同时还要使用GraphQL的强大的能力：也就是一次查询，从多个数据源返回数据。<br><img src="https://cdn-images-1.medium.com/max/1600/1*ZHTs1iOH247NQLEOxXzHFw.png" alt></p>
+<h3 id="一次学习，到处编写GraphQL查询"><a href="#一次学习，到处编写GraphQL查询" class="headerlink" title="一次学习，到处编写GraphQL查询"></a>一次学习，到处编写GraphQL查询</h3><p>对于GraphQL的一个常见误解是：它和特定的服务器实现耦合在一起。实际上，GraphQL非常灵活。不管你是从gRPC,REST或者客户端缓存查询数据都可以实现-GraphQL就是<strong>数据通用查询语言</strong>，操作与数据来源无关。<br>这就是GraphQL查询和突变(query,mutation)完美契合应用状态改变需求的原因。不再使用Redux的分发动作(dispatching action，Redux中触发状态改变的函数),我们使用GraphQL mutation来表现状态的改变。可以通过GraphQL的query来表明组件的数据需求，从而可以访问到相应的数据。<br>GraphQL的最大优点是它可以聚合来自多个数据来源的数据，不管是本地还是远程数据，只要在一个查询里通过指令(directive,graphQL里的语法，可以灵活的构建查询).定制需要的字段。 🎉好吧！来看看怎么实现</p>
+<h3 id="通过Apollo-Client管理状态"><a href="#通过Apollo-Client管理状态" class="headerlink" title="通过Apollo Client管理状态"></a>通过Apollo Client管理状态</h3><p>在Apollo Ｃlient中管理本地数据通过<a href="https://www.apollographql.com/docs/link/" target="_blank" rel="noopener">Apollo Link</a>实现，Apollo Link是client中的网络技术栈，可以让你在任何地点接入到GraphQL的请求周期中。为了从GraphQL服务器请求远程数据，我们可以使用<code>HttpLink</code>,但是为了从缓存中请求本地数据，我们需要安装新的link:<code>apollo-link-state</code>。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ApolloClient &#125; <span class="keyword">from</span> <span class="string">'apollo-client'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; InMemoryCache &#125; <span class="keyword">from</span> <span class="string">'apollo-cache-inmemory'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ApolloLink &#125; <span class="keyword">from</span> <span class="string">'apollo-link'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; withClientState &#125; <span class="keyword">from</span> <span class="string">'apollo-link-state'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; HttpLink &#125; <span class="keyword">from</span> <span class="string">'apollo-link-http'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; defaults, resolvers &#125; <span class="keyword">from</span> <span class="string">'./resolvers/todos'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cache = <span class="keyword">new</span> InMemoryCache();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> stateLink = withClientState(&#123; resolvers, cache, defaults &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> ApolloClient(&#123;</span><br><span class="line">  cache,</span><br><span class="line">  link: ApolloLink.from([stateLink, <span class="keyword">new</span> HttpLink()]),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>使用apollo-link-state初始化Apollo Client<br>为了创建state link,可以使用<code>withClientState</code>函数，传递的具有<code>resolvers</code>,<code>defaults</code>和Apollo<code>cache</code>属性的对象。接着拼接本地sate link到整个link链中。state link应该在<code>HttpLink</code>之前出现，因此本地查询和突变到达网络成之前就会被拦截。</p>
+<p>####默认配置(Defaults)<br><code>defaults</code>对象代表着写入缓存时创建的state link的初始状态。在没有需求时，传递<code>defaults</code>对象给cache热个身是非常重要的，这样做组件在查询状态数据时才不会出错(译注：这里和Redux的reducer中返回默认的initailState是一个意思，可以返回空对象，但是不能undefined)。定义的<code>defaults</code>对象外观应该可以反映出在应用中计划实现的查询方案。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> defaults = &#123;</span><br><span class="line">  visibilityFilter: <span class="string">'SHOW_ALL'</span>,</span><br><span class="line">  todos: [],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>默认对象代表着想读写cache的初始化状态</p>
+<h4 id="Resolvers-查询解析函数"><a href="#Resolvers-查询解析函数" class="headerlink" title="Resolvers(查询解析函数)"></a>Resolvers(查询解析函数)</h4><p>如果使用Apollo Client来管理state,Apollo cache就称为应用中所有远程数据和本地数据的单一来源。怎么访问和更新cache中的数据？resolvers应运而生。如果你在服务器端使用过<code>graph-tools</code>，client端的resolver类型签名与之相同：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fieldName: <span class="function">(<span class="params">obj, args, context, info</span>) =&gt;</span> result;</span><br></pre></td></tr></table></figure></div>
+<p>如果不熟悉resolvers，也不用担心，这里要注意的两个重点是查询或者突变的变量在第二个参数中传递，cache会在context中自动添加(在服务端，需要在context中手动指定查询的配置，可以是rest地址，也可以是数据库配置)。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> defaults = &#123; <span class="comment">// same as before &#125;</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> resolvers = &#123;</span><br><span class="line">  Mutation: &#123;</span><br><span class="line">    visibilityFilter: <span class="function">(<span class="params">_, &#123; filter &#125;, &#123; cache &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">      cache.writeData(&#123; <span class="attr">data</span>: &#123; <span class="attr">visibilityFilter</span>: filter &#125; &#125;);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    addTodo: <span class="function">(<span class="params">_, &#123; text &#125;, &#123; cache &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> query = gql<span class="string">`</span></span><br><span class="line"><span class="string">        query GetTodos &#123;</span></span><br><span class="line"><span class="string">          todos @client &#123;</span></span><br><span class="line"><span class="string">            id</span></span><br><span class="line"><span class="string">            text</span></span><br><span class="line"><span class="string">            completed</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      `</span>;</span><br><span class="line">      <span class="keyword">const</span> previous = cache.readQuery(&#123; query &#125;);</span><br><span class="line">      <span class="keyword">const</span> newTodo = &#123;</span><br><span class="line">        id: nextTodoId++,</span><br><span class="line">        text,</span><br><span class="line">        completed: <span class="literal">false</span>,</span><br><span class="line">        __typename: <span class="string">'TodoItem'</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="keyword">const</span> data = &#123;</span><br><span class="line">        todos: previous.todos.concat([newTodo]),</span><br><span class="line">      &#125;;</span><br><span class="line">      cache.writeData(&#123; data &#125;);</span><br><span class="line">      <span class="keyword">return</span> newTodo;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>Resolvers是访问和更新cache中数据的函数</p>
+<p>为了把数据写到cache的根下，调用<code>cache.writeData</code>函数，并传递自己的数据。有时候，我们写入到cache的数据是和之前的数据有关的，例如上面实例中的mutation操作<code>addTodo</code>。在这种情况下，需要在执行写操作之前使用<code>cache.readQuery</code>函数从cache中读取之前的数据，如果你只是对cache中已经存在的对象写入部分数据，可以选择性传入一个<code>id</code>，这个<code>id</code>代表着相应对象在cache中的key.因为我们在apollo client store中使用的是<code>InMemoryCache</code>，key是<code>_.typename:id</code>.</p>
+<h4 id="client-directive-client指令"><a href="#client-directive-client指令" class="headerlink" title="@client directive(@client指令)"></a>@client directive(@client指令)</h4><p>如果我们从UI中触发一个mutation.Apollo client需要知道这个动作到底是要更新服务器的数据，还是客户端本地数据。<code>apollo-link-state</code>使用<code>@client</code>指令来界定只能用于客户端数据的操作。接着<code>apollo-link-state</code>调用resolvser来处理相关字段。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> SET_VISIBILITY = gql<span class="string">`</span></span><br><span class="line"><span class="string">  mutation SetFilter($filter: String!) &#123;</span></span><br><span class="line"><span class="string">    visibilityFilter(filter: $filter) @client</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> setVisibilityFilter = graphql(SET_VISIBILITY, &#123;</span><br><span class="line">  props: <span class="function">(<span class="params">&#123; mutate, ownProps &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">    onClick: <span class="function"><span class="params">()</span> =&gt;</span> mutate(&#123; <span class="attr">variables</span>: &#123; <span class="attr">filter</span>: ownProps.filter &#125; &#125;),</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>通过@client指令针对本地数据执行mutation操作</p>
+<p>query操作和mutation操作类似。如果你在查询中正在执行异步操作，Apollo Client将会为你跟踪loading和error状态。对React而言，你可以在<code>this.props.data</code>中找到这些状态，其中还包括很多的助手函数，包括refetching(刷新)，pagination(分页)和polling(轮询)。</p>
+<p>最令人心动的特性是你可以在一次查询中从多个数据源请求数据！😍<br>在这个例子中，我们可以从GraphQL服务器远程请求<code>user</code>信息，同时从Apollo cache中请求本地的<code>visiblityFilter</code>数据。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> GET_USERS_ACTIVE_TODOS = gql<span class="string">`</span></span><br><span class="line"><span class="string">  &#123;</span></span><br><span class="line"><span class="string">    visibilityFilter @client</span></span><br><span class="line"><span class="string">    user(id: 1) &#123;</span></span><br><span class="line"><span class="string">      name</span></span><br><span class="line"><span class="string">      address</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> withActiveState = graphql(GET_USERS_ACTIVE_TODOS, &#123;</span><br><span class="line">  props: <span class="function">(<span class="params">&#123; ownProps, data &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">    active: ownProps.filter === data.visibilityFilter,</span><br><span class="line">    data,</span><br><span class="line">  &#125;),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>通过@client指令请求本地数据，user没有@client指令，是远程请求数据。更多有关在应用中整合<code>apollo-link-state</code>的示例和技巧，请关注我们的<a href="https://www.apollographql.com/docs/link/links/state.html" target="_blank" rel="noopener">文档更新页面</a></p>
+<h3 id="到1-0版本的技术路线"><a href="#到1-0版本的技术路线" class="headerlink" title="到1.0版本的技术路线"></a>到1.0版本的技术路线</h3><p>现在，尽管<code>apollo-link-state</code>已经足够稳定，可以在应用使用了，但是还有几个特性，我们很快会解决：</p>
+<ul>
+<li><strong>Client-side schema(客户端图式)</strong>：现在，客户端还不支持根据客户端schema所做的类型验证。这是因为在运行时包含用于构建和验证schema会显著的增加打包文件的大小。替换方案是，我们希望把schema构建转移到构建阶段，通过对GraphQL内省(introspection)的支持，你可以获取GraphiQL中所有很酷的特征。</li>
+<li><strong>Helper组件</strong>：我们的目标是尽可能的使apollo中的状态管理无差别。我们编写一些React组件，从而减少执行普通任务时的多余代码，例如在执行mutation时，在幕后传递参数，需用考虑细节配置。</li>
+</ul>
+<p>如果你你对这些问题感兴趣，可以加入<a href="https://github.com/apollographql/apollo-link-state" target="_blank" rel="noopener">github</a> 或者是 Apollo Slack的<code>#local-state</code>频道。我们很感激你可以帮助塑造下一代的状态管理方案！🚀</p>
+<p><code>React</code>,<code>GraphQL</code>,<code>JavaScript</code>,<code>Redux</code>,<code>API</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GraphQL/" rel="tag"># GraphQL</a>
+          
+            <a href="/tags/Apollo/" rel="tag"># Apollo</a>
+          
+            <a href="/tags/Apollo-Client/" rel="tag"># Apollo-Client</a>
+          
+            <a href="/tags/javacript/" rel="tag"># javacript</a>
+          
+            <a href="/tags/app-link/" rel="tag"># app-link</a>
+          
+            <a href="/tags/app-link-state/" rel="tag"># app-link-state</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/09/Disssection-Twitter-s-Redux-Store/" rel="next" title="Javascript Reducer函数实战">
+                <i class="fa fa-chevron-left"></i> Javascript Reducer函数实战
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/20/Public GraphQL APIs/" rel="prev" title="Public GraphQL APIs">
+                Public GraphQL APIs <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#未来的状态管理技术"><span class="nav-number">1.</span> <span class="nav-text">未来的状态管理技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#依靠坚实的基础"><span class="nav-number">1.0.1.</span> <span class="nav-text">依靠坚实的基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一次学习，到处编写GraphQL查询"><span class="nav-number">1.0.2.</span> <span class="nav-text">一次学习，到处编写GraphQL查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Apollo-Client管理状态"><span class="nav-number">1.0.3.</span> <span class="nav-text">通过Apollo Client管理状态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Resolvers-查询解析函数"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Resolvers(查询解析函数)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#client-directive-client指令"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">@client directive(@client指令)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#到1-0版本的技术路线"><span class="nav-number">1.0.4.</span> <span class="nav-text">到1.0版本的技术路线</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

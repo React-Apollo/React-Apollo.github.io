@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React,UI,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="React Native Styling Cheat SheetMost of the React Native styling material in one page. Imported from the official docs.  ContentsGeneral Flexbox ShadowPropTypesIOS Transforms  Components Image ScrollV">
+<meta name="keywords" content="React,UI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CheatSheet|React Native Styling Cheat Sheet">
+<meta property="og:url" content="https://React-Apollo.github.io/2017/01/28/React Native Styling Cheat Sheet/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="React Native Styling Cheat SheetMost of the React Native styling material in one page. Imported from the official docs.  ContentsGeneral Flexbox ShadowPropTypesIOS Transforms  Components Image ScrollV">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://media.giphy.com/media/B5a9bkLouElOM/giphy.gif">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.892Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CheatSheet|React Native Styling Cheat Sheet">
+<meta name="twitter:description" content="React Native Styling Cheat SheetMost of the React Native styling material in one page. Imported from the official docs.  ContentsGeneral Flexbox ShadowPropTypesIOS Transforms  Components Image ScrollV">
+<meta name="twitter:image" content="https://media.giphy.com/media/B5a9bkLouElOM/giphy.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2017/01/28/React Native Styling Cheat Sheet/">
+
+
+
+
+
+  <title>CheatSheet|React Native Styling Cheat Sheet | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2017/01/28/React Native Styling Cheat Sheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CheatSheet|React Native Styling Cheat Sheet</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-28T08:17:07+00:00">
+                2017-01-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CheatSheet/" itemprop="url" rel="index">
+                    <span itemprop="name">CheatSheet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/01/28/React Native Styling Cheat Sheet/" class="leancloud_visitors" data-flag-title="CheatSheet|React Native Styling Cheat Sheet">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,893
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="React-Native-Styling-Cheat-Sheet"><a href="#React-Native-Styling-Cheat-Sheet" class="headerlink" title="React Native Styling Cheat Sheet"></a>React Native Styling Cheat Sheet</h1><p>Most of the React Native styling material in one page. Imported from the <a href="http://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="noopener">official docs</a>.</p>
+<p><img src="https://media.giphy.com/media/B5a9bkLouElOM/giphy.gif" alt="YAP"></p>
+<h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><h3 id="General"><a href="#General" class="headerlink" title="General"></a>General</h3><ul>
+<li><a href="#flexbox">Flexbox</a></li>
+<li><a href="#shadow-prop-types-ios">ShadowPropTypesIOS</a></li>
+<li><a href="#transforms">Transforms</a></li>
+</ul>
+<h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><ul>
+<li><a href="#image">Image</a></li>
+<li><a href="#scrollview">ScrollView</a></li>
+<li><a href="#text">Text</a></li>
+<li><a href="#view">View</a></li>
+</ul>
+<h2 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alignItems</td>
+<td><a href="#oneof">oneOf</a> <code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>stretch</code></td>
+<td><code>alignItems</code> aligns children in the cross direction. For example, if children are flowing vertically, <code>alignItems</code> controls how they align horizontally. It works like <code>align-items</code> in CSS, except the default value is <code>stretch</code> instead of <code>flex-start</code>. See <a href="https://css-tricks.com/almanac/properties/a/align-items/" target="_blank" rel="noopener">https://css-tricks.com/almanac/properties/a/align-items/</a> for more detail.</td>
+</tr>
+<tr>
+<td>alignSelf</td>
+<td><a href="#oneof">oneOf</a> <code>auto</code>, <code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>stretch</code></td>
+<td>controls how a child aligns in the cross direction, overriding the <code>alignItems</code> of the parent. It works like <code>align-self</code> in CSS. See <a href="https://css-tricks.com/almanac/properties/a/align-self/" target="_blank" rel="noopener">https://css-tricks.com/almanac/properties/a/align-self/</a> for more detail.</td>
+</tr>
+<tr>
+<td>borderBottomWidth</td>
+<td><a href="#number">number</a></td>
+<td><code>borderBottomWidth</code> works like <code>border-bottom-width</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_border-bottom_width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_border-bottom_width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>borderLeftWidth</td>
+<td><a href="#number">number</a></td>
+<td><code>borderLeftWidth</code> works like <code>border-left-width</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_border-bottom_width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_border-bottom_width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>borderRightWidth</td>
+<td><a href="#number">number</a></td>
+<td><code>borderRightWidth</code> works like <code>border-right-width</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_border-right_width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_border-right_width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>borderTopWidth</td>
+<td><a href="#number">number</a></td>
+<td><code>borderTopWidth</code> works like <code>border-top-width</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_border-top_width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_border-top_width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td><a href="#number">number</a></td>
+<td><code>borderWidth</code> works like <code>border-width</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_border-width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_border-width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td><a href="#number">number</a></td>
+<td><code>bottom</code> is the number of logical pixels to offset the bottom edge of this component. It works similarly to <code>bottom</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/bottom" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/bottom</a> for more details of how <code>top</code> affects layout.</td>
+</tr>
+<tr>
+<td>flex</td>
+<td><a href="#number">number</a></td>
+<td>In React Native <code>flex</code> does not work the same way that it does in CSS. <code>flex</code> is a number rather than a string, and it works according to the <code>css-layout</code> library at <a href="https://github.com/facebook/css-layout" target="_blank" rel="noopener">https://github.com/facebook/css-layout</a> . When <code>flex</code> is a positive number, it makes the component flexible and it will be sized proportional to its flex value. So a component with <code>flex</code> set to 2 will take twice the space as a component with <code>flex</code> set to 1. When <code>flex</code> is 0, the component is sized according to <code>width</code> and <code>height</code> and it is inflexible. When <code>flex</code> is -1, the component is normally sized according <code>width</code> and <code>height</code>. However, if there’s not enough space, the component will shrink to its <code>minWidth</code> and <code>minHeight</code>.</td>
+</tr>
+<tr>
+<td>flexDirection</td>
+<td><a href="#oneof">oneOf</a> <code>row</code>, <code>row-reverse</code>, <code>column</code>, <code>column-reverse</code></td>
+<td><code>flexDirection</code> controls which directions children of a container go. <code>row</code> goes left to right, <code>column</code> goes top to bottom, and you may be able to guess what the other two do. It works like <code>flex-direction</code> in CSS, except the default is <code>column</code>. See <a href="https://css-tricks.com/almanac/properties/f/flex-direction/" target="_blank" rel="noopener">https://css-tricks.com/almanac/properties/f/flex-direction/</a> for more detail.</td>
+</tr>
+<tr>
+<td>flexWrap</td>
+<td><a href="#oneof">oneOf</a> <code>wrap</code>, <code>nowrap</code></td>
+<td><code>flexWrap</code> controls whether children can wrap around after they hit the end of a flex container. It works like <code>flex-wrap</code> in CSS. See <a href="https://css-tricks.com/almanac/properties/f/flex-wrap/" target="_blank" rel="noopener">https://css-tricks.com/almanac/properties/f/flex-wrap/</a> for more detail.</td>
+</tr>
+<tr>
+<td>height</td>
+<td><a href="#number">number</a></td>
+<td><code>height</code> sets the height of this component. It works similarly to <code>height</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="http://www.w3schools.com/cssref/pr_dim_width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_dim_width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>justifyContent</td>
+<td><a href="#oneof">oneOf</a> <code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>space-between</code>, <code>space-around</code></td>
+<td><code>justifyContent</code> aligns children in the main direction. For example, if children are flowing vertically, <code>justifyContent</code> controls how they align vertically. It works like <code>justify-content</code> in CSS. See <a href="https://css-tricks.com/almanac/properties/j/justify-content/" target="_blank" rel="noopener">https://css-tricks.com/almanac/properties/j/justify-content/</a> for more detail.</td>
+</tr>
+<tr>
+<td>left</td>
+<td><a href="#number">number</a></td>
+<td><code>left</code> is the number of logical pixels to offset the left edge of this component. It works similarly to <code>left</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/left" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/left</a> for more details of how <code>left</code> affects layout.</td>
+</tr>
+<tr>
+<td>margin</td>
+<td><a href="#number">number</a></td>
+<td>Setting <code>margin</code> has the same effect as setting each of <code>marginTop</code>, <code>marginLeft</code>, <code>marginBottom</code>, and <code>marginRight</code>.</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td><a href="#number">number</a></td>
+<td><code>marginBottom</code> works like <code>margin-bottom</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_margin-bottom.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_margin-bottom.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>marginHorizontal</td>
+<td><a href="#number">number</a></td>
+<td>Setting <code>marginHorizontal</code> has the same effect as setting both <code>marginLeft</code> and <code>marginRight</code>.</td>
+</tr>
+<tr>
+<td>marginLeft</td>
+<td><a href="#number">number</a></td>
+<td><code>marginLeft</code> works like <code>margin-left</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_margin-left.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_margin-left.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>marginRight</td>
+<td><a href="#number">number</a></td>
+<td><code>marginRight</code> works like <code>margin-right</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_margin-right.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_margin-right.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>marginTop</td>
+<td><a href="#number">number</a></td>
+<td><code>marginTop</code> works like <code>margin-top</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_margin-top.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_margin-top.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>marginVertical</td>
+<td><a href="#number">number</a></td>
+<td>Setting <code>marginVertical</code> has the same effect as setting both <code>marginTop</code> and <code>marginBottom</code>.</td>
+</tr>
+<tr>
+<td>maxHeight</td>
+<td><a href="#number">number</a></td>
+<td><code>maxHeight</code> is the maximum height for this component, in logical pixels. It works similarly to <code>max-height</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="http://www.w3schools.com/cssref/pr_dim_max-height.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_dim_max-height.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>maxWidth</td>
+<td><a href="#number">number</a></td>
+<td><code>maxWidth</code> is the maximum width for this component, in logical pixels. It works similarly to <code>max-width</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="http://www.w3schools.com/cssref/pr_dim_max-width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_dim_max-width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>minHeight</td>
+<td><a href="#number">number</a></td>
+<td><code>minHeight</code> is the minimum height for this component, in logical pixels. It works similarly to <code>min-height</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="http://www.w3schools.com/cssref/pr_dim_min-height.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_dim_min-height.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>minWidth</td>
+<td><a href="#number">number</a></td>
+<td><code>minWidth</code> is the minimum width for this component, in logical pixels. It works similarly to <code>min-width</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="http://www.w3schools.com/cssref/pr_dim_min-width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_dim_min-width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>padding</td>
+<td><a href="#number">number</a></td>
+<td><code>padding</code> works like <code>padding</code> in CSS. It’s like setting each of <code>paddingTop</code>, <code>paddingBottom</code>, <code>paddingLeft</code>, and <code>paddingRight</code> to the same thing. See <a href="http://www.w3schools.com/css/css_padding.asp" target="_blank" rel="noopener">http://www.w3schools.com/css/css_padding.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>paddingBottom</td>
+<td><a href="#number">number</a></td>
+<td><code>paddingBottom</code> works like <code>padding-bottom</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_padding-bottom.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_padding-bottom.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>paddingHorizontal</td>
+<td><a href="#number">number</a></td>
+<td>Setting <code>paddingHorizontal</code> is like setting both of <code>paddingLeft</code> and <code>paddingRight</code>.</td>
+</tr>
+<tr>
+<td>paddingLeft</td>
+<td><a href="#number">number</a></td>
+<td><code>paddingLeft</code> works like <code>padding-left</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_padding-left.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_padding-left.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>paddingRight</td>
+<td><a href="#number">number</a></td>
+<td><code>paddingRight</code> works like <code>padding-right</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_padding-right.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_padding-right.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>paddingTop</td>
+<td><a href="#number">number</a></td>
+<td><code>paddingTop</code> works like <code>padding-top</code> in CSS. See <a href="http://www.w3schools.com/cssref/pr_padding-top.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_padding-top.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>paddingVertical</td>
+<td><a href="#number">number</a></td>
+<td>Setting <code>paddingVertical</code> is like setting both of <code>paddingTop</code> and <code>paddingBottom</code>.</td>
+</tr>
+<tr>
+<td>position</td>
+<td><a href="#oneof">oneOf</a> <code>absolute</code>, <code>relative</code></td>
+<td><code>position</code> in React Native is similar to regular CSS, but everything is set to <code>relative</code> by default, so <code>absolute</code> positioning is always just relative to the parent. If you want to position a child using specific numbers of logical pixels relative to its parent, set the child to have <code>absolute</code> position. If you want to position a child relative to something that is not its parent, just don’t use styles for that. Use the component tree. See <a href="https://github.com/facebook/css-layout" target="_blank" rel="noopener">https://github.com/facebook/css-layout</a> for more details on how <code>position</code> differs between React Native and CSS.</td>
+</tr>
+<tr>
+<td>right</td>
+<td><a href="#number">number</a></td>
+<td><code>right</code> is the number of logical pixels to offset the right edge of this component. It works similarly to <code>right</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/right" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/right</a> for more details of how <code>right</code> affects layout.</td>
+</tr>
+<tr>
+<td>top</td>
+<td><a href="#number">number</a></td>
+<td><code>top</code> is the number of logical pixels to offset the top edge of this component. It works similarly to <code>top</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/top</a> for more details of how <code>top</code> affects layout.</td>
+</tr>
+<tr>
+<td>width</td>
+<td><a href="#number">number</a></td>
+<td><code>width</code> sets the width of this component. It works similarly to <code>width</code> in CSS, but in React Native you must use logical pixel units, rather than percents, ems, or any of that. See <a href="http://www.w3schools.com/cssref/pr_dim_width.asp" target="_blank" rel="noopener">http://www.w3schools.com/cssref/pr_dim_width.asp</a> for more details.</td>
+</tr>
+<tr>
+<td>zIndex</td>
+<td><a href="#number">number</a></td>
+<td><code>zIndex</code> controls which components display on top of others. Normally, you don’t use <code>zIndex</code>. Components render according to their order in the document tree, so later components draw over earlier ones. <code>zIndex</code> may be useful if you have animations or custom modal interfaces where you don’t want this behavior. It works like the CSS <code>z-index</code> property - components with a larger <code>zIndex</code> will render on top. Think of the z-direction like it’s pointing from the phone into your eyeball. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/z-index</a> for more detail.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Shadow-Prop-Types-IOS"><a href="#Shadow-Prop-Types-IOS" class="headerlink" title="Shadow Prop Types IOS"></a>Shadow Prop Types IOS</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shadowColor</td>
+<td><code>customColorPropType</code></td>
+<td>Sets the drop shadow color</td>
+</tr>
+<tr>
+<td>shadowOffset</td>
+<td><code>customReactPropTypes.shape( {width: ReactPropTypes.number, height: ReactPropTypes.number} )</code></td>
+<td>Sets the drop shadow offset</td>
+</tr>
+<tr>
+<td>shadowOpacity</td>
+<td><a href="#number">number</a></td>
+<td>Sets the drop shadow opacity (multiplied by the color’s alpha component)</td>
+</tr>
+<tr>
+<td>shadowRadius</td>
+<td><a href="#number">number</a></td>
+<td>Sets the drop shadow blur radius</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Transforms"><a href="#Transforms" class="headerlink" title="Transforms"></a>Transforms</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>decomposedMatrix</td>
+<td><code>customDecomposedMatrixPropType</code></td>
+</tr>
+<tr>
+<td>transform</td>
+<td><code>customReactPropTypes.arrayOf( ReactPropTypes.oneOfType([ ReactPropTypes.shape({perspective: ReactPropTypes.number}), ReactPropTypes.shape({rotate: ReactPropTypes.string}), ReactPropTypes.shape({rotateX: ReactPropTypes.string}), ReactPropTypes.shape({rotateY: ReactPropTypes.string}), ReactPropTypes.shape({rotateZ: ReactPropTypes.string}), ReactPropTypes.shape({scale: ReactPropTypes.number}), ReactPropTypes.shape({scaleX: ReactPropTypes.number}), ReactPropTypes.shape({scaleY: ReactPropTypes.number}), ReactPropTypes.shape({translateX: ReactPropTypes.number}), ReactPropTypes.shape({translateY: ReactPropTypes.number}), ReactPropTypes.shape({skewX: ReactPropTypes.string}), ReactPropTypes.shape({skewY: ReactPropTypes.string}) ]) )</code></td>
+</tr>
+<tr>
+<td>transformMatrix</td>
+<td><code>customTransformMatrixPropType</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Type</th>
+<th>Platforms</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>…<a href="#flexbox">Flexbox</a></td>
+</tr>
+<tr>
+<td>…<a href="#shadow-prop-types-ios">ShadowPropTypesIOS</a></td>
+</tr>
+<tr>
+<td>…<a href="#transforms">Transforms</a></td>
+</tr>
+<tr>
+<td>backfaceVisibility</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>visible</code>, <code>hidden</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomLeftRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomRightRadius</td>
+<td>false</td>
+<td><a href="#typee-number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopLeftRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopRightRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>visible</code>, <code>hidden</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>resizeMode</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>Object.keys(ImageResizeMode))</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tintColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td>Changes the color of all the non-transparent pixels to the tintColor.</td>
+</tr>
+<tr>
+<td>overlayColor</td>
+<td>false</td>
+<td><a href="#string">string</a></td>
+<td>android</td>
+<td>When the image has rounded corners, specifying an overlayColor will cause the remaining space in the corners to be filled with a solid color. This is useful in cases which are not supported by the Android implementation of rounded corners: - Certain resize modes, such as ‘contain’ - Animated GIFs A typical way to use this prop is with images displayed on a solid background and setting the <code>overlayColor</code> to the same color as the background. For details of how this works under the hood, see <a href="http://frescolib.org/docs/rounded-corners-and-circles.html" target="_blank" rel="noopener">http://frescolib.org/docs/rounded-corners-and-circles.html</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ScrollView"><a href="#ScrollView" class="headerlink" title="ScrollView"></a>ScrollView</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Type</th>
+<th>Platforms</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>…<a href="#flexbox">Flexbox</a></td>
+</tr>
+<tr>
+<td>…<a href="#shadow-prop-types-ios">ShadowPropTypesIOS</a></td>
+</tr>
+<tr>
+<td>…<a href="#transforms">Transforms</a></td>
+</tr>
+<tr>
+<td>backfaceVisibility</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>visible</code>, <code>hidden</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomLeftRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomRightRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderLeftColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderLeftWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderRightColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderRightWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderStyle</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>solid</code>, <code>dotted</code>, <code>dashed</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopLeftRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopRightRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>visible</code>, <code>hidden</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>elevation</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td>android</td>
+<td>(Android-only) Sets the elevation of a view, using Android’s underlying <a href="https://developer.android.com/training/material/shadows-clipping.html#Elevation" target="_blank" rel="noopener">elevation API</a>. This adds a drop shadow to the item and affects z-order for overlapping views. Only supported on Android 5.0+, has no effect on earlier versions.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Type</th>
+<th>Platforms</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>…<a href="#view">View</a></td>
+</tr>
+<tr>
+<td>color</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fontFamily</td>
+<td>false</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fontSize</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fontStyle</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>normal</code>, <code>italic</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fontWeight</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>normal</code>, <code>bold</code>, <code>100</code>, <code>200</code>, <code>300</code>, <code>400</code>, <code>500</code>, <code>600</code>, <code>700</code>, <code>800</code>, <code>900</code></td>
+<td></td>
+<td>Specifies font weight. The values ‘normal’ and ‘bold’ are supported for most fonts. Not all fonts have a variant for each of the numeric values, in that case the closest one is chosen.</td>
+</tr>
+<tr>
+<td>lineHeight</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textAlign</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>auto</code>, <code>left</code>, <code>right</code>, <code>center</code>, <code>justify</code></td>
+<td></td>
+<td>Specifies text alignment. The value ‘justify’ is only supported on iOS and fallbacks to <code>left</code> on Android.</td>
+</tr>
+<tr>
+<td>textDecorationLine</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>none</code>, <code>underline</code>, <code>line-through</code>, <code>underline</code>, <code>line-through</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textShadowColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textShadowOffset</td>
+<td>false</td>
+<td><code>ReactPropTypes.shape( {width: ReactPropTypes.number, height: ReactPropTypes.number} )</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textShadowRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textAlignVertical</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>auto</code>, <code>top</code>, <code>bottom</code>, <code>center</code></td>
+<td>android</td>
+<td></td>
+</tr>
+<tr>
+<td>letterSpacing</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td>ios</td>
+<td></td>
+</tr>
+<tr>
+<td>textDecorationColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td>ios</td>
+<td></td>
+</tr>
+<tr>
+<td>textDecorationStyle</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>solid</code>, <code>double</code>, <code>dotted</code>, <code>dashed</code></td>
+<td>ios</td>
+<td></td>
+</tr>
+<tr>
+<td>writingDirection</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>auto</code>, <code>ltr</code>, <code>rtl</code></td>
+<td>ios</td>
+</tr>
+</tbody>
+</table>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Type</th>
+<th>Platforms</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>…<a href="#flexbox">Flexbox</a></td>
+</tr>
+<tr>
+<td>…<a href="#shadow-prop-types-ios">ShadowPropTypesIOS</a></td>
+</tr>
+<tr>
+<td>…<a href="#transforms">Transforms</a></td>
+</tr>
+<tr>
+<td>backfaceVisibility</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>visible</code>, <code>hidden</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomLeftRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomRightRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderBottomWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderLeftColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderLeftWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderRightColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderRightWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderStyle</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>solid</code>, <code>dotted</code>, <code>dashed</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopColor</td>
+<td>false</td>
+<td><code>ColorPropType</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopLeftRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopRightRadius</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderTopWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>false</td>
+<td><a href="#oneof">oneOf</a> <code>visible</code>, <code>hidden</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>elevation</td>
+<td>false</td>
+<td><a href="#number">number</a></td>
+<td>android</td>
+<td>(Android-only) Sets the elevation of a view, using Android’s underlying <a href="https://developer.android.com/training/material/shadows-clipping.html#Elevation" target="_blank" rel="noopener">elevation API</a>. This adds a drop shadow to the item and affects z-order for overlapping views. Only supported on Android 5.0+, has no effect on earlier versions.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><h3 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h3><h4 id="number"><a href="#number" class="headerlink" title="number"></a><a href="#number">number</a></h4><p>ReactPropTypes.number</p>
+<h4 id="string"><a href="#string" class="headerlink" title="string"></a><a href="#string">string</a></h4><p>ReactPropTypes.string</p>
+<h4 id="oneOf"><a href="#oneOf" class="headerlink" title="oneOf"></a><a href="#oneof">oneOf</a></h4><p>ReactPropTypes.oneOf([values])</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/UI/" rel="tag"># UI</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/10/javascript中的this关键字/" rel="next" title="JavaScript的 this 关键字">
+                <i class="fa fa-chevron-left"></i> JavaScript的 this 关键字
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/08/redux-logic/" rel="prev" title="redux-logic">
+                redux-logic <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Native-Styling-Cheat-Sheet"><span class="nav-number">1.</span> <span class="nav-text">React Native Styling Cheat Sheet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Contents"><span class="nav-number">1.1.</span> <span class="nav-text">Contents</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#General"><span class="nav-number">1.1.1.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.2.</span> <span class="nav-text">Components</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flexbox"><span class="nav-number">1.2.</span> <span class="nav-text">Flexbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadow-Prop-Types-IOS"><span class="nav-number">1.3.</span> <span class="nav-text">Shadow Prop Types IOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transforms"><span class="nav-number">1.4.</span> <span class="nav-text">Transforms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image"><span class="nav-number">1.5.</span> <span class="nav-text">Image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ScrollView"><span class="nav-number">1.6.</span> <span class="nav-text">ScrollView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text"><span class="nav-number">1.7.</span> <span class="nav-text">Text</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">1.8.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix"><span class="nav-number">1.9.</span> <span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Types"><span class="nav-number">1.9.1.</span> <span class="nav-text">Types</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#number"><span class="nav-number">1.9.1.1.</span> <span class="nav-text">number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#string"><span class="nav-number">1.9.1.2.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oneOf"><span class="nav-number">1.9.1.3.</span> <span class="nav-text">oneOf</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

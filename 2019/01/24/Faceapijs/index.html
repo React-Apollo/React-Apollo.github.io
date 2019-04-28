@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,Medium,TensorFlow.js,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="face-api.js — JavaScript API for Face Recognition in the Browser with tensorflow.js原文在此  我很高兴的说,在浏览器端运行人脸识别程序终于可以实现了! 在本文我会结合介绍一个 JavaScript模块,也就是 face-api.js, 本模块基于tensroflow.js 核心构建,tensorflow.js的核心">
+<meta name="keywords" content="JavaScript,Medium,TensorFlow.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻译| face-api.js  — JavaScript API for Face Recognition in the Browser with  tensorflow.js">
+<meta property="og:url" content="https://React-Apollo.github.io/2019/01/24/Faceapijs/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="face-api.js — JavaScript API for Face Recognition in the Browser with tensorflow.js原文在此  我很高兴的说,在浏览器端运行人脸识别程序终于可以实现了! 在本文我会结合介绍一个 JavaScript模块,也就是 face-api.js, 本模块基于tensroflow.js 核心构建,tensorflow.js的核心">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fy4uvcp0qij30gr0a1781.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fy4wd4lbumj30go0auadb.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fy4wib3dhlj308e0450te.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fy4wkqv1cuj30hm0303zd.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fy4wylr1n1j30c80azaay.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fy4wymwxv2j30c60al0tl.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwly1fy4x1lrperj30go09hjup.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fy4xnpzmynj30gn09awhi.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fy4xr19u4bj30gq069768.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fy4y6zdfc9j30kh089whp.jpg">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="翻译| face-api.js  — JavaScript API for Face Recognition in the Browser with  tensorflow.js">
+<meta name="twitter:description" content="face-api.js — JavaScript API for Face Recognition in the Browser with tensorflow.js原文在此  我很高兴的说,在浏览器端运行人脸识别程序终于可以实现了! 在本文我会结合介绍一个 JavaScript模块,也就是 face-api.js, 本模块基于tensroflow.js 核心构建,tensorflow.js的核心">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fy4uvcp0qij30gr0a1781.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2019/01/24/Faceapijs/">
+
+
+
+
+
+  <title>翻译| face-api.js  — JavaScript API for Face Recognition in the Browser with  tensorflow.js | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2019/01/24/Faceapijs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">翻译| face-api.js  — JavaScript API for Face Recognition in the Browser with  tensorflow.js</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T13:26:00+00:00">
+                2019-01-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/24/Faceapijs/" class="leancloud_visitors" data-flag-title="翻译| face-api.js  — JavaScript API for Face Recognition in the Browser with  tensorflow.js">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,875
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="face-api-js-—-JavaScript-API-for-Face-Recognition-in-the-Browser-with-tensorflow-js"><a href="#face-api-js-—-JavaScript-API-for-Face-Recognition-in-the-Browser-with-tensorflow-js" class="headerlink" title="face-api.js — JavaScript API for Face Recognition in the Browser with tensorflow.js"></a>face-api.js — JavaScript API for Face Recognition in the Browser with tensorflow.js</h1><p><a href="https://itnext.io/face-api-js-javascript-api-for-face-recognition-in-the-browser-with-tensorflow-js-bcc2a6c4cf07" target="_blank" rel="noopener"><code>原文在此</code></a></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fy4uvcp0qij30gr0a1781.jpg" alt></p>
+<p>我很高兴的说,在浏览器端运行人脸识别程序终于可以实现了! 在本文我会结合介绍一个 JavaScript模块,也就是 <a href="https://github.com/justadudewhohacks/face-api.js" target="_blank" rel="noopener"><code>face-api.js</code></a>, 本模块基于<a href="https://github.com/tensorflow/tfjs-core" target="_blank" rel="noopener"><code>tensroflow.js 核心</code></a>构建,tensorflow.js的核心实现了几种 CNN(Convolutional Neural network,卷积神经网络),可以用来接解决面部检测,面部识别和面部标记检测任务, 并且对 web 端和移动端做了特别的优化.</p>
+<p>因为我们总是想要找简单的代码示例,简单代码可以使用软件包,用几行代码就可以立刻开始项目.如果你想先试试一些示例,看看 <a href="https://justadudewhohacks.github.io/face-api.js/" target="_blank" rel="noopener"><code>Demo页</code></a>!但是不要忘了回来读文章啊. ;)</p>
+<p>开始吧!</p>
+<p>注意:文章中的项目还在继续开发中.需要你保证检查一下文章的更新情况,保证获取到最新的face-api.js的特征:</p>
+<ul>
+<li><a href="https://itnext.io/realtime-javascript-face-tracking-and-face-recognition-using-face-api-js-mtcnn-face-detector-d924dd8b5740" target="_blank" rel="noopener">Realtime JavaScript Face Tracking and Face Recoginition using face-api.js’MTCNN Face Detector</a></li>
+</ul>
+<h2 id="为什么开始时face-recognition-js-现在是另外一个软件包"><a href="#为什么开始时face-recognition-js-现在是另外一个软件包" class="headerlink" title="为什么开始时face-recognition.js,现在是另外一个软件包?"></a>为什么开始时face-recognition.js,现在是另外一个软件包?</h2><p>如果以读过我的另外一篇文章,使用node.js的面部识别的文章: <a href="https://medium.com/@muehler.v/node-js-face-recognition-js-simple-and-robust-face-recognition-using-deep-learning-ea5ba8e852" target="_blank" rel="noopener"> Node.js + face-recognition.js : Simple and Robust Face Recognition using Deep Learning</a>,你可能知道,不久以前,我发布了一个类似的软件包,就是 <a href="https://github.com/justadudewhohacks/face-recognition.js" target="_blank" rel="noopener">face-recognition.js</a>,可以用node.js实现面部识别.</p>
+<p>刚开始,我没有想到 Javascript 社区对于面部识别有这么高的要求.对于很多程序员,face-recognition.js似乎是很严肃的取代了付费的产品,例如微软h和亚马逊的产品. 但是也有很多还想更进一步,看看是否有直接在浏览器端运行的面部识别流程.</p>
+<p>那么,最终这个软件包就出现了,完全要感谢tensorflow.js! 使用tfjs-core,我成功的实现了部分相似的功能,使用新的软件包可以得到和face-recoginiton.js 同样的结果,但是是运行在浏览器端的!还有,face-api.js提供的模型专门对 web 进行了优化,以便于在移动设备上运行资源,face-api.js是开箱即用的.有点是它是 GPU加速的,操作运行是以 WebGL最为后台的.</p>
+<p>这些原因很充分,是我确信 javascript 社区需要浏览器端的包!剩下的就是你的想象力, 可以用这个软件包构建各种应用了.;)</p>
+<h2 id="怎么使用深度学习来解决面部识别问题"><a href="#怎么使用深度学习来解决面部识别问题" class="headerlink" title="怎么使用深度学习来解决面部识别问题?"></a>怎么使用深度学习来解决面部识别问题?</h2><p>如果是急性子的人, 想要马上看到结果, 可以直接跳过这一小节,直接去看代码. 但是为了更好的理解face-api.js在面部识别方面的实现原理,我还是强烈建议你继续往下读.因为我经常被请求讲解其中的原理.</p>
+<p>为了讲解简单一点,我们实际是想从某人的给定图像例如,输入的图片来识别一个人.方法是提供我们想识别人的一张或者多张图片,并且使用姓名标记,作为参考数据.现在我们可以比较输入图片和参考数据,找到和参考数据图片最相似的图片.如果两张图片相似度足够高,我们就输入是需要识别人的姓名, 否则就输入 <code>未知</code>.</p>
+<p>听起来是个完美的计划!但是还有两个问题要解决. 第一个,如果过我们有一张多人的图片,想识别其中每个人,怎么办? 第二个,我们想要获取两张面部照片的相似度,以便于可以对他们进行比较…</p>
+<h3 id="面部识别"><a href="#面部识别" class="headerlink" title="面部识别"></a>面部识别</h3><p>第一个问题的答案是面部检测.简单讲,我们首先定位出输入图片中的所有面部.Fact-api.js实现了用于多面部检测用于不同的用例.</p>
+<p>最准确的面部检测器是 SSD(Single Shot Multibox Detector),它的基础是基于 CNN 的 MobileNet V1,它在基础的卷积神经网络上构建了额外的预测层.</p>
+<p>此外, face-api.js实现了经过优化的 <code>Tiny Face Detector</code>, 基本上是一个Tiny Yolo V2的更小的版本. Tiny Yolo是一个深度分离卷积网络而不是常规的卷积, 深度分离卷积的速度更快,但是和 SSD  MobileNet V1相比精确度稍差一点.</p>
+<p>最后,也就是 MTCNN(Mutli-task Cascaded Convolutional Neural Network)的实现, 然而,现在它用于实验性质多一点.</p>
+<p>这些网络返回每张脸的<code>边界盒子(bouding boxes)</code>,还有对应的得分,例如,每个盒子显示为面部的概率.得分用于对边界盒子进行过滤.一张图片中完全没有人脸出现也是有可能的.注意,为了获得边界盒子,即使没有图片中没有人,也要执行面部检测.</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fy4wd4lbumj30go0auadb.jpg" alt></p>
+<h3 id="面部标志检测和面部对齐"><a href="#面部标志检测和面部对齐" class="headerlink" title="面部标志检测和面部对齐"></a>面部标志检测和面部对齐</h3><p>第一个问题解决了.但是我想指出,我们想对齐边界盒子,在把每个盒子传递给面部识别网络之前,我们想让面部位于提取图片的中央, 这样的操作会使面部识别的精确度更高.</p>
+<p>face-api.js的对策是实现了一个简单的 CNN,返回给定脸部图像的68个标志点:</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fy4wib3dhlj308e0450te.jpg" alt></p>
+<p>根据标志点的位置,分解盒子可以被集中到脸部的中央. 下面你可以看到脸部检测结果(左图)和经过对齐的脸部图片(右图)的比较.</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fy4wkqv1cuj30hm0303zd.jpg" alt></p>
+<h2 id="面部识别-1"><a href="#面部识别-1" class="headerlink" title="面部识别"></a>面部识别</h2><p>现在,我们把经过对齐的图片输入到面部识别网络,面部识别网络是基于 与<code>ReSNet-34</code>相似的构架,基础构架实现在<a href="https://github.com/davisking/dlib/blob/master/examples/dnn_face_recognition_ex.cpp" target="_blank" rel="noopener"><code>dlib</code></a> . 识别网络训练的任务是人脸的特征映射到面部描述(有128个值的特征向量),这个任务通常也称为面部嵌入.</p>
+<p>现在返回初始的问题,就是两张脸的对比: 我们把从每张面部图片提取的特征向量描述向量和参考数据的特征向量进行比较. 说的更准确一点,就是比较两张量的特征向量之间的欧几里得距离(euclidean distance,译注:简单的几何,两点之间的距离计算).基于一个阈值(对于150X150大小的图片,0.6是一个比较好的阈值)来进行判断. 欧氏距离的工作出奇的好,当然你可以根据喜好选择其他的分类器.下面的图是比较两张脸的欧式距离:</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fy4wylr1n1j30c80azaay.jpg" alt></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fy4wymwxv2j30c60al0tl.jpg" alt></p>
+<p>现在我们已经详细了解了面部识别的理论, 开始来编码一个示例程序</p>
+<h2 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h2><p>在这一部分,我们会一步一步实现一个面部识别程序,显示出下面图片中的每个人</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fy4x1lrperj30go09hjup.jpg" alt></p>
+<h3 id="引入脚本"><a href="#引入脚本" class="headerlink" title="引入脚本"></a>引入脚本</h3><p>首先,从dist/face-api.js得到最新的版本,或者是压缩的版本 /dist/face-api.min.js:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"face-api.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+<p>也可以使用npm安装</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i face-api.js</span><br></pre></td></tr></table></figure></div>
+<h3 id="加载模型数据"><a href="#加载模型数据" class="headerlink" title="加载模型数据"></a>加载模型数据</h3><p>根据应用的需求不同,你可以加载特定的模型,但是从头至尾运行本实例,需要加载面部检测,面部标记和面部识别模型. 模型文件仓库在<a href="https://github.com/justadudewhohacks/face-api.js/tree/master/weights" target="_blank" rel="noopener"><code>这里</code></a></p>
+<p>模型权重已经被quantized,和原始的模型相比大小已经缩减了75%,由此客户端可以只加载必须的数据. 此外, 模型的权重被分外4MB 大小的块,浏览器可以缓存这些文件,不需要再加载第二次.</p>
+<p>模型文件也可以通过web app的静态资源提供,或者可以放在任何定义的路由或者 ulr下. 假设你已经在public/models下提供了模型目录:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MODEL_URL = <span class="string">'/models'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> faceapi.loadSsdMobilenetv1Model(MODEL_URL)</span><br><span class="line"><span class="keyword">await</span> faceapi.loadFaceLandmarkModel(MODEL_URL)</span><br><span class="line"><span class="keyword">await</span> faceapi.loadFaceRecognitionModel(MODEL_URL)</span><br></pre></td></tr></table></figure></div>
+<h3 id="从输入图片获取所有脸部的完整描述"><a href="#从输入图片获取所有脸部的完整描述" class="headerlink" title="从输入图片获取所有脸部的完整描述"></a>从输入图片获取所有脸部的完整描述</h3><p>神经网络接收 HTML图片,canvas,或者是视频元素,或者是图片的tensors作为输入. 为了检测输入图片中的所有边界盒子,代码如下:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> input=<span class="built_in">document</span>.getElementById(<span class="string">'myImage'</span>);</span><br><span class="line"><span class="keyword">let</span> fullFaceDescriptions = <span class="keyword">await</span> faceapi.detectAllFaces(input).withFaceLandmarks().withFaceDescriptors()</span><br></pre></td></tr></table></figure></div>
+<p>完整的面部描述包含了探测的结果(边界盒子+得分),面部标记也作为描述的计算结果. 省略 <em>faceapi.detectAllFaces(input,options)</em> 可选参数,我们就默认使用 SSD MobileNet V1作为默认的模型.如果要使用Tiny Face检测或者是 MTCNN 方法,只需要定义对应的选项就可以了.</p>
+<p>有关face detection 选项的细节,可以看看 github仓库的说明文档.注意,必须要提前记载相应的模型,.</p>
+<p>返回的边界盒子和标记位置是对应于原始的图片/媒体尺寸的. 万一显示的图片和原始的图片大小不对应,需要 resize:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fullFaceDescriptions = fullFaceDescriptions.map(<span class="function"><span class="params">fd</span> =&gt;</span> fd.forSize(width, height))</span><br></pre></td></tr></table></figure></div>
+<p>我们可以直接在画布上画出边界盒子来展示面部探测的结果:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> detectionsArray = fullFaceDescriptions.map(<span class="function"><span class="params">fd</span> =&gt;</span> fd.detection)</span><br><span class="line">faceapi.drawDetection(canvas, detectionsArray, &#123; <span class="attr">withScore</span>: <span class="literal">true</span> &#125;)</span><br></pre></td></tr></table></figure></div>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fy4xnpzmynj30gn09awhi.jpg" alt></p>
+<p>面部标志也可以显示:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> landmarksArray = fullFaceDescriptions.map(<span class="function"><span class="params">fd</span> =&gt;</span> fd.landmarks)</span><br><span class="line">faceapi.drawLandmarks(canvas, landmarksArray, &#123; <span class="attr">drawLines</span>: <span class="literal">true</span> &#125;)</span><br></pre></td></tr></table></figure></div>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fy4xr19u4bj30gq069768.jpg" alt></p>
+<p>通常,在做可视化时,都是使用绝对定位来重叠图片(参见github的实例)</p>
+<h2 id="面部识别-2"><a href="#面部识别-2" class="headerlink" title="面部识别"></a>面部识别</h2><p>现在,我们需要知道如何获取所有面部的位置和描述特征, 我们得到一些图片显示单个人,计算出每个人的面部描述. 这些描述就是参考数据.</p>
+<p>假定我们已经有了一些主题相关的图片,首先从 url或者使用 <em>faceapi.fetchImages</em>获取图片数据. 对于单张图片,都会定位脸部主体,并计算脸部描述,和输入图片是一样的操作.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> labels = [<span class="string">'sheldon'</span> <span class="string">'raj'</span>, <span class="string">'leonard'</span>, <span class="string">'howard'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> labeledFaceDescriptors = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(</span><br><span class="line">  labels.map(<span class="keyword">async</span> label =&gt; &#123;</span><br><span class="line">    <span class="comment">// fetch image data from urls and convert blob to HTMLImage element</span></span><br><span class="line">    <span class="keyword">const</span> imgUrl = <span class="string">`<span class="subst">$&#123;label&#125;</span>.png`</span></span><br><span class="line">    <span class="keyword">const</span> img = <span class="keyword">await</span> faceapi.fetchImage(imgUrl)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// detect the face with the highest score in the image and compute it's landmarks and face descriptor</span></span><br><span class="line">    <span class="keyword">const</span> fullFaceDescription = <span class="keyword">await</span> faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (!fullFaceDescription) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`no faces detected for <span class="subst">$&#123;label&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> faceDescriptors = [fullFaceDescription.descriptor]</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> faceapi.LabeledFaceDescriptors(label, faceDescriptors)</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>注意,这里我们使用的是 <em>faceapi.detectSingleFace</em> , 将会返回要检测面部的最高得分,因为我们假设, 对于给定的标签,显示出的主体是唯一的.</p>
+<p>现在,只剩下一件事,就是匹配参考数据和待检测面部的数据. 执行 <em>factapi.FaceMatcher</em> :</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0.6 is a good distance threshold value to judge</span></span><br><span class="line"><span class="comment">// whether the descriptors match or not</span></span><br><span class="line"><span class="keyword">const</span> maxDescriptorDistance = <span class="number">0.6</span></span><br><span class="line"><span class="keyword">const</span> faceMatcher = <span class="keyword">new</span> faceapi.FaceMatcher(labeledFaceDescriptors, maxDescriptorDistance)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> results = fullFaceDescriptions.map(<span class="function"><span class="params">fd</span> =&gt;</span> faceMatcher.findBestMatch(fd.descriptor))</span><br></pre></td></tr></table></figure></div>
+<p>面部匹配使用欧式距离作为相似度检测,欧式距离运转的很好. 最终我们为每张输入图片获得了一个最佳的匹配结果, 包含了最匹配的欧式距离结果的标签.</p>
+<p>最后,我们使用边界盒子和标签画出结果:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> boxesWithText = results.map(<span class="function">(<span class="params">bestMatch, i</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> box = fullFaceDescriptions[i].detection.box</span><br><span class="line">  <span class="keyword">const</span> text = bestMatch.toString()</span><br><span class="line">  <span class="keyword">const</span> boxWithText = <span class="keyword">new</span> faceapi.BoxWithText(box, text)</span><br><span class="line">  <span class="keyword">return</span> boxWithText</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">faceapi.drawDetection(canvas, boxesWithText)</span><br></pre></td></tr></table></figure></div>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fy4y6zdfc9j30kh089whp.jpg" alt></p>
+<p>成功!  现在,我希望你已经使用api的初步印象. 我也建议你看看代码仓库中其他的实例. </p>
+<p> <code>JavaScript</code> <code>Face Recognition</code> <code>TensorFlow</code><br> <code>Machine Learning</code> <code>Deep Learning</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/Medium/" rel="tag"># Medium</a>
+          
+            <a href="/tags/TensorFlow-js/" rel="tag"># TensorFlow.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/24/useLocalStorage的实现代码和用法/" rel="next" title="useLocalStorage的代码">
+                <i class="fa fa-chevron-left"></i> useLocalStorage的代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/25/React-Apollo-Hooks的用法/" rel="prev" title="React-Apollo-Hooks的用法">
+                React-Apollo-Hooks的用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#face-api-js-—-JavaScript-API-for-Face-Recognition-in-the-Browser-with-tensorflow-js"><span class="nav-number">1.</span> <span class="nav-text">face-api.js — JavaScript API for Face Recognition in the Browser with tensorflow.js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么开始时face-recognition-js-现在是另外一个软件包"><span class="nav-number">1.1.</span> <span class="nav-text">为什么开始时face-recognition.js,现在是另外一个软件包?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么使用深度学习来解决面部识别问题"><span class="nav-number">1.2.</span> <span class="nav-text">怎么使用深度学习来解决面部识别问题?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面部识别"><span class="nav-number">1.2.1.</span> <span class="nav-text">面部识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面部标志检测和面部对齐"><span class="nav-number">1.2.2.</span> <span class="nav-text">面部标志检测和面部对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面部识别-1"><span class="nav-number">1.3.</span> <span class="nav-text">面部识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体代码"><span class="nav-number">1.4.</span> <span class="nav-text">具体代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入脚本"><span class="nav-number">1.4.1.</span> <span class="nav-text">引入脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载模型数据"><span class="nav-number">1.4.2.</span> <span class="nav-text">加载模型数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从输入图片获取所有脸部的完整描述"><span class="nav-number">1.4.3.</span> <span class="nav-text">从输入图片获取所有脸部的完整描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面部识别-2"><span class="nav-number">1.5.</span> <span class="nav-text">面部识别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

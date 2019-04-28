@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redux,Javascript,React,React-Hooks,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="主要内容,看看State的状态管理方式,包括最基本的方式和React-Hooks方式以及Redux方式和ReSub方式   我们从基本的方式开始 React和数据的基本交互方式 在MVC程序构架中,React经常被称为View层,但实际上并不完全是这样, React实际对MVC模式做了新的构想. 本质上React只是借助JSX语法实现的UI界面库,但是UI都需要数据来填充,所以问题就是如何获取数">
+<meta name="keywords" content="Redux,Javascript,React,React-Hooks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React的状态管理">
+<meta property="og:url" content="https://React-Apollo.github.io/2019/04/22/React的状态管理/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="主要内容,看看State的状态管理方式,包括最基本的方式和React-Hooks方式以及Redux方式和ReSub方式   我们从基本的方式开始 React和数据的基本交互方式 在MVC程序构架中,React经常被称为View层,但实际上并不完全是这样, React实际对MVC模式做了新的构想. 本质上React只是借助JSX语法实现的UI界面库,但是UI都需要数据来填充,所以问题就是如何获取数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1g2bggqs6qnj30zk0qomzw.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1g2bgoh4mmpj30s40cykav.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1g2bggqs6qnj30zk0qomzw.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1g2bhblvz70j30hs0dagn4.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1g2bhd3b3fxj30sg0lcn4n.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1foy0b5c2t2g30jg0d7b29.gif">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1g2bjdjd7o2j310k0u0myy.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1g2bjeri62jj30u012q42s.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1g2bjh616p8j30uk0u0n0a.jpg">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React的状态管理">
+<meta name="twitter:description" content="主要内容,看看State的状态管理方式,包括最基本的方式和React-Hooks方式以及Redux方式和ReSub方式   我们从基本的方式开始 React和数据的基本交互方式 在MVC程序构架中,React经常被称为View层,但实际上并不完全是这样, React实际对MVC模式做了新的构想. 本质上React只是借助JSX语法实现的UI界面库,但是UI都需要数据来填充,所以问题就是如何获取数">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1g2bggqs6qnj30zk0qomzw.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2019/04/22/React的状态管理/">
+
+
+
+
+
+  <title>React的状态管理 | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2019/04/22/React的状态管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React的状态管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T15:10:00+00:00">
+                2019-04-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/22/React的状态管理/" class="leancloud_visitors" data-flag-title="React的状态管理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,232
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>主要内容,看看State的状态管理方式,包括最基本的方式和React-Hooks方式以及Redux方式和ReSub方式</p>
+</blockquote>
+<p> <strong>我们从基本的方式开始</strong></p>
+<h2 id="React和数据的基本交互方式"><a href="#React和数据的基本交互方式" class="headerlink" title="React和数据的基本交互方式"></a>React和数据的基本交互方式</h2><p> 在MVC程序构架中,React经常被称为<code>View</code>层,但实际上并不完全是这样, React实际对MVC模式做了新的构想. 本质上React只是借助JSX语法实现的UI界面库,但是UI都需要数据来填充,所以问题就是如何获取数据,如何灵活的展现数据.</p>
+<h3 id="MVC的思想"><a href="#MVC的思想" class="headerlink" title="MVC的思想"></a>MVC的思想</h3><p> MVC架构的基本思想:</p>
+<ul>
+<li>模型层(Model)就是数据层.</li>
+<li>视图层(View)负责整个应用程序的展示.</li>
+<li>控制层(Controller)在应用程序中扶着提供数据处理的逻辑操作.</li>
+</ul>
+<p>React处理数据和MVC有微妙的区别. 在由多个子组件组合而成的视图(父组件)里, 子组件可以管理自己的数据处理方式,而且也可以从父组件获取数据,只需要在父组件中提供一个控制器就可以了. </p>
+<h2 id="React的思想"><a href="#React的思想" class="headerlink" title="React的思想"></a>React的思想</h2><p>在React的组件中有两种不同的数据类型:</p>
+<ul>
+<li><p><code>props</code> ,在创建组件的时候,<code>props</code>会作为参数传递给组件,这个就作为组件顶级的配置项,一旦定义好,组件就不能自行修改了. 在React定的父组件-&gt;子组件的信息传递中,只能使用这一种方式.没有其他的方法. Props是<code>React组件库</code>的精华, 我们可以定义不同的Props来控制组件的表现形式. </p>
+</li>
+<li><p><code>state</code>,state是组件内部的数据.React的精华实际就在state上,我们可以在父组件中定义一个state,然后以Props的形式传递给子组件, state只是一个JS对象,我们可以定义任何形式的属性. state的定义多样性,决定了你的应用的多样性. 通过定义组件的state,可以实现基本的状态管理,也可以实现类Redux管理方式, 还可以实现React-Hooks的管理方式. 如果深入一点,你需要知道,Redux其实就是一个只有State逻辑处理而没有UI的React组件. </p>
+</li>
+</ul>
+<p>   进行State修改的方法就只有一个 <code>this.setState({})</code>.在Redux这个特殊的React组件中,也是通过这个方法来修改App的State,只不过我们看不到实现细节. 后续我会通过一个表单来看看看里面具体的实现.</p>
+<p>   以上内容整理自<a href="http://makeitopen.com/" target="_blank" rel="noopener">F8-App</a>的介绍,原来有中文的,但是打不开了,英文的需要科学上网.  </p>
+<h2 id="基本实现"><a href="#基本实现" class="headerlink" title="基本实现"></a>基本实现</h2><p>State设计是React应用最重要的部分.这个设计,我认为也是React思想建立的关键. 核心是<code>如何思考State的提升</code>, 也就是不断的把State提升到更高一级的组件中. 但是这个提升也要适可而止, 应该总是以具体的处理流程作为分割线. 同一个流程的State,最终可以提升为一个总的State,例如和登录,注册,登出,找回密码和修改密码的流程,就可以提升为一个大的State. <code>不相关流程的State,就不要混合在一起</code>.不管你是使用基础的State管理,Redux管理,Hooks管理,包括ReSub,这一点都是一样的.   </p>
+<h3 id="React文档中的基本处理方法"><a href="#React文档中的基本处理方法" class="headerlink" title="React文档中的基本处理方法"></a>React文档中的基本处理方法</h3><p><code>单个字段的‌表单</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleFieldForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">value</span>: <span class="string">''</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.handleChange = <span class="keyword">this</span>.handleChange.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.handleSubmit = <span class="keyword">this</span>.handleSubmit.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange(event) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: event.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleSubmit(event) &#123;</span><br><span class="line">    alert(<span class="string">'A name was submitted: '</span> + <span class="keyword">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">          Name:</span><br><span class="line">          &lt;input type=<span class="string">"text"</span> value=&#123;<span class="keyword">this</span>.state.value&#125; onChange=&#123;<span class="keyword">this</span>.handleChange&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input type="submit" value="Submit" /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>这是一个简单的表单组件,要实现这个表单,不仅要使用state,还有props,同时还要有展示内容的UI组件</p>
+<p>在表单组件中定义了state:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只是一个JS对象,属性名为value</span></span><br><span class="line"><span class="keyword">this</span>.state = &#123;<span class="attr">value</span>: <span class="string">''</span>&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>定义了处理state的方法:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">handleChange(event) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: event.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleSubmit(event) &#123;</span><br><span class="line">    alert(<span class="string">'A name was submitted: '</span> + <span class="keyword">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+<p>在创建一个表单组件的时候,需要反馈给输入用户到底自己输入的是什么,还有如何进行表单提交的方法.上面两段代码就定义这两个内容. 那么表单组件内部的子组件直接获取输入的内容和提交方法就可以了.从父组件向子组件传递数据时,我们就需要用到props.就是下面的代码</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">          Name:</span><br><span class="line">          &lt;input type=<span class="string">"text"</span> value=&#123;<span class="keyword">this</span>.state.value&#125; onChange=&#123;<span class="keyword">this</span>.handleChange&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input type="submit" value="Submit" /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br></pre></td></tr></table></figure></div>
+<p>这里的<code>form</code>,<code>input[type=&quot;text&quot;]</code>,<code>input[type=&quot;submit&quot;]</code> 都是props的用法.  这里只要牢记一点, 在return中出现的所有参数都是props, render之外的是state,</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line"><span class="keyword">return</span>(</span><br><span class="line">   ...code</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>在JS中,我们是传引用赋值的,所以在子组件就可以通过引用的方法名来操作父组件定义的State, 那么这里就有一个问题, 如果我们继续把父组件中定义的State和State处理方法提升的爷爷组件,在继续提升的太爷爷组件上,应该是一样的吧?  我可以确切的说, React的代码编写就是这个原则. 只不过state的设计需要稍稍复杂一点.</p>
+<p>如果是多个字段的表单,我们应该如何编写代码?</p>
+<p>如果按照常规是这样的<br><code>‌多字段表单常规写法</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreeFieldsForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">name</span>: <span class="string">''</span></span><br><span class="line">                  age: <span class="literal">null</span>,</span><br><span class="line">                  email:<span class="string">''</span></span><br><span class="line">     &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.handleNameChange = <span class="keyword">this</span>.handleNameChange.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.handleAgeChange = <span class="keyword">this</span>.handleAgeChange.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.handleEmailChange = <span class="keyword">this</span>.handleEmailChange.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.handleSubmit = <span class="keyword">this</span>.handleSubmit.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleNameChange(event) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">name</span>: event.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  handleAgeChange(event) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">age</span>: event.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  handleEmailChange(event) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">email</span>: event.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleSubmit(event) &#123;</span><br><span class="line">    alert(<span class="string">'A name was submitted: '</span> + <span class="keyword">this</span>.state.value);</span><br><span class="line">    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">          Name:</span><br><span class="line">          &lt;input type=<span class="string">"text"</span> value=&#123;<span class="keyword">this</span>.state.name&#125; onChange=&#123;(event)=&gt;<span class="keyword">this</span>.handleNameChange(event.target.value)&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;label&gt;</span></span><br><span class="line"><span class="regexp">           Age:</span></span><br><span class="line"><span class="regexp">          &lt;input type="text" value=&#123;this.state.age&#125; onChange=&#123;this.handleAgeChange&#125; /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;label&gt;</span></span><br><span class="line"><span class="regexp">          Email:</span></span><br><span class="line"><span class="regexp">          &lt;input type="text" value=&#123;this.state.email&#125; onChange=&#123;this.handleEmailChange&#125; /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        &lt;input type="submit" value="Submit" /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>这里是三个字段的表单, 如果是十个字段, 那么state和处理方法代码就太多了, 并且你发现这些代码只有一个地方是不同,或许我们可以在state处理方法上想想办法?</p>
+<p><code>‌把handleChange方法抽象出来</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreeFieldsForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">name</span>: <span class="string">''</span></span><br><span class="line">                  age: <span class="literal">null</span>,</span><br><span class="line">                  email:<span class="string">''</span></span><br><span class="line">     &#125;;</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//这里用了ES6的箭头函数就不需要再绑定啦</span></span><br><span class="line">  setValue = <span class="function">(<span class="params">type, text</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"setName"</span>:</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; <span class="attr">name</span>: text &#125;);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"setAge"</span>:</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; <span class="attr">age</span>: text &#125;);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"setEmail"</span>:</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; <span class="attr">email</span>: text &#125;);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">          Name:</span><br><span class="line">          &lt;input type=<span class="string">"text"</span> </span><br><span class="line">             type=<span class="string">"setName"</span></span><br><span class="line">            onChange=&#123;(event)=&gt;<span class="keyword">this</span>.setValue(event.target.value,<span class="string">"setName"</span>)&#125;</span><br><span class="line">            value=&#123;<span class="keyword">this</span>.state.name&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;label&gt;</span></span><br><span class="line"><span class="regexp">           Age:</span></span><br><span class="line"><span class="regexp">          &lt;input type="text" </span></span><br><span class="line"><span class="regexp">          type="setAge"</span></span><br><span class="line"><span class="regexp">           onChange=&#123;(event)=&gt;this.setValue(event.target.value,"setAge")&#125;</span></span><br><span class="line"><span class="regexp">          value=&#123;this.state.age&#125; /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;label&gt;</span></span><br><span class="line"><span class="regexp">          Email:</span></span><br><span class="line"><span class="regexp">          &lt;input type="text" </span></span><br><span class="line"><span class="regexp">          type="setEmail"</span></span><br><span class="line"><span class="regexp">          onChange=&#123;(event)=&gt;this.setValue(event.target.value,"setEmail")&#125;</span></span><br><span class="line"><span class="regexp">          value=&#123;this.state.age&#125; /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        &lt;input type="submit" value="Submit" /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>这里有两个词,如果你看了Redux和React-Hooks,可能会觉得很眼熟,  一个是<code>type</code>,另一个是<code>setValue</code>,   <strong><code>没错这个地方也是我写这篇文章的着眼点</code></strong>,上周我想到这个地方的的时候,就觉得常规的State处理,Redux和React-hooks对于State的处理其实并没有明确的界限. 如何使用就是React程序员需要考虑的问题. </p>
+<p>如果这个表单用React-Hooks处理是这个样子的</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;useState&#125;  <span class="keyword">from</span> <span class="string">'React'</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">const</span>  ThreeFieldForm=<span class="function">(<span class="params">props</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> [name,setName]=useState(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">const</span> [age,setAge]=useState(<span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">const</span>  [email,setEmail]=useState(<span class="string">""</span>)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">      &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">          Name:</span><br><span class="line">          &lt;input type=<span class="string">"text"</span> </span><br><span class="line">             type=<span class="string">"setName"</span></span><br><span class="line">            onChange=&#123;(event)=&gt;setName(event.target.value)&#125;</span><br><span class="line">            value=&#123;<span class="keyword">this</span>.state.name&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;label&gt;</span></span><br><span class="line"><span class="regexp">           Age:</span></span><br><span class="line"><span class="regexp">          &lt;input type="text" </span></span><br><span class="line"><span class="regexp">          type="setAge"</span></span><br><span class="line"><span class="regexp">           onChange=&#123;(event)=&gt;setAge(event.target.value)&#125;</span></span><br><span class="line"><span class="regexp">          value=&#123;this.state.age&#125; /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;label&gt;</span></span><br><span class="line"><span class="regexp">          Email:</span></span><br><span class="line"><span class="regexp">          &lt;input type="text" </span></span><br><span class="line"><span class="regexp">          type="setEmail"</span></span><br><span class="line"><span class="regexp">          onChange=&#123;(event)=&gt;this.setEmail(event.target.value)&#125;</span></span><br><span class="line"><span class="regexp">          value=&#123;this.state.age&#125; /</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        &lt;input type="submit" value="Submit" /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>如果我们在处理的方法中加了<code>type</code>那就可以用<code>useReducer</code>啦! useReducer可以看下面这段代码.</p>
+<p><code>useReducer</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PF"><figure class="iseeu highlight /pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const initialState = &#123; count: <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">function reducer(<span class="keyword">state</span>, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case <span class="string">"reset"</span>:</span><br><span class="line">      return initialState;</span><br><span class="line">    case <span class="string">"increment"</span>:</span><br><span class="line">      return &#123; count: <span class="keyword">state</span>.count + <span class="number">1</span> &#125;;</span><br><span class="line">    case <span class="string">"decrement"</span>:</span><br><span class="line">      return &#123; count: <span class="keyword">state</span>.count - <span class="number">1</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Demo() &#123;</span><br><span class="line">  const [<span class="keyword">state</span>, dispatch] = useReducer(reducer, initialState);</span><br><span class="line">  return (</span><br><span class="line">    <span class="variable">&lt;&gt;</span></span><br><span class="line">      Count: &#123;<span class="keyword">state</span>.count&#125;</span><br><span class="line">      <span class="variable">&lt;button onClick=&#123;() =&gt;</span> dispatch(&#123; type: <span class="string">"reset"</span> &#125;)&#125;&gt;Reset&lt;/button&gt;</span><br><span class="line">      <span class="variable">&lt;button onClick=&#123;() =&gt;</span> dispatch(&#123; type: <span class="string">"increment"</span> &#125;)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">      <span class="variable">&lt;button onClick=&#123;() =&gt;</span> dispatch(&#123; type: <span class="string">"decrement"</span> &#125;)&#125;&gt;-&lt;/button&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这里的这段代码,我们先不作解释,如果对Redux比较理解了, useReducer的方法也是比较好理解的. 还是之前提到的那一句话, state的管理方法不是绝对的, 看看如何思考具体的是用. 经过之前的提升操作, 如果更进一步,把所有的state都提升到一个顶级的组件中, Redux模式就完成了.  这一点我在后面会继续讲到, 其实在很多讲解Redux的图示中,都会提到数据单向流动, 没错一旦所有的State都提升到顶级的组件中, 数据就只能通过<code>props</code>的形式传递给子组件. 最大的子组件就是Redux的包装下的那个App组件.</p>
+<p>如果你看过Redux的模型图,例如下面这一张:</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g2bggqs6qnj30zk0qomzw.jpg" alt></p>
+<p>或者我自己画的<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g2bgoh4mmpj30s40cykav.jpg" alt></p>
+<p>数据是单向流动的,从React-Redux组件流向应用的组件.<br>但是在第一张图的右侧的Actions似乎有流了回去, 这算是单向流动吗?<br>这个问题时间用dispatch并不好理解, 用ReSub的触发似乎要好一点.<br>后边我会结合一个自己想的现实生活中的实例来解释这个问题. </p>
+<p>下面我要声明我自己的一个学习体会, React经过几年的高速发展, 构架不断的向函数式编程方向发展, 函数式组件内部的JSX代码结合传入的数据,我们想要的应用就实现了.<br>所以归结为两点一个是函数式组件,另外一个就是数据. 在React中流动的数据仅仅只是JS对象,如果我们给这些对象添加了定义好了<code>Type</code>类型,那么数据就可以井然有序的呗管理和组织,就是这么简洁,注意是简洁并不是简单, 要想设计好State也不是一件容易的事情.<br>下面我们要进入本文的主题了, 通俗的学习Redux.</p>
+<h2 id="React的状态管理的权威-Redux"><a href="#React的状态管理的权威-Redux" class="headerlink" title="React的状态管理的权威-Redux"></a>React的状态管理的权威-Redux</h2><p>这里我不想很正式的讲解Redux,Redux文档写的非常好,可能一开始看觉得很难,但是看过十几遍之后,你会觉得甘之如饴. 没有看十遍以上的,是苦的.<br>所以我想换个方法, 用通俗的方法来解释一下,这个问题.作为看文档的补充.很多时候看问题要换个角度,或者换个容易理解的模型就比较容易理解了. </p>
+<h3 id="Redux的通俗理解"><a href="#Redux的通俗理解" class="headerlink" title="Redux的通俗理解"></a>Redux的通俗理解</h3><p>我们就从 这张图的<code>Store</code>开始<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g2bggqs6qnj30zk0qomzw.jpg" alt></p>
+<p>这一段时间我都在思考Redux Store的通俗理解方法. 结果发现本身这个单词就是最好的诠释. </p>
+<p>这里的Store我想用两个模型解释,一个是沃尔玛的Super Store,一个是电商的Store,就拿JD商城做例子吧.</p>
+<h4 id="从Store开始"><a href="#从Store开始" class="headerlink" title="从Store开始."></a>从Store开始.</h4><h5 id="沃尔玛的Store"><a href="#沃尔玛的Store" class="headerlink" title="沃尔玛的Store"></a>沃尔玛的Store</h5><p>如果你没去过沃尔玛,把沃尔玛换成全家便利店也可以, 规模不同,结构和组织完全相同.<br>但是如果类比Redux的Store,大型超市的多人管理更类似些</p>
+<p>在Store里,首先你会看大很多的货架,一个Store在刚开始初始化的时候是这个样子的</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g2bhblvz70j30hs0dagn4.jpg" alt="Store初始化的货架"></p>
+<p>开张的时候是这个样子的:<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g2bhd3b3fxj30sg0lcn4n.jpg" alt="Store的货架摆满货物"></p>
+<p>基本大型超市会分成不同的楼层,然后分成不同的区域,不同的货架 处理具体货架的人是不同的,所以尽管很大,但是由于进行了分区,分层处理,管理是井井有条的.每个区域,每个分类,每个货架都有不同的标签来标识. 每种货物的具体补货,出货,换货等方法都相应的不同, 但是只要找到具体每个区的负责员工就可以实现了. 看这个每天超市庞大的货物吞吐量, 其实进入到超市之后,就想看不见的洋流一样其实是在各自区域中独立的流动.</p>
+<p>与之对照, 在Redux中所有的应用State,初看起来也是非常庞大,但是具体到实现,都由JS对象的键类区分和管理,各自也包含了自己的State处理方法. 每个小部分的对象和处理方法就统称为<code>reducer</code>,每个小分区的State又通过 CombineReducer组合成最大的Reducer,我们可以从整个Reducer里获取到应用的完整State. 我们去超市,抽象的是和超市打交道,具体的是和每个终端在员工和货架在打交道. 所以尽管超市很大,但是处理问题的方式却很简单.</p>
+<h5 id="京东的Store"><a href="#京东的Store" class="headerlink" title="京东的Store"></a>京东的Store</h5><p>京东的Store,和我们React里的Store就非常接近了.  之所以拿电商来做实际的例子,要解决三个问题,一是如何理解Redux的 <code>dispatch</code>方法,另一个是如何理解<code>connect</code>. 这里我先做一个通俗的解释,然后讲解一张我认为对这个模式解释最好的图片.还有就是数据的不可突变性</p>
+<p><code>dispatch</code></p>
+<p><code>dispatch</code>时,到底有没有数据从用户流向Store? 这个单词翻译为中文叫分派,似乎还不太准确,准确的翻译应该叫触发. ReSub这个库就用了<code>trigger</code>这个词. 最好的处理就是把state和处理state的方法统一放大一个地方. 由于JS是传引用赋值的,我们可以把修改State的方法通过<code>props</code>的形式传递给子组件, 子组件只需要触发对应的操作就可以了.所以这里用触发的解释比较好. 面对一个庞大的电商Store,也没有什么担心的,只要定义好了不会引发歧义的<code>type</code>就可以了.  我们触发一个操作,就是执行一个Store定义的方法,根据触发的type对Redux的State做出修改.</p>
+<p>我们在京东购物时,点击购买,提交的就是商品品名,数量,此外我们还要提供自己的地址,相当于为自己的地址绑定了这次购物,等物品从JD的Store出来之后,后按照你的地址进行派送. 整个流程几乎是完全相同的.</p>
+<p><code>connect</code></p>
+<p>从JD Store出来的货物是针对全部买家的,不是每件商品都是你需要的. 所以当Store的货物返回到社会以后,需要根据买家的地址来进行筛选和分类,然后由快递员按你提供的地址进行派送. 这个过程是自动, 你不需要自己动手, 因为之前已经进行了订阅.</p>
+<p>用Redux的方法就是使用<code>mapStateToProps</code>把某个组件需要的数据筛选出来.<br>由于需要<code>dispatch</code>的Store方法也是从外部传递的,所有就有了<code>mapDispatchToProps</code>方法, 传递Store对应的方法名. 在重复一下, 组件外部的数据只能通过<code>props</code>传递. </p>
+<p>好了时候借用别人的杀手锏了.<br>下面这张图嘛,你可以想象是你有几个朋友,分别在不同的城市,你用他们的地址进行了订阅,然后你在JD上提交了订单,触发了JD  Store的一次操作,然后JD根据你的订阅地址把货物发送到几个朋友手中.</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1foy0b5c2t2g30jg0d7b29.gif" alt><br>图片出处 <a href="https://medium.com/dailyjs/when-do-i-know-im-ready-for-redux-f34da253c85f" target="_blank" rel="noopener">when-do-i-know-im-ready-for-redux</a></p>
+<p>你现在可以进入这张图中,你的家就在最右边的这个球中,你触发了一个订购操作,比如<br>在<code>2019年4月22号20点20分20秒195毫秒时</code><br>订购了三只中华铅笔,HB的.<br>然后JD的的文具分部接受根据你触发的动作的类型做了相应的处理,通知Store出货,然后铅笔库存减掉3, 这时如果还有其他人想买中华的HB铅笔,就会显示无货. 你的这次订阅和小米的旗舰店没有任何的关联, 尽管从外面看JD的铅笔和小米的手机是从同一个地方出来的,但是在Store内部是由不同的分支来处理的.</p>
+<p>上面我专门添加了一个时间,是为了要解决数据的不可变性这个问题,就是在Redux文档中提到的时间旅行的问题. </p>
+<p>数据的不可突变性对于JavaScript是一个问题,但是对于某些语言就不是问题. JS中的这个问题是由于JS对于数据存储的方法引起的.</p>
+<p><code>例如我们要在JS中定义一个蜡笔的颜色为红色:</code></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g2bjdjd7o2j310k0u0myy.jpg" alt="定义一个红色蜡笔颜色"></p>
+<p><code>然后我们把对象变为蓝色的对象, JS会为这个对象重新分配内存地址</code></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g2bjeri62jj30u012q42s.jpg" alt="修改蜡笔为蓝色颜色对象"></p>
+<p><code>但是如果我们只修改对象的属性,问题就来了,JS会在原位置对对象作出修改</code></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g2bjh616p8j30uk0u0n0a.jpg" alt="修改蜡笔的颜色属性"></p>
+<p>由于Redux Store中的state是嵌套对象, 如果对某一部分属性进行修改, 内存地址不会发生改变, Store可能认为你没有做什么修改工作,因为在Store中使用’===’来决定state是否发生改变的.<code>===</code>符号在JS中就是比较对象的内存地址的.<br>所以在Redux中需要手动把要修改的State复制到新的内存地址中,然后在做修改,从而让Store可以觉察到State的变化. </p>
+<p><code>以上解释来自[Immutability in React and Redux: The Complete Guide](https://daveceddia.com/react-redux-immutability-guide/).
+如果理解有偏差,敬请指出</code></p>
+<p>但是这样做每次修改都要开辟新的内存地址, 是比较浪费内存的.所以FaceBook提出了 Immutable.js 的方法.  这就是我上面用到的那个时间段的意思. 还是在JD的Store, 我们要出货,管理库存,当用户订购了三只中华铅笔,库存要减掉, 我们可以把所有的库存账本重新抄一遍,然后把中华铅笔的库存减掉3.但是实际的库存管理不是这样做的, 我们有一个总的库存目录, 然后单独在一个地方记载某个时间某个商品的库存发生了什么变化, 没有变化的部分,就不管了.  这就是Immutable的处理方法. 记载变化的位置,共享不变的位置. 如果我们不为修改打上时间戳就没有办法知道历史记录了,因为历史数据被新的数据给替换掉了. 所以实际的账目中不仅要记录账目发生变化的品名还要记录时间. Redux的时间旅行就是这个意思.</p>
+<p>上面的那篇文章对于JS的Immutability操作解释的非常好, 我也准备翻译. 尤其是后面的Immer库很方便.</p>
+<p><code>未完成,还有一些内容</code></p>
+<h2 id="微软的Resub"><a href="#微软的Resub" class="headerlink" title="微软的Resub"></a>微软的Resub</h2><p>下面我们来看看微软的Resub库. 这个库是配合微软的ReactXP项目的附属.<br>我没看过mobx的文档,我猜想应该和Mobx是很像的. </p>
+<p>主要内容就是使用StoreBase定义数据和数据处理方法,</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; StoreBase, AutoSubscribeStore, autoSubscribe &#125; <span class="keyword">from</span> <span class="string">'resub'</span>;</span><br><span class="line"></span><br><span class="line">@AutoSubscribeStore</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodosStore</span> <span class="keyword">extends</span> <span class="title">StoreBase</span> </span>&#123;</span><br><span class="line">    private _todos: string[] = [];</span><br><span class="line"></span><br><span class="line">    addTodo(todo: string) &#123;</span><br><span class="line">        <span class="comment">// Don't use .push here, we need a new array since the old _todos array was passed to the component by reference value</span></span><br><span class="line">        <span class="keyword">this</span>._todos = <span class="keyword">this</span>._todos.concat(todo);</span><br><span class="line">        <span class="keyword">this</span>.trigger();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @autoSubscribe</span><br><span class="line">    getTodos() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._todos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> = <span class="keyword">new</span> TodosStore();</span><br></pre></td></tr></table></figure></div>
+<p>在组件中使用数据和方法</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="SCALA"><figure class="iseeu highlight /scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * as <span class="type">React</span> from <span class="symbol">'reac</span>t';</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="type">ComponentBase</span> &#125; from <span class="symbol">'resu</span>b';</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="type">TodosStore</span> = require('./<span class="type">TodosStore</span>');</span><br><span class="line"></span><br><span class="line">interface <span class="type">TodoListState</span> &#123;</span><br><span class="line">    todos?: string[];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">ComponentBase&lt;</span></span>&#123;&#125;, <span class="type">TodoListState</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">protected</span> _buildState(props: &#123;&#125;, initialBuild: boolean): <span class="type">TodoListState</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            todos: <span class="type">TodosStore</span>.getTodos()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;ul className=<span class="string">"todos"</span>&gt;</span><br><span class="line">                &#123; <span class="keyword">this</span>.state.todos.map(todo =&gt; &lt;li&gt;&#123; todo &#125;&lt;/li&gt; ) &#125;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export = <span class="type">TodoList</span>;</span><br></pre></td></tr></table></figure></div>
+<p>应该也算是非常简洁的.而且有TS的类型约束, 出错的机会要少很多. Redux的TS方法,我后面也会提到.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/React-Hooks/" rel="tag"># React-Hooks</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/19/代码|Migrating from Component State to Hooks for a Fetch Request/" rel="next" title="代码|Migrating from Component State to Hooks for a Fetch Request">
+                <i class="fa fa-chevron-left"></i> 代码|Migrating from Component State to Hooks for a Fetch Request
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/23/翻译|Immutability in React and Redux: The Complete Guide/" rel="prev" title="翻译|Immutability in React and Redux/ The Complete Guide News Clone">
+                翻译|Immutability in React and Redux/ The Complete Guide News Clone <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React和数据的基本交互方式"><span class="nav-number">1.</span> <span class="nav-text">React和数据的基本交互方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC的思想"><span class="nav-number">1.1.</span> <span class="nav-text">MVC的思想</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React的思想"><span class="nav-number">2.</span> <span class="nav-text">React的思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本实现"><span class="nav-number">3.</span> <span class="nav-text">基本实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React文档中的基本处理方法"><span class="nav-number">3.1.</span> <span class="nav-text">React文档中的基本处理方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React的状态管理的权威-Redux"><span class="nav-number">4.</span> <span class="nav-text">React的状态管理的权威-Redux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redux的通俗理解"><span class="nav-number">4.1.</span> <span class="nav-text">Redux的通俗理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从Store开始"><span class="nav-number">4.1.1.</span> <span class="nav-text">从Store开始.</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#沃尔玛的Store"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">沃尔玛的Store</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#京东的Store"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">京东的Store</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微软的Resub"><span class="nav-number">5.</span> <span class="nav-text">微软的Resub</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

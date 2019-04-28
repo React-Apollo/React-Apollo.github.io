@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redux,React,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="‌原文在这里,这是Redux官方的充电包工具集,可以使Redux的用法简单一点. 本文是文档中的用户指南的翻译版本[^译注:这里的包装只是简化了操作,概念性问题的难度并没有降低,因此在没有理解Redux核心概念之前,Redux的文档任然是学习的敲门砖]  前言Redux核心库刻意安排为没有任何偏向性.因此可以让使用者自己来处理每个问题,例如包含了state的State的配置,以及怎么构建redu">
+<meta name="keywords" content="Redux,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻译|Redux-Starter-Kit 使用指南">
+<meta property="og:url" content="https://React-Apollo.github.io/2019/04/25/翻译|Redux-Starter-Kit 使用指南/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="‌原文在这里,这是Redux官方的充电包工具集,可以使Redux的用法简单一点. 本文是文档中的用户指南的翻译版本[^译注:这里的包装只是简化了操作,概念性问题的难度并没有降低,因此在没有理解Redux核心概念之前,Redux的文档任然是学习的敲门砖]  前言Redux核心库刻意安排为没有任何偏向性.因此可以让使用者自己来处理每个问题,例如包含了state的State的配置,以及怎么构建redu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="翻译|Redux-Starter-Kit 使用指南">
+<meta name="twitter:description" content="‌原文在这里,这是Redux官方的充电包工具集,可以使Redux的用法简单一点. 本文是文档中的用户指南的翻译版本[^译注:这里的包装只是简化了操作,概念性问题的难度并没有降低,因此在没有理解Redux核心概念之前,Redux的文档任然是学习的敲门砖]  前言Redux核心库刻意安排为没有任何偏向性.因此可以让使用者自己来处理每个问题,例如包含了state的State的配置,以及怎么构建redu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2019/04/25/翻译|Redux-Starter-Kit 使用指南/">
+
+
+
+
+
+  <title>翻译|Redux-Starter-Kit 使用指南 | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2019/04/25/翻译|Redux-Starter-Kit 使用指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">翻译|Redux-Starter-Kit 使用指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-25T14:55:00+00:00">
+                2019-04-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术备忘/" itemprop="url" rel="index">
+                    <span itemprop="name">技术备忘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/25/翻译|Redux-Starter-Kit 使用指南/" class="leancloud_visitors" data-flag-title="翻译|Redux-Starter-Kit 使用指南">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,263
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  18
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="https://redux-starter-kit.js.org/usage/usage-guide" target="_blank" rel="noopener"><code>‌原文在这里</code></a>,<br>这是Redux官方的充电包工具集,可以使Redux的用法简单一点. 本文是文档中的用户指南的翻译版本<br>[^译注:这里的包装只是简化了操作,概念性问题的难度并没有降低,因此在没有理解Redux核心概念之前,Redux的文档任然是学习的敲门砖]</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Redux核心库刻意安排为没有任何偏向性.因此可以让使用者自己来处理每个问题,例如包含了state的State的配置,以及怎么构建reducers.<br>在某些使用案例中,是很好的,因为这么样做给了你很大的灵活性,但是用户并不总是需要灵活性.有时候,我们需要的只是尽肯能简单的开始工作,只需要有开箱即用的默认配置就可以.又或者是,你正在编写一个大型的应用,发现自己写了太多类似的代码,你非常希望能山减掉大量的手写代码.</p>
+<p>正如在<a href="https://redux-starter-kit.js.org/introduction/quick-start" target="_blank" rel="noopener"><code>快速入门</code></a>中讲到的一样,Redux Starter Kit的目标是协助简化Redux的常见使用用例.它并没有像你想象的那样成为一个完整的解决方案,而是使得一些Redux相关代码的编写变简单(或者在某些情况下,彻彻底底的减少手写代码的量).</p>
+<p>Redux Starter Kit 导出了几个可供使用的独立函数,在其他的包中添加依赖就可以和Redux一起工作.这可以让你决定,到底是在全新的项目还是已经进行的项目中使用Kit.</p>
+<p>接下来看看一些Redux Starter Kit的用法,这些用法可以让你的Redux代码更漂亮.</p>
+<h2 id="Store的配置"><a href="#Store的配置" class="headerlink" title="Store的配置"></a>Store的配置</h2><p>每个Redux App需要配置并创建一个Store,通常情况下包含以下几个步骤:</p>
+<ul>
+<li>导入或者创建顶层reducer函数(root reducer function)</li>
+<li>配置中间件(middleware),例如包含至少一个有关异步操作逻辑的中间件</li>
+<li>配置<a href="https://github.com/zalmoxisus/redux-devtools-extension" target="_blank" rel="noopener"><code>Redux DevTools 扩展</code></a></li>
+<li><p>尽你所能的配置一些专门用于开发环境或者产品环境的切换逻辑</p>
+<h3 id="Store的手工配置"><a href="#Store的手工配置" class="headerlink" title="Store的手工配置"></a>Store的手工配置</h3><p>下面的代码是 Redux文档 <a href="https://redux.js.org/recipes/configuring-your-store" target="_blank" rel="noopener"><code>‌配置Store</code></a>中的典型代码</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; applyMiddleware, compose, createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">import</span> &#123; composeWithDevTools &#125; <span class="keyword">from</span> <span class="string">'redux-devtools-extension'</span></span><br><span class="line"><span class="keyword">import</span> thunkMiddleware <span class="keyword">from</span> <span class="string">'redux-thunk'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> monitorReducersEnhancer <span class="keyword">from</span> <span class="string">'./enhancers/monitorReducers'</span></span><br><span class="line"><span class="keyword">import</span> loggerMiddleware <span class="keyword">from</span> <span class="string">'./middleware/logger'</span></span><br><span class="line"><span class="keyword">import</span> rootReducer <span class="keyword">from</span> <span class="string">'./reducers'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">configureStore</span>(<span class="params">preloadedState</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> middlewares = [loggerMiddleware, thunkMiddleware]</span><br><span class="line">  <span class="keyword">const</span> middlewareEnhancer = applyMiddleware(...middlewares)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> enhancers = [middlewareEnhancer, monitorReducersEnhancer]</span><br><span class="line">  <span class="keyword">const</span> composedEnhancers = composeWithDevTools(...enhancers)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> store = createStore(rootReducer, preloadedState, composedEnhancers)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; <span class="built_in">module</span>.hot) &#123;</span><br><span class="line">    <span class="built_in">module</span>.hot.accept(<span class="string">'./reducers'</span>, () =&gt; store.replaceReducer(rootReducer))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> store</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<p>实例代码的可读性还可以,但是流程不太直接明了:</p>
+<ul>
+<li>基础的Redux <code>createStore</code>函数接收几个固定位置的参数:(<code>rootReducer,preloadedState,enhancer</code>).有时候很容易忘记其中的参数.</li>
+<li>中间件(middleware)和增强件(enhancer)的设定过程令人感到困惑,尤其是你准备添加多个配置的时候.</li>
+<li>Redux DevTools 扩展文旦初始建议你使用一些手写文档检查全局作用域中可用的扩展.很多用户只是简单的拷贝粘贴这些代码块,这使得配置代码很难理解.</li>
+</ul>
+<h3 id="使用configureStore函数简化Store的配置"><a href="#使用configureStore函数简化Store的配置" class="headerlink" title="使用configureStore函数简化Store的配置"></a>使用<code>configureStore</code>函数简化Store的配置</h3><p> <code>configureStore</code>在一下几个方面对我们有帮助:</p>
+<ul>
+<li>有一个”name”参数的可选对象,很容易读懂.</li>
+<li>允许你提供中间件和增强件的数组,用于在store中添加这些组件,并自动调用<code>applyMiddleware</code>和<code>compose</code>函数.</li>
+<li><p>自动开启Redux DevTools扩展</p>
+<p>此外,<code>confitureStore</code>默认添加了一些有特定用途的中间件:</p>
+<ul>
+<li><code>redux-thunk</code> 是在组件外执行同步和异步逻辑的常用中间件</li>
+<li>在开发环境,用于检查常见state mutate操作或者使用非序列化错误的中间件.</li>
+</ul>
+<p>这么做意味着,store的配置代码本身更短,更容易阅读.</p>
+<p>最简答的用法是只要把顶层reducer函数作为<code>reducer</code> 形参传递就可以了.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">'redux-starter-kit'</span></span><br><span class="line"><span class="keyword">import</span> rootReducer <span class="keyword">from</span> <span class="string">'./reducers'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = configureStore(&#123;</span><br><span class="line">  reducer: rootReducer</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<p>也可以传递分片(slice)的reducer,<code>configureStore</code>会自动调用<code>combineReducers</code>:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> usersReducer <span class="keyword">from</span> <span class="string">'./usersReducer'</span></span><br><span class="line"><span class="keyword">import</span> postsReducer <span class="keyword">from</span> <span class="string">'./postsReducer'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = configureStore(&#123;</span><br><span class="line">  reducer: &#123;</span><br><span class="line">    users: usersReducer,</span><br><span class="line">    posts: postsReducer</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>注意,这个用法只对第一级的reducer有用.如果你想嵌套reducer,需要自己调用<code>combineReducers</code>来完成更低一级的嵌套.</p>
+<p>如果你想定制store的配置,可以传递额外的选项.这里是热加载的实例:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; configureStore, getDefaultMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux-starter-kit'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> monitorReducersEnhancer <span class="keyword">from</span> <span class="string">'./enhancers/monitorReducers'</span></span><br><span class="line"><span class="keyword">import</span> loggerMiddleware <span class="keyword">from</span> <span class="string">'./middleware/logger'</span></span><br><span class="line"><span class="keyword">import</span> rootReducer <span class="keyword">from</span> <span class="string">'./reducers'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">configureAppStore</span>(<span class="params">preloadedState</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> store = configureStore(&#123;</span><br><span class="line">    reducer: rootReducer,</span><br><span class="line">    middleware: [loggerMiddleware, ...getDefaultMiddleware()],</span><br><span class="line">    preloadedState,</span><br><span class="line">    enhancers: [monitorReducersEnhancer]</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; <span class="built_in">module</span>.hot) &#123;</span><br><span class="line">    <span class="built_in">module</span>.hot.accept(<span class="string">'./reducers'</span>, () =&gt; store.replaceReducer(rootReducer))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> store</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>如果你提供了<code>middleware</code>参数, <code>confitureStore</code>就只使用你提供的中间件. 如果你想在默认中间件基础上添加定制的中间件,可以调用<code>getDefaultMiddleware</code>,把你自己的中间件数组包含进去.</p>
+<h2 id="编写Reducers"><a href="#编写Reducers" class="headerlink" title="编写Reducers"></a>编写Reducers</h2><p>Reducers是Redux中最重要的概念,一个典型的reducer函数需要具备的功能是:</p>
+<ul>
+<li>查找action对象的<code>type</code> 字段,来决定如何响应action</li>
+<li>通过拷贝state中需要修改的部分,只修改这些部分,从而不可突变的更新Redux的state.</li>
+</ul>
+<p>当你在reducer中使用需要的条件逻辑是,最常见的方法是<code>switch</code>声明,因为针对单个字段执行最直接的操作.然而很多人不喜欢switch声明.Redux文档展示了基于action type类型的映射的用法,但是需要你自己配置.</p>
+<p>另一个常见的痛点是编写reducers时,不要有不可突变的更新state.Javascript是可突变的语言.<a href="https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns" target="_blank" rel="noopener"><code>手动更新嵌套的数据非常棘手</code></a>,很容易出错.</p>
+<h3 id="使用createReducer函数简化Reducer的操作"><a href="#使用createReducer函数简化Reducer的操作" class="headerlink" title="使用createReducer函数简化Reducer的操作"></a>使用<code>createReducer</code>函数简化Reducer的操作</h3><p>因为”查表”(映射)方法很流行,Redux Starter Kit 包含了一个类似Redux 文档中<code>createReducer</code>的函数.然而我们的<code>createReducer</code>工具有一些魔法,是的Reducer的操作更好,在内部它使用<a href="https://github.com/mweststrate/Immer" target="_blank" rel="noopener">‘Immer’</a>库,Immer库可以让你编写假的”突变”代码,实际上进行了不可突变更新.这么做有效的避免了偶然的突变操作.</p>
+<p>总体上,任何使用<code>switch</code>声明的Reducx Reducer都可以直接转化使用<code>createReducer</code>. switch中每个<code>case</code>都变成传递给<code>createReducer</code>对象的一个键. 不可突变更新逻辑,例如对象展开操作,拷贝数组都可以直接转换为”可突变”操作 . 保持原来的不可突变操作也可以, 只需返回更新的拷贝就行. </p>
+<p>这里有一些可以使用<code>createReducer</code>的实例. 我们从经典的”todo list” reducer开始,使用的是switch声明和不可突变更新</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">todosReducer</span>(<span class="params">state = [], action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"ADD_TODO"</span>: &#123;</span><br><span class="line">            <span class="keyword">return</span> state.concat(action.payload);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"TOGGLE_TODO"</span>: &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123;index&#125; = action.payload;</span><br><span class="line">            <span class="keyword">return</span> state.map( <span class="function">(<span class="params">todo, i</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(i !== index) <span class="keyword">return</span> todo;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    ...todo,</span><br><span class="line">                    completed : !todo.completed</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; ,</span><br><span class="line">        <span class="string">"REMOVE_TODO"</span> : <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> state.filter( <span class="function">(<span class="params">todo, i</span>) =&gt;</span> i !== action.payload.index)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">default</span> : <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>注意:我们声明调用了<code>state.concat()</code>,返回包含todo新条目的经过拷贝的数组,<code>state.map()</code> 返回toggle分支的拷贝数组,这里使用对象展开操作符对要更新的todo项进行了复制.</p>
+<p>通过使用<code>createReducer</code>,我们可以考虑简化实例:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todosReducer = createReducer([], &#123;</span><br><span class="line">    <span class="string">"ADD_TODO"</span> : <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// "mutate" the array by calling push()</span></span><br><span class="line">        state.push(action.payload);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"TOGGLE_TODO"</span> : <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> todo = state[action.payload.index];</span><br><span class="line">        <span class="comment">// "mutate" the object by overwriting a field</span></span><br><span class="line">        todo.completed = !todo.completed;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"REMOVE_TODO"</span> : <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// Can still return an immutably-updated value if we want to</span></span><br><span class="line">        <span class="keyword">return</span> state.filter( <span class="function">(<span class="params">todo, i</span>) =&gt;</span> i !== action.payload.index)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>“突变”state的能力在试图更新深度嵌套的state时特别有用.复杂而令人痛苦的代码如下:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">"UPDATE_VALUE"</span>:</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    ...state,</span><br><span class="line">    first: &#123;</span><br><span class="line">      ...state.first,</span><br><span class="line">      second: &#123;</span><br><span class="line">        ...state.first.second,</span><br><span class="line">        [action.someId]: &#123;</span><br><span class="line">          ...state.first.second[action.someId],</span><br><span class="line">          fourth: action.someValue</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></div>
+<p>可以简化为下面的代码:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">updateValue(state, action) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;someId, someValue&#125; = action.payload;</span><br><span class="line">    state.first.second[someId] = someValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>看上去好多了<br>[^译注:这里看上去是可突变操作,实际底层使用的Immer在操作之前已经进行了拷贝操作,不会在原始内存地址做修改].</p>
+<h3 id="以对象的形式定义函数"><a href="#以对象的形式定义函数" class="headerlink" title="以对象的形式定义函数"></a>以对象的形式定义函数</h3><p>在现代Javascript中,有几个固定好的方法可以在对象中定义键和函数(并不是特定针对Redux),所以你可以混合匹配不同的键定义和函数定义. 例如下面对象中所有的函数定义方法都是合规的.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> keyName = <span class="string">"ADD_TODO4"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reducerObject = &#123;</span><br><span class="line">    <span class="comment">// Explicit quotes for the key name, arrow function for the reducer</span></span><br><span class="line">    <span class="string">"ADD_TODO1"</span> : <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Bare key with no quotes, function keyword</span></span><br><span class="line">    ADD_TODO2 : <span class="function"><span class="keyword">function</span>(<span class="params">state, action</span>)</span>&#123;  &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Object literal function shorthand</span></span><br><span class="line">    <span class="comment">//对象字面量函数简写方式</span></span><br><span class="line">    ADD_TODO3(state, action) &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Computed property</span></span><br><span class="line">    [keyName] : <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>使用<code>对象字面量函数简写方式</code> 可能是最简短的代码,但是你可以使用以上任何一种方式.</p>
+<h3 id="使用createReducer要考虑的因素"><a href="#使用createReducer要考虑的因素" class="headerlink" title="使用createReducer要考虑的因素"></a>使用<code>createReducer</code>要考虑的因素</h3><p> Redux Starter Kit的<code>createReducer</code>函数可以发挥很大的作用,但是也要留心:</p>
+<ul>
+<li>“突变”的代码只能在<code>createReducer</code>函数内使用</li>
+<li><p>Immer不允许混合突变(译注:这里指的是真正的JS突变操作)操作,又返回新的state.</p>
+<p>查看<a href="https://redux-starter-kit.js.org/api/createReducer" target="_blank" rel="noopener"><code>createReducer API  参考</code></a> ,了解具体的详情.</p>
+<h2 id="编写-Action-Creators"><a href="#编写-Action-Creators" class="headerlink" title="编写 Action Creators"></a>编写 Action Creators</h2><p>Redux鼓励使用者<a href="https://blog.isquaredsoftware.com/2016/10/idiomatic-redux-why-use-action-creators/" target="_blank" rel="noopener"><code>编写action creator 函数</code></a>,action creator函数封装了创建Action 对象的流程. 但是标准的Redux用法中不是必须的.</p>
+<p>绝大多数的action creator都非常简单.它们接受一些参数,返回一个拥有特定<code>type</code>字段和传入参数的 action对象.这些参数通常放在<code>payload</code>字段下,  action队形是<code>‌Flux标准action</code>的传统定义,目的是组织action对象的内容. 一个典型action creator的结构如下:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: <span class="string">'ADD_TODO'</span>,</span><br><span class="line">    payload: &#123; text &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<h3 id="使用createAction函数定义Action-Creators"><a href="#使用createAction函数定义Action-Creators" class="headerlink" title="使用createAction函数定义Action Creators"></a>使用<code>createAction</code>函数定义Action Creators</h3><p> 手动编写action creators很乏味.Redux Starter Kit提供了一个函数 <code>createAction</code>,用于简化给定了action type的action对象的创建过程,传入的参数安置在<code>payload</code>字段中:</p>
+ <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> addTodo = createAction(<span class="string">'ADD_TODO'</span>)</span><br><span class="line">addTodo(&#123; <span class="attr">text</span>: <span class="string">'Buy milk'</span> &#125;)</span><br><span class="line"><span class="comment">// &#123;type : "ADD_TODO", payload : &#123;text : "Buy milk"&#125;&#125;)</span></span><br></pre></td></tr></table></figure></div>
+<p>目前,<code>creatAction</code>不允许你定制<code>payload</code>字段. 必须要把<code>payload</code>作为整个参数来传递.<code>payload</code> 可以是单个的值,或者一个有大量数据的对象(我们最终会为<code>‌createAction</code>添加一个用于定制payload的回调函数,或者是可以添加其他类似<code>meta</code>一样的字段).</p>
+<h3 id="把Action-Creatros-作为Action-Type"><a href="#把Action-Creatros-作为Action-Type" class="headerlink" title="把Action Creatros 作为Action Type"></a>把Action Creatros 作为Action Type</h3><p>Redux的reducers函数需要查找特定的action types来决定该如何更新state.通常情况下, 定义action type 字符串和定义action creator函数式分开的. Redux Starter Kit的<code>createAction</code>函数使用了一套技巧让两个定义更容易了.</p>
+<p>首先,<code>createAction</code> 在它生成的action creators上 重写了<code>toString()</code>方法. 意思是,action creators自身也可以作为”action type”来引用,例如可以作为<code>creareReducer</code>的键.</p>
+<p>第二点,action type也可以定义为action creator的一个<code>type</code> 字段.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actionCreator = createAction(<span class="string">"SOME_ACTION_TYPE"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(actionCreator.toString())</span><br><span class="line"><span class="comment">// "SOME_ACTION_TYPE"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(actionCreator.type);</span><br><span class="line"><span class="comment">// "SOME_ACTION_TYPE"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reducer = createReducer(&#123;&#125;, &#123;</span><br><span class="line">    <span class="comment">// actionCreator.toString() will automatically be called here</span></span><br><span class="line">    [actionCreator] : <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Or, you can reference the .type field:</span></span><br><span class="line">    [actionCreator.type] : <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123; &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>这意味着,你不需要编写或使用独立的action type变量,或或者重复action type的名字和值,例如<code>const SOME_ACTION_TYPE = &quot;SOME_ACTION_TYPE&quot;</code> 就不需要了. </p>
+<p>不幸的是,隐式转换为字符串对于switch声明不起作用.如果你在一个switch 声明中使用了这些action creator,需要你自己调用<code>actionCreator.toString()</code></p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actionCreator = createAction(<span class="string">'SOME_ACTION_TYPE'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state = &#123;&#125;, action</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="comment">// ERROR: 这里会出错, 在switch中,actionCreator不会自动获取字符串</span></span><br><span class="line">    <span class="keyword">case</span> actionCreator: &#123;</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// CORRECT: this will work as expected</span></span><br><span class="line">    <span class="keyword">case</span> actionCreator.toString(): &#123;</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// CORRECT: this will also work right</span></span><br><span class="line">    <span class="keyword">case</span> actionCreator.type: &#123;</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>如果你同时使用了Redux Starter Kit和TypeScript,要留心, 在action creator 用于对象的键时,TypeScript编译器不会接受 <code>toString()</code>的隐式转换.这种情况下,你需要手动转换(actionCreator as string),或者使用<code>.type</code>字段作为键.</p>
+<h2 id="创建-分片的State"><a href="#创建-分片的State" class="headerlink" title="创建 分片的State,"></a>创建 分片的State,</h2><p>Redux 的state通常都以”切片”的形式组织,由reducers定义的切片 state传递给<code>combineReducers</code>.</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">import</span> usersReducer <span class="keyword">from</span> <span class="string">'./usersReducer'</span></span><br><span class="line"><span class="keyword">import</span> postsReducer <span class="keyword">from</span> <span class="string">'./postsReducer'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootReducer = combineReducers(&#123;</span><br><span class="line">  users: usersReducer,</span><br><span class="line">  posts: postsReducer</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>在这个例子中,<code>users</code>和<code>posts</code>都被认为是”切片(slices)”.也都是reducers:</p>
+<ul>
+<li>“拥有”state中的一块, 包括初始值</li>
+<li>定义了state更新的方法</li>
+<li><p>定义了会引起state更新的特定Action</p>
+<p>常规的方法是在自己独立的文件中定义切片reducer函数,action creators在第二个文件中.因为两个文件都需要引用同样的action types, 又会在第三个文件中定义,并在前两个文件中导入:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// postsConstants.js</span></span><br><span class="line"><span class="keyword">const</span> CREATE_POST = <span class="string">'CREATE_POST'</span></span><br><span class="line"><span class="keyword">const</span> UPDATE_POST = <span class="string">'UPDATE_POST'</span></span><br><span class="line"><span class="keyword">const</span> DELETE_POST = <span class="string">'DELETE_POST'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// postsActions.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; CREATE_POST, UPDATE_POST, DELETE_POST &#125; <span class="keyword">from</span> <span class="string">'./postConstants'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addPost</span>(<span class="params">id, title</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: CREATE_POST,</span><br><span class="line">    payload: &#123; id, title &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// postsReducer.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; CREATE_POST, UPDATE_POST, DELETE_POST &#125; <span class="keyword">from</span> <span class="string">'./postConstants'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initialState = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">postsReducer</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> CREATE_POST: &#123;</span><br><span class="line">      <span class="comment">// omit implementation</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<p> 这唯一必不可少的部分只有reducer自己,想想其他部分:</p>
+<ul>
+<li>我们可以在两个地方编写action type 作为行内字符串.</li>
+<li>action creators很好,但是对于使用Redux不是必须的,一个组件可以直接跳过由<code>connect</code>提供的<code>mapDispatch</code>参数,转而直接使用<code>this.porps.dispatch({type:&#39;CREATE_POST&#39;,payload:{id:123,title:&quot;Hello World&quot;}})</code></li>
+<li><p>唯一要这么写的原因是因为这是常规的做法.</p>
+<p><a href="https://github.com/erikras/ducks-modular-redux" target="_blank" rel="noopener"><code>&quot;‌鸭式&quot;文件结构</code></a> 建议把所有的Redux相关逻辑放到一个单一文件中,像这样:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// postsDuck.js</span></span><br><span class="line"><span class="keyword">const</span> CREATE_POST = <span class="string">'CREATE_POST'</span></span><br><span class="line"><span class="keyword">const</span> UPDATE_POST = <span class="string">'UPDATE_POST'</span></span><br><span class="line"><span class="keyword">const</span> DELETE_POST = <span class="string">'DELETE_POST'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addPost</span>(<span class="params">id, title</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: CREATE_POST,</span><br><span class="line">    payload: &#123; id, title &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initialState = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">postsReducer</span>(<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> CREATE_POST: &#123;</span><br><span class="line">      <span class="comment">// Omit actual code</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<p>这样做简化了很多事,因为我们不需要多个文件,所以可以移除掉冗余的action type 常量的导入.但是,我们仍然要手动编写action types和action creators.</p>
+<h3 id="使用createSlice简化Slices-切片-的创建"><a href="#使用createSlice简化Slices-切片-的创建" class="headerlink" title="使用createSlice简化Slices(切片)的创建"></a>使用<code>createSlice</code>简化Slices(切片)的创建</h3><p>为了简化这个过程,Redux Starter Kit 包含了一个<code>createSlice</code>函数, 可以根据你提供的reducer函数的名字自动生成action type和action creators.</p>
+<p>这里是pops的实例代码:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> postsSlice = createSlice(&#123;</span><br><span class="line">  initialState: [],</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    createPost(state, action) &#123;&#125;,</span><br><span class="line">    updatePost(state, action) &#123;&#125;,</span><br><span class="line">    deletePost(state, action) &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(postsSlice)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    actions : &#123;</span></span><br><span class="line"><span class="comment">        createPost,</span></span><br><span class="line"><span class="comment">        updatePost,</span></span><br><span class="line"><span class="comment">        deletePost,</span></span><br><span class="line"><span class="comment">    &#125;,</span></span><br><span class="line"><span class="comment">    reducer</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; createPost &#125; = postsSlice.actions</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(createPost(&#123; <span class="attr">id</span>: <span class="number">123</span>, <span class="attr">title</span>: <span class="string">'Hello World'</span> &#125;))</span><br><span class="line"><span class="comment">// &#123;type : "createPost", payload : &#123;id : 123, title : "Hello World"&#125;&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p><code>createSlice</code>查找所有在<code>reducers</code>字段中定义的函数,以及每一个”case reducer”函数,用reducer的名字生成同名的action creator和action type.所以, <code>createPost</code> reducer 将会返回 一个<code>createPost</code>类型,和<code>createPost()</code> action creator. </p>
+<p>也可以选择性定义一个<code>slice</code>参数用于action type的前缀:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> postsSlice = createSlice(&#123;</span><br><span class="line">  slice: <span class="string">'posts'</span>,</span><br><span class="line">  initialState: [],</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    createPost(state, action) &#123;&#125;,</span><br><span class="line">    updatePost(state, action) &#123;&#125;,</span><br><span class="line">    deletePost(state, action) &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; createPost &#125; = postsSlice.actions</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(createPost(&#123; <span class="attr">id</span>: <span class="number">123</span>, <span class="attr">title</span>: <span class="string">'Hello World'</span> &#125;))</span><br><span class="line"><span class="comment">// &#123;type : "posts/createPost", payload : &#123;id : 123, title : "Hello World"&#125;&#125;</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="导出并使用Slices"><a href="#导出并使用Slices" class="headerlink" title="导出并使用Slices"></a>导出并使用Slices</h3><p>大多数情况下,需要定义一个slice,导出action creators和reducer. 推荐的方法是使用ES6的解构和导出方法:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> postsSlice = createSlice(&#123;</span><br><span class="line">  slice: <span class="string">'posts'</span>,</span><br><span class="line">  initialState: [],</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    createPost(state, action) &#123;&#125;,</span><br><span class="line">    updatePost(state, action) &#123;&#125;,</span><br><span class="line">    deletePost(state, action) &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Extract the action creators object and the reducer</span></span><br><span class="line"><span class="keyword">const</span> &#123; actions, reducer &#125; = postsSlice</span><br><span class="line"><span class="comment">// Extract and export each action creator by name</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; createPost, updatePost, deletePost &#125; = actions</span><br><span class="line"><span class="comment">// Export the reducer, either as a default or named export</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reducer</span><br></pre></td></tr></table></figure></div>
+<p>也可以导出需要的slice部分.</p>
+<p>通过这种方式定义的Slice和 <a href="https://github.com/erikras/ducks-modular-redux" target="_blank" rel="noopener"><code>&quot;Redux Ducks pattern&quot;</code></a>的概念非常类似. 然而,他们也要一些潜在的问题,在导入和导出slices时需要注意.</p>
+<p>首先,Redux action types并不是说专门只对应一个slice.<br>从概念上说,每个slice reducer “拥有”他们自己的一块state,例如,但是reducer应该能鉴监听任何action type并更新对应的state.例如, 很多不同的slice可能都会响应”user logger out” action, 包括清除数据,重置state为初始值等等.在设计state和创建slices是要特别当心.</p>
+<p>第二点,JS模块在两个模块互相引用是会有”循环引用”问题. 这会导致导入变为未定义, 由此可能会中断需要导入的代码, 特别是在”ducks”或者”slices”中,如果连个slice定义在不同的问题件中,要响应定义在另一个文件中断额action是可能会出问题.</p>
+<iframe sandbox="allow-forms allow-scripts allow-same-origin allow-modals allow-popups allow-presentation" src="https://rw7ppj4z0m.codesandbox.io/" id="sandbox" title="Redux Starter Kit: Circular Slice Dependencies Example" class="sc-kAzzGY dNSBma" style="opacity: 1; z-index: 1; background-color: white; pointer-events: initial;"></iframe>
+
+<p>如果你碰到这个问题, 可以需要重构代码避免循环引用.</p>
+<h2 id="完"><a href="#完" class="headerlink" title="完"></a>完</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/23/翻译|Immutability in React and Redux: The Complete Guide/" rel="next" title="翻译|Immutability in React and Redux/ The Complete Guide News Clone">
+                <i class="fa fa-chevron-left"></i> 翻译|Immutability in React and Redux/ The Complete Guide News Clone
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/27/翻译|How to Export a Connected Component/" rel="prev" title="翻译|How to Export a Connected Component">
+                翻译|How to Export a Connected Component <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Store的配置"><span class="nav-number">2.</span> <span class="nav-text">Store的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Store的手工配置"><span class="nav-number">2.1.</span> <span class="nav-text">Store的手工配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用configureStore函数简化Store的配置"><span class="nav-number">2.2.</span> <span class="nav-text">使用configureStore函数简化Store的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写Reducers"><span class="nav-number">3.</span> <span class="nav-text">编写Reducers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用createReducer函数简化Reducer的操作"><span class="nav-number">3.1.</span> <span class="nav-text">使用createReducer函数简化Reducer的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以对象的形式定义函数"><span class="nav-number">3.2.</span> <span class="nav-text">以对象的形式定义函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用createReducer要考虑的因素"><span class="nav-number">3.3.</span> <span class="nav-text">使用createReducer要考虑的因素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写-Action-Creators"><span class="nav-number">4.</span> <span class="nav-text">编写 Action Creators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用createAction函数定义Action-Creators"><span class="nav-number">4.1.</span> <span class="nav-text">使用createAction函数定义Action Creators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把Action-Creatros-作为Action-Type"><span class="nav-number">4.2.</span> <span class="nav-text">把Action Creatros 作为Action Type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-分片的State"><span class="nav-number">5.</span> <span class="nav-text">创建 分片的State,</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用createSlice简化Slices-切片-的创建"><span class="nav-number">5.1.</span> <span class="nav-text">使用createSlice简化Slices(切片)的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出并使用Slices"><span class="nav-number">5.2.</span> <span class="nav-text">导出并使用Slices</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完"><span class="nav-number">6.</span> <span class="nav-text">完</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hello, Apollo">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Koa是一个类似于Express的Web开发框架，创始人也是同一个人。它的主要特点是，使用了ES6的Generator函数，进行了架构的重新设计。也就是说，Koa的原理和内部结构很像Express，但是语法和内部结构进行了升级。 官方faq有这样一个问题：”为什么koa不是Express 4.0？“，回答是这样的：”Koa与Express有很大差异，整个设计都是不同的，所以如果将Express 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReadMeKoa 框架">
+<meta property="og:url" content="https://React-Apollo.github.io/2015/04/17/koa/index.html">
+<meta property="og:site_name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+<meta property="og:description" content="Koa是一个类似于Express的Web开发框架，创始人也是同一个人。它的主要特点是，使用了ES6的Generator函数，进行了架构的重新设计。也就是说，Koa的原理和内部结构很像Express，但是语法和内部结构进行了升级。 官方faq有这样一个问题：”为什么koa不是Express 4.0？“，回答是这样的：”Koa与Express有很大差异，整个设计都是不同的，所以如果将Express 3">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-28T05:52:57.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReadMeKoa 框架">
+<meta name="twitter:description" content="Koa是一个类似于Express的Web开发框架，创始人也是同一个人。它的主要特点是，使用了ES6的Generator函数，进行了架构的重新设计。也就是说，Koa的原理和内部结构很像Express，但是语法和内部结构进行了升级。 官方faq有这样一个问题：”为什么koa不是Express 4.0？“，回答是这样的：”Koa与Express有很大差异，整个设计都是不同的，所以如果将Express 3">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://React-Apollo.github.io/2015/04/17/koa/">
+
+
+
+
+
+  <title>ReadMeKoa 框架 | Javascript-React-Apollo-GraphQL-Ramda-Prisma</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Javascript-React-Apollo-GraphQL-Ramda-Prisma</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All In One</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://React-Apollo.github.io/2015/04/17/koa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="React-Apollo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Javascript-React-Apollo-GraphQL-Ramda-Prisma">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ReadMeKoa 框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-17T00:00:00+00:00">
+                2015-04-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T05:52:57+00:00">
+                2019-04-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/04/17/koa/" class="leancloud_visitors" data-flag-title="ReadMeKoa 框架">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,968
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  32
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Koa是一个类似于Express的Web开发框架，创始人也是同一个人。它的主要特点是，使用了ES6的Generator函数，进行了架构的重新设计。也就是说，Koa的原理和内部结构很像Express，但是语法和内部结构进行了升级。</p>
+<p>官方<a href="https://github.com/koajs/koa/blob/master/docs/faq.md#why-isnt-koa-just-express-40" target="_blank" rel="noopener">faq</a>有这样一个问题：”为什么koa不是Express 4.0？“，回答是这样的：”Koa与Express有很大差异，整个设计都是不同的，所以如果将Express 3.0按照这种写法升级到4.0，就意味着重写整个程序。所以，我们觉得创造一个新的库，是更合适的做法。“</p>
+<h3 id="Koa-应用"><a href="#Koa-应用" class="headerlink" title="Koa 应用"></a>Koa 应用</h3><p>一个Koa应用就是一个对象，包含了一个middleware数组，这个数组由一组Generator函数组成。这些函数负责对HTTP请求进行各种加工，比如生成缓存、指定代理、请求重定向等等。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">var</span> app = koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.body = <span class="string">'Hello World'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，变量app就是一个Koa应用。它监听3000端口，返回一个内容为Hello World的网页。</p>
+<p>app.use方法用于向middleware数组添加Generator函数。</p>
+<p>listen方法指定监听端口，并启动当前应用。它实际上等同于下面的代码。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">var</span> app = koa();</span><br><span class="line">http.createServer(app.callback()).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure></div>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>Koa的中间件很像Express的中间件，也是对HTTP请求进行处理的函数，但是必须是一个Generator函数。而且，Koa的中间件是一个级联式（Cascading）的结构，也就是说，属于是层层调用，第一个中间件调用第二个中间件，第二个调用第三个，以此类推。上游的中间件必须等到下游的中间件返回结果，才会继续执行，这点很像递归。</p>
+<p>中间件通过当前应用的use方法注册。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span>* (<span class="params">next</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>; <span class="comment">// （1）</span></span><br><span class="line">  <span class="keyword">yield</span> next;  <span class="comment">// （2）</span></span><br><span class="line">  <span class="keyword">var</span> ms = <span class="keyword">new</span> <span class="built_in">Date</span> - start; <span class="comment">// （3）</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'%s %s - %s'</span>, <span class="keyword">this</span>.method, <span class="keyword">this</span>.url, ms); <span class="comment">// （4）</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，<code>app.use</code>方法的参数就是中间件，它是一个Generator函数，最大的特征就是function命令与参数之间，必须有一个星号。Generator函数的参数next，表示下一个中间件。</p>
+<p>Generator函数内部使用yield命令，将程序的执行权转交给下一个中间件，即<code>yield next</code>，要等到下一个中间件返回结果，才会继续往下执行。上面代码中，Generator函数体内部，第一行赋值语句首先执行，开始计时，第二行yield语句将执行权交给下一个中间件，当前中间件就暂停执行。等到后面的中间件全部执行完成，执行权就回到原来暂停的地方，继续往下执行，这时才会执行第三行，计算这个过程一共花了多少时间，第四行将这个时间打印出来。</p>
+<p>下面是一个两个中间件级联的例子。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.body = <span class="string">"header\n"</span>;</span><br><span class="line">  <span class="keyword">yield</span> saveResults.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.body += <span class="string">"footer\n"</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">saveResults</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.body += <span class="string">"Results Saved!\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，第一个中间件调用第二个中间件saveResults，它们都向<code>this.body</code>写入内容。最后，<code>this.body</code>的输出如下。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">header</span><br><span class="line">Results Saved!</span><br><span class="line">footer</span><br></pre></td></tr></table></figure></div>
+<p>只要有一个中间件缺少<code>yield next</code>语句，后面的中间件都不会执行，这一点要引起注意。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; one'</span>);</span><br><span class="line">  <span class="keyword">yield</span> next;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; one'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; two'</span>);</span><br><span class="line">  <span class="keyword">this</span>.body = <span class="string">'two'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; two'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&gt;&gt; three'</span>);</span><br><span class="line">  <span class="keyword">yield</span> next;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'&lt;&lt; three'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，因为第二个中间件少了<code>yield next</code>语句，第三个中间件并不会执行。</p>
+<p>如果想跳过一个中间件，可以直接在该中间件的第一行语句写上<code>return yield next</code>。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span>* (<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (skip) <span class="keyword">return</span> <span class="keyword">yield</span> next;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>由于Koa要求中间件唯一的参数就是next，导致如果要传入其他参数，必须另外写一个返回Generator函数的函数。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logger</span>(<span class="params">format</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = format</span><br><span class="line">      .replace(<span class="string">':method'</span>, <span class="keyword">this</span>.method)</span><br><span class="line">      .replace(<span class="string">':url'</span>, <span class="keyword">this</span>.url);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(str);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> next;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.use(logger(<span class="string">':method :url'</span>));</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，真正的中间件是logger函数的返回值，而logger函数是可以接受参数的。</p>
+<h3 id="多个中间件的合并"><a href="#多个中间件的合并" class="headerlink" title="多个中间件的合并"></a>多个中间件的合并</h3><p>由于中间件的参数统一为next（意为下一个中间件），因此可以使用<code>.call(this, next)</code>，将多个中间件进行合并。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">random</span>(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'/random'</span> == <span class="keyword">this</span>.path) &#123;</span><br><span class="line">    <span class="keyword">this</span>.body = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">10</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">yield</span> next;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">backwards</span>(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'/backwards'</span> == <span class="keyword">this</span>.path) &#123;</span><br><span class="line">    <span class="keyword">this</span>.body = <span class="string">'sdrawkcab'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">yield</span> next;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">pi</span>(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'/pi'</span> == <span class="keyword">this</span>.path) &#123;</span><br><span class="line">    <span class="keyword">this</span>.body = <span class="built_in">String</span>(<span class="built_in">Math</span>.PI);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">yield</span> next;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">all</span>(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> random.call(<span class="keyword">this</span>, backwards.call(<span class="keyword">this</span>, pi.call(<span class="keyword">this</span>, next)));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.use(all);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，中间件all内部，就是依次调用random、backwards、pi，后一个中间件就是前一个中间件的参数。</p>
+<p>Koa内部使用koa-compose模块，进行同样的操作，下面是它的源码。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">middleware</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!next) next = noop();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> i = middleware.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">      next = middleware[i].call(<span class="keyword">this</span>, next);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> *next;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">noop</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，middleware是中间件数组。前一个中间件的参数是后一个中间件，依次类推。如果最后一个中间件没有next参数，则传入一个空函数。</p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>可以通过<code>this.path</code>属性，判断用户请求的路径，从而起到路由作用。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span>* (<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.path === <span class="string">'/'</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.body = <span class="string">'we are at home!'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>* (<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.path !== <span class="string">'/'</span>) <span class="keyword">return</span> <span class="keyword">yield</span> next;</span><br><span class="line">  <span class="keyword">this</span>.body = <span class="string">'we are at home!'</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>下面是多路径的例子。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = koa()</span><br><span class="line"></span><br><span class="line"><span class="comment">// normal route</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>* (<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.path !== <span class="string">'/'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">yield</span> next</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.body = <span class="string">'hello world'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// /404 route</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>* (<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.path !== <span class="string">'/404'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">yield</span> next;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.body = <span class="string">'page not found'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// /500 route</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>* (<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.path !== <span class="string">'/500'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">yield</span> next;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.body = <span class="string">'internal server error'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，每一个中间件负责一个路径，如果路径不符合，就传递给下一个中间件。</p>
+<p>复杂的路由需要安装koa-router插件。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'koa'</span>)();</span><br><span class="line"><span class="keyword">var</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myRouter = <span class="keyword">new</span> Router();</span><br><span class="line"></span><br><span class="line">myRouter.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.response.body = <span class="string">'Hello World!'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(myRouter.routes());</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码对根路径设置路由。</p>
+<p>Koa-router实例提供一系列动词方法，即一种HTTP动词对应一种方法。典型的动词方法有以下五种。</p>
+<ul>
+<li>router.get()</li>
+<li>router.post()</li>
+<li>router.put()</li>
+<li>router.del()</li>
+<li>router.patch()</li>
+</ul>
+<p>这些动词方法可以接受两个参数，第一个是路径模式，第二个是对应的控制器方法（中间件），定义用户请求该路径时服务器行为。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.body = <span class="string">'Hello World!'</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，<code>router.get</code>方法的第一个参数是根路径，第二个参数是对应的函数方法。</p>
+<p>注意，路径匹配的时候，不会把查询字符串考虑在内。比如，<code>/index?param=xyz</code>匹配路径<code>/index</code>。</p>
+<p>有些路径模式比较复杂，Koa-router允许为路径模式起别名。起名时，别名要添加为动词方法的第一个参数，这时动词方法变成接受三个参数。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'user'</span>, <span class="string">'/users/:id'</span>, <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>) </span>&#123;</span><br><span class="line"> <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，路径模式<code>\users\:id</code>的名字就是<code>user</code>。路径的名称，可以用来引用对应的具体路径，比如url方法可以根据路径名称，结合给定的参数，生成具体的路径。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">router.url(<span class="string">'user'</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// =&gt; "/users/3"</span></span><br><span class="line"></span><br><span class="line">router.url(<span class="string">'user'</span>, &#123; <span class="attr">id</span>: <span class="number">3</span> &#125;);</span><br><span class="line"><span class="comment">// =&gt; "/users/3"</span></span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，user就是路径模式的名称，对应具体路径<code>/users/:id</code>。url方法的第二个参数3，表示给定id的值是3，因此最后生成的路径是<code>/users/3</code>。</p>
+<p>Koa-router允许为路径统一添加前缀。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  prefix: <span class="string">'/users'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, ...); <span class="comment">// 等同于"/users"</span></span><br><span class="line">router.get(<span class="string">'/:id'</span>, ...); <span class="comment">// 等同于"/users/:id"</span></span><br></pre></td></tr></table></figure></div>
+<p>路径的参数通过<code>this.params</code>属性获取，该属性返回一个对象，所有路径参数都是该对象的成员。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 访问 /programming/how-to-node</span></span><br><span class="line">router.get(<span class="string">'/:category/:title'</span>, <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.params);</span><br><span class="line">  <span class="comment">// =&gt; &#123; category: 'programming', title: 'how-to-node' &#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>param方法可以针对命名参数，设置验证条件。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">router</span><br><span class="line">  .get(<span class="string">'/users/:user'</span>, <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.body = <span class="keyword">this</span>.user;</span><br><span class="line">  &#125;)</span><br><span class="line">  .param(<span class="string">'user'</span>, <span class="function"><span class="keyword">function</span> *(<span class="params">id, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> users = [ <span class="string">'0号用户'</span>, <span class="string">'1号用户'</span>, <span class="string">'2号用户'</span>];</span><br><span class="line">    <span class="keyword">this</span>.user = users[id];</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.user) <span class="keyword">return</span> <span class="keyword">this</span>.status = <span class="number">404</span>;</span><br><span class="line">    <span class="keyword">yield</span> next;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，如果<code>/users/:user</code>的参数user对应的不是有效用户（比如访问<code>/users/3</code>），param方法注册的中间件会查到，就会返回404错误。</p>
+<p>redirect方法会将某个路径的请求，重定向到另一个路径，并返回301状态码。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">router.redirect(<span class="string">'/login'</span>, <span class="string">'sign-in'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">router.all(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span> *(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.redirect(<span class="string">'/sign-in'</span>);</span><br><span class="line">  <span class="keyword">this</span>.status = <span class="number">301</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>redirect方法的第一个参数是请求来源，第二个参数是目的地，两者都可以用路径模式的别名代替。</p>
+<h2 id="context对象"><a href="#context对象" class="headerlink" title="context对象"></a>context对象</h2><p>中间件当中的this表示上下文对象context，代表一次HTTP请求和回应，即一次访问/回应的所有信息，都可以从上下文对象获得。context对象封装了request和response对象，并且提供了一些辅助方法。每次HTTP请求，就会创建一个新的context对象。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>; <span class="comment">// is the Context</span></span><br><span class="line">  <span class="keyword">this</span>.request; <span class="comment">// is a koa Request</span></span><br><span class="line">  <span class="keyword">this</span>.response; <span class="comment">// is a koa Response</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>context对象的很多方法，其实是定义在ctx.request对象或ctx.response对象上面，比如，ctx.type和ctx.length对应于ctx.response.type和ctx.response.length，ctx.path和ctx.method对应于ctx.request.path和ctx.request.method。</p>
+<p>context对象的全局属性。</p>
+<ul>
+<li>request：指向Request对象</li>
+<li>response：指向Response对象</li>
+<li>req：指向Node的request对象</li>
+<li>res：指向Node的response对象</li>
+<li>app：指向App对象</li>
+<li>state：用于在中间件传递信息。</li>
+</ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.state.user = <span class="keyword">yield</span> User.find(id);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，user属性存放在<code>this.state</code>对象上面，可以被另一个中间件读取。</p>
+<p>context对象的全局方法。</p>
+<ul>
+<li>throw()：抛出错误，直接决定了HTTP回应的状态码。</li>
+<li>assert()：如果一个表达式为false，则抛出一个错误。</li>
+</ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.throw(<span class="number">403</span>);</span><br><span class="line"><span class="keyword">this</span>.throw(<span class="string">'name required'</span>, <span class="number">400</span>);</span><br><span class="line"><span class="keyword">this</span>.throw(<span class="string">'something exploded'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.throw(<span class="number">400</span>, <span class="string">'name required'</span>);</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> err = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'name required'</span>);</span><br><span class="line">err.status = <span class="number">400</span>;</span><br><span class="line"><span class="keyword">throw</span> err;</span><br></pre></td></tr></table></figure></div>
+<p>assert方法的例子。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 格式</span></span><br><span class="line">ctx.assert(value, [msg], [status], [properties])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">this</span>.assert(<span class="keyword">this</span>.user, <span class="number">401</span>, <span class="string">'User not found. Please login!'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>以下模块解析POST请求的数据。</p>
+<ul>
+<li>co-body</li>
+<li><a href="https://github.com/koajs/body-parser" target="_blank" rel="noopener">https://github.com/koajs/body-parser</a></li>
+<li><a href="https://github.com/koajs/body-parsers" target="_blank" rel="noopener">https://github.com/koajs/body-parsers</a></li>
+</ul>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> parse = <span class="built_in">require</span>(<span class="string">'co-body'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// in Koa handler</span></span><br><span class="line"><span class="keyword">var</span> body = <span class="keyword">yield</span> parse(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure></div>
+<h2 id="错误处理机制"><a href="#错误处理机制" class="headerlink" title="错误处理机制"></a>错误处理机制</h2><p>Koa提供内置的错误处理机制，任何中间件抛出的错误都会被捕捉到，引发向客户端返回一个500错误，而不会导致进程停止，因此也就不需要forever这样的模块重启进程。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，中间件内部抛出一个错误，并不会导致Koa应用挂掉。Koa内置的错误处理机制，会捕捉到这个错误。</p>
+<p>当然，也可以额外部署自己的错误处理机制。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">yield</span> saveResults();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">this</span>.throw(<span class="number">400</span>, <span class="string">'数据无效'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码自行部署了try…catch代码块，一旦产生错误，就用<code>this.throw</code>方法抛出。该方法可以将指定的状态码和错误信息，返回给客户端。</p>
+<p>对于未捕获错误，可以设置error事件的监听函数。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">  log.error(<span class="string">'server error'</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>error事件的监听函数还可以接受上下文对象，作为第二个参数。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, ctx</span>)</span>&#123;</span><br><span class="line">  log.error(<span class="string">'server error'</span>, err, ctx);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>如果一个错误没有被捕获，koa会向客户端返回一个500错误“Internal Server Error”。</p>
+<p>this.throw方法用于向客户端抛出一个错误。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.throw(<span class="number">403</span>);</span><br><span class="line"><span class="keyword">this</span>.throw(<span class="string">'name required'</span>, <span class="number">400</span>);</span><br><span class="line"><span class="keyword">this</span>.throw(<span class="number">400</span>, <span class="string">'name required'</span>);</span><br><span class="line"><span class="keyword">this</span>.throw(<span class="string">'something exploded'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.throw(<span class="string">'name required'</span>, <span class="number">400</span>)</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> err = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'name required'</span>);</span><br><span class="line">err.status = <span class="number">400</span>;</span><br><span class="line"><span class="keyword">throw</span> err;</span><br></pre></td></tr></table></figure></div>
+<p><code>this.throw</code>方法的两个参数，一个是错误码，另一个是报错信息。如果省略状态码，默认是500错误。</p>
+<p><code>this.assert</code>方法用于在中间件之中断言，用法类似于Node的assert模块。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.assert(<span class="keyword">this</span>.user, <span class="number">401</span>, <span class="string">'User not found. Please login!'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，如果this.user属性不存在，会抛出一个401错误。</p>
+<p>由于中间件是层级式调用，所以可以把<code>try { yield next }</code>当成第一个中间件。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">yield</span> next;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">this</span>.status = err.status || <span class="number">500</span>;</span><br><span class="line">    <span class="keyword">this</span>.body = err.message;</span><br><span class="line">    <span class="keyword">this</span>.app.emit(<span class="string">'error'</span>, err, <span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'some error'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie的读取和设置。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.cookies.get(<span class="string">'view'</span>);</span><br><span class="line"><span class="keyword">this</span>.cookies.set(<span class="string">'view'</span>, n);</span><br></pre></td></tr></table></figure></div>
+<p>get和set方法都可以接受第三个参数，表示配置参数。其中的signed参数，用于指定cookie是否加密。如果指定加密的话，必须用<code>app.keys</code>指定加密短语。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.keys = [<span class="string">'secret1'</span>, <span class="string">'secret2'</span>];</span><br><span class="line"><span class="keyword">this</span>.cookies.set(<span class="string">'name'</span>, <span class="string">'张三'</span>, &#123; <span class="attr">signed</span>: <span class="literal">true</span> &#125;);</span><br></pre></td></tr></table></figure></div>
+<p>this.cookie的配置对象的属性如下。</p>
+<ul>
+<li>signed：cookie是否加密。</li>
+<li>expires：cookie何时过期</li>
+<li>path：cookie的路径，默认是“/”。</li>
+<li>domain：cookie的域名。</li>
+<li>secure：cookie是否只有https请求下才发送。</li>
+<li>httpOnly：是否只有服务器可以取到cookie，默认为true。</li>
+</ul>
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'koa-session'</span>);</span><br><span class="line"><span class="keyword">var</span> koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">var</span> app = koa();</span><br><span class="line"></span><br><span class="line">app.keys = [<span class="string">'some secret hurr'</span>];</span><br><span class="line">app.use(session(app));</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> n = <span class="keyword">this</span>.session.views || <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.session.views = ++n;</span><br><span class="line">  <span class="keyword">this</span>.body = n + <span class="string">' views'</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'listening on port 3000'</span>);</span><br></pre></td></tr></table></figure></div>
+<h2 id="Request对象"><a href="#Request对象" class="headerlink" title="Request对象"></a>Request对象</h2><p>Request对象表示HTTP请求。</p>
+<p>（1）this.request.header</p>
+<p>返回一个对象，包含所有HTTP请求的头信息。它也可以写成<code>this.request.headers</code>。</p>
+<p>（2）this.request.method</p>
+<p>返回HTTP请求的方法，该属性可读写。</p>
+<p>（3）this.request.length</p>
+<p>返回HTTP请求的Content-Length属性，取不到值，则返回undefined。</p>
+<p>（4）this.request.path</p>
+<p>返回HTTP请求的路径，该属性可读写。</p>
+<p>（5）this.request.href</p>
+<p>返回HTTP请求的完整路径，包括协议、端口和url。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.request.href</span><br><span class="line"><span class="comment">// http://example.com/foo/bar?q=1</span></span><br></pre></td></tr></table></figure></div>
+<p>（6）this.request.querystring</p>
+<p>返回HTTP请求的查询字符串，不含问号。该属性可读写。</p>
+<p>（7）this.request.search</p>
+<p>返回HTTP请求的查询字符串，含问号。该属性可读写。</p>
+<p>（8）this.request.host</p>
+<p>返回HTTP请求的主机（含端口号）。</p>
+<p>（9）this.request.hostname</p>
+<p>返回HTTP的主机名（不含端口号）。</p>
+<p>（10）this.request.type</p>
+<p>返回HTTP请求的Content-Type属性。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ct = <span class="keyword">this</span>.request.type;</span><br><span class="line"><span class="comment">// "image/png"</span></span><br></pre></td></tr></table></figure></div>
+<p>（11）this.request.charset</p>
+<p>返回HTTP请求的字符集。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.request.charset</span><br><span class="line"><span class="comment">// "utf-8"</span></span><br></pre></td></tr></table></figure></div>
+<p>（12）this.request.query</p>
+<p>返回一个对象，包含了HTTP请求的查询字符串。如果没有查询字符串，则返回一个空对象。该属性可读写。</p>
+<p>比如，查询字符串<code>color=blue&amp;size=small</code>，会得到以下的对象。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  color: <span class="string">'blue'</span>,</span><br><span class="line">  size: <span class="string">'small'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>（13）this.request.fresh</p>
+<p>返回一个布尔值，表示缓存是否代表了最新内容。通常与If-None-Match、ETag、If-Modified-Since、Last-Modified等缓存头，配合使用。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.response.set(<span class="string">'ETag'</span>, <span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查客户端请求的内容是否有变化</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">this</span>.request.fresh) &#123;</span><br><span class="line">  <span class="keyword">this</span>.response.status = <span class="number">304</span>;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 否则就表示客户端的内容陈旧了，</span></span><br><span class="line"><span class="comment">// 需要取出新内容</span></span><br><span class="line"><span class="keyword">this</span>.response.body = <span class="keyword">yield</span> db.find(<span class="string">'something'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>（14）this.request.stale</p>
+<p>返回<code>this.request.fresh</code>的相反值。</p>
+<p>（15）this.request.protocol</p>
+<p>返回HTTP请求的协议，https或者http。</p>
+<p>（16）this.request.secure</p>
+<p>返回一个布尔值，表示当前协议是否为https。</p>
+<p>（17）this.request.ip</p>
+<p>返回发出HTTP请求的IP地址。</p>
+<p>（18）this.request.subdomains</p>
+<p>返回一个数组，表示HTTP请求的子域名。该属性必须与app.subdomainOffset属性搭配使用。app.subdomainOffset属性默认为2，则域名“tobi.ferrets.example.com”返回[“ferrets”, “tobi”]，如果app.subdomainOffset设为3，则返回[“tobi”]。</p>
+<p>（19）this.request.is(types…)</p>
+<p>返回指定的类型字符串，表示HTTP请求的Content-Type属性是否为指定类型。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Content-Type为 text/html; charset=utf-8</span></span><br><span class="line"><span class="keyword">this</span>.request.is(<span class="string">'html'</span>); <span class="comment">// 'html'</span></span><br><span class="line"><span class="keyword">this</span>.request.is(<span class="string">'text/html'</span>); <span class="comment">// 'text/html'</span></span><br><span class="line"><span class="keyword">this</span>.request.is(<span class="string">'text/*'</span>, <span class="string">'text/html'</span>); <span class="comment">// 'text/html'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Content-Type为 application/json</span></span><br><span class="line"><span class="keyword">this</span>.request.is(<span class="string">'json'</span>, <span class="string">'urlencoded'</span>); <span class="comment">// 'json'</span></span><br><span class="line"><span class="keyword">this</span>.request.is(<span class="string">'application/json'</span>); <span class="comment">// 'application/json'</span></span><br><span class="line"><span class="keyword">this</span>.request.is(<span class="string">'html'</span>, <span class="string">'application/*'</span>); <span class="comment">// 'application/json'</span></span><br></pre></td></tr></table></figure></div>
+<p>如果不满足条件，返回false；如果HTTP请求不含数据，则返回undefined。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.is(<span class="string">'html'</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+<p>它可以用于过滤HTTP请求，比如只允许请求下载图片。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">this</span>.is(<span class="string">'image/*'</span>)) &#123;</span><br><span class="line">  <span class="comment">// process</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.throw(<span class="number">415</span>, <span class="string">'images only!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>（20）this.request.accepts(types)</p>
+<p>检查HTTP请求的Accept属性是否可接受，如果可接受，则返回指定的媒体类型，否则返回false。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Accept: text/html</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'html'</span>);</span><br><span class="line"><span class="comment">// "html"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Accept: text/*, application/json</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'html'</span>);</span><br><span class="line"><span class="comment">// "html"</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'text/html'</span>);</span><br><span class="line"><span class="comment">// "text/html"</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'json'</span>, <span class="string">'text'</span>);</span><br><span class="line"><span class="comment">// =&gt; "json"</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'application/json'</span>);</span><br><span class="line"><span class="comment">// =&gt; "application/json"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Accept: text/*, application/json</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'image/png'</span>);</span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'png'</span>);</span><br><span class="line"><span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Accept: text/*;q=.5, application/json</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts([<span class="string">'html'</span>, <span class="string">'json'</span>]);</span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'html'</span>, <span class="string">'json'</span>);</span><br><span class="line"><span class="comment">// "json"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// No Accept header</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'html'</span>, <span class="string">'json'</span>);</span><br><span class="line"><span class="comment">// "html"</span></span><br><span class="line"><span class="keyword">this</span>.request.accepts(<span class="string">'json'</span>, <span class="string">'html'</span>);</span><br><span class="line"><span class="comment">// =&gt; "json"</span></span><br></pre></td></tr></table></figure></div>
+<p>如果accepts方法没有参数，则返回所有支持的类型（text/html,application/xhtml+xml,image/webp,application/xml,<em>/</em>）。</p>
+<p>如果accepts方法的参数有多个参数，则返回最佳匹配。如果都不匹配则返回false，并向客户端抛出一个406”Not Acceptable“错误。</p>
+<p>如果HTTP请求没有Accept字段，那么accepts方法返回它的第一个参数。</p>
+<p>accepts方法可以根据不同Accept字段，向客户端返回不同的字段。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (<span class="keyword">this</span>.request.accepts(<span class="string">'json'</span>, <span class="string">'html'</span>, <span class="string">'text'</span>)) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'json'</span>: <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'html'</span>: <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'text'</span>: <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>: <span class="keyword">this</span>.throw(<span class="number">406</span>, <span class="string">'json, html, or text only'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>（21）this.request.acceptsEncodings(encodings)</p>
+<p>该方法根据HTTP请求的Accept-Encoding字段，返回最佳匹配，如果没有合适的匹配，则返回false。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Accept-Encoding: gzip</span></span><br><span class="line"><span class="keyword">this</span>.request.acceptsEncodings(<span class="string">'gzip'</span>, <span class="string">'deflate'</span>, <span class="string">'identity'</span>);</span><br><span class="line"><span class="comment">// "gzip"</span></span><br><span class="line"><span class="keyword">this</span>.request.acceptsEncodings([<span class="string">'gzip'</span>, <span class="string">'deflate'</span>, <span class="string">'identity'</span>]);</span><br><span class="line"><span class="comment">// "gzip"</span></span><br></pre></td></tr></table></figure></div>
+<p>注意，acceptEncodings方法的参数必须包括identity（意为不编码）。</p>
+<p>如果HTTP请求没有Accept-Encoding字段，acceptEncodings方法返回所有可以提供的编码方法。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="keyword">this</span>.request.acceptsEncodings();</span><br><span class="line"><span class="comment">// ["gzip", "deflate", "identity"]</span></span><br></pre></td></tr></table></figure></div>
+<p>如果都不匹配，acceptsEncodings方法返回false，并向客户端抛出一个406“Not Acceptable”错误。</p>
+<p>（22）this.request.acceptsCharsets(charsets)</p>
+<p>该方法根据HTTP请求的Accept-Charset字段，返回最佳匹配，如果没有合适的匹配，则返回false。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5</span></span><br><span class="line"><span class="keyword">this</span>.request.acceptsCharsets(<span class="string">'utf-8'</span>, <span class="string">'utf-7'</span>);</span><br><span class="line"><span class="comment">// =&gt; "utf-8"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.request.acceptsCharsets([<span class="string">'utf-7'</span>, <span class="string">'utf-8'</span>]);</span><br><span class="line"><span class="comment">// =&gt; "utf-8"</span></span><br></pre></td></tr></table></figure></div>
+<p>如果acceptsCharsets方法没有参数，则返回所有可接受的匹配。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5</span></span><br><span class="line"><span class="keyword">this</span>.request.acceptsCharsets();</span><br><span class="line"><span class="comment">// ["utf-8", "utf-7", "iso-8859-1"]</span></span><br></pre></td></tr></table></figure></div>
+<p>如果都不匹配，acceptsCharsets方法返回false，并向客户端抛出一个406“Not Acceptable”错误。</p>
+<p>（23）this.request.acceptsLanguages(langs)</p>
+<p>该方法根据HTTP请求的Accept-Language字段，返回最佳匹配，如果没有合适的匹配，则返回false。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Accept-Language: en;q=0.8, es, pt</span></span><br><span class="line"><span class="keyword">this</span>.request.acceptsLanguages(<span class="string">'es'</span>, <span class="string">'en'</span>);</span><br><span class="line"><span class="comment">// "es"</span></span><br><span class="line"><span class="keyword">this</span>.request.acceptsLanguages([<span class="string">'en'</span>, <span class="string">'es'</span>]);</span><br><span class="line"><span class="comment">// "es"</span></span><br></pre></td></tr></table></figure></div>
+<p>如果acceptsCharsets方法没有参数，则返回所有可接受的匹配。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Accept-Language: en;q=0.8, es, pt</span></span><br><span class="line"><span class="keyword">this</span>.request.acceptsLanguages();</span><br><span class="line"><span class="comment">// ["es", "pt", "en"]</span></span><br></pre></td></tr></table></figure></div>
+<p>如果都不匹配，acceptsLanguages方法返回false，并向客户端抛出一个406“Not Acceptable”错误。</p>
+<p>（24）this.request.socket</p>
+<p>返回HTTP请求的socket。</p>
+<p>（25）this.request.get(field)</p>
+<p>返回HTTP请求指定的字段。</p>
+<h2 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h2><p>Response对象表示HTTP回应。</p>
+<p>（1）this.response.header</p>
+<p>返回HTTP回应的头信息。</p>
+<p>（2）this.response.socket</p>
+<p>返回HTTP回应的socket。</p>
+<p>（3）this.response.status</p>
+<p>返回HTTP回应的状态码。默认情况下，该属性没有值。该属性可读写，设置时等于一个整数。</p>
+<p>（4）this.response.message</p>
+<p>返回HTTP回应的状态信息。该属性与<code>this.response.message</code>是配对的。该属性可读写。</p>
+<p>（5）this.response.length</p>
+<p>返回HTTP回应的Content-Length字段。该属性可读写，如果没有设置它的值，koa会自动从this.request.body推断。</p>
+<p>（6）this.response.body</p>
+<p>返回HTTP回应的信息体。该属性可读写，它的值可能有以下几种类型。</p>
+<ul>
+<li>字符串：Content-Type字段默认为text/html或text/plain，字符集默认为utf-8，Content-Length字段同时设定。</li>
+<li>二进制Buffer：Content-Type字段默认为application/octet-stream，Content-Length字段同时设定。</li>
+<li>Stream：Content-Type字段默认为application/octet-stream。</li>
+<li>JSON对象：Content-Type字段默认为application/json。</li>
+<li>null（表示没有信息体）</li>
+</ul>
+<p>如果<code>this.response.status</code>没设置，Koa会自动将其设为200或204。</p>
+<p>（7）this.response.get(field)</p>
+<p>返回HTTP回应的指定字段。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> etag = <span class="keyword">this</span>.get(<span class="string">'ETag'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>注意，get方法的参数是区分大小写的。</p>
+<p>（8）this.response.set()</p>
+<p>设置HTTP回应的指定字段。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.set(<span class="string">'Cache-Control'</span>, <span class="string">'no-cache'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>set方法也可以接受一个对象作为参数，同时为多个字段指定值。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.set(&#123;</span><br><span class="line">  <span class="string">'Etag'</span>: <span class="string">'1234'</span>,</span><br><span class="line">  <span class="string">'Last-Modified'</span>: date</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>（9）this.response.remove(field)</p>
+<p>移除HTTP回应的指定字段。</p>
+<p>（10）this.response.type</p>
+<p>返回HTTP回应的Content-Type字段，不包括“charset”参数的部分。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ct = <span class="keyword">this</span>.reponse.type;</span><br><span class="line"><span class="comment">// "image/png"</span></span><br></pre></td></tr></table></figure></div>
+<p>该属性是可写的。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.reponse.type = <span class="string">'text/plain; charset=utf-8'</span>;</span><br><span class="line"><span class="keyword">this</span>.reponse.type = <span class="string">'image/png'</span>;</span><br><span class="line"><span class="keyword">this</span>.reponse.type = <span class="string">'.png'</span>;</span><br><span class="line"><span class="keyword">this</span>.reponse.type = <span class="string">'png'</span>;</span><br></pre></td></tr></table></figure></div>
+<p>设置type属性的时候，如果没有提供charset参数，Koa会判断是否自动设置。如果<code>this.response.type</code>设为html，charset默认设为utf-8；但如果<code>this.response.type</code>设为text/html，就不会提供charset的默认值。</p>
+<p>（10）this.response.is(types…)</p>
+<p>该方法类似于<code>this.request.is()</code>，用于检查HTTP回应的类型是否为支持的类型。</p>
+<p>它可以在中间件中起到处理不同格式内容的作用。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> minify = <span class="built_in">require</span>(<span class="string">'html-minifier'</span>);</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> *<span class="title">minifyHTML</span>(<span class="params">next</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> next;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.response.is(<span class="string">'html'</span>)) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> body = <span class="keyword">this</span>.response.body;</span><br><span class="line">  <span class="keyword">if</span> (!body || body.pipe) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (Buffer.isBuffer(body)) body = body.toString();</span><br><span class="line">  <span class="keyword">this</span>.response.body = minify(body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>上面代码是一个中间件，如果输出的内容类型为HTML，就会进行最小化处理。</p>
+<p>（11）this.response.redirect(url, [alt])</p>
+<p>该方法执行302跳转到指定网址。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.redirect(<span class="string">'back'</span>);</span><br><span class="line"><span class="keyword">this</span>.redirect(<span class="string">'back'</span>, <span class="string">'/index.html'</span>);</span><br><span class="line"><span class="keyword">this</span>.redirect(<span class="string">'/login'</span>);</span><br><span class="line"><span class="keyword">this</span>.redirect(<span class="string">'http://google.com'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>如果redirect方法的第一个参数是back，将重定向到HTTP请求的Referrer字段指定的网址，如果没有该字段，则重定向到第二个参数或“/”网址。</p>
+<p>如果想修改302状态码，或者修改body文字，可以采用下面的写法。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.status = <span class="number">301</span>;</span><br><span class="line"><span class="keyword">this</span>.redirect(<span class="string">'/cart'</span>);</span><br><span class="line"><span class="keyword">this</span>.body = <span class="string">'Redirecting to shopping cart'</span>;</span><br></pre></td></tr></table></figure></div>
+<p>（12）this.response.attachment([filename])</p>
+<p>该方法将HTTP回应的Content-Disposition字段，设为“attachment”，提示浏览器下载指定文件。</p>
+<p>（13）this.response.headerSent</p>
+<p>该方法返回一个布尔值，检查是否HTTP回应已经发出。</p>
+<p>（14）this.response.lastModified</p>
+<p>该属性以Date对象的形式，返回HTTP回应的Last-Modified字段（如果该字段存在）。该属性可写。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.response.lastModified = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br></pre></td></tr></table></figure></div>
+<p>（15）this.response.etag</p>
+<p>该属性设置HTTP回应的ETag字段。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.response.etag = crypto.createHash(<span class="string">'md5'</span>).update(<span class="keyword">this</span>.body).digest(<span class="string">'hex'</span>);</span><br></pre></td></tr></table></figure></div>
+<p>注意，不能用该属性读取ETag字段。</p>
+<p>（16）this.response.vary(field)</p>
+<p>该方法将参数添加到HTTP回应的Vary字段。</p>
+<h2 id="CSRF攻击"><a href="#CSRF攻击" class="headerlink" title="CSRF攻击"></a>CSRF攻击</h2><p>CSRF攻击是指用户的session被劫持，用来冒充用户的攻击。</p>
+<p>koa-csrf插件用来防止CSRF攻击。原理是在session之中写入一个秘密的token，用户每次使用POST方法提交数据的时候，必须含有这个token，否则就会抛出错误。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'koa-session'</span>);</span><br><span class="line"><span class="keyword">var</span> csrf = <span class="built_in">require</span>(<span class="string">'koa-csrf'</span>);</span><br><span class="line"><span class="keyword">var</span> route = <span class="built_in">require</span>(<span class="string">'koa-route'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="built_in">module</span>.exports = koa();</span><br><span class="line"></span><br><span class="line">app.keys = [<span class="string">'session key'</span>, <span class="string">'csrf example'</span>];</span><br><span class="line">app.use(session(app));</span><br><span class="line"></span><br><span class="line">app.use(csrf());</span><br><span class="line"></span><br><span class="line">app.use(route.get(<span class="string">'/token'</span>, token));</span><br><span class="line">app.use(route.post(<span class="string">'/post'</span>, post));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">token</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.body = <span class="keyword">this</span>.csrf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">post</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.body = &#123;<span class="attr">ok</span>: <span class="literal">true</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure></div>
+<p>POST请求含有token，可以是以下几种方式之一，koa-csrf插件就能获得token。</p>
+<ul>
+<li>表单的_csrf字段</li>
+<li>查询字符串的_csrf字段</li>
+<li>HTTP请求头信息的x-csrf-token字段</li>
+<li>HTTP请求头信息的x-xsrf-token字段</li>
+</ul>
+<h2 id="数据压缩"><a href="#数据压缩" class="headerlink" title="数据压缩"></a>数据压缩</h2><p>koa-compress模块可以实现数据压缩。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="built_in">require</span>(<span class="string">'koa-compress'</span>)())</span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">'text/plain'</span></span><br><span class="line">  <span class="keyword">this</span>.body = fs.createReadStream(<span class="string">'filename.txt'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h2 id="源码解读"><a href="#源码解读" class="headerlink" title="源码解读"></a>源码解读</h2><p>每一个网站就是一个app，它由<code>lib/application</code>定义。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Application</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Application)) <span class="keyword">return</span> <span class="keyword">new</span> Application;</span><br><span class="line">  <span class="keyword">this</span>.env = process.env.NODE_ENV || <span class="string">'development'</span>;</span><br><span class="line">  <span class="keyword">this</span>.subdomainOffset = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">this</span>.middleware = [];</span><br><span class="line">  <span class="keyword">this</span>.context = <span class="built_in">Object</span>.create(context);</span><br><span class="line">  <span class="keyword">this</span>.request = <span class="built_in">Object</span>.create(request);</span><br><span class="line">  <span class="keyword">this</span>.response = <span class="built_in">Object</span>.create(response);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = Application.prototype;</span><br><span class="line"></span><br><span class="line">exports = <span class="built_in">module</span>.exports = Application;</span><br></pre></td></tr></table></figure></div>
+<p><code>app.use()</code>用于注册中间件，即将Generator函数放入中间件数组。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.experimental) &#123;</span><br><span class="line">    <span class="comment">// es7 async functions are allowed</span></span><br><span class="line">    assert(fn &amp;&amp; <span class="string">'GeneratorFunction'</span> == fn.constructor.name, <span class="string">'app.use() requires a generator function'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  debug(<span class="string">'use %s'</span>, fn._name || fn.name || <span class="string">'-'</span>);</span><br><span class="line">  <span class="keyword">this</span>.middleware.push(fn);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p><code>app.listen()</code>就是<code>http.createServer(app.callback()).listen(...)</code>的缩写。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">app.listen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  debug(<span class="string">'listen'</span>);</span><br><span class="line">  <span class="keyword">var</span> server = http.createServer(<span class="keyword">this</span>.callback());</span><br><span class="line">  <span class="keyword">return</span> server.listen.apply(server, <span class="built_in">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.callback = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> mw = [respond].concat(<span class="keyword">this</span>.middleware);</span><br><span class="line">  <span class="keyword">var</span> fn = <span class="keyword">this</span>.experimental</span><br><span class="line">    ? compose_es7(mw)</span><br><span class="line">    : co.wrap(compose(mw));</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.listeners(<span class="string">'error'</span>).length) <span class="keyword">this</span>.on(<span class="string">'error'</span>, <span class="keyword">this</span>.onerror);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">    res.statusCode = <span class="number">404</span>;</span><br><span class="line">    <span class="keyword">var</span> ctx = self.createContext(req, res);</span><br><span class="line">    onFinished(res, ctx.onerror);</span><br><span class="line">    fn.call(ctx).catch(ctx.onerror);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，<code>app.callback()</code>会返回一个函数，用来处理HTTP请求。它的第一行<code>mw = [respond].concat(this.middleware)</code>，表示将respond函数（这也是一个Generator函数）放入<code>this.middleware</code>，现在mw就变成了<code>[respond, S1, S2, S3]</code>。</p>
+<p><code>compose(mw)</code>将中间件数组转为一个层层调用的Generator函数。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">middleware</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!next) next = noop();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> i = middleware.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">      next = middleware[i].call(<span class="keyword">this</span>, next);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> *next;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">noop</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure></div>
+<p>上面代码中，下一个generator函数总是上一个Generator函数的参数，从而保证了层层调用。</p>
+<p><code>var fn = co.wrap(gen)</code>则是将Generator函数包装成一个自动执行的函数，并且返回一个Promise。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//co package</span></span><br><span class="line">co.wrap = <span class="function"><span class="keyword">function</span> (<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> co.call(<span class="keyword">this</span>, fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>由于<code>co.wrap(compose(mw))</code>执行后，返回的是一个Promise，所以可以对其使用catch方法指定捕捉错误的回调函数<code>fn.call(ctx).catch(ctx.onerror)</code>。</p>
+<p>将所有的上下文变量都放进context对象。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">app.createContext = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> context = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.context);</span><br><span class="line">  <span class="keyword">var</span> request = context.request = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.request);</span><br><span class="line">  <span class="keyword">var</span> response = context.response = <span class="built_in">Object</span>.create(<span class="keyword">this</span>.response);</span><br><span class="line">  context.app = request.app = response.app = <span class="keyword">this</span>;</span><br><span class="line">  context.req = request.req = response.req = req;</span><br><span class="line">  context.res = request.res = response.res = res;</span><br><span class="line">  request.ctx = response.ctx = context;</span><br><span class="line">  request.response = response;</span><br><span class="line">  response.request = request;</span><br><span class="line">  context.onerror = context.onerror.bind(context);</span><br><span class="line">  context.originalUrl = request.originalUrl = req.url;</span><br><span class="line">  context.cookies = <span class="keyword">new</span> Cookies(req, res, <span class="keyword">this</span>.keys);</span><br><span class="line">  context.accept = request.accept = accepts(req);</span><br><span class="line">  context.state = &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> context;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p>真正处理HTTP请求的是下面这个Generator函数。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">respond</span>(<span class="params">next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> *next;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// allow bypassing koa</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">false</span> === <span class="keyword">this</span>.respond) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> res = <span class="keyword">this</span>.res;</span><br><span class="line">  <span class="keyword">if</span> (res.headersSent || !<span class="keyword">this</span>.writable) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> body = <span class="keyword">this</span>.body;</span><br><span class="line">  <span class="keyword">var</span> code = <span class="keyword">this</span>.status;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ignore body</span></span><br><span class="line">  <span class="keyword">if</span> (statuses.empty[code]) &#123;</span><br><span class="line">    <span class="comment">// strip headers</span></span><br><span class="line">    <span class="keyword">this</span>.body = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> res.end();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'HEAD'</span> == <span class="keyword">this</span>.method) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isJSON(body)) <span class="keyword">this</span>.length = Buffer.byteLength(<span class="built_in">JSON</span>.stringify(body));</span><br><span class="line">    <span class="keyword">return</span> res.end();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// status body</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">null</span> == body) &#123;</span><br><span class="line">    <span class="keyword">this</span>.type = <span class="string">'text'</span>;</span><br><span class="line">    body = <span class="keyword">this</span>.message || <span class="built_in">String</span>(code);</span><br><span class="line">    <span class="keyword">this</span>.length = Buffer.byteLength(body);</span><br><span class="line">    <span class="keyword">return</span> res.end(body);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// responses</span></span><br><span class="line">  <span class="keyword">if</span> (Buffer.isBuffer(body)) <span class="keyword">return</span> res.end(body);</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'string'</span> == <span class="keyword">typeof</span> body) <span class="keyword">return</span> res.end(body);</span><br><span class="line">  <span class="keyword">if</span> (body <span class="keyword">instanceof</span> Stream) <span class="keyword">return</span> body.pipe(res);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// body: json</span></span><br><span class="line">  body = <span class="built_in">JSON</span>.stringify(body);</span><br><span class="line">  <span class="keyword">this</span>.length = Buffer.byteLength(body);</span><br><span class="line">  res.end(body);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://github.com/koajs/koa/blob/master/docs/guide.md" target="_blank" rel="noopener">Koa Guide</a></li>
+<li>William XING, <a href="http://william.xingyp.com/is-koa-js-right-for-me/" target="_blank" rel="noopener">Is Koa.js right for me?</a><br><strong><a href="#koa-应用">⬆ back to top</a></strong></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/10/javascript中的this关键字/" rel="prev" title="JavaScript的 this 关键字">
+                JavaScript的 this 关键字 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="React-Apollo">
+            
+              <p class="site-author-name" itemprop="name">React-Apollo</p>
+              <p class="site-description motion-element" itemprop="description">base on javascript</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Koa-应用"><span class="nav-number">1.</span> <span class="nav-text">Koa 应用</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件"><span class="nav-number"></span> <span class="nav-text">中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多个中间件的合并"><span class="nav-number">1.</span> <span class="nav-text">多个中间件的合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由"><span class="nav-number"></span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#context对象"><span class="nav-number"></span> <span class="nav-text">context对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理机制"><span class="nav-number"></span> <span class="nav-text">错误处理机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number"></span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session"><span class="nav-number"></span> <span class="nav-text">session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request对象"><span class="nav-number"></span> <span class="nav-text">Request对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Response对象"><span class="nav-number"></span> <span class="nav-text">Response对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF攻击"><span class="nav-number"></span> <span class="nav-text">CSRF攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据压缩"><span class="nav-number"></span> <span class="nav-text">数据压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码解读"><span class="nav-number"></span> <span class="nav-text">源码解读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number"></span> <span class="nav-text">参考链接</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">React-Apollo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">190.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("0kGBxj215XRijm6VofFkzlws-gzGzoHsz", "V2FDLF52mPXum5Hh6wvwGpEk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
