@@ -1,1 +1,0 @@
-Awesome List  for FrontEnd Programmer
